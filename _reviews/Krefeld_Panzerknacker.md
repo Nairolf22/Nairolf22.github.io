@@ -9,7 +9,6 @@ location:
   lng: 6.564507
 images:
   - "rooms/Panzerknacker.jpg"
-  - "rooms/Panzerknacker2.jpg"
 visit_date: 2024-11-15   # Format: Jahr-Monat-Tag
 participants:
   - Florian
