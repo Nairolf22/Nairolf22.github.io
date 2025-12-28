@@ -2,7 +2,7 @@
 layout: review
 title: "Der Fall Sherlock Holmes"
 provider: "Escape Stories"
-thumbnail: "thumbnails/Wuppertal_Sherlock.jpg"  <-- DAS IST NEU
+
 location:
   city: "Wuppertal"
   address: "Armin-T.-Wegner-Platz 3, 42103 Wuppertal"
@@ -10,6 +10,7 @@ location:
   lng: 7.145805
 images:
   - "rooms/Wuppertal-Sherlock.jpg"
+thumbnail: "thumbnails/Wuppertal-Sherlock.jpg"
 visit_date: 2025-12-27   # Format: Jahr-Monat-Tag
 participants:
   - Florian
