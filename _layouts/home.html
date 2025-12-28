@@ -32,12 +32,19 @@ layout: default
             
             <article class="room-card">
                 <div class="card-image-wrapper">
-                    {% if review.images.size > 0 %}
+                    {% if review.thumbnail %}
+                        <img src="/assets/images/{{ review.thumbnail }}" alt="{{ review.title }}">
+                    
+                    {% elsif review.images.size > 0 %}
                         <img src="/assets/images/{{ review.images[0] }}" alt="{{ review.title }}">
+                    
                     {% else %}
                         <img src="/assets/images/ui/no-signal.jpg" alt="Kein Bild">
                     {% endif %}
-                    <div class="rating-badge">★ {{ review.ratings.overall }}</div>
+                    
+                    <div class="rating-badge">
+                        ★ {{ review.ratings.overall }}
+                    </div>
                 </div>
 
                 <div class="card-content">
