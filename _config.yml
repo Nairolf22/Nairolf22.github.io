@@ -1,0 +1,13 @@
+title: "The Escape Archive"
+description: "Reviewing the best and darkest escape rooms."
+url: "http://localhost:4000"
+baseurl: ""
+permalink: /reviews/:title/
+
+# Aktiviert Markdown
+markdown: kramdown
+theme: null
+
+collections:
+  reviews:
+    output: true

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Startseite | Escape Room Reviews</title>
+    
+    <link rel="stylesheet" href="/assets/css/style.css">
+    
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+</head>
+<body>
+
+    <div class="site-wrapper">
+        
+        <header>
+            <a href="/" style="text-decoration:none;">
+                <h1>The Escape Archive</h1>
+            </a>
+            <p style="color: #ccc; margin-top: 10px;">• EST. 2024 • CLASSIFIED REVIEWS •</p>
+        </header>
+
+        <nav>
+            <a href="/">Alle Räume</a>
+            <a href="/#escapeMap">Karte</a>
+            <a href="/team">Team</a>
+            <a href="/about">Über Uns</a>
+            <a href="/impressum">Impressum</a>
+        </nav>
+
+        <main>
+            <section class="map-section">
+    <h2 class="section-title">Einsatzorte</h2>
+    <div id="escapeMap" class="grunge-map"></div>
+</section>
+
+<hr style="border: 0; border-top: 2px dashed #444; margin: 3rem 0;">
+
+<section class="archive-section">
+    <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap;">
+        <h2 class="section-title" style="margin-bottom:0;">Fall-Archiv</h2>
+        
+        <div class="sort-controls" style="margin-top: 1rem;">
+            <span style="color:#888; margin-right:10px; text-transform:uppercase; font-size:0.8rem;">Sortieren nach:</span>
+            <button class="btn-sort" onclick="sortRooms('name')">Name</button>
+            <button class="btn-sort" onclick="sortRooms('provider')">Anbieter</button>
+            <button class="btn-sort" onclick="sortRooms('rating')">Bewertung</button>
+        </div>
+    </div>
+    
+    <br>
+
+    <div class="card-grid" id="roomGrid">
+        
+        <a href="/reviews/Krefeld_Panzerknacker/" class="room-card-link"
+           data-title="panzerknacker"
+           data-provider="limbus escape games"
+           data-rating="4.5">
+            
+            <article class="room-card">
+                <div class="card-image-wrapper">
+                    
+                        <img src="/assets/images/rooms/Panzerknacker.jpg" alt="Panzerknacker">
+                    
+                    <div class="rating-badge">★ 4.5</div>
+                </div>
+
+                <div class="card-content">
+                    <h3>Panzerknacker</h3>
+                    <p class="card-meta">Limbus Escape Games | Krefeld</p>
+                    <div class="stars small" style="--score: 4.5;">★★★★★</div>
+                    <p class="card-summary">Super Atmosphäre, tolle Kulisse und durch Zeitdruck und Rahmenhandlung ein Escape Room mit Nerven...</p>
+                </div>
+            </article>
+        </a>
+        
+        <a href="/reviews/Wuppertal_Sherlock/" class="room-card-link"
+           data-title="der fall sherlock holmes"
+           data-provider="escape stories"
+           data-rating="2.5">
+            
+            <article class="room-card">
+                <div class="card-image-wrapper">
+                    
+                        <img src="/assets/images/rooms/Wuppertal-Sherlock.jpg" alt="Der Fall Sherlock Holmes">
+                    
+                    <div class="rating-badge">★ 2.5</div>
+                </div>
+
+                <div class="card-content">
+                    <h3>Der Fall Sherlock Holmes</h3>
+                    <p class="card-meta">Escape Stories | Wuppertal</p>
+                    <div class="stars small" style="--score: 2.5;">★★★★★</div>
+                    <p class="card-summary">Ein optisch gelungener Raum für Sherlock-Fans, der vor allem für kleinere Gruppen (2–4 Personen) ...</p>
+                </div>
+            </article>
+        </a>
+        
+    </div>
+</section>
+
+<script>
+    var roomData = [
+        
+        {
+            "title": "Panzerknacker",
+            "url": "/reviews/Krefeld_Panzerknacker/",
+            "lat": 51.337135,
+            "lng": 6.564507,
+            "rating": 4.5,
+            "provider": "Limbus Escape Games"
+        },
+        
+        {
+            "title": "Der Fall Sherlock Holmes",
+            "url": "/reviews/Wuppertal_Sherlock/",
+            "lat": 51.256174,
+            "lng": 7.145805,
+            "rating": 2.5,
+            "provider": "Escape Stories"
+        }
+        
+    ];
+</script>
+
+<script src="/assets/js/map.js"></script>
+
+            
+        </main>
+
+        <footer id="footer">
+            <p>&copy; 2025 Escape Room Reviews.</p>
+            <p>
+                Design: Industrial Grunge.
+                <a href="/impressum" style="color: var(--rust-light);">Impressum & Datenschutz</a>
+            </p>
+        </footer>
+
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="/assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,515 @@
+/* --- GRUNDEINSTELLUNGEN & SCHRIFTEN --- */
+:root {
+  --rust-dark: #3E2723;
+  --rust-primary: #8D4004; /* Rost-Orange */
+  --rust-light: #D75A08;
+  --concrete: #B0BEC5;     /* Beton-Grau */
+  --concrete-dark: #546E7A;
+  --text-color: #e0e0e0;
+  --bg-dark: #1a1a1a;
+  --paper-bg: #2b2b2b;     /* Hintergrund für Textbereiche */
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-dark);
+  color: var(--text-color);
+  font-family: 'Courier New', Courier, monospace; /* Schreibmaschinen-Look */
+  /* Ein feines Rauschen im Hintergrund (optional, simuliert Körnung) */
+  background-image: repeating-linear-gradient(45deg, #1a1a1a 0, #1a1a1a 10px, #202020 10px, #202020 12px);
+}
+
+a {
+  color: var(--rust-light);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+a:hover {
+  color: #ffcc00; /* Glühbirnen-Gelb beim Drüberfahren */
+  text-shadow: 0 0 5px #ffcc00;
+}
+
+/* --- LAYOUT CONTAINER --- */
+.site-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 0 50px rgba(0,0,0,0.8);
+  background-color: #222;
+  border-left: 10px solid var(--rust-dark);
+  border-right: 10px solid var(--rust-dark);
+}
+
+/* --- HEADER: Der verrostete Träger --- */
+header {
+  background: linear-gradient(180deg, var(--rust-primary), var(--rust-dark));
+  padding: 2rem;
+  text-align: center;
+  border-bottom: 5px solid #000;
+  position: relative;
+}
+
+/* Schrauben-Optik in den Ecken des Headers */
+header::before, header::after {
+  content: '';
+  position: absolute;
+  top: 15px;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #555, #000);
+  box-shadow: 0 1px 0 rgba(255,255,255,0.2);
+}
+header::before { left: 15px; }
+header::after { right: 15px; }
+
+header h1 {
+  font-size: 2.5rem;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  color: #fff;
+  text-shadow: 2px 2px 0px #000;
+  font-weight: bold;
+  border: 2px dashed #000; /* Stempel-Look */
+  display: inline-block;
+  padding: 0.5rem 2rem;
+  transform: rotate(-1deg); /* Leicht schief wie ein Aufkleber */
+}
+
+/* --- NAVIGATION --- */
+nav {
+  background-color: #000;
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+  border-bottom: 2px solid var(--rust-primary);
+}
+
+nav a {
+  margin: 0 1.5rem;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  border-bottom: 2px solid transparent;
+}
+
+nav a:hover {
+  border-bottom: 2px solid var(--rust-light);
+}
+
+/* --- MAIN CONTENT --- */
+main {
+  flex: 1; /* Füllt den verfügbaren Platz */
+  padding: 2rem;
+  background-image: radial-gradient(#333, #222); /* "Dreckige Wand" */
+}
+
+/* --- FOOTER --- */
+footer {
+  background-color: #0d0d0d;
+  color: #666;
+  text-align: center;
+  padding: 2rem;
+  border-top: 3px solid var(--rust-dark);
+  font-size: 0.8rem;
+}
+
+/* --- UI ELEMENTS: Karten & Boxen --- */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.room-card, .review-container {
+  background-color: var(--paper-bg);
+  border: 1px solid #444;
+  padding: 1rem;
+  box-shadow: 5px 5px 15px rgba(0,0,0,0.5);
+  position: relative;
+}
+
+/* Klebeband-Effekt oben auf der Karte */
+.room-card::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 25px;
+  background-color: rgba(255, 255, 255, 0.2);
+  transform: translateX(-50%) rotate(2deg);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+}
+
+.room-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  filter: sepia(30%) contrast(120%); /* Retro-Look für Bilder */
+  border: 1px solid #000;
+}
+
+/* --- STERNE (Basis) --- */
+.star-rating {
+  color: var(--rust-light);
+  font-size: 1.2rem;
+  letter-spacing: 2px;
+}
+
+/* --- REVIEW DETAIL PAGE --- */
+
+/* Der Akten-Container */
+.review-dossier {
+  background-color: #dcdcdc; /* Schmutziges Papier-Weiß */
+  color: #1a1a1a; /* Dunkle Schrift auf dem Papier */
+  padding: 2rem;
+  box-shadow: 0 0 20px rgba(0,0,0,0.5);
+  border: 1px solid #999;
+  position: relative;
+  /* Papier-Struktur */
+  background-image: url('data:image/svg+xml;utf8,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><g fill="%23000000" fill-opacity="0.05"><circle cx="10" cy="10" r="1"/><circle cx="50" cy="40" r="1"/><circle cx="80" cy="20" r="1"/></g></svg>');
+}
+
+/* Heftklammer-Optik oben links */
+.review-dossier::before {
+  content: '';
+  position: absolute;
+  top: -15px;
+  left: 20px;
+  width: 20px;
+  height: 60px;
+  background-color: #888;
+  border-radius: 10px;
+  box-shadow: inset 2px 2px 5px rgba(0,0,0,0.5), 2px 2px 5px rgba(0,0,0,0.3);
+  z-index: 10;
+}
+
+/* Header Bereich der Akte */
+.dossier-header {
+  border-bottom: 2px solid var(--rust-primary);
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.dossier-meta h2 {
+  font-family: 'Arial Black', sans-serif;
+  text-transform: uppercase;
+  font-size: 2rem;
+  margin: 0;
+  color: #222;
+}
+
+.dossier-meta .provider {
+  font-family: 'Courier New', monospace;
+  font-weight: bold;
+  color: var(--rust-primary);
+  font-size: 1.2rem;
+}
+
+/* Der "CONFIDENTIAL" Stempel für die Gesamtwertung */
+.stamp-box {
+  border: 3px solid var(--rust-light);
+  color: var(--rust-light);
+  padding: 0.5rem 1rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  transform: rotate(-10deg);
+  font-size: 1.5rem;
+  text-align: center;
+  mask-image: url('data:image/svg+xml;utf8,<svg...>'); /* Hier könnte man eine Grunge-Maske nutzen */
+  opacity: 0.9;
+}
+
+/* --- BILDER GALERIE (Polaroids) --- */
+.evidence-photos {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.polaroid {
+  background: #fff;
+  padding: 10px 10px 40px 10px; /* Unten mehr Platz für Beschriftung */
+  box-shadow: 3px 3px 10px rgba(0,0,0,0.4);
+  transform: rotate(2deg);
+  max-width: 30%;
+  min-width: 200px;
+  transition: transform 0.3s;
+}
+
+.polaroid:nth-child(even) {
+  transform: rotate(-2deg);
+}
+
+.polaroid:hover {
+  transform: scale(1.05) rotate(0deg);
+  z-index: 5;
+}
+
+.polaroid img {
+  width: 100%;
+  height: auto;
+  display: block;
+  filter: grayscale(40%);
+}
+
+/* --- KRITERIEN & STERNE --- */
+.criterion {
+  margin-bottom: 1.5rem;
+  border-left: 4px solid var(--concrete);
+  padding-left: 1rem;
+}
+
+.criterion h3 {
+  margin: 0 0 0.2rem 0;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  color: #444;
+}
+
+/* Die Magie der Sterne: Variable CSS Technik */
+.stars {
+  font-family: sans-serif; /* Wichtig für korrekte Stern-Darstellung */
+  font-size: 1.5rem;
+  position: relative;
+  display: inline-block;
+  color: #ccc; /* Farbe der leeren Sterne */
+}
+
+.stars::before {
+  content: '★★★★★';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: calc(var(--score) * 20%); /* 5 Sterne = 100%, 1 Stern = 20% */
+  overflow: hidden;
+  color: var(--rust-primary); /* Farbe der vollen Sterne */
+  white-space: nowrap;
+}
+
+.criterion-text {
+  font-size: 0.95rem;
+  line-height: 1.4;
+  margin-top: 0.5rem;
+}
+
+/* --- FAZIT --- */
+.verdict {
+  background-color: #333;
+  color: #f0f0f0;
+  padding: 1.5rem;
+  margin-top: 2rem;
+  border-left: 5px solid var(--rust-light);
+  font-family: 'Courier New', Courier, monospace;
+}
+
+/* --- STARTSEITE SPEZIFISCH --- */
+
+.section-title {
+  font-family: 'Arial Black', sans-serif;
+  text-transform: uppercase;
+  color: var(--concrete);
+  border-left: 10px solid var(--rust-primary);
+  padding-left: 1rem;
+  margin-bottom: 1.5rem;
+  text-shadow: 2px 2px 0 #000;
+}
+
+/* --- MAP STYLING --- */
+.grunge-map {
+  height: 400px;
+  width: 100%;
+  border: 5px solid #333;
+  box-shadow: inset 0 0 50px #000;
+  background-color: #222;
+  position: relative;
+}
+
+/* Der Trick für den Dark-Mode/Industrial Look der Karte */
+.grunge-map .leaflet-tile-pane {
+  filter: grayscale(100%) invert(90%) contrast(120%) sepia(20%);
+}
+
+/* --- CARD LISTE ANPASSUNGEN --- */
+.room-card-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.room-card {
+  transition: transform 0.2s, box-shadow 0.2s;
+  height: 100%; /* Gleichmäßige Höhe */
+  display: flex;
+  flex-direction: column;
+}
+
+.room-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 10px 10px 20px rgba(0,0,0,0.7);
+  border-color: var(--rust-light);
+}
+
+.card-image-wrapper {
+  position: relative;
+  overflow: hidden;
+  height: 180px;
+}
+
+.rating-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: var(--rust-primary);
+  color: #fff;
+  padding: 5px 10px;
+  font-weight: bold;
+  border: 1px solid #000;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+}
+
+.card-content {
+  padding: 1rem;
+}
+
+.card-content h3 {
+  margin: 0 0 0.5rem 0;
+  color: var(--rust-light);
+  font-size: 1.3rem;
+}
+
+.card-meta {
+  font-size: 0.8rem;
+  color: #888;
+  margin-bottom: 0.5rem;
+  font-family: sans-serif;
+  text-transform: uppercase;
+}
+
+/* Kleiner Text in der Karte */
+.card-summary {
+  font-size: 0.9rem;
+  color: #ccc;
+  margin-top: 1rem;
+  font-style: italic;
+}
+
+/* Custom Leaflet Popup Styling (damit die Blase nicht weiß ist) */
+.leaflet-popup-content-wrapper, .leaflet-popup-tip {
+  background: #2b2b2b;
+  color: #e0e0e0;
+  border: 1px solid var(--rust-primary);
+  border-radius: 0;
+}
+.leaflet-popup-content b {
+  color: var(--rust-light);
+}
+
+/* --- SORTIER BUTTONS --- */
+.btn-sort {
+  background-color: #333;
+  color: #ccc;
+  border: 1px solid #555;
+  padding: 5px 15px;
+  font-family: 'Courier New', monospace;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-weight: bold;
+  transition: all 0.2s;
+  margin-left: 5px;
+}
+
+.btn-sort:hover {
+  background-color: var(--rust-primary);
+  color: #fff;
+  border-color: var(--rust-light);
+  box-shadow: 0 0 5px var(--rust-primary);
+}
+
+/* --- TEAM SEITE (STECKBRIEFE) --- */
+.team-grid {
+    margin-top: 2rem;
+}
+
+.team-card {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+    padding: 1rem;
+    background: #e8e8e8;
+    border: 1px solid #bbb;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+    /* Damit der Anker-Sprung nicht genau unter dem Header landet */
+    scroll-margin-top: 150px;
+}
+
+.team-photo img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border: 5px solid #fff;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+    transform: rotate(-2deg);
+}
+
+.team-info {
+    flex: 1;
+}
+
+.team-name {
+    margin: 0;
+    font-family: 'Arial Black', sans-serif;
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    color: #333;
+}
+
+.team-role {
+    display: inline-block;
+    background-color: var(--rust-primary);
+    color: #fff;
+    padding: 2px 8px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    transform: rotate(1deg);
+}
+
+.team-bio {
+    font-family: 'Courier New', monospace;
+    color: #444;
+}
+
+/* Link-Style in der Review */
+.investigator-link {
+    color: var(--rust-primary);
+    text-decoration: underline;
+    font-weight: bold;
+}
+.investigator-link:hover {
+    background-color: #000;
+    color: #fff;
+    text-decoration: none;
+}
+
+/* Mobil-Optimierung für Team-Cards */
+@media (max-width: 600px) {
+    .team-card { flex-direction: column; align-items: center; text-align: center; }
+}

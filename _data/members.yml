@@ -1,0 +1,29 @@
+- name: "Florian"
+  role: "Der Logiker"
+  image: "team/florian.jpg"
+  bio: "Liebt Zahlenschlösser und hasst es, im Dunkeln zu tappen. Findet Zusammenhänge, wo keine sind."
+
+- name: "Christine"
+  role: "Die Spürnase"
+  image: "team/sarah.jpg"
+  bio: "Findet jeden Schlüssel, egal wie gut er versteckt ist. Hat den Überblick, wenn das Chaos ausbricht."
+
+- name: "Moritz"
+  role: "Der Mechaniker"
+  image: "team/max.jpg"
+  bio: "Wenn etwas technisch aussieht, drückt er drauf. Meistens passiert dann etwas Gutes."
+
+- name: "Lea"
+  role: "Der Mechaniker"
+  image: "team/max.jpg"
+  bio: "Wenn etwas technisch aussieht, drückt er drauf. Meistens passiert dann etwas Gutes."
+
+- name: "Marvin"
+  role: "Der Mechaniker"
+  image: "team/max.jpg"
+  bio: "Wenn etwas technisch aussieht, drückt er drauf. Meistens passiert dann etwas Gutes."
+
+- name: "Jessica"
+  role: "Der Mechaniker"
+  image: "team/max.jpg"
+  bio: "Wenn etwas technisch aussieht, drückt er drauf. Meistens passiert dann etwas Gutes."

@@ -1,0 +1,70 @@
+---
+layout: default
+---
+
+<section class="map-section">
+    <h2 class="section-title">Einsatzorte</h2>
+    <div id="escapeMap" class="grunge-map"></div>
+</section>
+
+<hr style="border: 0; border-top: 2px dashed #444; margin: 3rem 0;">
+
+<section class="archive-section">
+    <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap;">
+        <h2 class="section-title" style="margin-bottom:0;">Fall-Archiv</h2>
+        
+        <div class="sort-controls" style="margin-top: 1rem;">
+            <span style="color:#888; margin-right:10px; text-transform:uppercase; font-size:0.8rem;">Sortieren nach:</span>
+            <button class="btn-sort" onclick="sortRooms('name')">Name</button>
+            <button class="btn-sort" onclick="sortRooms('provider')">Anbieter</button>
+            <button class="btn-sort" onclick="sortRooms('rating')">Bewertung</button>
+        </div>
+    </div>
+    
+    <br>
+
+    <div class="card-grid" id="roomGrid">
+        {% for review in site.reviews %}
+        <a href="{{ review.url }}" class="room-card-link"
+           data-title="{{ review.title | downcase }}"
+           data-provider="{{ review.provider | downcase }}"
+           data-rating="{{ review.ratings.overall }}">
+            
+            <article class="room-card">
+                <div class="card-image-wrapper">
+                    {% if review.images.size > 0 %}
+                        <img src="/assets/images/{{ review.images[0] }}" alt="{{ review.title }}">
+                    {% else %}
+                        <img src="/assets/images/ui/no-signal.jpg" alt="Kein Bild">
+                    {% endif %}
+                    <div class="rating-badge">★ {{ review.ratings.overall }}</div>
+                </div>
+
+                <div class="card-content">
+                    <h3>{{ review.title }}</h3>
+                    <p class="card-meta">{{ review.provider }} | {{ review.location.city }}</p>
+                    <div class="stars small" style="--score: {{ review.ratings.overall }};">★★★★★</div>
+                    <p class="card-summary">{{ review.summary | truncate: 100, "..." }}</p>
+                </div>
+            </article>
+        </a>
+        {% endfor %}
+    </div>
+</section>
+
+<script>
+    var roomData = [
+        {% for review in site.reviews %}
+        {
+            "title": "{{ review.title }}",
+            "url": "{{ review.url }}",
+            "lat": {{ review.location.lat }},
+            "lng": {{ review.location.lng }},
+            "rating": {{ review.ratings.overall }},
+            "provider": "{{ review.provider }}"
+        }{% unless forloop.last %},{% endunless %}
+        {% endfor %}
+    ];
+</script>
+
+<script src="/assets/js/map.js"></script>
