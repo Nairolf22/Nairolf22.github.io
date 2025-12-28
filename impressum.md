@@ -1,16 +1,17 @@
 ---
 layout: default
-title: Impressum
+title: Impressum & Datenschutz
 permalink: /impressum/
 ---
 
-<div class="review-dossier">
+<div class="review-dossier" style="font-family: 'Courier New', Courier, 'Lucida Sans Typewriter', 'Lucida Typewriter', monospace; line-height: 1.6; color: #333;">
+    
     <div class="dossier-header">
         <h2>Impressum</h2>
     </div>
 
-    <div style="font-family: 'Courier New', monospace; line-height: 1.6;">
-        <p><strong>Angaben gemäß § 5 TMG</strong></p>
+    <div style="margin-bottom: 40px;">
+        <p><strong>Angaben gemäß § 5 DDG</strong></p>
         
         <p>
             Dr. Florian Scheuch<br>
@@ -24,20 +25,92 @@ permalink: /impressum/
         </p>
 
         <p>
-            <strong>Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV:</strong><br>
+            <strong>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV:</strong><br>
             Dr. Florian Scheuch<br>
             Myllendonker Straße 301<br>
             41065 Mönchengladbach
         </p>
 
         <br>
-        <h3 style="color: var(--rust-primary);">Haftungsausschluss</h3>
-        <p>
-            Die Inhalte unserer Seiten wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte können wir jedoch keine Gewähr übernehmen. Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich.<br><br>
+        
+        <h3 style="color: var(--rust-primary, #a0522d); border-bottom: 1px dashed #ccc; padding-bottom: 5px; margin-top: 30px;">Haftungsausschluss</h3>
+        
+        <p><strong>Haftung für Inhalte</strong><br>
+        Die Inhalte unserer Seiten wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte können wir jedoch keine Gewähr übernehmen. Als Diensteanbieter sind wir gemäß § 7 Abs.1 DDG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich.</p>
 
-Haftung für Links: Unser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich.
-<br><br>
-Urheberrecht: Die durch die Seitenbetreiber erstellten Inhalte und Werke (insb. Rezensionstexte und eigene Fotos) auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers.
+        <p><strong>Haftung für Links</strong><br>
+        Unser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich.</p>
+
+        <p><strong>Urheberrecht</strong><br>
+        Die durch die Seitenbetreiber erstellten Inhalte und Werke (insb. Rezensionstexte und eigene Fotos) auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers.</p>
+    </div>
+
+    <hr style="margin: 50px 0; border: 0; border-top: 2px solid #333;">
+
+    <div class="dossier-header">
+        <h2>Datenschutzerklärung</h2>
+    </div>
+
+    <div>
+        <h3 style="color: var(--rust-primary, #a0522d); margin-top: 30px;">1. Datenschutz auf einen Blick</h3>
+        
+        <p><strong>Allgemeine Hinweise</strong><br>
+        Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren personenbezogenen Daten passiert, wenn Sie diese Website besuchen. Personenbezogene Daten sind alle Daten, mit denen Sie persönlich identifiziert werden können.</p>
+
+        <p><strong>Datenerfassung auf dieser Website</strong><br>
+        Die Datenerfassung auf dieser Website erfolgt durch den Websitebetreiber und den Hostinganbieter GitHub. Die Details entnehmen Sie den folgenden Abschnitten.</p>
+
+        <h3 style="color: var(--rust-primary, #a0522d); margin-top: 30px;">2. Verantwortlicher</h3>
+        <p>Verantwortlich für die Datenverarbeitung auf dieser Website ist:</p>
+        <p>
+            Dr. Florian Scheuch<br>
+            Myllendonker Straße 301<br>
+            41065 Mönchengladbach<br>
+            E-Mail: florian.scheuch@allesab4.de
         </p>
+
+        <h3 style="color: var(--rust-primary, #a0522d); margin-top: 30px;">3. Hosting durch GitHub Pages</h3>
+        <p>Wir hosten unsere Website bei GitHub Pages. Anbieter ist die GitHub Inc., 88 Colin P. Kelly Jr. St, San Francisco, CA 94107, USA (nachfolgend „GitHub“).</p>
+        <p>Wenn Sie unsere Website besuchen, erfasst GitHub Log-Dateien, die unter anderem Ihre IP-Adresse enthalten. GitHub verwendet diese Daten, um den Dienst bereitzustellen, die Sicherheit zu gewährleisten und die Performance zu analysieren.</p>
+        <p>Die Verwendung von GitHub Pages erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO. Wir haben ein berechtigtes Interesse an einer möglichst zuverlässigen Darstellung unserer Website. Da eine Datenübertragung in die USA stattfindet, stützt sich GitHub auf die Standardvertragsklauseln der EU-Kommission.</p>
+        <p>Details finden Sie in der Datenschutzerklärung von GitHub:<br>
+        <a href="https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement" target="_blank" rel="noopener" style="text-decoration: underline;">GitHub Privacy Statement</a></p>
+
+        <h3 style="color: var(--rust-primary, #a0522d); margin-top: 30px;">4. Datenerfassung und Cookies</h3>
+        <p><strong>Server-Log-Dateien</strong><br>
+        Der Provider der Seiten erhebt und speichert automatisch Informationen in sogenannten Server-Log-Dateien, die Ihr Browser automatisch an uns übermittelt. Dies sind:</p>
+        <ul style="list-style-type: square;">
+            <li>Browsertyp und Browserversion</li>
+            <li>Verwendetes Betriebssystem</li>
+            <li>Referrer URL (die zuvor besuchte Seite)</li>
+            <li>Hostname des zugreifenden Rechners</li>
+            <li>Uhrzeit der Serveranfrage</li>
+            <li>IP-Adresse</li>
+        </ul>
+        <p>Eine Zusammenführung dieser Daten mit anderen Datenquellen wird nicht vorgenommen. Grundlage für die Datenverarbeitung ist Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an der fehlerfreien Darstellung und Optimierung der Website).</p>
+
+        <p><strong>Cookies</strong><br>
+        Diese Website verwendet nach aktuellem Stand keine technisch nicht notwendigen Cookies und keine Analyse-Tools (wie z.B. Google Analytics). Sollten Sie lediglich die Seite besuchen, werden keine Tracking-Profile erstellt.</p>
+
+        <h3 style="color: var(--rust-primary, #a0522d); margin-top: 30px;">5. Externe Links</h3>
+        <p>Unsere Website enthält Links zu Websites Dritter (z. B. Escape Room Anbieter). Wenn Sie auf einen dieser Links klicken, verlassen Sie unseren Verantwortungsbereich. Für die Datenverarbeitung auf den verlinkten Seiten ist der jeweilige Betreiber verantwortlich.</p>
+
+        <h3 style="color: var(--rust-primary, #a0522d); margin-top: 30px;">6. Ihre Rechte</h3>
+        <p>Sie haben im Rahmen der geltenden gesetzlichen Bestimmungen jederzeit das Recht auf:</p>
+        <ul style="list-style-type: square;">
+            <li>Auskunft über Ihre gespeicherten personenbezogenen Daten (Art. 15 DSGVO)</li>
+            <li>Berichtigung unrichtiger Daten (Art. 16 DSGVO)</li>
+            <li>Löschung Ihrer Daten (Art. 17 DSGVO)</li>
+            <li>Einschränkung der Verarbeitung (Art. 18 DSGVO)</li>
+            <li>Datenübertragbarkeit (Art. 20 DSGVO)</li>
+            <li>Widerspruch gegen die Verarbeitung (Art. 21 DSGVO)</li>
+        </ul>
+        <p>Hierzu sowie zu weiteren Fragen zum Thema Datenschutz können Sie sich jederzeit unter der oben angegebenen Adresse an uns wenden.</p>
+
+        <p><strong>Beschwerderecht bei der Aufsichtsbehörde</strong><br>
+        Im Falle von Verstößen gegen die DSGVO steht den Betroffenen ein Beschwerderecht bei einer Aufsichtsbehörde, insbesondere in dem Mitgliedstaat ihres üblichen Aufenthalts, ihres Arbeitsplatzes oder des Orts des mutmaßlichen Verstoßes zu.</p>
+
+        <h3 style="color: var(--rust-primary, #a0522d); margin-top: 30px;">7. Widerspruch gegen Werbe-Mails</h3>
+        <p>Der Nutzung von im Rahmen der Impressumspflicht veröffentlichten Kontaktdaten zur Übersendung von nicht ausdrücklich angeforderter Werbung und Informationsmaterialien wird hiermit widersprochen.</p>
     </div>
 </div>
