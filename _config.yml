@@ -1,9 +1,7 @@
+url: "https://nairolf22.github.io"
+baseurl: ""
 title: "The Escape Archive"
 description: "Reviewing the best and darkest escape rooms."
-# Ersetze das hier mit DEINER echten GitHub-Adresse
-url: "https://nairolf22.github.io"
-# Das hier muss leer bleiben (nur Anführungszeichen)
-baseurl: ""
 permalink: /reviews/:title/
 
 # Aktiviert Markdown

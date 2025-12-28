@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Impressum
+permalink: /impressum/
 ---
 
 <div class="review-dossier">
