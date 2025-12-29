@@ -1,34 +1,37 @@
 ---
 layout: default
 ---
+{% assign r = page.ratings %}
+{% assign sum = r.atmosphere.score | plus: r.story.score | plus: r.puzzles.score | plus: r.scenery.score | plus: r.gamemaster.score %}
+{% assign calculated_avg = sum | divided_by: 5.0 %}
 
 <article class="review-dossier">
 
     <div class="dossier-header">
-            <div class="dossier-meta">
-                <span class="provider">{{ page.provider }}</span>
-                <h2>{{ page.title }}</h2>
-                <p style="margin:0; font-size: 0.9rem; color: #555;">
-                    <strong>Ort:</strong> {{ page.location.city }} | {{ page.location.address }}
-                </p>
-                
-                <div style="margin-top: 1rem; padding-top: 0.5rem; border-top: 1px dotted #888;">
-                    <p style="margin: 0.2rem 0;">
-                        <strong>Einsatzdatum:</strong>
-                        {{ page.visit_date | date: "%d.%m.%Y" }}
-                    </p>
-                    <p style="margin: 0.2rem 0;">
-                        <strong>Ermittler:</strong>
-                        {% for participant in page.participants %}<a href="/team/#{{ participant | slugify }}" class="investigator-link">{{ participant }}</a>{% unless forloop.last %}, {% endunless %}{% endfor %}
-                    </p>
-                </div>
-                </div>
+        <div class="dossier-meta">
+            <span class="provider">{{ page.provider }}</span>
+            <h2>{{ page.title }}</h2>
+            <p style="margin:0; font-size: 0.9rem; color: #555;">
+                <strong>Ort:</strong> {{ page.location.city }} | {{ page.location.address }}
+            </p>
             
-            <div class="stamp-box">
-                Overall<br>
-                <span style="font-size: 2rem;">{{ page.ratings.overall }}</span> / 5
+            <div style="margin-top: 1rem; padding-top: 0.5rem; border-top: 1px dotted #888;">
+                <p style="margin: 0.2rem 0;">
+                    <strong>Einsatzdatum:</strong>
+                    {{ page.visit_date | date: "%d.%m.%Y" }}
+                </p>
+                <p style="margin: 0.2rem 0;">
+                    <strong>Ermittler:</strong>
+                    {% for participant in page.participants %}<a href="/team/#{{ participant | slugify }}" class="investigator-link">{{ participant }}</a>{% unless forloop.last %}, {% endunless %}{% endfor %}
+                </p>
             </div>
         </div>
+        
+        <div class="stamp-box">
+            Overall<br>
+            <span style="font-size: 2rem;">{{ calculated_avg | round: 1 }}</span> / 5
+        </div>
+    </div>
 
     {% if page.images.size > 0 %}
     <div class="evidence-photos">

@@ -25,32 +25,35 @@ layout: default
 
     <div class="card-grid" id="roomGrid">
         {% for review in site.reviews %}
+        
+        {% assign r = review.ratings %}
+        {% assign sum = r.atmosphere.score | plus: r.story.score | plus: r.puzzles.score | plus: r.scenery.score | plus: r.gamemaster.score %}
+        {% assign calculated_avg = sum | divided_by: 5.0 %}
+
         <a href="{{ review.url }}" class="room-card-link"
            data-title="{{ review.title | downcase }}"
            data-provider="{{ review.provider | downcase }}"
-           data-rating="{{ review.ratings.overall }}">
+           data-rating="{{ calculated_avg }}">
             
             <article class="room-card">
                 <div class="card-image-wrapper">
                     {% if review.thumbnail %}
                         <img src="/assets/images/{{ review.thumbnail }}" alt="{{ review.title }}">
-                    
                     {% elsif review.images.size > 0 %}
                         <img src="/assets/images/{{ review.images[0] }}" alt="{{ review.title }}">
-                    
                     {% else %}
                         <img src="/assets/images/ui/no-signal.jpg" alt="Kein Bild">
                     {% endif %}
                     
                     <div class="rating-badge">
-                        ★ {{ review.ratings.overall }}
+                        ★ {{ calculated_avg | round: 1 }}
                     </div>
                 </div>
 
                 <div class="card-content">
                     <h3>{{ review.title }}</h3>
                     <p class="card-meta">{{ review.provider }} | {{ review.location.city }}</p>
-                    <div class="stars small" style="--score: {{ review.ratings.overall }};">★★★★★</div>
+                    <div class="stars small" style="--score: {{ calculated_avg }};">★★★★★</div>
                     <p class="card-summary">{{ review.summary | truncate: 100, "..." }}</p>
                 </div>
             </article>
@@ -59,19 +62,24 @@ layout: default
     </div>
 </section>
 
+<script src="/assets/js/map.js"></script>
 <script>
     var roomData = [
         {% for review in site.reviews %}
+        
+        // Berechnung wiederholen für JS/Karte
+        {% assign r = review.ratings %}
+        {% assign sum = r.atmosphere.score | plus: r.story.score | plus: r.puzzles.score | plus: r.scenery.score | plus: r.gamemaster.score %}
+        {% assign calculated_avg = sum | divided_by: 5.0 %}
+
         {
             "title": "{{ review.title }}",
             "url": "{{ review.url }}",
             "lat": {{ review.location.lat }},
             "lng": {{ review.location.lng }},
-            "rating": {{ review.ratings.overall }},
+            "rating": {{ calculated_avg }},
             "provider": "{{ review.provider }}"
         }{% unless forloop.last %},{% endunless %}
         {% endfor %}
     ];
 </script>
-
-<script src="/assets/js/map.js"></script>

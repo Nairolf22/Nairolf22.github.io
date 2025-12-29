@@ -20,7 +20,6 @@ participants:
   - Moritz
   - Lea
 ratings:
-  overall: 2.5
   atmosphere:
     score: 4.0
     text: "Optisch ist der Raum sehr liebevoll und „hübsch“ gestaltet, was sofort für das passende viktorianische Flair sorgt. Die Macher setzen auf akustische Untermalung, um die Szenarien lebendig wirken zu lassen. Unser Tipp: Bei einer maximalen Gruppengröße von sechs Personen kann es im Raum jedoch laut werden, wodurch feine Sound-Details und atmosphärische Hinweise leider leicht untergehen können."
