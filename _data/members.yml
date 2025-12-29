@@ -20,7 +20,7 @@
 
 - name: "Marvin"
   role: "Der Neue"
-  image: "members/Dummy.jpg"
+  image: "members/Marvin.jpg"
   bio: "Eigentlich gar nicht mehr so neu, ist er das jüngste Mitglied unserer Truppe. Und er fügt sich wunderbar in unser koordiniertes Chaos ein."
 
 - name: "Jessica"
