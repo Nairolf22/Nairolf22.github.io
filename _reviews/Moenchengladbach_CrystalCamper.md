@@ -16,7 +16,6 @@ participants:
   - Moritz
   - Lea
 ratings:
-  overall: 4.0
   atmosphere:
     score: 4.5
     text: "Dieser Escape Room spielt tatsächlich in einem alten Camper. Da es sich um einen klassischen amerikanischen Camper handelt, ist es auch weniger eng, als man vermuten würde. Der Camper war ein wenig karg eingerichtet, aber ansonsten schön und vor allem ein wenig heruntergekommen (so soll es in diesem Fall auch sein) eingerichtet. Dass der Camper ein wenig schräg steht, war zwar gewöhungsbedürftig, hat dem Spiel aber noch einen zusätzlichen Kick gegeben."

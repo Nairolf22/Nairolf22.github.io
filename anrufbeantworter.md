@@ -32,7 +32,7 @@ permalink: /team/
         </ul>
 
         <p style="background-color: #fdf2f2; border: 1px dashed #d9534f; padding: 15px; margin-top: 20px;">
-            <strong>Wichtiger Hinweis:</strong> Unsere Rezensionen sind vollkommen <strong>subjektiv</strong>. Wir versuchen stets, <strong>spoilerfrei</strong> zu schreiben, damit die Überraschungen im Raum erhalten bleiben. Dennoch ist beim Lesen Vorsicht geboten, da wir tief in die Analyse der Spielmechaniken eintauchen.
+            <strong>Wichtiger Hinweis:</strong> Unsere Rezensionen sind vollkommen <strong>subjektiv</strong>. Wir versuchen stets, <strong>spoilerfrei</strong> zu schreiben, damit die Überraschungen im Raum erhalten bleiben. Dennoch ist beim Lesen Vorsicht geboten, da wir teilweise tiefe Einblicke in unsere Spielerfahrung geben.
         </p>
     </div>
 
