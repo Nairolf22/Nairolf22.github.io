@@ -21,7 +21,7 @@ permalink: /impressum/
 
         <p>
             <strong>Kontakt:</strong><br>
-            E-Mail: florian.scheuch@allesab4.de
+            E-Mail: kontakt@escapearchive.de
         </p>
 
         <p>
@@ -66,7 +66,7 @@ permalink: /impressum/
             Dr. Florian Scheuch<br>
             Myllendonker Straße 301<br>
             41065 Mönchengladbach<br>
-            E-Mail: florian.scheuch@allesab4.de
+            E-Mail: datenschutz@escapearchive.de
         </p>
 
         <h3 style="color: var(--rust-primary, #a0522d); margin-top: 30px;">3. Hosting durch GitHub Pages</h3>
