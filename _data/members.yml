@@ -5,7 +5,7 @@
 
 - name: "Christine"
   role: "Die Leseratte"
-  image: "members/Dummy.jpg"
+  image: "members/Christine.jpg"
   bio: "Es gibt einen Text oder einen Brief? Dann her damit. Sie liest alles im Nu und versteht auch noch, was da steht!"
 
 - name: "Moritz"
@@ -15,7 +15,7 @@
 
 - name: "Lea"
   role: "Die Quirlige"
-  image: "members/Dummy.jpg"
+  image: "members/Lea.jpg"
   bio: "Schnell mal hier, schnell mal da. Sie bringt Tempo in unsere Gruppe, aber auch Struktur. Es sei denn, es wird dunkel..."
 
 - name: "Marvin"
