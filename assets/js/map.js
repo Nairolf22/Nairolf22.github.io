@@ -35,10 +35,22 @@ document.addEventListener('DOMContentLoaded', function() {
 
         roomData.forEach(function(room) {
             
-            // Farb-Logik (wie gehabt)
-            var rating = parseFloat(room.rating) || 0;
-            var hue = (rating / 5) * 120;
-            var colorString = `hsl(${hue}, 100%, 40%)`;
+            // --- FARBBERECHNUNG ---
+            var colorString;
+
+            // WENN PENDING: Grau
+            if (room.pending === true) {
+                colorString = '#666666'; // Ein sattes Grau
+            }
+                        // SONST: Bewertung (Rot-Gelb-Grün)
+            else {
+                var rating = parseFloat(room.rating) || 0;
+                var hue = (rating / 5) * 120;
+                // Saturation 100%, Lightness 40%
+                colorString = `hsl(${hue}, 100%, 40%)`;
+            }
+            
+
 
             // Pin-Design (wie gehabt)
             var coloredIcon = L.divIcon({
