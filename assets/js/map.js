@@ -1,38 +1,48 @@
 document.addEventListener('DOMContentLoaded', function() {
     
-    // Prüfen, ob der Map-Container existiert
     if (!document.getElementById('escapeMap')) return;
 
     // 1. Karte initialisieren
     var map = L.map('escapeMap').setView([51.1657, 10.4515], 6);
 
-    // 2. Karten-Kacheln laden (OpenStreetMap)
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; OpenStreetMap contributors',
         maxZoom: 19
     }).addTo(map);
 
-    // 3. Daten verarbeiten und Marker setzen
     if (typeof roomData !== 'undefined') {
         
-        var markers = [];
+        // --- NEU: CLUSTER GRUPPE ERSTELLEN ---
+        // Wir definieren hier auch, wie der "Gruppen-Kreis" aussehen soll,
+        // damit er zu deinem Industrial-Design passt (Dunkel statt Standard-Grün).
+        var markers = L.markerClusterGroup({
+            showCoverageOnHover: false, // Den blauen Bereich beim Hovern ausblenden
+            maxClusterRadius: 50,       // Wie nah müssen Punkte sein, um gruppiert zu werden?
+            
+            // Custom Design für den Cluster-Kreis (Zahl)
+            iconCreateFunction: function(cluster) {
+                var count = cluster.getChildCount();
+                return L.divIcon({
+                    html: '<div class="cluster-inner"><span>' + count + '</span></div>',
+                    className: 'custom-cluster-icon',
+                    iconSize: [40, 40]
+                });
+            }
+        });
+
+        // Array für Bounds (damit wir später zoomen können)
+        var allLatLngs = [];
 
         roomData.forEach(function(room) {
             
-            // --- FARBBERECHNUNG ---
-            // Wir nutzen HSL Farben: 0 = Rot, 120 = Grün.
-            // Formel: (Rating / 5) * 120
+            // Farb-Logik (wie gehabt)
             var rating = parseFloat(room.rating) || 0;
             var hue = (rating / 5) * 120;
-            
-            // Farbe definieren (HSL)
-            // Saturation 100%, Lightness 40% (damit es schön kräftig/dunkel ist)
             var colorString = `hsl(${hue}, 100%, 40%)`;
 
-            // --- CUSTOM MARKER (CSS Pin) ---
-            // Wir erstellen einen runden Punkt mit der berechneten Farbe
+            // Pin-Design (wie gehabt)
             var coloredIcon = L.divIcon({
-                className: 'custom-pin-container', // Brauchen wir nicht zwingend, aber gut für Debug
+                className: 'custom-pin-container',
                 html: `<div style="
                         background-color: ${colorString};
                         width: 24px;
@@ -41,13 +51,13 @@ document.addEventListener('DOMContentLoaded', function() {
                         border: 2px solid #fff;
                         box-shadow: 2px 2px 5px rgba(0,0,0,0.8);
                       "></div>`,
-                iconSize: [24, 24],   // Größe des Icons
-                iconAnchor: [12, 12], // Der Punkt, der genau auf der Koordinate liegt (Mitte)
-                popupAnchor: [0, -12] // Wo das Popup erscheint (etwas darüber)
+                iconSize: [24, 24],
+                iconAnchor: [12, 12],
+                popupAnchor: [0, -12]
             });
 
-            // Marker mit dem neuen Icon erstellen
-            var marker = L.marker([room.lat, room.lng], { icon: coloredIcon }).addTo(map);
+            // Marker erstellen
+            var marker = L.marker([room.lat, room.lng], { icon: coloredIcon });
             
             // Popup Inhalt
             var popupContent = `
@@ -62,13 +72,18 @@ document.addEventListener('DOMContentLoaded', function() {
             `;
 
             marker.bindPopup(popupContent);
-            markers.push([room.lat, room.lng]);
+            
+            // WICHTIG: Marker zur Cluster-Gruppe hinzufügen (nicht direkt zur Map!)
+            markers.addLayer(marker);
+            allLatLngs.push([room.lat, room.lng]);
         });
 
-        // 4. Automatisch Zoomen
-        if (markers.length > 0) {
-            var bounds = new L.LatLngBounds(markers);
-            map.fitBounds(bounds, { padding: [50, 50] });
+        // Die fertige Gruppe zur Karte hinzufügen
+        map.addLayer(markers);
+
+        // Zoom anpassen
+        if (allLatLngs.length > 0) {
+            map.fitBounds(allLatLngs, { padding: [50, 50] });
         }
     }
 });

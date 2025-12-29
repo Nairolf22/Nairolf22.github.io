@@ -8,7 +8,7 @@ location:
   lat: 51.337135
   lng: 6.564507
 images:
-  - "rooms/Panzerknacker.jpg"
+  - "rooms/Krefeld-Panzerknacker.jpg"
 visit_date: 2025-07-12   # Format: Jahr-Monat-Tag
 participants:
   - Florian

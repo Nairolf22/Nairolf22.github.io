@@ -33,7 +33,7 @@ layout: default
         <a href="{{ review.url }}" class="room-card-link"
            data-title="{{ review.title | downcase }}"
            data-provider="{{ review.provider | downcase }}"
-           data-rating="{{ calculated_avg }}">
+           data-rating="{% if review.pending %}-1{% else %}{{ calculated_avg }}{% endif %}">
             
             <article class="room-card">
                 <div class="card-image-wrapper">
@@ -45,15 +45,29 @@ layout: default
                         <img src="/assets/images/ui/no-signal.jpg" alt="Kein Bild">
                     {% endif %}
                     
-                    <div class="rating-badge">
-                        ★ {{ calculated_avg | round: 1 }}
-                    </div>
+                    {% if review.pending %}
+                        <div class="pending-overlay">
+                            <span class="pending-stamp">ERMITTLUNG LÄUFT</span>
+                        </div>
+                    {% else %}
+                        <div class="rating-badge">
+                            ★ {{ calculated_avg | round: 1 }}
+                        </div>
+                    {% endif %}
                 </div>
 
                 <div class="card-content">
                     <h3>{{ review.title }}</h3>
                     <p class="card-meta">{{ review.provider }} | {{ review.location.city }}</p>
-                    <div class="stars small" style="--score: {{ calculated_avg }};">★★★★★</div>
+                    
+                    {% if review.pending %}
+                        <div style="margin: 10px 0; color: #888; font-size: 0.9rem; font-family: 'Courier New';">
+                            [Daten werden noch ausgewertet...]
+                        </div>
+                    {% else %}
+                        <div class="stars small" style="--score: {{ calculated_avg }};">★★★★★</div>
+                    {% endif %}
+                    
                     <p class="card-summary">{{ review.summary | truncate: 100, "..." }}</p>
                 </div>
             </article>
@@ -67,7 +81,6 @@ layout: default
     var roomData = [
         {% for review in site.reviews %}
         
-        // Berechnung wiederholen für JS/Karte
         {% assign r = review.ratings %}
         {% assign sum = r.atmosphere.score | plus: r.story.score | plus: r.puzzles.score | plus: r.scenery.score | plus: r.gamemaster.score %}
         {% assign calculated_avg = sum | divided_by: 5.0 %}

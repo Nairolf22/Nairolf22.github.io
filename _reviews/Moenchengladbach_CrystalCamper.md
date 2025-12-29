@@ -5,8 +5,8 @@ provider: "TIMEBREAK Mönchengladbach"
 location:
   city: "Mönchengladbach"
   address: "Waldhausener Straße 31, 41061 Mönchengladbach"
-  lat: 51.194889
-  lng: 6.429379
+  lat: 51.19633865356445
+  lng: 6.4236741065979
 images:
   - "rooms/Moenchengladbach-Crystal.jpg"
 visit_date: 2025-08-02   # Format: Jahr-Monat-Tag
