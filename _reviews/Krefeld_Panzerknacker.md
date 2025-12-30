@@ -25,13 +25,13 @@ ratings:
     text: "Großartige Atmospähre, von Anfang an waren wir in der Story gefangen. Gerade durch Einspieler von außen fühlten wir uns wie richtige Panzerknacker. Wir hatten echt Angst erwischt zu werden!"
   story:
     score: 4.0
-    text: "Die Geschichte war nachvollziehbar. Zwar stellte man sich doch die Frage, warum gerade hier, aber was war für den weiteren Ablauf nicht wichtig."
+    text: "Die Geschichte war nachvollziehbar. Zwar stellte man sich doch die Frage, warum gerade hier, aber das war für den weiteren Ablauf nicht wichtig."
   puzzles:
     score: 4.5
-    text: "In diesem Raum gibt es sehr viele Rätsel zu lösen. Das kann eine Gruppe schnell zu Koordinationsproblemem führen. Für uns war es durch die Dynamik, die durch die vielen Rätsel entstand ein großartiger Raum. Wir haben im Anschluss noch eine Stunde bei einem Kaffee zusammengesessen, um uns die verschiedenen Rätsel zu erzählen, von denen wir beim eigenen Lösungfinden nichts mitbekommen haben."
+    text: "In diesem Raum gibt es sehr viele Rätsel zu lösen. Das kann eine Gruppe schnell zu Koordinationsproblemem führen. Für uns war es durch die Dynamik, die durch die vielen Rätsel entstand, ein großartiger Raum. Wir haben im Anschluss noch eine Stunde bei einem Kaffee zusammengesessen, um uns die verschiedenen Rätsel zu erzählen, von denen wir beim eigenen Lösungfinden nichts mitbekommen haben."
   scenery:
     score: 4.5
-    text: "Der Raum war für unseren Geschmack sehr detailreich eingerichtet. Es gab viel zu entdecken und auch das ein oder andere Originalstück aus der DDR (die Handlung spielt in den 1980ern) ließen sich finden."
+    text: "Der Raum war für sehr detailreich eingerichtet. Es gab viel zu entdecken und auch das ein oder andere Originalstück aus der DDR (die Handlung spielt 1982 in Ost-Berlin) ließen sich finden."
   gamemaster:
     score: 5.0
     text: "Unserer Gruppe ist ein freundlicher Umgang immer wichtig. Den haben wir hier bekommen. Aber auch die Betreuung vor dem Besuch mit einleitenden Emails zum Stimmungsaufbau und die Betreuung während des Spiels waren ausgezeichnet. Wir hatten auf der einen Seite nicht das Gefühl, dass wir vom Gamemaster hängen gelassen wurden, auf der anderen Seite aber auch keine unnötigen Hinweise, die den Spielspaß gefährden."
