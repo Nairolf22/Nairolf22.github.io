@@ -2,6 +2,7 @@
 layout: review
 title: "Panzerknacker"
 provider: "Limbus Escape Games"
+website: "https://www.limbus-escape.de/angebote/panzerknacker"
 location:
   city: "Krefeld"
   address: "Ostwall 233, 47798 Krefeld"

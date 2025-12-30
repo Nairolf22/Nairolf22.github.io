@@ -570,3 +570,31 @@ footer {
     box-shadow: 0 0 15px rgba(0,0,0,0.5);
     letter-spacing: 2px;
 }
+
+/* --- BUTTON: ZUM ANBIETER --- */
+.btn-provider {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 8px 15px;
+    border: 2px solid var(--rust-primary, #a0522d); /* Rost-Rahmen */
+    color: var(--rust-primary, #a0522d);
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.9rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-decoration: none;
+    background-color: transparent;
+    letter-spacing: 1px;
+    transition: all 0.2s ease-in-out;
+    
+    /* Harter Schatten für Industrial Look */
+    box-shadow: 3px 3px 0px rgba(0,0,0,0.2);
+}
+
+.btn-provider:hover {
+    background-color: var(--rust-primary, #a0522d);
+    color: #fff; /* Text wird weiß */
+    box-shadow: 1px 1px 0px rgba(0,0,0,0.2); /* Schatten wird kleiner (Druck-Effekt) */
+    transform: translate(2px, 2px); /* Button bewegt sich beim Klicken optisch nach unten */
+    cursor: pointer;
+}
