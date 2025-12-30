@@ -10,7 +10,7 @@ location:
   lng: 6.564507
 images:
   - "rooms/Krefeld-Panzerknacker.jpg"
-visit_date: 2025-07-12   # Format: Jahr-Monat-Tag
+visit_date: 2025-07-12
 participants:
   - Florian
   - Christine
@@ -22,18 +22,18 @@ ratings:
   overall: 4.5
   atmosphere:
     score: 5.0
-    text: "Großartige Atmospähre, von Anfang an waren wir in der Story gefangen. Gerade durch Einspieler von außen fühlten wir uns wie richtige Panzerknacker. Wir hatten echt Angst erwischt zu werden!"
+    text: "Großartige Atmosphäre – von Anfang an wurden wir in den Bann der Story gezogen. Besonders die Einspieler von außen ließen uns wie echte Panzerknacker fühlen. Der Nervenkitzel, erwischt zu werden, war förmlich greifbar!"
   story:
     score: 4.0
-    text: "Die Geschichte war nachvollziehbar. Zwar stellte man sich doch die Frage, warum gerade hier, aber das war für den weiteren Ablauf nicht wichtig."
+    text: "Die Geschichte war schlüssig und gut nachvollziehbar. Auch wenn man sich kurz fragte, warum der Raub gerade an diesem Ort stattfand, tat dies der Spannung und dem Spielfluss keinerlei Abbruch."
   puzzles:
     score: 4.5
-    text: "In diesem Raum gibt es sehr viele Rätsel zu lösen. Das kann eine Gruppe schnell zu Koordinationsproblemem führen. Für uns war es durch die Dynamik, die durch die vielen Rätsel entstand, ein großartiger Raum. Wir haben im Anschluss noch eine Stunde bei einem Kaffee zusammengesessen, um uns die verschiedenen Rätsel zu erzählen, von denen wir beim eigenen Lösungfinden nichts mitbekommen haben."
+    text: "In diesem Raum gibt es eine Vielzahl an Rätseln zu lösen. Die schiere Menge kann größere Gruppen durchaus vor Koordinationsprobleme stellen. Für uns sorgte gerade diese Dynamik für ein großartiges Erlebnis. Wir haben im Anschluss noch eine Stunde bei einem Kaffee zusammengesessen, um uns gegenseitig von den Rätseln zu berichten, die wir aufgrund des parallelen Lösens gar nicht alle selbst mitbekommen hatten."
   scenery:
     score: 4.5
-    text: "Der Raum war für sehr detailreich eingerichtet. Es gab viel zu entdecken und auch das ein oder andere Originalstück aus der DDR (die Handlung spielt 1982 in Ost-Berlin) ließen sich finden."
+    text: "Der Raum war sehr detailreich eingerichtet. Es gab viel zu entdecken, und sogar Originalstücke aus der DDR (die Handlung spielt 1982 in Ost-Berlin) trugen zur authentischen Kulisse bei."
   gamemaster:
     score: 5.0
-    text: "Unserer Gruppe ist ein freundlicher Umgang immer wichtig. Den haben wir hier bekommen. Aber auch die Betreuung vor dem Besuch mit einleitenden Emails zum Stimmungsaufbau und die Betreuung während des Spiels waren ausgezeichnet. Wir hatten auf der einen Seite nicht das Gefühl, dass wir vom Gamemaster hängen gelassen wurden, auf der anderen Seite aber auch keine unnötigen Hinweise, die den Spielspaß gefährden."
-summary: "Super Atmosphäre, tolle Kulisse und durch Zeitdruck und Rahmenhandlung ein Escape Room mit Nervenkitzel. Dass wir hier Platz 1 auf der ewigen Bestenliste einnehmen konnten, war natürlich ein Sahnehäubchen. Wir freuen uns schon auf die anderen Räume in Krefeld."
+    text: "Ein freundlicher Umgang ist unserer Gruppe extrem wichtig, und genau das haben wir hier erlebt. Die Betreuung war ausgezeichnet – von den einleitenden E-Mails zum Stimmungsaufbau bis hin zur Spielleitung vor Ort. Wir fühlten uns nie im Stich gelassen, erhielten aber auch keine unnötigen Hinweise, die den Spielspaß hätten bremsen können."
+summary: "Herausragende Atmosphäre, authentische Kulisse und echter Nervenkitzel durch Zeitdruck und Rahmenhandlung. Dass wir uns Platz 1 auf der Bestenliste sichern konnten, war das Sahnehäubchen auf einem ohnehin gelungenen Besuch. Wir freuen uns auf die weiteren Räume in Krefeld!"
 ---
