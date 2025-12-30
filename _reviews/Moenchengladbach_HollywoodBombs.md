@@ -3,6 +3,7 @@ pending: true
 layout: review
 title: "Hollywood Bombs"
 provider: "TIMEBREAK Mönchengladbach"
+website: "https://www.timebreak-mg.de/rooms/hollywood-bombs/"
 location:
   city: "Mönchengladbach"
   address: "Waldhausener Straße 31, 41061 Mönchengladbach"

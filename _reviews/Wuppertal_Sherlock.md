@@ -2,7 +2,7 @@
 layout: review
 title: "Der Fall Sherlock Holmes"
 provider: "Escape Stories"
-
+website: "https://www.escape-stories.de/escape-rooms/fall-sherlock-holmes/"
 location:
   city: "Wuppertal"
   address: "Armin-T.-Wegner-Platz 3, 42103 Wuppertal"

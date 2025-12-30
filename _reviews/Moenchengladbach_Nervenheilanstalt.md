@@ -3,6 +3,7 @@ pending: true
 layout: review
 title: "Dr. Brown Boyd's Nervenheilanstalt"
 provider: "TIMEBREAK Mönchengladbach"
+website: "https://www.timebreak-mg.de/rooms/nervenheilanstalt/"
 location:
   city: "Mönchengladbach"
   address: "Waldhausener Straße 31, 41061 Mönchengladbach"

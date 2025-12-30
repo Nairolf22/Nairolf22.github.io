@@ -2,6 +2,7 @@
 layout: review
 title: "Crystal Camper"
 provider: "TIMEBREAK Mönchengladbach"
+website: "https://www.timebreak-mg.de/rooms/crystal-camper/"
 location:
   city: "Mönchengladbach"
   address: "Waldhausener Straße 31, 41061 Mönchengladbach"

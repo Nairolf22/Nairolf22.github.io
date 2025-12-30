@@ -1,7 +1,8 @@
 ---
 layout: review
-title: "Zanginis Zauberladen"
+title: "Dunkle Machenschaften in Zaginis Zauberladen"
 provider: "TIMEBREAK Mönchengladbach"
+website: "https://www.timebreak-mg.de/rooms/dunkle-machenschaften-in-zaginis-zauberladen/"
 location:
   city: "Mönchengladbach"
   address: "Waldhausener Straße 31, 41061 Mönchengladbach"

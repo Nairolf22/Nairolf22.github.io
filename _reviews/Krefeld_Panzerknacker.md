@@ -33,7 +33,7 @@ ratings:
     score: 4.5
     text: "Der Raum war für unseren Geschmack sehr detailreich eingerichtet. Es gab viel zu entdecken und auch das ein oder andere Originalstück aus der DDR (die Handlung spielt in den 1980ern) ließen sich finden."
   gamemaster:
-    score: 4.5
+    score: 5.0
     text: "Unserer Gruppe ist ein freundlicher Umgang immer wichtig. Den haben wir hier bekommen. Aber auch die Betreuung vor dem Besuch mit einleitenden Emails zum Stimmungsaufbau und die Betreuung während des Spiels waren ausgezeichnet. Wir hatten auf der einen Seite nicht das Gefühl, dass wir vom Gamemaster hängen gelassen wurden, auf der anderen Seite aber auch keine unnötigen Hinweise, die den Spielspaß gefährden."
 summary: "Super Atmosphäre, tolle Kulisse und durch Zeitdruck und Rahmenhandlung ein Escape Room mit Nervenkitzel. Dass wir hier Platz 1 auf der ewigen Bestenliste einnehmen konnten, war natürlich ein Sahnehäubchen. Wir freuen uns schon auf die anderen Räume in Krefeld."
 ---

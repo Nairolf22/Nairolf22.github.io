@@ -3,6 +3,7 @@ pending: true
 layout: review
 title: "Das Hotel der geheimnisvollen Uhren"
 provider: "Mining Adventure World"
+website: "https://miningadventureworld.de/das-geheimdepot-escape-rooms/theater-escape-rooms-dorsten/das-hotel-der-geheimnisvollen-uhren/"
 location:
   city: "Dorsten"
   address: "Fürst-Leopold-Platz 1, 46284 Dorsten"
