@@ -6,9 +6,53 @@
     <title>{{ page.title }} | Escape Room Reviews</title>
     
     <link rel="stylesheet" href="/assets/css/style.css">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.css" />
-    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.Default.css" />
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+        <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.css" />
+        <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.Default.css" />
+        
+        
+        {% if page.layout == 'review' and page.pending != true %}
+            
+            {% assign r = page.ratings %}
+            {% assign sum = r.atmosphere.score | plus: r.story.score | plus: r.puzzles.score | plus: r.scenery.score | plus: r.gamemaster.score %}
+            {% assign calculated_avg = sum | divided_by: 5.0 %}
+
+            <script type="application/ld+json">
+            {
+              "@context": "https://schema.org/",
+              "@type": "Review",
+              "itemReviewed": {
+                "@type": "LocalBusiness",
+                "name": "{{ page.title }}",
+                "image": "{{ site.url }}/assets/images/{% if page.thumbnail %}{{ page.thumbnail }}{% else %}{{ page.images[0] }}{% endif %}",
+                "address": {
+                  "@type": "PostalAddress",
+                  "streetAddress": "{{ page.location.address }}",
+                  "addressLocality": "{{ page.location.city }}",
+                  "addressCountry": "DE"
+                }
+              },
+              "reviewRating": {
+                "@type": "Rating",
+                "ratingValue": "{{ calculated_avg | round: 1 }}",
+                "bestRating": "5",
+                "worstRating": "1"
+              },
+              "author": {
+                "@type": "Organization",
+                "name": "Die Anrufbeantworter",
+                "url": "{{ site.url }}/team"
+              },
+              "publisher": {
+                "@type": "Organization",
+                "name": "The Escape Archive",
+                "url": "{{ site.url }}"
+              },
+              "datePublished": "{{ page.visit_date | date_to_xmlschema }}",
+              "description": "{{ page.summary | strip_html | strip_newlines | truncate: 160 }}"
+            }
+            </script>
+            {% endif %}
 </head>
 <body>
 
