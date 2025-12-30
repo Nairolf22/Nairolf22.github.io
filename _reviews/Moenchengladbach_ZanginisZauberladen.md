@@ -9,7 +9,7 @@ location:
   lat: 51.19633865356445
   lng: 6.4236741065979
 images:
-  - "rooms/Moenchengladbach-Zangini.jpg"
+  - "rooms/Moenchengladbach-Zagini.webp"
 visit_date: 2024-10-06   # Format: Jahr-Monat-Tag
 participants:
   - Florian

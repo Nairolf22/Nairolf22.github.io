@@ -10,7 +10,7 @@ location:
   lat: 51.337135
   lng: 6.564507
 images:
-  - "rooms/Krefeld-Experiment.jpg"
+  - "rooms/Krefeld-Experiment.webp"
 visit_date: 2024-12-29   # Format: Jahr-Monat-Tag
 participants:
   - Moritz

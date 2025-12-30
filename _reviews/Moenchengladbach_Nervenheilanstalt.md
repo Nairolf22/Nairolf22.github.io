@@ -10,7 +10,7 @@ location:
   lat: 51.19633865356445
   lng: 6.4236741065979
 images:
-  - "rooms/Moenchengladbach-Nervenheilanstalt.jpg"
+  - "rooms/Moenchengladbach-Nervenheilanstalt.webp"
 visit_date: 2024-11-17   # Format: Jahr-Monat-Tag
 participants:
   - Florian

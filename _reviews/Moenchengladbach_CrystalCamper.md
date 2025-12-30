@@ -9,7 +9,7 @@ location:
   lat: 51.19633865356445
   lng: 6.4236741065979
 images:
-  - "rooms/Moenchengladbach-Crystal.jpg"
+  - "rooms/Moenchengladbach-Crystal.webp"
 visit_date: 2025-08-02   # Format: Jahr-Monat-Tag
 participants:
   - Florian

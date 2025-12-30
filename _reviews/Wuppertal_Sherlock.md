@@ -9,8 +9,8 @@ location:
   lat: 51.256174
   lng: 7.145805
 images:
-  - "rooms/Wuppertal-Sherlock.jpg"
-thumbnail: "thumbnails/Wuppertal-Sherlock.jpg"
+  - "rooms/Wuppertal-Sherlock.webp"
+thumbnail: "thumbnails/Wuppertal-Sherlock.webp"
 visit_date: 2025-12-27   # Format: Jahr-Monat-Tag
 participants:
   - Florian

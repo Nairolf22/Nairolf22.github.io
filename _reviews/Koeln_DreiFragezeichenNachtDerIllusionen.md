@@ -10,7 +10,7 @@ location:
   lat: 50.9379293
   lng: 6.9396713
 images:
-  - "rooms/Koeln-Illusionen.jpg"
+  - "rooms/Koeln-Illusionen.webp"
 visit_date: 2025-11-16
 participants:
   - Florian

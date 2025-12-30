@@ -9,7 +9,7 @@ location:
   lat: 51.337135
   lng: 6.564507
 images:
-  - "rooms/Krefeld-Panzerknacker.jpg"
+  - "rooms/Krefeld-Panzerknacker.webp"
 visit_date: 2025-07-12
 participants:
   - Florian

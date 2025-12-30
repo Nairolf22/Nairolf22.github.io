@@ -10,7 +10,7 @@ location:
   lat: 50.9379293
   lng: 6.9396713
 images:
-  - "rooms/Koeln-Truhe.jpg"
+  - "rooms/Koeln-Truhe.webp"
 visit_date: 2022-12-23
 participants:
   - Florian

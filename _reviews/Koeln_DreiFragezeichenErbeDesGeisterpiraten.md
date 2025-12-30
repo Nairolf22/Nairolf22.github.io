@@ -10,7 +10,7 @@ location:
   lat: 50.9379293
   lng: 6.9396713
 images:
-  - "rooms/Koeln-Geisterpirat.jpg"
+  - "rooms/Koeln-Geisterpirat.webp"
 visit_date: 2023-10-08
 participants:
   - Florian

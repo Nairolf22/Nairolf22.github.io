@@ -10,8 +10,8 @@ location:
   lat: 51.6717832
   lng: 6.9828293
 images:
-  - "rooms/Dorsten-HotelDerGeheimnisvollenUhren.jpg"
-thumbnail: "thumbnails/Dorsten-HotelDerGeheimnisvollenUhren.jpg"
+  - "rooms/Dorsten-HotelDerGeheimnisvollenUhren.webp"
+thumbnail: "thumbnails/Dorsten-HotelDerGeheimnisvollenUhren.webp"
 visit_date: 2024-12-14   # Format: Jahr-Monat-Tag
 participants:
   - Florian
