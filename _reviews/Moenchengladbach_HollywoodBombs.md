@@ -1,5 +1,4 @@
 ---
-pending: true
 layout: review
 title: "Hollywood Bombs"
 provider: "TIMEBREAK Mönchengladbach"
@@ -21,20 +20,20 @@ participants:
   - Lea
 ratings:
   atmosphere:
-    score: 0
-    text: ""
+    score: 3.5
+    text: "Die Immersion ist passabel. Der Raum trägt nicht besonders dazu bei, die Immersion zu verstärken, führt aber auch nicht dazu, dass man ständig merkt, dass man nur in einer Geschichte ist."
   story:
-    score: 0
-    text: ""
+    score: 3.0
+    text: "Die Story ist gut, aber nichts besonderes. Der Zeitdruck entsteht durch eine Bombe, die zu explodieren droht. Die Geschichte ist damit zwar nachvollziehbar, aber sicher nicht der Mittelpunkt des Raumes."
   puzzles:
-    score: 0
-    text: ""
+    score: 4.0
+    text: "Die Rätsel waren durchweg solide und für erfahrene Spieler gut lösbar. Die Rätsel sind für Einsteiger aber auch gut geeignet. Ein Rätsel haben wir sogar ohne den eigentlich notwendigen Hinweis durch mitgebrachtes Wissen lösen können."
   scenery:
-    score: 0
-    text: ""
+    score: 2.0
+    text: "Hier merkt man, dass es sich um einen der früheren Escape Rooms handeln muss. In den zwei Räumen ist die Ausstattung zwar zweckmäßig, aber doch etwas karg."
   gamemaster:
-    score: 0
-    text: ""
+    score: 4.5
+    text: "Wie bisher immer bei Timebreak Mönchengladbach wurden wir freundlich und gut begleitet. In diesem Fall war ein Eingreifen des Gamemasters nicht nötig, da wir den Raum auch ohne Hinweise in 32 Minuten durchgespielt haben. Da wir hier so schnell durch waren, wurde uns angeboten, direkt im Anschluss zum Sonderpreis einen weiteren Escaperoom durchzuspielen."
     
-summary: ""
+summary: "Ein klassischer Escape Room, der ein wenig in die Tage gekommen ist. Zum Einstieg in die Escape Room Welt ist er aber gut geeignet."
 ---
