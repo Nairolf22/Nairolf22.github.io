@@ -12,14 +12,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
     if (typeof roomData !== 'undefined') {
         
-        // --- NEU: CLUSTER GRUPPE ERSTELLEN ---
-        // Wir definieren hier auch, wie der "Gruppen-Kreis" aussehen soll,
-        // damit er zu deinem Industrial-Design passt (Dunkel statt Standard-Grün).
+        // --- CLUSTER GRUPPE ERSTELLEN ---
         var markers = L.markerClusterGroup({
-            showCoverageOnHover: false, // Den blauen Bereich beim Hovern ausblenden
-            maxClusterRadius: 50,       // Wie nah müssen Punkte sein, um gruppiert zu werden?
+            showCoverageOnHover: false,
+            maxClusterRadius: 50,
             
-            // Custom Design für den Cluster-Kreis (Zahl)
+            // Custom Design für den Cluster-Kreis
             iconCreateFunction: function(cluster) {
                 var count = cluster.getChildCount();
                 return L.divIcon({
@@ -30,29 +28,34 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
 
-        // Array für Bounds (damit wir später zoomen können)
+        // Array für Bounds (zum Zoomen)
         var allLatLngs = [];
 
         roomData.forEach(function(room) {
             
-            // --- FARBBERECHNUNG ---
+            // --- FARB- & TEXT-BERECHNUNG ---
             var colorString;
+            var statusHtml;
 
-            // WENN PENDING: Grau
-            if (room.pending === true) {
-                colorString = '#666666'; // Ein sattes Grau
+            // FALL 1: GEPLANT (Blau)
+            if (room.planned === true) {
+                colorString = '#1E88E5'; // Blueprint Blue
+                statusHtml = '<div style="margin: 5px 0; font-weight:bold; color: #1E88E5;">EINSATZ GEPLANT</div>';
             }
-                        // SONST: Bewertung (Rot-Gelb-Grün)
+            // FALL 2: PENDING (Grau)
+            else if (room.pending === true) {
+                colorString = '#666666'; // Sattes Grau
+                statusHtml = '<div style="margin: 5px 0; font-weight:bold; color: #666;">ERMITTLUNG LÄUFT</div>';
+            }
+            // FALL 3: FERTIG (Bewertungsskala)
             else {
                 var rating = parseFloat(room.rating) || 0;
                 var hue = (rating / 5) * 120;
-                // Saturation 100%, Lightness 40%
                 colorString = `hsl(${hue}, 100%, 40%)`;
+                statusHtml = `<div style="margin: 5px 0; font-weight:bold; color: ${colorString};">${room.rating} / 5 Sterne</div>`;
             }
-            
 
-
-            // Pin-Design (wie gehabt)
+            // --- PIN DESIGN ---
             var coloredIcon = L.divIcon({
                 className: 'custom-pin-container',
                 html: `<div style="
@@ -68,24 +71,24 @@ document.addEventListener('DOMContentLoaded', function() {
                 popupAnchor: [0, -12]
             });
 
-            // Marker erstellen
+            // --- MARKER ERSTELLEN ---
             var marker = L.marker([room.lat, room.lng], { icon: coloredIcon });
             
-            // Popup Inhalt
+            // --- POPUP INHALT ---
             var popupContent = `
                 <div style="text-align:center;">
                     <b style="font-size:1.1rem;">${room.title}</b><br>
                     <span style="font-size:0.8rem; text-transform:uppercase; color:#888;">${room.provider}</span><br>
-                    <div style="margin: 5px 0; font-weight:bold; color: ${colorString};">
-                        ${room.rating} / 5 Sterne
-                    </div>
+                    
+                    ${statusHtml}
+                    
                     <a href="${room.url}" style="background:#333; color:#fff; padding:2px 8px; text-decoration:none; font-size:0.8rem;">>> ZUR AKTE</a>
                 </div>
             `;
 
             marker.bindPopup(popupContent);
             
-            // WICHTIG: Marker zur Cluster-Gruppe hinzufügen (nicht direkt zur Map!)
+            // Zur Cluster-Gruppe hinzufügen
             markers.addLayer(marker);
             allLatLngs.push([room.lat, room.lng]);
         });
@@ -93,7 +96,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Die fertige Gruppe zur Karte hinzufügen
         map.addLayer(markers);
 
-        // Zoom anpassen
+        // Zoom anpassen, damit alle Punkte sichtbar sind
         if (allLatLngs.length > 0) {
             map.fitBounds(allLatLngs, { padding: [50, 50] });
         }

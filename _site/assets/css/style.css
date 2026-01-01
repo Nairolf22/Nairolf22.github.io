@@ -598,3 +598,18 @@ footer {
     transform: translate(2px, 2px); /* Button bewegt sich beim Klicken optisch nach unten */
     cursor: pointer;
 }
+
+/* --- STATUS: EINSATZ GEPLANT --- */
+.planned-stamp {
+    border: 3px solid #1E88E5; /* Blueprint Blue */
+    color: #1E88E5;
+    background-color: rgba(255, 255, 255, 0.9);
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    padding: 0.5rem 1rem;
+    transform: rotate(-5deg); /* Andere Neigung als der rote Stempel */
+    box-shadow: 0 0 15px rgba(0,0,0,0.5);
+    letter-spacing: 2px;
+}

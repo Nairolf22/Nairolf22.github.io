@@ -33,19 +33,32 @@ layout: default
         <a href="{{ review.url }}" class="room-card-link"
            data-title="{{ review.title | downcase }}"
            data-provider="{{ review.provider | downcase }}"
-           data-rating="{% if review.pending %}-1{% else %}{{ calculated_avg }}{% endif %}">
+           data-rating="{% if review.pending or review.planned %}-1{% else %}{{ calculated_avg }}{% endif %}">
             
             <article class="room-card">
                 <div class="card-image-wrapper">
                     {% if review.thumbnail %}
-                        <img src="/assets/images/{{ review.thumbnail }}" alt="{{ review.title }}">
+                        {% assign img_src = review.thumbnail %}
                     {% elsif review.images.size > 0 %}
-                        <img src="/assets/images/{{ review.images[0] }}" alt="{{ review.title }}">
+                        {% assign img_src = review.images[0] %}
                     {% else %}
-                        <img src="/assets/images/ui/no-signal.jpg" alt="Kein Bild">
+                        {% assign img_src = "ui/no-signal.jpg" %}
                     {% endif %}
+
+                    <img
+                        src="/assets/images/{{ img_src }}"
+                        alt="{{ review.title }}"
+                        {% if forloop.first %} loading="eager" fetchpriority="high" {% else %} loading="lazy" {% endif %}
+                        width="400"
+                        height="200"
+                        style="object-fit: cover;"
+                    >
                     
-                    {% if review.pending %}
+                    {% if review.planned %}
+                        <div class="pending-overlay">
+                            <span class="planned-stamp">EINSATZ GEPLANT</span>
+                        </div>
+                    {% elsif review.pending %}
                         <div class="pending-overlay">
                             <span class="pending-stamp">ERMITTLUNG LÄUFT</span>
                         </div>
@@ -60,7 +73,11 @@ layout: default
                     <h3>{{ review.title }}</h3>
                     <p class="card-meta">{{ review.provider }} | {{ review.location.city }}</p>
                     
-                    {% if review.pending %}
+                    {% if review.planned %}
+                        <div style="margin: 10px 0; color: #1E88E5; font-size: 0.9rem; font-family: 'Courier New'; font-weight: bold;">
+                            [Termin: {{ review.visit_date | date: "%d.%m.%Y" }}]
+                        </div>
+                    {% elsif review.pending %}
                         <div style="margin: 10px 0; color: #888; font-size: 0.9rem; font-family: 'Courier New';">
                             [Daten werden noch ausgewertet...]
                         </div>
@@ -92,7 +109,8 @@ layout: default
             "lng": {{ review.location.lng }},
             "rating": {{ calculated_avg }},
             "provider": "{{ review.provider }}",
-            "pending": {{ review.pending | default: false }}  // <--- DAS IST NEU
+            "pending": {{ review.pending | default: false }},
+            "planned": {{ review.planned | default: false }}  // <--- STATUS AN KARTE ÜBERGEBEN
         }{% unless forloop.last %},{% endunless %}
         {% endfor %}
     ];
