@@ -28,7 +28,7 @@ ratings:
     text: "Die Geschichte war schlüssig und gut nachvollziehbar. Auch wenn man sich kurz fragte, warum der Raub gerade an diesem Ort stattfand, tat dies der Spannung und dem Spielfluss keinerlei Abbruch."
   puzzles:
     score: 4.5
-    text: "In diesem Raum gibt es eine Vielzahl an Rätseln zu lösen. Die schiere Menge kann größere Gruppen durchaus vor Koordinationsprobleme stellen. Für uns sorgte gerade diese Dynamik für ein großartiges Erlebnis. Wir haben im Anschluss noch eine Stunde bei einem Kaffee zusammengesessen, um uns gegenseitig von den Rätseln zu berichten, die wir aufgrund des parallelen Lösens gar nicht alle selbst mitbekommen hatten."
+    text: "In diesem Raum gibt es eine Vielzahl an Rätseln zu lösen. Die schiere Menge kann größere Gruppen durchaus vor Koordinationsprobleme stellen. Für uns sorgte gerade diese Dynamik für ein großartiges Erlebnis. Wir haben im Anschluss noch eine Stunde bei einem Kaffee zusammengesessen, um uns gegenseitig von den Rätseln zu berichten, die wir aufgrund des <a href='/philosophie/' style='color:#d75a08;text-decoration:underline;'>parallelen Lösens</a> gar nicht alle selbst mitbekommen hatten."
   scenery:
     score: 4.5
     text: "Der Raum war sehr detailreich eingerichtet. Es gab viel zu entdecken, und sogar Originalstücke aus der DDR (die Handlung spielt 1982 in Ost-Berlin) trugen zur authentischen Kulisse bei."
