@@ -613,3 +613,52 @@ footer {
     box-shadow: 0 0 15px rgba(0,0,0,0.5);
     letter-spacing: 2px;
 }
+
+/* --- PAGINIERUNG & FILTER --- */
+
+/* Das Dropdown-Menü */
+.select-filter {
+    background-color: #333;
+    color: #ccc;
+    border: 1px solid #555;
+    padding: 5px 10px;
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+/* Die Seitenzahlen-Buttons unten */
+.pagination-container {
+    margin-top: 3rem;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+}
+
+.btn-page {
+    background-color: #2b2b2b;
+    color: var(--rust-light);
+    border: 1px solid #555;
+    padding: 8px 15px;
+    font-family: 'Courier New', monospace;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-page:hover {
+    background-color: var(--rust-primary);
+    color: #fff;
+    border-color: #fff;
+}
+
+.btn-page.active {
+    background-color: var(--rust-primary);
+    color: #fff;
+    border: 1px solid #000;
+    box-shadow: inset 2px 2px 5px rgba(0,0,0,0.5);
+    cursor: default;
+    transform: scale(1.1);
+}

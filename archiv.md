@@ -1,27 +1,33 @@
 ---
 layout: default
+title: Das vollständige Archiv
+permalink: /archiv/
 ---
 
-<section class="map-section">
-    <h2 class="section-title">Einsatzorte</h2>
-    <div id="escapeMap" class="grunge-map"></div>
-</section>
-
-<hr style="border: 0; margin: 1rem 0;">
+<div id="archive-top"></div>
 
 <section class="archive-section">
-    <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap;">
-
+    <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; border-bottom: 2px solid var(--rust-primary); padding-bottom: 1rem; margin-bottom: 2rem;">
+        
+        <h2 class="section-title" style="margin-bottom:0; border:none; padding:0;">
+            <span style="border-bottom: 5px solid var(--rust-primary);">FALL-ARCHIV</span>
+        </h2>
         
         <div class="sort-controls" style="margin-top: 1rem;">
-            <span style="color:#888; margin-right:10px; text-transform:uppercase; font-size:0.8rem;">Sortieren nach:</span>
+            <span style="color:#888; margin-right:5px; text-transform:uppercase; font-size:0.8rem;">Sortieren:</span>
             <button class="btn-sort" onclick="sortRooms('name')">Name</button>
             <button class="btn-sort" onclick="sortRooms('provider')">Anbieter</button>
             <button class="btn-sort" onclick="sortRooms('rating')">Bewertung</button>
+
+            <span style="color:#888; margin-left:15px; margin-right:5px; text-transform:uppercase; font-size:0.8rem;">Anzeigen:</span>
+            <select class="select-filter" onchange="changeItemsPerPage(this.value)">
+                <option value="6">6 Akten</option>
+                <option value="12" selected>12 Akten</option>
+                <option value="24">24 Akten</option>
+                <option value="all">Alle</option>
+            </select>
         </div>
     </div>
-    
-    <br>
 
     <div class="card-grid" id="roomGrid">
         {% for review in site.reviews %}
@@ -33,8 +39,6 @@ layout: default
         <a href="{{ review.url }}" class="room-card-link"
            data-title="{{ review.title | downcase }}"
            data-provider="{{ review.provider | downcase }}"
-           data-lat="{{ review.location.lat }}"
-           data-lng="{{ review.location.lng }}"
            data-rating="{% if review.pending or review.planned %}-1{% else %}{{ calculated_avg }}{% endif %}">
             
             <article class="room-card">
@@ -47,12 +51,12 @@ layout: default
                         {% assign img_src = "ui/no-signal.jpg" %}
                     {% endif %}
 
-                    <img
-                        src="/assets/images/{{ img_src }}"
-                        alt="{{ review.title }}"
-                        {% if forloop.first %} loading="eager" fetchpriority="high" {% else %} loading="lazy" {% endif %}
-                        width="400"
-                        height="200"
+                    <img 
+                        src="/assets/images/{{ img_src }}" 
+                        alt="{{ review.title }}" 
+                        loading="lazy" 
+                        width="400" 
+                        height="200" 
                         style="object-fit: cover;"
                     >
                     
@@ -93,27 +97,11 @@ layout: default
         </a>
         {% endfor %}
     </div>
+
+    <div id="paginationControls" class="pagination-container"></div>
+
+    <div style="margin-top: 2rem; text-align: center;">
+        <a href="/" class="btn-back">← Zurück zur Startseite</a>
+    </div>
+
 </section>
-
-<script src="/assets/js/map.js"></script>
-<script>
-    var roomData = [
-        {% for review in site.reviews %}
-        
-        {% assign r = review.ratings %}
-        {% assign sum = r.atmosphere.score | plus: r.story.score | plus: r.puzzles.score | plus: r.scenery.score | plus: r.gamemaster.score %}
-        {% assign calculated_avg = sum | divided_by: 5.0 %}
-
-        {
-            "title": "{{ review.title }}",
-            "url": "{{ review.url }}",
-            "lat": {{ review.location.lat }},
-            "lng": {{ review.location.lng }},
-            "rating": {{ calculated_avg }},
-            "provider": "{{ review.provider }}",
-            "pending": {{ review.pending | default: false }},
-            "planned": {{ review.planned | default: false }}
-        }{% unless forloop.last %},{% endunless %}
-        {% endfor %}
-    ];
-</script>

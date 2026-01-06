@@ -100,5 +100,42 @@ document.addEventListener('DOMContentLoaded', function() {
         if (allLatLngs.length > 0) {
             map.fitBounds(allLatLngs, { padding: [50, 50] });
         }
+
+        /* --- NEU: LISTE NACH KARTE FILTERN --- */
+        function filterGridByMap() {
+            var grid = document.getElementById('roomGrid');
+            // Abbruch, wenn wir gar nicht auf der Startseite mit Grid sind
+            if (!grid) return;
+            
+            // 1. Hole die Grenzen des aktuellen Kartenausschnitts
+            var bounds = map.getBounds();
+            var cards = grid.getElementsByClassName('room-card-link');
+
+            // 2. Prüfe jede Karte
+            for (var i = 0; i < cards.length; i++) {
+                var card = cards[i];
+                var lat = parseFloat(card.dataset.lat);
+                var lng = parseFloat(card.dataset.lng);
+
+                if (!isNaN(lat) && !isNaN(lng)) {
+                    // Erstelle einen Leaflet-Punkt
+                    var point = L.latLng(lat, lng);
+                    
+                    // Prüfe, ob der Punkt im sichtbaren Rechteck liegt
+                    if (bounds.contains(point)) {
+                        card.style.display = 'block'; // Anzeigen
+                    } else {
+                        card.style.display = 'none';  // Verstecken
+                    }
+                }
+            }
+        }
+
+        // Event-Listener: Feuert, wenn der User zoomt oder die Karte verschiebt
+        map.on('moveend', filterGridByMap);
+        map.on('zoomend', filterGridByMap);
+
+        // Initial ausführen, damit direkt gefiltert wird
+        filterGridByMap();
     }
 });
