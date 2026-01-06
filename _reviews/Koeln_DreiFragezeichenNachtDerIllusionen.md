@@ -17,7 +17,6 @@ participants:
   - Jessica
   - Marvin
   - Moritz
-  - Lea
 ratings:
   atmosphere:
     score: 2.5
