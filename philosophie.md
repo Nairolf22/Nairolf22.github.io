@@ -85,7 +85,7 @@ permalink: /philosophie/
 
             <li style="margin-bottom: 1.5rem; background: rgba(0,0,0,0.03); padding: 15px; border-left: 3px solid #666;">
                 <strong style="text-transform: uppercase; color: #000;">Spezialisierung nutzen</strong><br>
-                In Räumen mit viel Text (wie <a href="/reviews/Koeln_DreiFragezeichenNachtDerIllusionen/" style="color: var(--rust-primary); text-decoration: underline;">„Nacht der Illusionen“</a>) geben wir Dokumente sofort an unsere „Leseratte“ <a href="/team/#christine" style="color: var(--rust-primary); text-decoration: none; font-weight: bold;">Tine</a> weiter, während <a href="/team/#moritz" style="color: var(--rust-primary); text-decoration: none; font-weight: bold;">Moritz</a> haptische Rätsel übernimmt. Das spart Zeit und schont die Nerven.
+                Besprecht wer welche Stärken hat. In Räumen mit viel Text (wie <a href="/reviews/Koeln_DreiFragezeichenNachtDerIllusionen/" style="color: var(--rust-primary); text-decoration: underline;">„Nacht der Illusionen“</a>) geben wir Dokumente zum Beispiel sofort an unsere „Leseratte“ <a href="/team/#christine" style="color: var(--rust-primary); text-decoration: none; font-weight: bold;">Tine</a> weiter, während <a href="/team/#moritz" style="color: var(--rust-primary); text-decoration: none; font-weight: bold;">Moritz</a> haptische Rätsel übernimmt. Das spart Zeit und schont die Nerven.
             </li>
 
             <li style="margin-bottom: 1.5rem; background: rgba(0,0,0,0.03); padding: 15px; border-left: 3px solid #666;">
