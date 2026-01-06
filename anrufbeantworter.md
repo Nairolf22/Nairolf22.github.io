@@ -31,13 +31,6 @@ permalink: /team/
             <li><strong>Kommunikation:</strong> Ohne Austausch kein Erfolg – das ist unser Credo.</li>
         </ul>
 
-
-<ul style="list-style-type: square; margin-left: 20px;">
-            <li><strong>Team-Dynamik:</strong> Wir lieben Räume, die uns fordern, intensiv miteinander zu interagieren.</li>
-            <li><strong>Parallelität:</strong> Ein gutes Rätsel-Design erlaubt es uns, Aufgaben parallel zu lösen, statt hintereinander anzustehen.</li>
-            <li><strong>Kommunikation:</strong> Ohne Austausch kein Erfolg – das ist unser Credo.</li>
-        </ul>
-
         <p style="margin-top: 1rem;">
             Du willst genau wissen, wie wir vorgehen und welche Tipps wir für dein Spiel haben? <br>
             <a href="/philosophie/" style="font-weight: bold; color: var(--rust-primary); text-decoration: underline;">
