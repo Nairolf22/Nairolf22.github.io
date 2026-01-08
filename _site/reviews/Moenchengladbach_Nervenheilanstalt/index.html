@@ -230,6 +230,62 @@
 
   <script src="/assets/js/main.js"></script>
   <script data-goatcounter="https://nairolf22.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+  
+  <style>
+      /* --- MOBILE EMERGENCY PATCH --- */
+
+      /* 1. Genereller Überlauf-Schutz (Screenshot 1 & 2) */
+      /* Verhindert, dass IRGENDETWAS breiter als der Bildschirm sein darf */
+      html, body {
+          overflow-x: hidden; /* Schneidet seitliches Scrollen ab */
+          max-width: 100%;
+          position: relative;
+      }
+
+      /* Sorgt dafür, dass Rahmen (Border) und Padding nicht zur Breite addiert werden */
+      * {
+          box-sizing: border-box;
+      }
+
+      /* 2. Navigation reparieren (Screenshot 3) */
+      /* Erlaubt der Navigation, auf kleinen Screens umzubrechen */
+      @media (max-width: 600px) {
+          nav {
+              display: flex;
+              flex-wrap: wrap;       /* WICHTIG: Erlaubt Umbruch in neue Zeile */
+              justify-content: center; /* Zentriert die Links */
+              gap: 10px;             /* Kleiner Abstand zwischen den Links */
+              padding: 10px 0;
+          }
+          
+          nav a {
+              margin: 0 5px;         /* Seitenabstand reduzieren */
+              font-size: 0.85rem;    /* Schrift minimal kleiner */
+              white-space: nowrap;   /* Text im Link selbst bricht nicht um */
+          }
+      }
+
+      /* 3. E-Mail Adresse & lange Texte (Screenshot 2) */
+      /* Zwingt lange Wörter (wie kontakt@...) zum Umbruch, wenn kein Platz da ist */
+      p, h1, h2, h3, h4, h5, h6, div, span, a {
+          overflow-wrap: break-word;
+          word-wrap: break-word;
+          hyphens: auto;
+      }
+
+      /* Speziell für die Box mit dem Rahmen in Screenshot 2 */
+      .contact-box, div[style*="border"] {
+          max-width: 100%; /* Darf niemals breiter sein als das Handy */
+          width: auto;     /* Passt sich dem Inhalt an */
+      }
+      
+      /* 4. Sicherheitsabstand für den Hauptinhalt */
+      main, .site-wrapper {
+          padding-left: 15px;
+          padding-right: 15px;
+          width: 100%;
+      }
+  </style>
 </body>
 
 </html>
