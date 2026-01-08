@@ -271,6 +271,20 @@
           padding-right: 15px;
           width: 100%;
       }
+      
+      /* SPEZIALREGEL FÜR DEN TITEL */
+      header h1 {
+          hyphens: none !important;       /* Verhindert Silbentrennung (kein Ar-chive) */
+          word-break: normal !important;  /* Bricht Wörter nicht mitten durch */
+          overflow-wrap: break-word;      /* Bricht nur am Leerzeichen um (außer das Wort ist breiter als der ganze Screen) */
+      }
+
+      /* Optional: Schriftgröße mobil leicht anpassen, damit "Archive" sicher passt */
+      @media (max-width: 400px) {
+          header h1 {
+              font-size: 2rem; /* Etwas kleiner auf sehr schmalen Handys */
+          }
+      }
   </style>
 </body>
 

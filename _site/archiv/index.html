@@ -103,6 +103,39 @@
         
         
 
+        <a href="/reviews/Hagen_BiggsTheLegacy/" class="room-card-link" data-title="biggs - the legacy" data-provider="exitnow" data-rating="4.0">
+            
+            <article class="room-card">
+                <div class="card-image-wrapper">
+                    
+
+                    <img src="/assets/images/thumbnails/Hagen-BiggsLegacy.webp" alt="Biggs - The Legacy" loading="lazy" width="400" height="200" style="object-fit: cover;" />
+                    
+                    
+                        <div class="rating-badge">
+                            ★ 4.0
+                        </div>
+                    
+                </div>
+
+                <div class="card-content">
+                    <h3>Biggs - The Legacy</h3>
+                    <p class="card-meta">EXITNow | Hagen</p>
+                    
+                    
+                        <div class="stars small" style="--score: 4.0;">★★★★★</div>
+                    
+                    
+                    <p class="card-summary">Ein moderner, schlossfreier Raum mit tollen Technik-Gimmicks und einer starken Atmosphäre. Dank d...</p>
+                </div>
+            </article>
+        </a>
+        
+        
+        
+        
+        
+
         <a href="/reviews/Koeln_DreiFragezeichenErbeDesGeisterpiraten/" class="room-card-link" data-title="die drei ??? und das erbe des geisterpiraten" data-provider="die drei ??? mission rocky beach" data-rating="-1">
             
             <article class="room-card">
@@ -564,6 +597,20 @@
           padding-left: 15px;
           padding-right: 15px;
           width: 100%;
+      }
+      
+      /* SPEZIALREGEL FÜR DEN TITEL */
+      header h1 {
+          hyphens: none !important;       /* Verhindert Silbentrennung (kein Ar-chive) */
+          word-break: normal !important;  /* Bricht Wörter nicht mitten durch */
+          overflow-wrap: break-word;      /* Bricht nur am Leerzeichen um (außer das Wort ist breiter als der ganze Screen) */
+      }
+
+      /* Optional: Schriftgröße mobil leicht anpassen, damit "Archive" sicher passt */
+      @media (max-width: 400px) {
+          header h1 {
+              font-size: 2rem; /* Etwas kleiner auf sehr schmalen Handys */
+          }
       }
   </style>
 </body>
