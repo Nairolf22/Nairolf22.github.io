@@ -47,7 +47,7 @@ permalink: /hall-of-fame/
                     </p>
                     
                     <div style="margin-top: 1.5rem; font-weight: bold; color: #d4af37; text-transform: uppercase; font-size: 0.8rem;">
-                        >> TOP 5 ANZEIGEN
+                        >> AKTE ÖFFNEN
                     </div>
                 </div>
             </a>
