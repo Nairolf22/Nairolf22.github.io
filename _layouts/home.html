@@ -176,7 +176,11 @@ title: "Sondereinheit für Escape Room Analysen & Tests"
     </div>
 </section>
 
-{% assign latest_review = site.reviews | sort: 'visit_date' | reverse | first %}
+{% comment %} 1. Erst alle Reviews filtern, die NICHT pending oder planned sind {% endcomment %}
+{% assign finished_reviews = site.reviews | where_exp: "item", "item.pending != true" | where_exp: "item", "item.planned != true" %}
+
+{% comment %} 2. Dann nach visit_date sortieren und den neuesten nehmen {% endcomment %}
+{% assign latest_review = finished_reviews | sort: 'visit_date' | reverse | first %}
 
 {% if latest_review %}
     {% assign r = latest_review.ratings %}
