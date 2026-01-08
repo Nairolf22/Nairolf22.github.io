@@ -102,11 +102,25 @@ permalink: /impressum/
         </ul>
         <p>Die Nutzung erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an statistischer Analyse zur Verbesserung der Website ohne Eingriff in die Privatsphäre der Nutzer).</p>
 
+        <h3 style="color: var(--rust-primary, #a0522d); margin-top: 30px;">5. OpenStreetMap</h3>
+        <p>
+        Wir binden auf unserer Seite "Einsatzkarte" Landkarten des Dienstes <strong>OpenStreetMap</strong> ein. Anbieter ist die OpenStreetMap Foundation (OSMF), St John's Innovation Centre, Cowley Road, Cambridge, CB4 0WS, United Kingdom.
+        </p>
+        <p>
+        Bei der Nutzung der Karte wird eine Verbindung zu den Servern von OpenStreetMap hergestellt. Dabei werden unter anderem Ihre IP-Adresse und weitere Informationen über Ihr Verhalten auf dieser Website an die OSMF weitergeleitet. OpenStreetMap speichert zudem ggf. Cookies in Ihrem Browser oder nutzt vergleichbare Wiedererkennungstechnologien.
+        </p>
+        <p>
+        Die Nutzung von OpenStreetMap erfolgt im Interesse einer ansprechenden Darstellung unserer Online-Angebote und einer leichten Auffindbarkeit der von uns untersuchten Escape Rooms. Dies stellt ein berechtigtes Interesse im Sinne von Art. 6 Abs. 1 lit. f DSGVO dar.
+        </p>
+        <p>
+        Details zur Datenverarbeitung finden Sie in der Datenschutzerklärung von OpenStreetMap:<br>
+        <a href="https://wiki.osmfoundation.org/wiki/Privacy_Policy" target="_blank" rel="noopener" style="text-decoration: underline;">https://wiki.osmfoundation.org/wiki/Privacy_Policy</a>
+        </p>
 
-        <h3 style="color: var(--rust-primary, #a0522d); margin-top: 30px;">5. Externe Links</h3>
+        <h3 style="color: var(--rust-primary, #a0522d); margin-top: 30px;">6. Externe Links</h3>
         <p>Unsere Website enthält Links zu Websites Dritter (z. B. Escape Room Anbieter). Wenn Sie auf einen dieser Links klicken, verlassen Sie unseren Verantwortungsbereich. Für die Datenverarbeitung auf den verlinkten Seiten ist der jeweilige Betreiber verantwortlich.</p>
 
-        <h3 style="color: var(--rust-primary, #a0522d); margin-top: 30px;">6. Ihre Rechte</h3>
+        <h3 style="color: var(--rust-primary, #a0522d); margin-top: 30px;">7. Ihre Rechte</h3>
         <p>Sie haben im Rahmen der geltenden gesetzlichen Bestimmungen jederzeit das Recht auf:</p>
         <ul style="list-style-type: square;">
             <li>Auskunft über Ihre gespeicherten personenbezogenen Daten (Art. 15 DSGVO)</li>
@@ -121,7 +135,7 @@ permalink: /impressum/
         <p><strong>Beschwerderecht bei der Aufsichtsbehörde</strong><br>
         Im Falle von Verstößen gegen die DSGVO steht den Betroffenen ein Beschwerderecht bei einer Aufsichtsbehörde, insbesondere in dem Mitgliedstaat ihres üblichen Aufenthalts, ihres Arbeitsplatzes oder des Orts des mutmaßlichen Verstoßes zu.</p>
 
-        <h3 style="color: var(--rust-primary, #a0522d); margin-top: 30px;">7. Widerspruch gegen Werbe-Mails</h3>
+        <h3 style="color: var(--rust-primary, #a0522d); margin-top: 30px;">8. Widerspruch gegen Werbe-Mails</h3>
         <p>Der Nutzung von im Rahmen der Impressumspflicht veröffentlichten Kontaktdaten zur Übersendung von nicht ausdrücklich angeforderter Werbung und Informationsmaterialien wird hiermit widersprochen.</p>
     </div>
 </div>
