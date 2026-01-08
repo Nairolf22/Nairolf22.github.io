@@ -176,7 +176,7 @@ title: "Sondereinheit für Escape Room Analysen & Tests"
     </div>
 </section>
 
-{% assign latest_review = site.reviews | sort: 'date' | reverse | first %}
+{% assign latest_review = site.reviews | sort: 'visit_date' | reverse | first %}
 
 {% if latest_review %}
     {% assign r = latest_review.ratings %}

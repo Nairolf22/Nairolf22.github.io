@@ -31,7 +31,7 @@ ratings:
     
   scenery:
     score: 3.5
-    text: "Die Kulisse und Ausstattung sind eher schlicht gehalten, aber absolut angemessen für die Zeit und das Szenario, in dem die Mission spielt. Das Landhaus-Ambiente und die technischen Apparaturen wirken stimmig. Das Feedback des Raums (z. B. durch Lichtsignale) ist gut, auch wenn man es im Eifer des Gefechts nicht immer sofort dem entsprechenden Mechanismus zuordnen konnte."
+    text: "Die Kulisse und Ausstattung sind eher schlicht gehalten, aber absolut angemessen für die Zeit und das Szenario, in dem die Mission spielt. Das Landhaus-Ambiente und die technischen Apparaturen wirken stimmig. Das Feedback des Raums (z. B. durch Lichtsignale) ist gut, auch wenn man es im Eifer des Gefechts nicht immer sofort dem entsprechenden Mechanismus zuordnen konnte. Der Eingangsbereich vor den eigentlichen Raum wirkte ein wenig kühl und hätte einladender sein können."
   gamemaster:
     score: 4.0
     text: "Unser Spielleiter war zwar noch relativ neu, hat seinen Job aber sehr gut gemacht. Er fand genau die richtige Balance bei der Dosierung der Tipps – nicht zu viel und nicht zu wenig, was perfekt zur Dynamik unserer Gruppe passte. Bei kleineren Unsicherheiten bezüglich der Technik wusste er sich souverän zu helfen."
