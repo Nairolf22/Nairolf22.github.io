@@ -1,9 +1,44 @@
----
-layout: default
-title: "Sondereinheit für Escape Room Analysen & Tests"
----
+<!DOCTYPE html>
+<html lang="de">
 
-<style>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Startseite | Escape Room Reviews</title>
+
+  <meta name="description"
+    content="Reviewing the best and darkest escape rooms.">
+  <link rel="canonical" href="http://localhost:4000/index%20Kopie/">
+
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.Default.css" />
+
+
+  
+</head>
+
+<body>
+
+  <div class="site-wrapper">
+
+    <header>
+      <a href="/" style="text-decoration:none;">
+        <h1>The Escape Archive</h1>
+      </a>
+      <p style="color: #ccc; margin-top: 10px;">• EST. 2025 • CLASSIFIED REVIEWS •</p>
+    </header>
+
+    <nav>
+        <a href="/karte/">Karte</a>
+        <a href="/archiv/">Alle Akten</a>
+        <a href="/team/">Über uns</a>
+        <a href="/kontakt/">Kontakt</a>
+    </nav>
+
+    <main>
+      <style>
     /* --- SEO & Intro Styles (Wird oben und unten genutzt) --- */
     .mission-briefing {
         text-align: center;
@@ -173,41 +208,35 @@ title: "Sondereinheit für Escape Room Analysen & Tests"
     </div>
 </section>
 
-{% assign latest_review = site.reviews | sort: 'date' | reverse | first %}
 
-{% if latest_review %}
-    {% assign r = latest_review.ratings %}
-    {% assign sum = r.atmosphere.score | plus: r.story.score | plus: r.puzzles.score | plus: r.scenery.score | plus: r.gamemaster.score %}
-    {% assign calculated_avg = sum | divided_by: 5.0 %}
+
+
+    
+    
+    
     
     <section class="latest-case-section">
         <div class="latest-badge">+++ Aktuelle Ermittlung - Neueste Rezension +++</div>
         
-        <a href="{{ latest_review.url }}" style="text-decoration: none; color: inherit;">
+        <a href="/reviews/Dorsten_HotelDerGeheimnisvollenUhren/" style="text-decoration: none; color: inherit;">
             <article class="hero-card">
                 <div class="hero-image-wrapper">
-                    {% if latest_review.thumbnail %}
-                        {% assign hero_img = latest_review.thumbnail %}
-                    {% elsif latest_review.images.size > 0 %}
-                        {% assign hero_img = latest_review.images[0] %}
-                    {% else %}
-                        {% assign hero_img = "ui/no-signal.jpg" %}
-                    {% endif %}
                     
-                    <img src="/assets/images/{{ hero_img }}" alt="Titelbild {{ latest_review.title }}" class="hero-image">
+                    
+                    <img src="/assets/images/thumbnails/Dorsten-HotelDerGeheimnisvollenUhren.webp" alt="Titelbild Das Hotel der geheimnisvollen Uhren" class="hero-image">
                     
                     <div style="position: absolute; bottom: 10px; right: 10px; background: #000; color: #fff; padding: 5px 10px; font-weight: bold;">
-                        ★ {{ calculated_avg | round: 1 }}
+                        ★ 3.8
                     </div>
                 </div>
                 
                 <div class="hero-content">
-                    <h2 style="margin-top: 0; color: #fff;">{{ latest_review.title }}</h2>
+                    <h2 style="margin-top: 0; color: #fff;">Das Hotel der geheimnisvollen Uhren</h2>
                     <p style="font-family: 'Courier New'; color: #888; margin-bottom: 1rem;">
-                        {{ latest_review.provider }} | {{ latest_review.location.city }}
+                        Mining Adventure World | Dorsten
                     </p>
                     
-                    <p style="color: #ccc;">{{ latest_review.summary | truncate: 300 }}</p>
+                    <p style="color: #ccc;">Ein atmosphärisch dichter 'Theater-Escape-Room' in einer beeindruckenden Bergwerks-Kulisse. Die Live-Interaktion sorgt für einen hohen Gruselfaktor, allerdings trübten handwerkliche Schwächen bei den Mechanismen das ansonsten sehr solide Gesamterlebnis.</p>
                     
                     <span style="margin-top: auto; text-decoration: underline; color: var(--rust-light, #e57373);">
                         Zur Fallakte &rarr;
@@ -216,7 +245,7 @@ title: "Sondereinheit für Escape Room Analysen & Tests"
             </article>
         </a>
     </section>
-{% endif %}
+
 
 <hr style="border: 0; border-top: 1px solid #333; margin: 3rem 0;">
 
@@ -262,3 +291,38 @@ title: "Sondereinheit für Escape Room Analysen & Tests"
         </p>
     </div>
 </section>
+
+
+    </main>
+
+    <footer id="footer">
+          <p>&copy; The Escape Archive.</p>
+          <p>
+            <a href="/philosophie/" style="color: var(--rust-light);">Unsere Philosophie</a>
+            
+            <span style="color: #666; margin: 0 5px;">•</span>
+            
+            
+            <a href="/hall-of-fame/" style="color: var(--rust-light);">Hall of Fame</a>
+                    
+            <span style="color: #666; margin: 0 5px;">•</span>
+            
+            
+            <a href="/was-ist-ein-escape-room/" style="color: var(--rust-light);">Was ist ein Escape-Room?</a>
+            
+            <span style="color: #666; margin: 0 5px;">•</span>
+            
+            <a href="/impressum/" style="color: var(--rust-light);">Impressum & Datenschutz</a>
+          </p>
+        </footer>
+
+  </div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/leaflet.markercluster/dist/leaflet.markercluster.js"></script>
+
+  <script src="/assets/js/main.js"></script>
+  <script data-goatcounter="https://nairolf22.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+
+</html>

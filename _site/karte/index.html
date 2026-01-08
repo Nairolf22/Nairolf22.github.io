@@ -4,11 +4,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Das vollständige Archiv | Escape Room Reviews</title>
+  <title>Einsatzkarte | Escape Room Reviews</title>
 
   <meta name="description"
     content="Reviewing the best and darkest escape rooms.">
-  <link rel="canonical" href="http://localhost:4000/archiv/">
+  <link rel="canonical" href="http://localhost:4000/karte/">
 
   <link rel="stylesheet" href="/assets/css/style.css">
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
@@ -38,30 +38,26 @@
     </nav>
 
     <main>
-      <div id="archive-top"></div>
+      <section class="map-section">
+    <h2 class="section-title">Einsatzorte</h2>
+    <div id="escapeMap" class="grunge-map"></div>
+</section>
+
+<hr style="border: 0; margin: 1rem 0;">
 
 <section class="archive-section">
-    <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; border-bottom: 2px solid var(--rust-primary); padding-bottom: 1rem; margin-bottom: 2rem;">
-        
-        <h2 class="section-title" style="margin-bottom:0; border:none; padding:0;">
-            <span style="border-bottom: 5px solid var(--rust-primary);">FALL-ARCHIV</span>
-        </h2>
+    <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap;">
+
         
         <div class="sort-controls" style="margin-top: 1rem;">
-            <span style="color:#888; margin-right:5px; text-transform:uppercase; font-size:0.8rem;">Sortieren:</span>
+            <span style="color:#888; margin-right:10px; text-transform:uppercase; font-size:0.8rem;">Sortieren nach:</span>
             <button class="btn-sort" onclick="sortRooms('name')">Name</button>
             <button class="btn-sort" onclick="sortRooms('provider')">Anbieter</button>
             <button class="btn-sort" onclick="sortRooms('rating')">Bewertung</button>
-
-            <span style="color:#888; margin-left:15px; margin-right:5px; text-transform:uppercase; font-size:0.8rem;">Anzeigen:</span>
-            <select class="select-filter" onchange="changeItemsPerPage(this.value)">
-                <option value="6">6 Akten</option>
-                <option value="12" selected="">12 Akten</option>
-                <option value="24">24 Akten</option>
-                <option value="all">Alle</option>
-            </select>
         </div>
     </div>
+    
+    <br>
 
     <div class="card-grid" id="roomGrid">
         
@@ -70,13 +66,25 @@
         
         
 
-        <a href="/reviews/Dorsten_HotelDerGeheimnisvollenUhren/" class="room-card-link" data-title="das hotel der geheimnisvollen uhren" data-provider="mining adventure world" data-rating="3.8">
+        <a href="/reviews/Dorsten_HotelDerGeheimnisvollenUhren/" class="room-card-link"
+           data-title="das hotel der geheimnisvollen uhren"
+           data-provider="mining adventure world"
+           data-lat="51.6717832"
+           data-lng="6.9828293"
+           data-rating="3.8">
             
             <article class="room-card">
                 <div class="card-image-wrapper">
                     
 
-                    <img src="/assets/images/thumbnails/Dorsten-HotelDerGeheimnisvollenUhren.webp" alt="Das Hotel der geheimnisvollen Uhren" loading="lazy" width="400" height="200" style="object-fit: cover;" />
+                    <img
+                        src="/assets/images/thumbnails/Dorsten-HotelDerGeheimnisvollenUhren.webp"
+                        alt="Das Hotel der geheimnisvollen Uhren"
+                         loading="eager" fetchpriority="high" 
+                        width="400"
+                        height="200"
+                        style="object-fit: cover;"
+                    >
                     
                     
                         <div class="rating-badge">
@@ -103,13 +111,25 @@
         
         
 
-        <a href="/reviews/Koeln_DreiFragezeichenErbeDesGeisterpiraten/" class="room-card-link" data-title="die drei ??? und das erbe des geisterpiraten" data-provider="die drei ??? mission rocky beach" data-rating="-1">
+        <a href="/reviews/Koeln_DreiFragezeichenErbeDesGeisterpiraten/" class="room-card-link"
+           data-title="die drei ??? und das erbe des geisterpiraten"
+           data-provider="die drei ??? mission rocky beach"
+           data-lat="50.9379293"
+           data-lng="6.9396713"
+           data-rating="-1">
             
             <article class="room-card">
                 <div class="card-image-wrapper">
                     
 
-                    <img src="/assets/images/rooms/Koeln-Geisterpirat.webp" alt="Die drei ??? und das Erbe des Geisterpiraten" loading="lazy" width="400" height="200" style="object-fit: cover;" />
+                    <img
+                        src="/assets/images/rooms/Koeln-Geisterpirat.webp"
+                        alt="Die drei ??? und das Erbe des Geisterpiraten"
+                         loading="lazy" 
+                        width="400"
+                        height="200"
+                        style="object-fit: cover;"
+                    >
                     
                     
                         <div class="pending-overlay">
@@ -138,13 +158,25 @@
         
         
 
-        <a href="/reviews/Koeln_DreiFragezeichenNachtDerIllusionen/" class="room-card-link" data-title="die drei ??? und die nacht der illusionen" data-provider="die drei ??? mission rocky beach" data-rating="3.1">
+        <a href="/reviews/Koeln_DreiFragezeichenNachtDerIllusionen/" class="room-card-link"
+           data-title="die drei ??? und die nacht der illusionen"
+           data-provider="die drei ??? mission rocky beach"
+           data-lat="50.9379293"
+           data-lng="6.9396713"
+           data-rating="3.1">
             
             <article class="room-card">
                 <div class="card-image-wrapper">
                     
 
-                    <img src="/assets/images/rooms/Koeln-Illusionen.webp" alt="Die drei ??? und die Nacht der Illusionen" loading="lazy" width="400" height="200" style="object-fit: cover;" />
+                    <img
+                        src="/assets/images/rooms/Koeln-Illusionen.webp"
+                        alt="Die drei ??? und die Nacht der Illusionen"
+                         loading="lazy" 
+                        width="400"
+                        height="200"
+                        style="object-fit: cover;"
+                    >
                     
                     
                         <div class="rating-badge">
@@ -171,13 +203,25 @@
         
         
 
-        <a href="/reviews/Koeln_DreiFragezeichenTruheDerMeister/" class="room-card-link" data-title="die drei ??? und die truhe der meister" data-provider="die drei ??? mission rocky beach" data-rating="3.9">
+        <a href="/reviews/Koeln_DreiFragezeichenTruheDerMeister/" class="room-card-link"
+           data-title="die drei ??? und die truhe der meister"
+           data-provider="die drei ??? mission rocky beach"
+           data-lat="50.9379293"
+           data-lng="6.9396713"
+           data-rating="3.9">
             
             <article class="room-card">
                 <div class="card-image-wrapper">
                     
 
-                    <img src="/assets/images/rooms/Koeln-Truhe.webp" alt="Die drei ??? und die Truhe der Meister" loading="lazy" width="400" height="200" style="object-fit: cover;" />
+                    <img
+                        src="/assets/images/rooms/Koeln-Truhe.webp"
+                        alt="Die drei ??? und die Truhe der Meister"
+                         loading="lazy" 
+                        width="400"
+                        height="200"
+                        style="object-fit: cover;"
+                    >
                     
                     
                         <div class="rating-badge">
@@ -204,13 +248,25 @@
         
         
 
-        <a href="/reviews/Krefeld_DasExperiment/" class="room-card-link" data-title="das experiment" data-provider="limbus escape games" data-rating="-1">
+        <a href="/reviews/Krefeld_DasExperiment/" class="room-card-link"
+           data-title="das experiment"
+           data-provider="limbus escape games"
+           data-lat="51.337135"
+           data-lng="6.564507"
+           data-rating="-1">
             
             <article class="room-card">
                 <div class="card-image-wrapper">
                     
 
-                    <img src="/assets/images/rooms/Krefeld-Experiment.webp" alt="Das Experiment" loading="lazy" width="400" height="200" style="object-fit: cover;" />
+                    <img
+                        src="/assets/images/rooms/Krefeld-Experiment.webp"
+                        alt="Das Experiment"
+                         loading="lazy" 
+                        width="400"
+                        height="200"
+                        style="object-fit: cover;"
+                    >
                     
                     
                         <div class="pending-overlay">
@@ -239,13 +295,25 @@
         
         
 
-        <a href="/reviews/Krefeld_DieMagischeReiseTeil1/" class="room-card-link" data-title="die magische reise, kapitel 1" data-provider="limbus escape games" data-rating="-1">
+        <a href="/reviews/Krefeld_DieMagischeReiseTeil1/" class="room-card-link"
+           data-title="die magische reise, kapitel 1"
+           data-provider="limbus escape games"
+           data-lat="51.337135"
+           data-lng="6.564507"
+           data-rating="-1">
             
             <article class="room-card">
                 <div class="card-image-wrapper">
                     
 
-                    <img src="/assets/images/rooms/EinsatzGeplant.webp" alt="Die magische Reise, Kapitel 1" loading="lazy" width="400" height="200" style="object-fit: cover;" />
+                    <img
+                        src="/assets/images/rooms/EinsatzGeplant.webp"
+                        alt="Die magische Reise, Kapitel 1"
+                         loading="lazy" 
+                        width="400"
+                        height="200"
+                        style="object-fit: cover;"
+                    >
                     
                     
                         <div class="pending-overlay">
@@ -274,13 +342,25 @@
         
         
 
-        <a href="/reviews/Krefeld_Panzerknacker/" class="room-card-link" data-title="panzerknacker" data-provider="limbus escape games" data-rating="4.6">
+        <a href="/reviews/Krefeld_Panzerknacker/" class="room-card-link"
+           data-title="panzerknacker"
+           data-provider="limbus escape games"
+           data-lat="51.337135"
+           data-lng="6.564507"
+           data-rating="4.6">
             
             <article class="room-card">
                 <div class="card-image-wrapper">
                     
 
-                    <img src="/assets/images/rooms/Krefeld-Panzerknacker.webp" alt="Panzerknacker" loading="lazy" width="400" height="200" style="object-fit: cover;" />
+                    <img
+                        src="/assets/images/rooms/Krefeld-Panzerknacker.webp"
+                        alt="Panzerknacker"
+                         loading="lazy" 
+                        width="400"
+                        height="200"
+                        style="object-fit: cover;"
+                    >
                     
                     
                         <div class="rating-badge">
@@ -307,13 +387,25 @@
         
         
 
-        <a href="/reviews/Moenchengladbach_CrystalCamper/" class="room-card-link" data-title="crystal camper" data-provider="timebreak mönchengladbach" data-rating="3.9">
+        <a href="/reviews/Moenchengladbach_CrystalCamper/" class="room-card-link"
+           data-title="crystal camper"
+           data-provider="timebreak mönchengladbach"
+           data-lat="51.19633865356445"
+           data-lng="6.4236741065979"
+           data-rating="3.9">
             
             <article class="room-card">
                 <div class="card-image-wrapper">
                     
 
-                    <img src="/assets/images/rooms/Moenchengladbach-Crystal.webp" alt="Crystal Camper" loading="lazy" width="400" height="200" style="object-fit: cover;" />
+                    <img
+                        src="/assets/images/rooms/Moenchengladbach-Crystal.webp"
+                        alt="Crystal Camper"
+                         loading="lazy" 
+                        width="400"
+                        height="200"
+                        style="object-fit: cover;"
+                    >
                     
                     
                         <div class="rating-badge">
@@ -340,13 +432,25 @@
         
         
 
-        <a href="/reviews/Moenchengladbach_HollywoodBombs/" class="room-card-link" data-title="hollywood bombs" data-provider="timebreak mönchengladbach" data-rating="3.4">
+        <a href="/reviews/Moenchengladbach_HollywoodBombs/" class="room-card-link"
+           data-title="hollywood bombs"
+           data-provider="timebreak mönchengladbach"
+           data-lat="51.19633865356445"
+           data-lng="6.4236741065979"
+           data-rating="3.4">
             
             <article class="room-card">
                 <div class="card-image-wrapper">
                     
 
-                    <img src="/assets/images/rooms/Moenchengladbach-Hollywood.webp" alt="Hollywood Bombs" loading="lazy" width="400" height="200" style="object-fit: cover;" />
+                    <img
+                        src="/assets/images/rooms/Moenchengladbach-Hollywood.webp"
+                        alt="Hollywood Bombs"
+                         loading="lazy" 
+                        width="400"
+                        height="200"
+                        style="object-fit: cover;"
+                    >
                     
                     
                         <div class="rating-badge">
@@ -373,13 +477,25 @@
         
         
 
-        <a href="/reviews/Moenchengladbach_Nervenheilanstalt/" class="room-card-link" data-title="dr. brown boyd's nervenheilanstalt" data-provider="timebreak mönchengladbach" data-rating="-1">
+        <a href="/reviews/Moenchengladbach_Nervenheilanstalt/" class="room-card-link"
+           data-title="dr. brown boyd's nervenheilanstalt"
+           data-provider="timebreak mönchengladbach"
+           data-lat="51.19633865356445"
+           data-lng="6.4236741065979"
+           data-rating="-1">
             
             <article class="room-card">
                 <div class="card-image-wrapper">
                     
 
-                    <img src="/assets/images/rooms/Moenchengladbach-Nervenheilanstalt.webp" alt="Dr. Brown Boyd's Nervenheilanstalt" loading="lazy" width="400" height="200" style="object-fit: cover;" />
+                    <img
+                        src="/assets/images/rooms/Moenchengladbach-Nervenheilanstalt.webp"
+                        alt="Dr. Brown Boyd's Nervenheilanstalt"
+                         loading="lazy" 
+                        width="400"
+                        height="200"
+                        style="object-fit: cover;"
+                    >
                     
                     
                         <div class="pending-overlay">
@@ -408,13 +524,25 @@
         
         
 
-        <a href="/reviews/Moenchengladbach_ZaginisZauberladen/" class="room-card-link" data-title="dunkle machenschaften in zaginis zauberladen" data-provider="timebreak mönchengladbach" data-rating="4.3">
+        <a href="/reviews/Moenchengladbach_ZaginisZauberladen/" class="room-card-link"
+           data-title="dunkle machenschaften in zaginis zauberladen"
+           data-provider="timebreak mönchengladbach"
+           data-lat="51.19633865356445"
+           data-lng="6.4236741065979"
+           data-rating="4.3">
             
             <article class="room-card">
                 <div class="card-image-wrapper">
                     
 
-                    <img src="/assets/images/rooms/Moenchengladbach-Zagini.webp" alt="Dunkle Machenschaften in Zaginis Zauberladen" loading="lazy" width="400" height="200" style="object-fit: cover;" />
+                    <img
+                        src="/assets/images/rooms/Moenchengladbach-Zagini.webp"
+                        alt="Dunkle Machenschaften in Zaginis Zauberladen"
+                         loading="lazy" 
+                        width="400"
+                        height="200"
+                        style="object-fit: cover;"
+                    >
                     
                     
                         <div class="rating-badge">
@@ -441,13 +569,25 @@
         
         
 
-        <a href="/reviews/Wuppertal_Sherlock/" class="room-card-link" data-title="der fall sherlock holmes" data-provider="escape stories" data-rating="3.0">
+        <a href="/reviews/Wuppertal_Sherlock/" class="room-card-link"
+           data-title="der fall sherlock holmes"
+           data-provider="escape stories"
+           data-lat="51.256174"
+           data-lng="7.145805"
+           data-rating="3.0">
             
             <article class="room-card">
                 <div class="card-image-wrapper">
                     
 
-                    <img src="/assets/images/thumbnails/Wuppertal-Sherlock.webp" alt="Der Fall Sherlock Holmes" loading="lazy" width="400" height="200" style="object-fit: cover;" />
+                    <img
+                        src="/assets/images/thumbnails/Wuppertal-Sherlock.webp"
+                        alt="Der Fall Sherlock Holmes"
+                         loading="lazy" 
+                        width="400"
+                        height="200"
+                        style="object-fit: cover;"
+                    >
                     
                     
                         <div class="rating-badge">
@@ -470,14 +610,206 @@
         </a>
         
     </div>
-
-    <div id="paginationControls" class="pagination-container"></div>
-
-    <div style="margin-top: 2rem; text-align: center;">
-        <a href="/" class="btn-back">← Zurück zur Startseite</a>
-    </div>
-
 </section>
+
+<script src="/assets/js/map.js"></script>
+<script>
+    var roomData = [
+        
+        
+        
+        
+        
+
+        {
+            "title": "Das Hotel der geheimnisvollen Uhren",
+            "url": "/reviews/Dorsten_HotelDerGeheimnisvollenUhren/",
+            "lat": 51.6717832,
+            "lng": 6.9828293,
+            "rating": 3.8,
+            "provider": "Mining Adventure World",
+            "pending": false,
+            "planned": false
+        },
+        
+        
+        
+        
+        
+
+        {
+            "title": "Die drei ??? und das Erbe des Geisterpiraten",
+            "url": "/reviews/Koeln_DreiFragezeichenErbeDesGeisterpiraten/",
+            "lat": 50.9379293,
+            "lng": 6.9396713,
+            "rating": 0.0,
+            "provider": "Die drei ??? Mission Rocky Beach",
+            "pending": true,
+            "planned": false
+        },
+        
+        
+        
+        
+        
+
+        {
+            "title": "Die drei ??? und die Nacht der Illusionen",
+            "url": "/reviews/Koeln_DreiFragezeichenNachtDerIllusionen/",
+            "lat": 50.9379293,
+            "lng": 6.9396713,
+            "rating": 3.1,
+            "provider": "Die drei ??? Mission Rocky Beach",
+            "pending": false,
+            "planned": false
+        },
+        
+        
+        
+        
+        
+
+        {
+            "title": "Die drei ??? und die Truhe der Meister",
+            "url": "/reviews/Koeln_DreiFragezeichenTruheDerMeister/",
+            "lat": 50.9379293,
+            "lng": 6.9396713,
+            "rating": 3.9,
+            "provider": "Die drei ??? Mission Rocky Beach",
+            "pending": false,
+            "planned": false
+        },
+        
+        
+        
+        
+        
+
+        {
+            "title": "Das Experiment",
+            "url": "/reviews/Krefeld_DasExperiment/",
+            "lat": 51.337135,
+            "lng": 6.564507,
+            "rating": 0.0,
+            "provider": "Limbus Escape Games",
+            "pending": true,
+            "planned": false
+        },
+        
+        
+        
+        
+        
+
+        {
+            "title": "Die magische Reise, Kapitel 1",
+            "url": "/reviews/Krefeld_DieMagischeReiseTeil1/",
+            "lat": 51.337135,
+            "lng": 6.564507,
+            "rating": 0.0,
+            "provider": "Limbus Escape Games",
+            "pending": false,
+            "planned": true
+        },
+        
+        
+        
+        
+        
+
+        {
+            "title": "Panzerknacker",
+            "url": "/reviews/Krefeld_Panzerknacker/",
+            "lat": 51.337135,
+            "lng": 6.564507,
+            "rating": 4.6,
+            "provider": "Limbus Escape Games",
+            "pending": false,
+            "planned": false
+        },
+        
+        
+        
+        
+        
+
+        {
+            "title": "Crystal Camper",
+            "url": "/reviews/Moenchengladbach_CrystalCamper/",
+            "lat": 51.19633865356445,
+            "lng": 6.4236741065979,
+            "rating": 3.9,
+            "provider": "TIMEBREAK Mönchengladbach",
+            "pending": false,
+            "planned": false
+        },
+        
+        
+        
+        
+        
+
+        {
+            "title": "Hollywood Bombs",
+            "url": "/reviews/Moenchengladbach_HollywoodBombs/",
+            "lat": 51.19633865356445,
+            "lng": 6.4236741065979,
+            "rating": 3.4,
+            "provider": "TIMEBREAK Mönchengladbach",
+            "pending": false,
+            "planned": false
+        },
+        
+        
+        
+        
+        
+
+        {
+            "title": "Dr. Brown Boyd's Nervenheilanstalt",
+            "url": "/reviews/Moenchengladbach_Nervenheilanstalt/",
+            "lat": 51.19633865356445,
+            "lng": 6.4236741065979,
+            "rating": 0.0,
+            "provider": "TIMEBREAK Mönchengladbach",
+            "pending": true,
+            "planned": false
+        },
+        
+        
+        
+        
+        
+
+        {
+            "title": "Dunkle Machenschaften in Zaginis Zauberladen",
+            "url": "/reviews/Moenchengladbach_ZaginisZauberladen/",
+            "lat": 51.19633865356445,
+            "lng": 6.4236741065979,
+            "rating": 4.3,
+            "provider": "TIMEBREAK Mönchengladbach",
+            "pending": false,
+            "planned": false
+        },
+        
+        
+        
+        
+        
+
+        {
+            "title": "Der Fall Sherlock Holmes",
+            "url": "/reviews/Wuppertal_Sherlock/",
+            "lat": 51.256174,
+            "lng": 7.145805,
+            "rating": 3.0,
+            "provider": "Escape Stories",
+            "pending": false,
+            "planned": false
+        }
+        
+    ];
+</script>
 
 
     </main>

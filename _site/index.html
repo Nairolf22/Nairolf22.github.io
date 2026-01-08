@@ -31,785 +31,266 @@
     </header>
 
     <nav>
-        <a href="/">Karte</a>
+        <a href="/karte/">Karte</a>
         <a href="/archiv/">Alle Akten</a>
         <a href="/team/">Über uns</a>
         <a href="/kontakt/">Kontakt</a>
     </nav>
 
     <main>
-      <section class="map-section">
-    <h2 class="section-title">Einsatzorte</h2>
-    <div id="escapeMap" class="grunge-map"></div>
-</section>
+      <style>
+    /* --- SEO & Intro Styles (Wird oben und unten genutzt) --- */
+    .mission-briefing {
+        text-align: center;
+        max-width: 800px;
+        margin: 2rem auto 4rem;
+        font-family: 'Courier New', monospace;
+    }
+    .mission-briefing h1 {
+        text-transform: uppercase;
+        border-bottom: 2px solid #333;
+        display: inline-block;
+        padding-bottom: 0.5rem;
+        margin-bottom: 1.5rem;
+    }
+    /* Style für die H3 unten */
+    .mission-briefing h3 {
+        font-size: 0.9rem;
+        color: #666;
+        margin-bottom: 1rem;
+        font-weight: normal;
+    }
+    .seo-text {
+        font-size: 1.1rem;
+        line-height: 1.5;
+        color: #ddd;
+    }
+    /* Links im Fließtext hervorheben */
+    .seo-text a {
+        color: var(--rust-light, #e57373);
+        text-decoration: underline;
+        text-underline-offset: 3px;
+        transition: color 0.2s;
+    }
+    .seo-text a:hover {
+        color: #fff;
+    }
 
-<hr style="border: 0; margin: 1rem 0;">
-
-<section class="archive-section">
-    <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap;">
-
-        
-        <div class="sort-controls" style="margin-top: 1rem;">
-            <span style="color:#888; margin-right:10px; text-transform:uppercase; font-size:0.8rem;">Sortieren nach:</span>
-            <button class="btn-sort" onclick="sortRooms('name')">Name</button>
-            <button class="btn-sort" onclick="sortRooms('provider')">Anbieter</button>
-            <button class="btn-sort" onclick="sortRooms('rating')">Bewertung</button>
-        </div>
-    </div>
+    /* --- Latest Case Styles --- */
+    .latest-case-section {
+        margin-bottom: 4rem;
+    }
+    .latest-badge {
+        background-color: #d32f2f;
+        color: white;
+        padding: 0.2rem 0.8rem;
+        font-size: 0.9rem;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        display: inline-block;
+        margin-bottom: 1rem;
+    }
     
-    <br>
+    .hero-card {
+        display: grid;
+        grid-template-columns: 1.2fr 3.8fr; /* Bild ca. 30% */
+        gap: 2rem;
+        background: rgba(255,255,255,0.05);
+        border: 1px solid #444;
+        border-radius: 8px;
+        overflow: hidden;
+        transition: transform 0.3s ease;
+    }
 
-    <div class="card-grid" id="roomGrid">
-        
-        
-        
-        
-        
+    .hero-image-wrapper {
+        position: relative;
+        height: 100%;
+        min-height: 250px;
+    }
+    
+    .hero-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    .hero-content {
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
 
-        <a href="/reviews/Dorsten_HotelDerGeheimnisvollenUhren/" class="room-card-link"
-           data-title="das hotel der geheimnisvollen uhren"
-           data-provider="mining adventure world"
-           data-lat="51.6717832"
-           data-lng="6.9828293"
-           data-rating="3.8">
-            
-            <article class="room-card">
-                <div class="card-image-wrapper">
-                    
+    /* --- 3-Spalten Navigation (Kacheln) --- */
+    .nav-split {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+        margin-bottom: 4rem;
+    }
+    .nav-box {
+        position: relative;
+        height: 200px;
+        border: 2px dashed #555;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        color: inherit;
+        background-size: cover;
+        background-position: center;
+        transition: all 0.3s;
+        overflow: hidden;
+        border-radius: 4px;
+    }
+    .nav-box::before {
+        content: '';
+        position: absolute;
+        top:0; left:0; right:0; bottom:0;
+        background: rgba(0,0,0,0.7);
+        transition: background 0.3s;
+    }
+    .nav-box:hover {
+        border-style: solid;
+        border-color: #fff;
+        transform: translateY(-5px);
+    }
+    .nav-box:hover::before {
+        background: rgba(0,0,0,0.5);
+    }
+    .nav-text {
+        position: relative;
+        z-index: 2;
+        text-align: center;
+        padding: 0 10px;
+    }
+    .nav-title {
+        font-size: 1.4rem;
+        font-weight: bold;
+        text-transform: uppercase;
+        display: block;
+        margin-bottom: 0.5rem;
+        color: #fff;
+    }
+    .nav-subtitle {
+        font-family: 'Courier New', monospace;
+        color: #ccc;
+        font-size: 0.9rem;
+    }
 
-                    <img
-                        src="/assets/images/thumbnails/Dorsten-HotelDerGeheimnisvollenUhren.webp"
-                        alt="Das Hotel der geheimnisvollen Uhren"
-                         loading="eager" fetchpriority="high" 
-                        width="400"
-                        height="200"
-                        style="object-fit: cover;"
-                    >
-                    
-                    
-                        <div class="rating-badge">
-                            ★ 3.8
-                        </div>
-                    
-                </div>
+    /* --- Mobile Responsive --- */
+    @media (max-width: 900px) {
+        .hero-card {
+            grid-template-columns: 1fr;
+        }
+        .hero-image-wrapper {
+            height: 250px;
+            min-height: auto;
+        }
+        .nav-split {
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+        .nav-box {
+            height: 150px;
+        }
+    }
+</style>
 
-                <div class="card-content">
-                    <h3>Das Hotel der geheimnisvollen Uhren</h3>
-                    <p class="card-meta">Mining Adventure World | Dorsten</p>
-                    
-                    
-                        <div class="stars small" style="--score: 3.8;">★★★★★</div>
-                    
-                    
-                    <p class="card-summary">Ein atmosphärisch dichter 'Theater-Escape-Room' in einer beeindruckenden Bergwerks-Kulisse. Die L...</p>
-                </div>
-            </article>
-        </a>
-        
-        
-        
-        
-        
-
-        <a href="/reviews/Koeln_DreiFragezeichenErbeDesGeisterpiraten/" class="room-card-link"
-           data-title="die drei ??? und das erbe des geisterpiraten"
-           data-provider="die drei ??? mission rocky beach"
-           data-lat="50.9379293"
-           data-lng="6.9396713"
-           data-rating="-1">
-            
-            <article class="room-card">
-                <div class="card-image-wrapper">
-                    
-
-                    <img
-                        src="/assets/images/rooms/Koeln-Geisterpirat.webp"
-                        alt="Die drei ??? und das Erbe des Geisterpiraten"
-                         loading="lazy" 
-                        width="400"
-                        height="200"
-                        style="object-fit: cover;"
-                    >
-                    
-                    
-                        <div class="pending-overlay">
-                            <span class="pending-stamp">ERMITTLUNG LÄUFT</span>
-                        </div>
-                    
-                </div>
-
-                <div class="card-content">
-                    <h3>Die drei ??? und das Erbe des Geisterpiraten</h3>
-                    <p class="card-meta">Die drei ??? Mission Rocky Beach | Köln</p>
-                    
-                    
-                        <div style="margin: 10px 0; color: #888; font-size: 0.9rem; font-family: 'Courier New';">
-                            [Daten werden noch ausgewertet...]
-                        </div>
-                    
-                    
-                    <p class="card-summary"></p>
-                </div>
-            </article>
-        </a>
-        
-        
-        
-        
-        
-
-        <a href="/reviews/Koeln_DreiFragezeichenNachtDerIllusionen/" class="room-card-link"
-           data-title="die drei ??? und die nacht der illusionen"
-           data-provider="die drei ??? mission rocky beach"
-           data-lat="50.9379293"
-           data-lng="6.9396713"
-           data-rating="3.1">
-            
-            <article class="room-card">
-                <div class="card-image-wrapper">
-                    
-
-                    <img
-                        src="/assets/images/rooms/Koeln-Illusionen.webp"
-                        alt="Die drei ??? und die Nacht der Illusionen"
-                         loading="lazy" 
-                        width="400"
-                        height="200"
-                        style="object-fit: cover;"
-                    >
-                    
-                    
-                        <div class="rating-badge">
-                            ★ 3.1
-                        </div>
-                    
-                </div>
-
-                <div class="card-content">
-                    <h3>Die drei ??? und die Nacht der Illusionen</h3>
-                    <p class="card-meta">Die drei ??? Mission Rocky Beach | Köln</p>
-                    
-                    
-                        <div class="stars small" style="--score: 3.1;">★★★★★</div>
-                    
-                    
-                    <p class="card-summary">Ein solider Einsteiger-Raum, der besonders durch die Einbindung der Original-Sprecher punktet. Au...</p>
-                </div>
-            </article>
-        </a>
-        
-        
-        
-        
-        
-
-        <a href="/reviews/Koeln_DreiFragezeichenTruheDerMeister/" class="room-card-link"
-           data-title="die drei ??? und die truhe der meister"
-           data-provider="die drei ??? mission rocky beach"
-           data-lat="50.9379293"
-           data-lng="6.9396713"
-           data-rating="3.9">
-            
-            <article class="room-card">
-                <div class="card-image-wrapper">
-                    
-
-                    <img
-                        src="/assets/images/rooms/Koeln-Truhe.webp"
-                        alt="Die drei ??? und die Truhe der Meister"
-                         loading="lazy" 
-                        width="400"
-                        height="200"
-                        style="object-fit: cover;"
-                    >
-                    
-                    
-                        <div class="rating-badge">
-                            ★ 3.9
-                        </div>
-                    
-                </div>
-
-                <div class="card-content">
-                    <h3>Die drei ??? und die Truhe der Meister</h3>
-                    <p class="card-meta">Die drei ??? Mission Rocky Beach | Köln</p>
-                    
-                    
-                        <div class="stars small" style="--score: 3.9;">★★★★★</div>
-                    
-                    
-                    <p class="card-summary">Ein Muss für alle Fans der drei Fragezeichen. Das innovative Konzept rund um die zentrale Truhe u...</p>
-                </div>
-            </article>
-        </a>
-        
-        
-        
-        
-        
-
-        <a href="/reviews/Krefeld_DasExperiment/" class="room-card-link"
-           data-title="das experiment"
-           data-provider="limbus escape games"
-           data-lat="51.337135"
-           data-lng="6.564507"
-           data-rating="-1">
-            
-            <article class="room-card">
-                <div class="card-image-wrapper">
-                    
-
-                    <img
-                        src="/assets/images/rooms/Krefeld-Experiment.webp"
-                        alt="Das Experiment"
-                         loading="lazy" 
-                        width="400"
-                        height="200"
-                        style="object-fit: cover;"
-                    >
-                    
-                    
-                        <div class="pending-overlay">
-                            <span class="pending-stamp">ERMITTLUNG LÄUFT</span>
-                        </div>
-                    
-                </div>
-
-                <div class="card-content">
-                    <h3>Das Experiment</h3>
-                    <p class="card-meta">Limbus Escape Games | Krefeld</p>
-                    
-                    
-                        <div style="margin: 10px 0; color: #888; font-size: 0.9rem; font-family: 'Courier New';">
-                            [Daten werden noch ausgewertet...]
-                        </div>
-                    
-                    
-                    <p class="card-summary"></p>
-                </div>
-            </article>
-        </a>
-        
-        
-        
-        
-        
-
-        <a href="/reviews/Krefeld_DieMagischeReiseTeil1/" class="room-card-link"
-           data-title="die magische reise, kapitel 1"
-           data-provider="limbus escape games"
-           data-lat="51.337135"
-           data-lng="6.564507"
-           data-rating="-1">
-            
-            <article class="room-card">
-                <div class="card-image-wrapper">
-                    
-
-                    <img
-                        src="/assets/images/rooms/EinsatzGeplant.webp"
-                        alt="Die magische Reise, Kapitel 1"
-                         loading="lazy" 
-                        width="400"
-                        height="200"
-                        style="object-fit: cover;"
-                    >
-                    
-                    
-                        <div class="pending-overlay">
-                            <span class="planned-stamp">EINSATZ GEPLANT</span>
-                        </div>
-                    
-                </div>
-
-                <div class="card-content">
-                    <h3>Die magische Reise, Kapitel 1</h3>
-                    <p class="card-meta">Limbus Escape Games | Krefeld</p>
-                    
-                    
-                        <div style="margin: 10px 0; color: #1E88E5; font-size: 0.9rem; font-family: 'Courier New'; font-weight: bold;">
-                            [Termin: 24.01.2026]
-                        </div>
-                    
-                    
-                    <p class="card-summary"></p>
-                </div>
-            </article>
-        </a>
-        
-        
-        
-        
-        
-
-        <a href="/reviews/Krefeld_Panzerknacker/" class="room-card-link"
-           data-title="panzerknacker"
-           data-provider="limbus escape games"
-           data-lat="51.337135"
-           data-lng="6.564507"
-           data-rating="4.6">
-            
-            <article class="room-card">
-                <div class="card-image-wrapper">
-                    
-
-                    <img
-                        src="/assets/images/rooms/Krefeld-Panzerknacker.webp"
-                        alt="Panzerknacker"
-                         loading="lazy" 
-                        width="400"
-                        height="200"
-                        style="object-fit: cover;"
-                    >
-                    
-                    
-                        <div class="rating-badge">
-                            ★ 4.6
-                        </div>
-                    
-                </div>
-
-                <div class="card-content">
-                    <h3>Panzerknacker</h3>
-                    <p class="card-meta">Limbus Escape Games | Krefeld</p>
-                    
-                    
-                        <div class="stars small" style="--score: 4.6;">★★★★★</div>
-                    
-                    
-                    <p class="card-summary">Herausragende Atmosphäre, authentische Kulisse und echter Nervenkitzel durch Zeitdruck und Rahmen...</p>
-                </div>
-            </article>
-        </a>
-        
-        
-        
-        
-        
-
-        <a href="/reviews/Moenchengladbach_CrystalCamper/" class="room-card-link"
-           data-title="crystal camper"
-           data-provider="timebreak mönchengladbach"
-           data-lat="51.19633865356445"
-           data-lng="6.4236741065979"
-           data-rating="3.9">
-            
-            <article class="room-card">
-                <div class="card-image-wrapper">
-                    
-
-                    <img
-                        src="/assets/images/rooms/Moenchengladbach-Crystal.webp"
-                        alt="Crystal Camper"
-                         loading="lazy" 
-                        width="400"
-                        height="200"
-                        style="object-fit: cover;"
-                    >
-                    
-                    
-                        <div class="rating-badge">
-                            ★ 3.9
-                        </div>
-                    
-                </div>
-
-                <div class="card-content">
-                    <h3>Crystal Camper</h3>
-                    <p class="card-meta">TIMEBREAK Mönchengladbach | Mönchengladbach</p>
-                    
-                    
-                        <div class="stars small" style="--score: 3.9;">★★★★★</div>
-                    
-                    
-                    <p class="card-summary">Ein etwas älterer Raum, der aber noch immer mit Charme und Breaking-Bad-Nostalgie aufwartet.</p>
-                </div>
-            </article>
-        </a>
-        
-        
-        
-        
-        
-
-        <a href="/reviews/Moenchengladbach_HollywoodBombs/" class="room-card-link"
-           data-title="hollywood bombs"
-           data-provider="timebreak mönchengladbach"
-           data-lat="51.19633865356445"
-           data-lng="6.4236741065979"
-           data-rating="3.4">
-            
-            <article class="room-card">
-                <div class="card-image-wrapper">
-                    
-
-                    <img
-                        src="/assets/images/rooms/Moenchengladbach-Hollywood.webp"
-                        alt="Hollywood Bombs"
-                         loading="lazy" 
-                        width="400"
-                        height="200"
-                        style="object-fit: cover;"
-                    >
-                    
-                    
-                        <div class="rating-badge">
-                            ★ 3.4
-                        </div>
-                    
-                </div>
-
-                <div class="card-content">
-                    <h3>Hollywood Bombs</h3>
-                    <p class="card-meta">TIMEBREAK Mönchengladbach | Mönchengladbach</p>
-                    
-                    
-                        <div class="stars small" style="--score: 3.4;">★★★★★</div>
-                    
-                    
-                    <p class="card-summary">Ein klassischer Escape Room, der ein wenig in die Tage gekommen ist. Zum Einstieg in die Escape R...</p>
-                </div>
-            </article>
-        </a>
-        
-        
-        
-        
-        
-
-        <a href="/reviews/Moenchengladbach_Nervenheilanstalt/" class="room-card-link"
-           data-title="dr. brown boyd's nervenheilanstalt"
-           data-provider="timebreak mönchengladbach"
-           data-lat="51.19633865356445"
-           data-lng="6.4236741065979"
-           data-rating="-1">
-            
-            <article class="room-card">
-                <div class="card-image-wrapper">
-                    
-
-                    <img
-                        src="/assets/images/rooms/Moenchengladbach-Nervenheilanstalt.webp"
-                        alt="Dr. Brown Boyd's Nervenheilanstalt"
-                         loading="lazy" 
-                        width="400"
-                        height="200"
-                        style="object-fit: cover;"
-                    >
-                    
-                    
-                        <div class="pending-overlay">
-                            <span class="pending-stamp">ERMITTLUNG LÄUFT</span>
-                        </div>
-                    
-                </div>
-
-                <div class="card-content">
-                    <h3>Dr. Brown Boyd's Nervenheilanstalt</h3>
-                    <p class="card-meta">TIMEBREAK Mönchengladbach | Mönchengladbach</p>
-                    
-                    
-                        <div style="margin: 10px 0; color: #888; font-size: 0.9rem; font-family: 'Courier New';">
-                            [Daten werden noch ausgewertet...]
-                        </div>
-                    
-                    
-                    <p class="card-summary"></p>
-                </div>
-            </article>
-        </a>
-        
-        
-        
-        
-        
-
-        <a href="/reviews/Moenchengladbach_ZaginisZauberladen/" class="room-card-link"
-           data-title="dunkle machenschaften in zaginis zauberladen"
-           data-provider="timebreak mönchengladbach"
-           data-lat="51.19633865356445"
-           data-lng="6.4236741065979"
-           data-rating="4.3">
-            
-            <article class="room-card">
-                <div class="card-image-wrapper">
-                    
-
-                    <img
-                        src="/assets/images/rooms/Moenchengladbach-Zagini.webp"
-                        alt="Dunkle Machenschaften in Zaginis Zauberladen"
-                         loading="lazy" 
-                        width="400"
-                        height="200"
-                        style="object-fit: cover;"
-                    >
-                    
-                    
-                        <div class="rating-badge">
-                            ★ 4.3
-                        </div>
-                    
-                </div>
-
-                <div class="card-content">
-                    <h3>Dunkle Machenschaften in Zaginis Zauberladen</h3>
-                    <p class="card-meta">TIMEBREAK Mönchengladbach | Mönchengladbach</p>
-                    
-                    
-                        <div class="stars small" style="--score: 4.3;">★★★★★</div>
-                    
-                    
-                    <p class="card-summary">Ein fantastischer Einsteiger-Raum, der besonders durch seine Detailverliebtheit und die magische ...</p>
-                </div>
-            </article>
-        </a>
-        
-        
-        
-        
-        
-
-        <a href="/reviews/Wuppertal_Sherlock/" class="room-card-link"
-           data-title="der fall sherlock holmes"
-           data-provider="escape stories"
-           data-lat="51.256174"
-           data-lng="7.145805"
-           data-rating="3.0">
-            
-            <article class="room-card">
-                <div class="card-image-wrapper">
-                    
-
-                    <img
-                        src="/assets/images/thumbnails/Wuppertal-Sherlock.webp"
-                        alt="Der Fall Sherlock Holmes"
-                         loading="lazy" 
-                        width="400"
-                        height="200"
-                        style="object-fit: cover;"
-                    >
-                    
-                    
-                        <div class="rating-badge">
-                            ★ 3.0
-                        </div>
-                    
-                </div>
-
-                <div class="card-content">
-                    <h3>Der Fall Sherlock Holmes</h3>
-                    <p class="card-meta">Escape Stories | Wuppertal</p>
-                    
-                    
-                        <div class="stars small" style="--score: 3.0;">★★★★★</div>
-                    
-                    
-                    <p class="card-summary">Ein optisch gelungener Raum für Sherlock-Fans, der vor allem für kleinere Gruppen (2–4 Personen) ...</p>
-                </div>
-            </article>
-        </a>
-        
+<section class="mission-briefing">
+    <h1>Einsatz-Briefing</h1>
+    <div class="seo-text">
+        <p>
+            Willkommen in der Zentrale. Wir analysieren <a href="/karte/"><strong>Escape Rooms</strong></a> in ganz Deutschland.
+            Unsere <a href="/archiv/"><strong>Akten</strong></a> enthalten detaillierte Berichte zu Atmosphäre, Rätseln und Story.
+            Egal ob Anfänger oder Profi-Ermittler – hier findest du deinen nächsten Einsatzort.
+        </p>
     </div>
 </section>
 
-<script src="/assets/js/map.js"></script>
-<script>
-    var roomData = [
-        
-        
-        
-        
-        
 
-        {
-            "title": "Das Hotel der geheimnisvollen Uhren",
-            "url": "/reviews/Dorsten_HotelDerGeheimnisvollenUhren/",
-            "lat": 51.6717832,
-            "lng": 6.9828293,
-            "rating": 3.8,
-            "provider": "Mining Adventure World",
-            "pending": false,
-            "planned": false
-        },
-        
-        
-        
-        
-        
 
-        {
-            "title": "Die drei ??? und das Erbe des Geisterpiraten",
-            "url": "/reviews/Koeln_DreiFragezeichenErbeDesGeisterpiraten/",
-            "lat": 50.9379293,
-            "lng": 6.9396713,
-            "rating": 0.0,
-            "provider": "Die drei ??? Mission Rocky Beach",
-            "pending": true,
-            "planned": false
-        },
-        
-        
-        
-        
-        
 
-        {
-            "title": "Die drei ??? und die Nacht der Illusionen",
-            "url": "/reviews/Koeln_DreiFragezeichenNachtDerIllusionen/",
-            "lat": 50.9379293,
-            "lng": 6.9396713,
-            "rating": 3.1,
-            "provider": "Die drei ??? Mission Rocky Beach",
-            "pending": false,
-            "planned": false
-        },
+    
+    
+    
+    
+    <section class="latest-case-section">
+        <div class="latest-badge">+++ Aktuelle Ermittlung - Neueste Rezension +++</div>
         
-        
-        
-        
-        
+        <a href="/reviews/Dorsten_HotelDerGeheimnisvollenUhren/" style="text-decoration: none; color: inherit;">
+            <article class="hero-card">
+                <div class="hero-image-wrapper">
+                    
+                    
+                    <img src="/assets/images/thumbnails/Dorsten-HotelDerGeheimnisvollenUhren.webp" alt="Titelbild Das Hotel der geheimnisvollen Uhren" class="hero-image">
+                    
+                    <div style="position: absolute; bottom: 10px; right: 10px; background: #000; color: #fff; padding: 5px 10px; font-weight: bold;">
+                        ★ 3.8
+                    </div>
+                </div>
+                
+                <div class="hero-content">
+                    <h2 style="margin-top: 0; color: #fff;">Das Hotel der geheimnisvollen Uhren</h2>
+                    <p style="font-family: 'Courier New'; color: #888; margin-bottom: 1rem;">
+                        Mining Adventure World | Dorsten
+                    </p>
+                    
+                    <p style="color: #ccc;">Ein atmosphärisch dichter 'Theater-Escape-Room' in einer beeindruckenden Bergwerks-Kulisse. Die Live-Interaktion sorgt für einen hohen Gruselfaktor, allerdings trübten handwerkliche Schwächen bei den Mechanismen das ansonsten sehr solide Gesamterlebnis.</p>
+                    
+                    <span style="margin-top: auto; text-decoration: underline; color: var(--rust-light, #e57373);">
+                        Zur Fallakte &rarr;
+                    </span>
+                </div>
+            </article>
+        </a>
+    </section>
 
-        {
-            "title": "Die drei ??? und die Truhe der Meister",
-            "url": "/reviews/Koeln_DreiFragezeichenTruheDerMeister/",
-            "lat": 50.9379293,
-            "lng": 6.9396713,
-            "rating": 3.9,
-            "provider": "Die drei ??? Mission Rocky Beach",
-            "pending": false,
-            "planned": false
-        },
-        
-        
-        
-        
-        
 
-        {
-            "title": "Das Experiment",
-            "url": "/reviews/Krefeld_DasExperiment/",
-            "lat": 51.337135,
-            "lng": 6.564507,
-            "rating": 0.0,
-            "provider": "Limbus Escape Games",
-            "pending": true,
-            "planned": false
-        },
-        
-        
-        
-        
-        
+<hr style="border: 0; border-top: 1px solid #333; margin: 3rem 0;">
 
-        {
-            "title": "Die magische Reise, Kapitel 1",
-            "url": "/reviews/Krefeld_DieMagischeReiseTeil1/",
-            "lat": 51.337135,
-            "lng": 6.564507,
-            "rating": 0.0,
-            "provider": "Limbus Escape Games",
-            "pending": false,
-            "planned": true
-        },
-        
-        
-        
-        
-        
+<section class="nav-split">
+    
+    <a href="/hall-of-fame/" class="nav-box" style="background-image: url('/assets/images/ui/trophy-room.webp'); background-color: #111;">
+        <div class="nav-text">
+            <span class="nav-title">Hall of Fame</span>
+            <span class="nav-subtitle">★ Die Elite-Missionen ★</span>
+        </div>
+    </a>
 
-        {
-            "title": "Panzerknacker",
-            "url": "/reviews/Krefeld_Panzerknacker/",
-            "lat": 51.337135,
-            "lng": 6.564507,
-            "rating": 4.6,
-            "provider": "Limbus Escape Games",
-            "pending": false,
-            "planned": false
-        },
-        
-        
-        
-        
-        
+    <a href="/karte/" class="nav-box" style="background-image: url('/assets/images/ui/map-bg.webp'); background-color: #111;">
+        <div class="nav-text">
+            <span class="nav-title">Einsatzkarte</span>
+            <span class="nav-subtitle">Geografische Übersicht</span>
+        </div>
+    </a>
 
-        {
-            "title": "Crystal Camper",
-            "url": "/reviews/Moenchengladbach_CrystalCamper/",
-            "lat": 51.19633865356445,
-            "lng": 6.4236741065979,
-            "rating": 3.9,
-            "provider": "TIMEBREAK Mönchengladbach",
-            "pending": false,
-            "planned": false
-        },
-        
-        
-        
-        
-        
+    <a href="/archiv/" class="nav-box" style="background-image: url('/assets/images/ui/archive-bg.webp'); background-color: #111;">
+        <div class="nav-text">
+            <span class="nav-title">Aktenarchiv</span>
+            <span class="nav-subtitle">Alle Berichte (Liste)</span>
+        </div>
+    </a>
 
-        {
-            "title": "Hollywood Bombs",
-            "url": "/reviews/Moenchengladbach_HollywoodBombs/",
-            "lat": 51.19633865356445,
-            "lng": 6.4236741065979,
-            "rating": 3.4,
-            "provider": "TIMEBREAK Mönchengladbach",
-            "pending": false,
-            "planned": false
-        },
-        
-        
-        
-        
-        
+</section>
 
-        {
-            "title": "Dr. Brown Boyd's Nervenheilanstalt",
-            "url": "/reviews/Moenchengladbach_Nervenheilanstalt/",
-            "lat": 51.19633865356445,
-            "lng": 6.4236741065979,
-            "rating": 0.0,
-            "provider": "TIMEBREAK Mönchengladbach",
-            "pending": true,
-            "planned": false
-        },
-        
-        
-        
-        
-        
+<hr style="border: 0; border-top: 1px solid #333; margin: 3rem 0;">
 
-        {
-            "title": "Dunkle Machenschaften in Zaginis Zauberladen",
-            "url": "/reviews/Moenchengladbach_ZaginisZauberladen/",
-            "lat": 51.19633865356445,
-            "lng": 6.4236741065979,
-            "rating": 4.3,
-            "provider": "TIMEBREAK Mönchengladbach",
-            "pending": false,
-            "planned": false
-        },
-        
-        
-        
-        
-        
-
-        {
-            "title": "Der Fall Sherlock Holmes",
-            "url": "/reviews/Wuppertal_Sherlock/",
-            "lat": 51.256174,
-            "lng": 7.145805,
-            "rating": 3.0,
-            "provider": "Escape Stories",
-            "pending": false,
-            "planned": false
-        }
-        
-    ];
-</script>
+<section class="mission-briefing" style="margin-bottom: 0;">
+    <h3>// INTERNE RESSOURCEN & HINTERGRÜNDE</h3>
+    
+    <div class="seo-text">
+        <p>
+            Bevor du dich in die nächste Ermittlung stürzt: Möchtest du wissen, wer eigentlich hinter diesen Berichten steckt?
+            In der <a href="/team/">Personalakte</a> stellen wir das Team "Die Anrufbeantworter" genauer vor.
+        </p>
+        <br>
+        <p>
+            Falls du ganz neu im Dienst bist, empfehlen wir dir zunächst das Briefing <a href="/was-ist-ein-escape-room/">Was ist eigentlich ein Escape Room?</a>, um die Unterschiede zwischen den Generationen zu verstehen.
+            Erfahrenen Agenten, die ihre Erfolgsquote maximieren wollen, öffnen wir unser <a href="/philosophie/">privates Feldbuch</a>: Hier verraten wir unsere Philosophie, Taktiken & Tipps für erfolgreiche Fluchtversuche.
+        </p>
+    </div>
+</section>
 
 
     </main>
