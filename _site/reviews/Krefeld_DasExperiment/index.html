@@ -218,71 +218,115 @@
   <script data-goatcounter="https://nairolf22.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
   
   <style>
-      /* --- MOBILE EMERGENCY PATCH --- */
+      /* --- MASTER MOBILE FIX (ALLE PATCHES VEREINT) --- */
 
-      /* 1. Genereller Überlauf-Schutz (Screenshot 1 & 2) */
-      /* Verhindert, dass IRGENDETWAS breiter als der Bildschirm sein darf */
+      /* 1. Genereller Überlauf-Schutz */
+      /* Verhindert, dass irgendetwas breiter als der Bildschirm wird */
       html, body {
           overflow-x: hidden; /* Schneidet seitliches Scrollen ab */
           max-width: 100%;
           position: relative;
       }
 
-      /* Sorgt dafür, dass Rahmen (Border) und Padding nicht zur Breite addiert werden */
+      /* Sorgt dafür, dass Rahmen und Padding in die Breite eingerechnet werden */
       * {
           box-sizing: border-box;
       }
 
-      /* 2. Navigation reparieren (Screenshot 3) */
-      /* Erlaubt der Navigation, auf kleinen Screens umzubrechen */
+      /* 2. Text-Handling & Umbrüche */
+      /* Zuerst erlauben wir überall Umbrüche und Silbentrennung ... */
+      p, h1, h2, h3, h4, h5, h6, div, span, a {
+          overflow-wrap: break-word;
+          word-wrap: break-word;
+          hyphens: auto; /* Gut für Fließtext */
+      }
+
+      /* ... ABER für Überschriften verbieten wir die Silbentrennung wieder (WICHTIG!) */
+      /* Damit wird "Legacy" nicht getrennt, "The Escape Archive" bleibt ganz, etc. */
+      h1, h2, h3, h4, h5, h6,
+      header h1,
+      .card-content h3,
+      .dossier-header h2 {
+          hyphens: none !important;
+          -webkit-hyphens: none !important;
+          word-break: normal !important;
+      }
+
+      /* 3. Navigation reparieren */
       @media (max-width: 600px) {
           nav {
               display: flex;
-              flex-wrap: wrap;       /* WICHTIG: Erlaubt Umbruch in neue Zeile */
-              justify-content: center; /* Zentriert die Links */
-              gap: 10px;             /* Kleiner Abstand zwischen den Links */
+              flex-wrap: wrap;       /* Erlaubt Umbruch in neue Zeile */
+              justify-content: center;
+              gap: 10px;
               padding: 10px 0;
           }
           
           nav a {
-              margin: 0 5px;         /* Seitenabstand reduzieren */
-              font-size: 0.85rem;    /* Schrift minimal kleiner */
-              white-space: nowrap;   /* Text im Link selbst bricht nicht um */
+              margin: 0 5px;
+              font-size: 0.85rem;
+              white-space: nowrap;   /* Link-Text bricht nicht in sich um */
+          }
+          
+          /* Spezialanpassung für den Haupttitel auf kleinen Handys */
+          header h1 {
+              font-size: 2rem;
           }
       }
 
-      /* 3. E-Mail Adresse & lange Texte (Screenshot 2) */
-      /* Zwingt lange Wörter (wie kontakt@...) zum Umbruch, wenn kein Platz da ist */
-      p, h1, h2, h3, h4, h5, h6, div, span, a {
-          overflow-wrap: break-word;
-          word-wrap: break-word;
-          hyphens: auto;
-      }
-
-      /* Speziell für die Box mit dem Rahmen in Screenshot 2 */
+      /* 4. Breite Elemente bändigen (Kontaktboxen etc.) */
       .contact-box, div[style*="border"] {
-          max-width: 100%; /* Darf niemals breiter sein als das Handy */
-          width: auto;     /* Passt sich dem Inhalt an */
+          max-width: 100%;
+          width: auto;
       }
       
-      /* 4. Sicherheitsabstand für den Hauptinhalt */
       main, .site-wrapper {
           padding-left: 15px;
           padding-right: 15px;
           width: 100%;
       }
-      
-      /* SPEZIALREGEL FÜR DEN TITEL */
-      header h1 {
-          hyphens: none !important;       /* Verhindert Silbentrennung (kein Ar-chive) */
-          word-break: normal !important;  /* Bricht Wörter nicht mitten durch */
-          overflow-wrap: break-word;      /* Bricht nur am Leerzeichen um (außer das Wort ist breiter als der ganze Screen) */
-      }
 
-      /* Optional: Schriftgröße mobil leicht anpassen, damit "Archive" sicher passt */
-      @media (max-width: 400px) {
-          header h1 {
-              font-size: 2rem; /* Etwas kleiner auf sehr schmalen Handys */
+      /* 5. REPARATUR DER REVIEW-DETAILSEITE (WICHTIG!) */
+      /* Sorgt dafür, dass der "Zum Anbieter"-Button mobil nicht rechts rausfliegt */
+      @media (max-width: 768px) {
+          
+          /* Header untereinander anordnen */
+          .dossier-header {
+              flex-direction: column !important;
+          }
+
+          /* Metadaten auf volle Breite */
+          .dossier-meta {
+              margin-right: 0 !important;
+              width: 100% !important;
+          }
+
+          /* Titel anpassen */
+          .dossier-meta h2 {
+              padding-right: 0 !important;
+              font-size: 1.8rem;
+          }
+
+          /* Den Button "einfangen" und über den Titel setzen */
+          .dossier-meta > div[style*="position: absolute"] {
+              position: static !important; /* Löst die starre Positionierung */
+              margin-bottom: 1rem;
+              display: block;
+              width: 100%; /* Volle Breite für den Button */
+          }
+
+          /* Button zentrieren */
+          .btn-provider {
+              display: block;
+              text-align: center;
+              width: 100%;
+              margin-top: 0 !important;
+          }
+
+          /* Rating-Box positionieren */
+          .stamp-box {
+              margin-top: 1rem;
+              align-self: flex-start;
           }
       }
   </style>
