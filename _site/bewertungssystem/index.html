@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Klassifizierungs-System | Escape Room Reviews</title>
+
+  <meta name="description"
+    content="Reviewing the best and darkest escape rooms.">
+  <link rel="canonical" href="http://localhost:4000/bewertungssystem/">
+
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.Default.css" />
+
+
+  
+</head>
+
+<body>
+
+  <div class="site-wrapper">
+
+    <header>
+      <a href="/" style="text-decoration:none;">
+        <h1>The Escape Archive</h1>
+      </a>
+      <p style="color: #ccc; margin-top: 10px;">• EST. 2025 • CLASSIFIED REVIEWS •</p>
+    </header>
+
+    <nav>
+        <a href="/karte/">Karte</a>
+        <a href="/archiv/">Alle Akten</a>
+        <a href="/team/">Über uns</a>
+        <a href="/kontakt/">Kontakt</a>
+    </nav>
+
+    <main>
+      <style>
+    /* --- Styles für die Bewertungs-Skala --- */
+    .rating-container {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .intro-text {
+        text-align: center; 
+        margin-bottom: 3rem; 
+        color: #aaa; 
+        font-family: 'Courier New', monospace;
+    }
+
+    /* Das Raster für die 5 Stufen */
+    .rating-tiers {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    /* Einzelne Bewertungs-Karte */
+    .tier-card {
+        display: grid;
+        grid-template-columns: 80px 1fr;
+        background: rgba(255,255,255,0.05);
+        border: 1px solid #444;
+        border-radius: 8px;
+        overflow: hidden;
+        transition: transform 0.2s;
+    }
+    .tier-card:hover {
+        transform: translateX(5px);
+        background: rgba(255,255,255,0.08);
+    }
+
+    /* Linke Spalte: Der Score (z.B. 4-5) */
+    .tier-score {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #111;
+        font-family: 'Courier New', monospace;
+    }
+
+    /* Rechte Spalte: Text */
+    .tier-content {
+        padding: 1.5rem;
+        border-left: 1px solid rgba(0,0,0,0.2);
+    }
+
+    .tier-title {
+        margin: 0 0 0.5rem 0;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-size: 1.1rem;
+    }
+
+    .tier-desc {
+        margin: 0;
+        font-size: 0.95rem;
+        color: #ccc;
+        line-height: 1.5;
+    }
+
+    /* --- Farb-Definitionen für die Stufen --- */
+    /* 4 - 5: Gold / Elite */
+    .tier-elite .tier-score { background: #FFD700; }
+    .tier-elite .tier-title { color: #FFD700; }
+    .tier-elite { border-color: #FFD700; }
+
+    /* 3 - 4: Grün / Empfehlenswert */
+    .tier-good .tier-score { background: #66bb6a; }
+    .tier-good .tier-title { color: #66bb6a; }
+    .tier-good { border-color: #66bb6a; }
+
+    /* 2 - 3: Gelb / Durchschnitt */
+    .tier-avg .tier-score { background: #ffee58; }
+    .tier-avg .tier-title { color: #ffee58; }
+    .tier-avg { border-color: #ffee58; }
+
+    /* 1 - 2: Orange / Schwach */
+    .tier-weak .tier-score { background: #ffa726; }
+    .tier-weak .tier-title { color: #ffa726; }
+    .tier-weak { border-color: #ffa726; }
+
+    /* 0 - 1: Rot / Fail */
+    .tier-fail .tier-score { background: #ef5350; }
+    .tier-fail .tier-title { color: #ef5350; }
+    .tier-fail { border-color: #ef5350; }
+
+
+    /* --- Sektion: Wie wir bewerten (Kriterien) --- */
+    .criteria-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1.5rem;
+        margin-top: 4rem;
+    }
+    .criteria-box {
+        background: #222;
+        padding: 1.5rem;
+        border-top: 3px solid var(--rust-primary, #e57373);
+        text-align: center;
+    }
+    .criteria-icon {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+        display: block;
+    }
+    .criteria-title {
+        color: #fff;
+        margin-bottom: 0.5rem;
+        font-size: 1rem;
+        text-transform: uppercase;
+    }
+    .criteria-text {
+        font-size: 0.85rem;
+        color: #888;
+    }
+
+    /* Mobile Anpassung */
+    @media (max-width: 600px) {
+        .tier-card {
+            grid-template-columns: 60px 1fr;
+        }
+        .tier-score {
+            font-size: 1.1rem;
+        }
+        .tier-content {
+            padding: 1rem;
+        }
+    }
+</style>
+
+<div class="rating-container">
+
+    <div class="mission-briefing">
+        <h1>Bewertungssystem</h1>
+        <h3>// KLASSIFIZIERUNGS-LEITFADEN FÜR EINSATZBERICHTE</h3>
+    </div>
+
+    <div class="intro-text">
+        <p>
+            Jede Akte wird von uns nach strengen Kriterien geprüft. 
+            Die Gesamtwertung (0 bis 5 Sterne) ist der mathematische Durchschnitt aus fünf Einzelkategorien.
+            Hier ist der Schlüssel zur Dechiffrierung unserer Urteile.
+        </p>
+    </div>
+
+    <div class="rating-tiers">
+
+        <div class="tier-card tier-elite">
+            <div class="tier-score">4 - 5</div>
+            <div class="tier-content">
+                <h3 class="tier-title">★ Herausragend</h3>
+                <p class="tier-desc">
+                    Die Eliteliga der Escape Rooms. Diese Missionen sind ein absolutes Muss. 
+                    Hier stimmt alles: Perfekte Immersion, innovative Rätsel und eine fesselnde Story. 
+                    Für diese Räume lohnt sich auch eine weite Anreise.
+                </p>
+            </div>
+        </div>
+
+        <div class="tier-card tier-good">
+            <div class="tier-score">3 - 4</div>
+            <div class="tier-content">
+                <h3 class="tier-title">Empfehlenswert</h3>
+                <p class="tier-desc">
+                    Ein guter Raum, den man bedenkenlos empfehlen kann. 
+                    Handwerklich sauber, unterhaltsam und oft mit schönen Ideen gespickt. 
+                    Kleine Schwächen im Detail verhindern den Sprung in die Elite, trüben den Spielspaß aber kaum.
+                </p>
+            </div>
+        </div>
+
+        <div class="tier-card tier-avg">
+            <div class="tier-score">2 - 3</div>
+            <div class="tier-content">
+                <h3 class="tier-title">Durchschnittlich</h3>
+                <p class="tier-desc">
+                    Ein solides Erlebnis ohne besondere Highlights. 
+                    Man macht nichts falsch, verpasst aber auch nichts Weltbewegendes. 
+                    Oft sind dies ältere Räume (Gen 1.0) oder solide Standardkost ohne große Überraschungen.
+                </p>
+            </div>
+        </div>
+
+        <div class="tier-card tier-weak">
+            <div class="tier-score">1 - 2</div>
+            <div class="tier-content">
+                <h3 class="tier-title">Schwach</h3>
+                <p class="tier-desc">
+                    Hat uns leider nicht überzeugt. Hier gibt es viel Luft nach oben.
+                    Oft leiden diese Räume unter unlogischen Rätseln, defekter Technik oder liebloser Gestaltung. 
+                    Nur für Komplettisten geeignet.
+                </p>
+            </div>
+        </div>
+
+        <div class="tier-card tier-fail">
+            <div class="tier-score">0 - 1</div>
+            <div class="tier-content">
+                <h3 class="tier-title">Fehlgeschlagen</h3>
+                <p class="tier-desc">
+                    Würden wir nicht noch einmal besuchen. 
+                    Hier stimmt Grundlegendes nicht (z.B. Sicherheitsmängel, unfreundliches Personal, unlösbare Logikfehler). 
+                    Warnung: Abbruchgefahr.
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+    <hr style="border: 0; border-top: 1px dashed #444; margin: 4rem 0;">
+
+    <div style="text-align: center;">
+        <h2 style="font-size: 1.2rem; text-transform: uppercase; letter-spacing: 2px; color: #fff;">
+            Die Parameter der Analyse
+        </h2>
+        <p style="color: #888;">Jeder Raum wird in diesen fünf Disziplinen einzeln bewertet:</p>
+    </div>
+
+    <div class="criteria-grid">
+        <div class="criteria-box">
+            <span class="criteria-icon">🎭</span>
+            <div class="criteria-title">Atmosphäre</div>
+            <div class="criteria-text">Wie immersiv ist der Raum? Vergisst man die Außenwelt? Passt Licht & Sound?</div>
+        </div>
+
+        <div class="criteria-box">
+            <span class="criteria-icon">📖</span>
+            <div class="criteria-title">Story</div>
+            <div class="criteria-text">Gibt es einen roten Faden? Macht die Geschichte Sinn und wird sie gut erzählt?</div>
+        </div>
+
+        <div class="criteria-box">
+            <span class="criteria-icon">🧩</span>
+            <div class="criteria-title">Rätsel</div>
+            <div class="criteria-text">Logik, Abwechslung, Haptik und Fairness der Aufgaben.</div>
+        </div>
+
+        <div class="criteria-box">
+            <span class="criteria-icon">🏰</span>
+            <div class="criteria-title">Kulisse</div>
+            <div class="criteria-text">Qualität der Bauten, Requisiten und Detailverliebtheit der Ausstattung.</div>
+        </div>
+
+        <div class="criteria-box">
+            <span class="criteria-icon">gamemaster</span> <div class="criteria-title">Gamemaster</div>
+            <div class="criteria-text">Qualität der Hinweise, Freundlichkeit und ggf. Schauspiel-Einlagen.</div>
+        </div>
+    </div>
+
+    <div style="margin-top: 3rem; text-align: center;">
+        <a href="/" class="btn-back">← Zurück zur Zentrale</a>
+    </div>
+
+</div>
+
+    </main>
+
+    <footer id="footer">
+          <p>&copy; The Escape Archive.</p>
+          <p>
+            <a href="/philosophie/" style="color: var(--rust-light);">Unsere Philosophie</a>
+            <span style="color: #666; margin: 0 5px;">•</span>
+            
+            <a href="/bewertungssystem/" style="color: var(--rust-light);">Bewertungssystem</a>
+            <span style="color: #666; margin: 0 5px;">•</span>
+            
+            <a href="/hall-of-fame/" style="color: var(--rust-light);">Hall of Fame</a>
+            <span style="color: #666; margin: 0 5px;">•</span>
+            
+            <a href="/was-ist-ein-escape-room/" style="color: var(--rust-light);">Was ist ein Escape-Room?</a>
+            <span style="color: #666; margin: 0 5px;">•</span>
+            
+            <a href="/impressum/" style="color: var(--rust-light);">Impressum & Datenschutz</a>
+          </p>
+        </footer>
+
+  </div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/leaflet.markercluster/dist/leaflet.markercluster.js"></script>
+
+  <script src="/assets/js/main.js"></script>
+  <script data-goatcounter="https://nairolf22.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+  
+  <style>
+      /* --- MASTER MOBILE FIX (ALLE PATCHES VEREINT) --- */
+
+      /* 1. Genereller Überlauf-Schutz */
+      /* Verhindert, dass irgendetwas breiter als der Bildschirm wird */
+      html, body {
+          overflow-x: hidden; /* Schneidet seitliches Scrollen ab */
+          max-width: 100%;
+          position: relative;
+      }
+
+      /* Sorgt dafür, dass Rahmen und Padding in die Breite eingerechnet werden */
+      * {
+          box-sizing: border-box;
+      }
+
+      /* 2. Text-Handling & Umbrüche */
+      /* Zuerst erlauben wir überall Umbrüche und Silbentrennung ... */
+      p, h1, h2, h3, h4, h5, h6, div, span, a {
+          overflow-wrap: break-word;
+          word-wrap: break-word;
+          hyphens: auto; /* Gut für Fließtext */
+      }
+
+      /* ... ABER für Überschriften verbieten wir die Silbentrennung wieder (WICHTIG!) */
+      /* Damit wird "Legacy" nicht getrennt, "The Escape Archive" bleibt ganz, etc. */
+      h1, h2, h3, h4, h5, h6,
+      header h1,
+      .card-content h3,
+      .dossier-header h2 {
+          hyphens: none !important;
+          -webkit-hyphens: none !important;
+          word-break: normal !important;
+      }
+
+      /* 3. Navigation reparieren */
+      @media (max-width: 600px) {
+          nav {
+              display: flex;
+              flex-wrap: wrap;       /* Erlaubt Umbruch in neue Zeile */
+              justify-content: center;
+              gap: 10px;
+              padding: 10px 0;
+          }
+          
+          nav a {
+              margin: 0 5px;
+              font-size: 0.85rem;
+              white-space: nowrap;   /* Link-Text bricht nicht in sich um */
+          }
+          
+          /* Spezialanpassung für den Haupttitel auf kleinen Handys */
+          header h1 {
+              font-size: 2rem;
+          }
+      }
+
+      /* 4. Breite Elemente bändigen (Kontaktboxen etc.) */
+      .contact-box, div[style*="border"] {
+          max-width: 100%;
+          width: auto;
+      }
+      
+      main, .site-wrapper {
+          padding-left: 15px;
+          padding-right: 15px;
+          width: 100%;
+      }
+
+      /* 5. REPARATUR DER REVIEW-DETAILSEITE (WICHTIG!) */
+      /* Sorgt dafür, dass der "Zum Anbieter"-Button mobil nicht rechts rausfliegt */
+      @media (max-width: 768px) {
+          
+          /* Header untereinander anordnen */
+          .dossier-header {
+              flex-direction: column !important;
+          }
+
+          /* Metadaten auf volle Breite */
+          .dossier-meta {
+              margin-right: 0 !important;
+              width: 100% !important;
+          }
+
+          /* Titel anpassen */
+          .dossier-meta h2 {
+              padding-right: 0 !important;
+              font-size: 1.8rem;
+          }
+
+          /* Den Button "einfangen" und über den Titel setzen */
+          .dossier-meta > div[style*="position: absolute"] {
+              position: static !important; /* Löst die starre Positionierung */
+              margin-bottom: 1rem;
+              display: block;
+              width: 100%; /* Volle Breite für den Button */
+          }
+
+          /* Button zentrieren */
+          .btn-provider {
+              display: block;
+              text-align: center;
+              width: 100%;
+              margin-top: 0 !important;
+          }
+
+          /* Rating-Box positionieren */
+          .stamp-box {
+              margin-top: 1rem;
+              align-self: flex-start;
+          }
+      }
+  </style>
+</body>
+
+</html>

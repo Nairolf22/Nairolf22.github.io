@@ -1,0 +1,267 @@
+---
+layout: default
+title: "Klassifizierungs-System"
+permalink: /bewertungssystem/
+---
+
+<style>
+    /* --- Styles für die Bewertungs-Skala --- */
+    .rating-container {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .intro-text {
+        text-align: center; 
+        margin-bottom: 3rem; 
+        color: #aaa; 
+        font-family: 'Courier New', monospace;
+    }
+
+    /* Das Raster für die 5 Stufen */
+    .rating-tiers {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    /* Einzelne Bewertungs-Karte */
+    .tier-card {
+        display: grid;
+        grid-template-columns: 80px 1fr;
+        background: rgba(255,255,255,0.05);
+        border: 1px solid #444;
+        border-radius: 8px;
+        overflow: hidden;
+        transition: transform 0.2s;
+    }
+    .tier-card:hover {
+        transform: translateX(5px);
+        background: rgba(255,255,255,0.08);
+    }
+
+    /* Linke Spalte: Der Score (z.B. 4-5) */
+    .tier-score {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #111;
+        font-family: 'Courier New', monospace;
+    }
+
+    /* Rechte Spalte: Text */
+    .tier-content {
+        padding: 1.5rem;
+        border-left: 1px solid rgba(0,0,0,0.2);
+    }
+
+    .tier-title {
+        margin: 0 0 0.5rem 0;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-size: 1.1rem;
+    }
+
+    .tier-desc {
+        margin: 0;
+        font-size: 0.95rem;
+        color: #ccc;
+        line-height: 1.5;
+    }
+
+    /* --- Farb-Definitionen für die Stufen --- */
+    /* 4 - 5: Gold / Elite */
+    .tier-elite .tier-score { background: #FFD700; }
+    .tier-elite .tier-title { color: #FFD700; }
+    .tier-elite { border-color: #FFD700; }
+
+    /* 3 - 4: Grün / Empfehlenswert */
+    .tier-good .tier-score { background: #66bb6a; }
+    .tier-good .tier-title { color: #66bb6a; }
+    .tier-good { border-color: #66bb6a; }
+
+    /* 2 - 3: Gelb / Durchschnitt */
+    .tier-avg .tier-score { background: #ffee58; }
+    .tier-avg .tier-title { color: #ffee58; }
+    .tier-avg { border-color: #ffee58; }
+
+    /* 1 - 2: Orange / Schwach */
+    .tier-weak .tier-score { background: #ffa726; }
+    .tier-weak .tier-title { color: #ffa726; }
+    .tier-weak { border-color: #ffa726; }
+
+    /* 0 - 1: Rot / Fail */
+    .tier-fail .tier-score { background: #ef5350; }
+    .tier-fail .tier-title { color: #ef5350; }
+    .tier-fail { border-color: #ef5350; }
+
+
+    /* --- Sektion: Wie wir bewerten (Kriterien) --- */
+    .criteria-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1.5rem;
+        margin-top: 4rem;
+    }
+    .criteria-box {
+        background: #222;
+        padding: 1.5rem;
+        border-top: 3px solid var(--rust-primary, #e57373);
+        text-align: center;
+    }
+    .criteria-icon {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+        display: block;
+    }
+    .criteria-title {
+        color: #fff;
+        margin-bottom: 0.5rem;
+        font-size: 1rem;
+        text-transform: uppercase;
+    }
+    .criteria-text {
+        font-size: 0.85rem;
+        color: #888;
+    }
+
+    /* Mobile Anpassung */
+    @media (max-width: 600px) {
+        .tier-card {
+            grid-template-columns: 60px 1fr;
+        }
+        .tier-score {
+            font-size: 1.1rem;
+        }
+        .tier-content {
+            padding: 1rem;
+        }
+    }
+</style>
+
+<div class="rating-container">
+
+    <div class="mission-briefing">
+        <h1>Bewertungssystem</h1>
+        <h3>// KLASSIFIZIERUNGS-LEITFADEN FÜR EINSATZBERICHTE</h3>
+    </div>
+
+    <div class="intro-text">
+        <p>
+            Jede Akte wird von uns nach strengen Kriterien geprüft. 
+            Die Gesamtwertung (0 bis 5 Sterne) ist der mathematische Durchschnitt aus fünf Einzelkategorien.
+            Hier ist der Schlüssel zur Dechiffrierung unserer Urteile.
+        </p>
+    </div>
+
+    <div class="rating-tiers">
+
+        <div class="tier-card tier-elite">
+            <div class="tier-score">4 - 5</div>
+            <div class="tier-content">
+                <h3 class="tier-title">★ Herausragend</h3>
+                <p class="tier-desc">
+                    Die Eliteliga der Escape Rooms. Diese Missionen sind ein absolutes Muss. 
+                    Hier stimmt alles: Perfekte Immersion, innovative Rätsel und eine fesselnde Story. 
+                    Für diese Räume lohnt sich auch eine weite Anreise.
+                </p>
+            </div>
+        </div>
+
+        <div class="tier-card tier-good">
+            <div class="tier-score">3 - 4</div>
+            <div class="tier-content">
+                <h3 class="tier-title">Empfehlenswert</h3>
+                <p class="tier-desc">
+                    Ein guter Raum, den man bedenkenlos empfehlen kann. 
+                    Handwerklich sauber, unterhaltsam und oft mit schönen Ideen gespickt. 
+                    Kleine Schwächen im Detail verhindern den Sprung in die Elite, trüben den Spielspaß aber kaum.
+                </p>
+            </div>
+        </div>
+
+        <div class="tier-card tier-avg">
+            <div class="tier-score">2 - 3</div>
+            <div class="tier-content">
+                <h3 class="tier-title">Durchschnittlich</h3>
+                <p class="tier-desc">
+                    Ein solides Erlebnis ohne besondere Highlights. 
+                    Man macht nichts falsch, verpasst aber auch nichts Weltbewegendes. 
+                    Oft sind dies ältere Räume (Gen 1.0) oder solide Standardkost ohne große Überraschungen.
+                </p>
+            </div>
+        </div>
+
+        <div class="tier-card tier-weak">
+            <div class="tier-score">1 - 2</div>
+            <div class="tier-content">
+                <h3 class="tier-title">Schwach</h3>
+                <p class="tier-desc">
+                    Hat uns leider nicht überzeugt. Hier gibt es viel Luft nach oben.
+                    Oft leiden diese Räume unter unlogischen Rätseln, defekter Technik oder liebloser Gestaltung. 
+                    Nur für Komplettisten geeignet.
+                </p>
+            </div>
+        </div>
+
+        <div class="tier-card tier-fail">
+            <div class="tier-score">0 - 1</div>
+            <div class="tier-content">
+                <h3 class="tier-title">Fehlgeschlagen</h3>
+                <p class="tier-desc">
+                    Würden wir nicht noch einmal besuchen. 
+                    Hier stimmt Grundlegendes nicht (z.B. Sicherheitsmängel, unfreundliches Personal, unlösbare Logikfehler). 
+                    Warnung: Abbruchgefahr.
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+    <hr style="border: 0; border-top: 1px dashed #444; margin: 4rem 0;">
+
+    <div style="text-align: center;">
+        <h2 style="font-size: 1.2rem; text-transform: uppercase; letter-spacing: 2px; color: #fff;">
+            Die Parameter der Analyse
+        </h2>
+        <p style="color: #888;">Jeder Raum wird in diesen fünf Disziplinen einzeln bewertet:</p>
+    </div>
+
+    <div class="criteria-grid">
+        <div class="criteria-box">
+            <span class="criteria-icon">🎭</span>
+            <div class="criteria-title">Atmosphäre</div>
+            <div class="criteria-text">Wie immersiv ist der Raum? Vergisst man die Außenwelt? Passt Licht & Sound?</div>
+        </div>
+
+        <div class="criteria-box">
+            <span class="criteria-icon">📖</span>
+            <div class="criteria-title">Story</div>
+            <div class="criteria-text">Gibt es einen roten Faden? Macht die Geschichte Sinn und wird sie gut erzählt?</div>
+        </div>
+
+        <div class="criteria-box">
+            <span class="criteria-icon">🧩</span>
+            <div class="criteria-title">Rätsel</div>
+            <div class="criteria-text">Logik, Abwechslung, Haptik und Fairness der Aufgaben.</div>
+        </div>
+
+        <div class="criteria-box">
+            <span class="criteria-icon">🏰</span>
+            <div class="criteria-title">Kulisse</div>
+            <div class="criteria-text">Qualität der Bauten, Requisiten und Detailverliebtheit der Ausstattung.</div>
+        </div>
+
+        <div class="criteria-box">
+            <span class="criteria-icon">gamemaster</span> <div class="criteria-title">Gamemaster</div>
+            <div class="criteria-text">Qualität der Hinweise, Freundlichkeit und ggf. Schauspiel-Einlagen.</div>
+        </div>
+    </div>
+
+    <div style="margin-top: 3rem; text-align: center;">
+        <a href="/" class="btn-back">← Zurück zur Zentrale</a>
+    </div>
+
+</div>
