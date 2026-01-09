@@ -31,6 +31,13 @@ permalink: /team/
             <li><strong>Kommunikation:</strong> Ohne Austausch kein Erfolg – das ist unser Credo.</li>
         </ul>
 
+        
+        <p style="margin-top: 1rem;">
+            Hier kannst du sehen, wie wir bewerten! <br>
+            <a href="/bewertungssystem/" style="font-weight: bold; color: var(--rust-primary); text-decoration: underline;">
+                >> Lies hier unsere Hinweise zu unserem Bewertungssystem
+            </a>
+        </p>
         <p style="margin-top: 1rem;">
             Du willst genau wissen, wie wir vorgehen und welche Tipps wir für dein Spiel haben? <br>
             <a href="/philosophie/" style="font-weight: bold; color: var(--rust-primary); text-decoration: underline;">
