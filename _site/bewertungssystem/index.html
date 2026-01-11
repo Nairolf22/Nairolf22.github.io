@@ -105,31 +105,32 @@
         line-height: 1.5;
     }
 
-    /* --- Farb-Definitionen für die Stufen --- */
-    /* 4 - 5: Gold / Elite */
-    .tier-elite .tier-score { background: #FFD700; }
-    .tier-elite .tier-title { color: #FFD700; }
-    .tier-elite { border-color: #FFD700; }
+    /* --- Farb-Definitionen für die Stufen (Verlauf: Grün -> Rot) --- */
+        
+        /* 4 - 5: Sattgrün / Elite */
+        .tier-elite .tier-score { background: #2E7D32; color: #fff; } /* Dunkles Grün, weiße Zahl */
+        .tier-elite .tier-title { color: #4CAF50; }
+        .tier-elite { border-color: #2E7D32; }
 
-    /* 3 - 4: Grün / Empfehlenswert */
-    .tier-good .tier-score { background: #66bb6a; }
-    .tier-good .tier-title { color: #66bb6a; }
-    .tier-good { border-color: #66bb6a; }
+        /* 3 - 4: Hellgrün / Empfehlenswert */
+        .tier-good .tier-score { background: #8BC34A; color: #111; } /* Lime-Grün */
+        .tier-good .tier-title { color: #8BC34A; }
+        .tier-good { border-color: #8BC34A; }
 
-    /* 2 - 3: Gelb / Durchschnitt */
-    .tier-avg .tier-score { background: #ffee58; }
-    .tier-avg .tier-title { color: #ffee58; }
-    .tier-avg { border-color: #ffee58; }
+        /* 2 - 3: Gelb / Durchschnitt */
+        .tier-avg .tier-score { background: #FDD835; color: #111; } /* Sattes Gelb */
+        .tier-avg .tier-title { color: #FDD835; }
+        .tier-avg { border-color: #FDD835; }
 
-    /* 1 - 2: Orange / Schwach */
-    .tier-weak .tier-score { background: #ffa726; }
-    .tier-weak .tier-title { color: #ffa726; }
-    .tier-weak { border-color: #ffa726; }
+        /* 1 - 2: Orange / Schwach */
+        .tier-weak .tier-score { background: #FB8C00; color: #111; } /* Warn-Orange */
+        .tier-weak .tier-title { color: #FB8C00; }
+        .tier-weak { border-color: #FB8C00; }
 
-    /* 0 - 1: Rot / Fail */
-    .tier-fail .tier-score { background: #ef5350; }
-    .tier-fail .tier-title { color: #ef5350; }
-    .tier-fail { border-color: #ef5350; }
+        /* 0 - 1: Rot / Fehlgeschlagen */
+        .tier-fail .tier-score { background: #D32F2F; color: #fff; } /* Alarm-Rot, weiße Zahl */
+        .tier-fail .tier-title { color: #E57373; }
+        .tier-fail { border-color: #D32F2F; }
 
 
     /* --- Sektion: Wie wir bewerten (Kriterien) --- */
@@ -299,6 +300,7 @@
     </div>
 
 </div>
+
 
     </main>
 
