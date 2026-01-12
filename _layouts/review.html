@@ -6,13 +6,60 @@ layout: default
 r.gamemaster.score %}
 {% assign calculated_avg = sum | divided_by: 5.0 %}
 
+<style>
+    .closed-alert {
+        border: 2px solid #d32f2f; /* Alarm-Rot */
+        background-color: rgba(211, 47, 47, 0.05);
+        color: #d32f2f;
+        padding: 1rem;
+        text-align: center;
+        margin-bottom: 2rem;
+        font-family: 'Courier New', monospace;
+        text-transform: uppercase;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .closed-alert strong {
+        font-size: 1.2rem;
+        display: block;
+        margin-bottom: 0.5rem;
+    }
+
+    /* Stempel-Effekt "INAKTIV" */
+    .stamp-inactive {
+        display: inline-block;
+        border: 3px solid #d32f2f;
+        color: #d32f2f;
+        padding: 0.2rem 1rem;
+        font-weight: bold;
+        font-size: 1.5rem;
+        text-transform: uppercase;
+        transform: rotate(-3deg);
+        opacity: 0.8;
+        letter-spacing: 2px;
+        margin-top: 5px;
+        font-family: 'Courier New', monospace;
+    }
+</style>
+
 <article class="review-dossier">
+
+    {% if page.closed %}
+    <div class="closed-alert">
+        <div class="stamp-inactive">AKTE GESCHLOSSEN</div>
+        <p style="margin-top: 10px; font-size: 0.9rem; color: #fff;">
+            ⚠ Dieser Raum ist dauerhaft geschlossen und nicht mehr buchbar. <br>
+            Der Bericht dient nur noch historischen Archivzwecken.
+        </p>
+    </div>
+    {% endif %}
 
     <div class="dossier-header" style="display: flex; justify-content: space-between; align-items: flex-start;">
 
         <div class="dossier-meta" style="position: relative; flex: 1; margin-right: 30px;">
 
-            {% if page.website %}
+            {% if page.website and page.closed != true %}
             <div style="position: absolute; top: 0; right: 0; z-index: 10;">
                 <a href="{{ page.website }}" target="_blank" rel="noopener" class="btn-provider" style="margin-top: 0;">
                     ZUM ANBIETER &raquo;
@@ -22,7 +69,10 @@ r.gamemaster.score %}
 
             <span class="provider">{{ page.provider }}</span>
 
-            <h2 style="padding-right: 220px;">{{ page.title }}</h2>
+            <h2 style="padding-right: 220px;">
+                {{ page.title }}
+                {% if page.closed %} <span style="color: #d32f2f; font-size: 0.6em; vertical-align: middle;">[INAKTIV]</span>{% endif %}
+            </h2>
 
             <p style="margin:0; font-size: 0.9rem; color: #555;">
                 <strong>Ort:</strong> {{ page.location.city }} | {{ page.location.address }}

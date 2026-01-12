@@ -4,6 +4,19 @@ title: "Einsatzkarte"
 permalink: /karte/
 ---
 
+<style>
+    .closed-stamp {
+        background-color: #d32f2f;
+        color: white;
+        padding: 4px 8px;
+        font-weight: bold;
+        text-transform: uppercase;
+        font-size: 0.8rem;
+        letter-spacing: 1px;
+        border: 1px solid rgba(255,255,255,0.3);
+    }
+</style>
+
 <section class="map-section">
     <h2 class="section-title">Einsatzorte</h2>
     <div id="escapeMap" class="grunge-map"></div>
@@ -55,8 +68,14 @@ permalink: /karte/
                         {% if forloop.first %} loading="eager" fetchpriority="high" {% else %} loading="lazy" {% endif %}
                         width="400"
                         height="200"
-                        style="object-fit: cover;"
+                        style="object-fit: cover; {% if review.closed %}filter: grayscale(100%);{% endif %}"
                     >
+                    
+                    {% if review.closed %}
+                        <div class="pending-overlay">
+                            <span class="closed-stamp">AKTE GESCHLOSSEN</span>
+                        </div>
+                    {% endif %}
                     
                     {% if review.planned %}
                         <div class="pending-overlay">
@@ -66,6 +85,7 @@ permalink: /karte/
                         <div class="pending-overlay">
                             <span class="pending-stamp">ERMITTLUNG LÄUFT</span>
                         </div>
+
                     {% else %}
                         <div class="rating-badge">
                             ★ {{ calculated_avg | round: 1 }}
@@ -74,10 +94,19 @@ permalink: /karte/
                 </div>
 
                 <div class="card-content">
-                    <h3>{{ review.title }}</h3>
+                    <h3>
+                        {{ review.title }}
+                        {% if review.closed %}
+                            <span style="color: #d32f2f; font-size: 0.7em;">[INAKTIV]</span>
+                        {% endif %}
+                    </h3>
                     <p class="card-meta">{{ review.provider }} | {{ review.location.city }}</p>
                     
-                    {% if review.planned %}
+                    {% if review.closed %}
+                         <div style="margin: 10px 0; color: #d32f2f; font-size: 0.9rem; font-family: 'Courier New'; font-weight: bold;">
+                            [NICHT MEHR BUCHBAR]
+                        </div>
+                    {% elsif review.planned %}
                         <div style="margin: 10px 0; color: #1E88E5; font-size: 0.9rem; font-family: 'Courier New'; font-weight: bold;">
                             [Termin: {{ review.visit_date | date: "%d.%m.%Y" }}]
                         </div>
@@ -85,9 +114,11 @@ permalink: /karte/
                         <div style="margin: 10px 0; color: #888; font-size: 0.9rem; font-family: 'Courier New';">
                             [Daten werden noch ausgewertet...]
                         </div>
-                    {% else %}
-                        <div class="stars small" style="--score: {{ calculated_avg }};">★★★★★</div>
                     {% endif %}
+
+                    {% unless review.planned or review.pending %}
+                        <div class="stars small" style="--score: {{ calculated_avg }};">★★★★★</div>
+                    {% endunless %}
                     
                     <p class="card-summary">{{ review.summary | truncate: 100, "..." }}</p>
                 </div>
@@ -114,7 +145,8 @@ permalink: /karte/
             "rating": {{ calculated_avg }},
             "provider": "{{ review.provider }}",
             "pending": {{ review.pending | default: false }},
-            "planned": {{ review.planned | default: false }}
+            "planned": {{ review.planned | default: false }},
+            "closed": {{ review.closed | default: false }}
         }{% unless forloop.last %},{% endunless %}
         {% endfor %}
     ];

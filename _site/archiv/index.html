@@ -38,7 +38,21 @@
     </nav>
 
     <main>
-      <div id="archive-top"></div>
+      <style>
+    /* Neuer Style für den geschlossenen Status auf Kacheln */
+    .closed-stamp {
+        background-color: #d32f2f; /* Alarm-Rot */
+        color: white;
+        padding: 4px 8px;
+        font-weight: bold;
+        text-transform: uppercase;
+        font-size: 0.8rem;
+        letter-spacing: 1px;
+        border: 1px solid rgba(255,255,255,0.3);
+    }
+</style>
+
+<div id="archive-top"></div>
 
 <section class="archive-section">
     <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; border-bottom: 2px solid var(--rust-primary); padding-bottom: 1rem; margin-bottom: 2rem;">
@@ -76,23 +90,31 @@
                 <div class="card-image-wrapper">
                     
 
-                    <img src="/assets/images/thumbnails/Dorsten-GefangenImSchacht.webp" alt="Gefangen im Schacht" loading="lazy" width="400" height="200" style="object-fit: cover;" />
+                    <img src="/assets/images/thumbnails/Dorsten-GefangenImSchacht.webp" alt="Gefangen im Schacht" loading="lazy" width="400" height="200" style="object-fit: cover; " />
                     
+                    
+
                     
                         <div class="pending-overlay">
                             <span class="pending-stamp">ERMITTLUNG LÄUFT</span>
                         </div>
                     
+                    
                 </div>
 
                 <div class="card-content">
-                    <h3>Gefangen im Schacht</h3>
+                    <h3>
+                        Gefangen im Schacht
+                        
+                    </h3>
                     <p class="card-meta">Mining Adventure World | Dorsten</p>
                     
                     
                         <div style="margin: 10px 0; color: #888; font-size: 0.9rem; font-family: 'Courier New';">
                             [Daten werden noch ausgewertet...]
                         </div>
+                    
+                    
                     
                     
                     <p class="card-summary"></p>
@@ -111,8 +133,10 @@
                 <div class="card-image-wrapper">
                     
 
-                    <img src="/assets/images/thumbnails/Dorsten-HotelDerGeheimnisvollenUhren.webp" alt="Das Hotel der geheimnisvollen Uhren" loading="lazy" width="400" height="200" style="object-fit: cover;" />
+                    <img src="/assets/images/thumbnails/Dorsten-HotelDerGeheimnisvollenUhren.webp" alt="Das Hotel der geheimnisvollen Uhren" loading="lazy" width="400" height="200" style="object-fit: cover; " />
                     
+                    
+
                     
                         <div class="rating-badge">
                             ★ 3.8
@@ -121,8 +145,13 @@
                 </div>
 
                 <div class="card-content">
-                    <h3>Das Hotel der geheimnisvollen Uhren</h3>
+                    <h3>
+                        Das Hotel der geheimnisvollen Uhren
+                        
+                    </h3>
                     <p class="card-meta">Mining Adventure World | Dorsten</p>
+                    
+                    
                     
                     
                         <div class="stars small" style="--score: 3.8;">★★★★★</div>
@@ -138,14 +167,65 @@
         
         
 
+        <a href="/reviews/Dorsten_Kammerflimmern/" class="room-card-link" data-title="kammerflimmern" data-provider="mining adventure world" data-rating="-1">
+            
+            <article class="room-card">
+                <div class="card-image-wrapper">
+                    
+
+                    <img src="/assets/images/thumbnails/Dorsten-Kammerflimmern.webp" alt="Kammerflimmern" loading="lazy" width="400" height="200" style="object-fit: cover; filter: grayscale(100%);" />
+                    
+                    
+                        <div class="pending-overlay">
+                            <span class="closed-stamp">AKTE GESCHLOSSEN</span>
+                        </div>
+                    
+
+                    
+                        <div class="pending-overlay">
+                            <span class="pending-stamp">ERMITTLUNG LÄUFT</span>
+                        </div>
+                    
+                    
+                </div>
+
+                <div class="card-content">
+                    <h3>
+                        Kammerflimmern
+                        
+                            <span style="color: #d32f2f; font-size: 0.7em;">[INAKTIV]</span>
+                        
+                    </h3>
+                    <p class="card-meta">Mining Adventure World | Dorsten</p>
+                    
+                    
+                        <div style="margin: 10px 0; color: #d32f2f; font-size: 0.9rem; font-family: 'Courier New'; font-weight: bold;">
+                            [NICHT MEHR BUCHBAR]
+                        </div>
+                    
+                    
+                    
+                    
+                    <p class="card-summary"></p>
+                </div>
+            </article>
+        </a>
+        
+        
+        
+        
+        
+
         <a href="/reviews/Hagen_BiggsTheLegacy/" class="room-card-link" data-title="biggs - the legacy" data-provider="exitnow" data-rating="4.0">
             
             <article class="room-card">
                 <div class="card-image-wrapper">
                     
 
-                    <img src="/assets/images/thumbnails/Hagen-BiggsLegacy.webp" alt="Biggs - The Legacy" loading="lazy" width="400" height="200" style="object-fit: cover;" />
+                    <img src="/assets/images/thumbnails/Hagen-BiggsLegacy.webp" alt="Biggs - The Legacy" loading="lazy" width="400" height="200" style="object-fit: cover; " />
                     
+                    
+
                     
                         <div class="rating-badge">
                             ★ 4.0
@@ -154,8 +234,13 @@
                 </div>
 
                 <div class="card-content">
-                    <h3>Biggs - The Legacy</h3>
+                    <h3>
+                        Biggs - The Legacy
+                        
+                    </h3>
                     <p class="card-meta">EXITNow | Hagen</p>
+                    
+                    
                     
                     
                         <div class="stars small" style="--score: 4.0;">★★★★★</div>
@@ -177,23 +262,31 @@
                 <div class="card-image-wrapper">
                     
 
-                    <img src="/assets/images/rooms/Koeln-Geisterpirat.webp" alt="Die drei ??? und das Erbe des Geisterpiraten" loading="lazy" width="400" height="200" style="object-fit: cover;" />
+                    <img src="/assets/images/rooms/Koeln-Geisterpirat.webp" alt="Die drei ??? und das Erbe des Geisterpiraten" loading="lazy" width="400" height="200" style="object-fit: cover; " />
                     
+                    
+
                     
                         <div class="pending-overlay">
                             <span class="pending-stamp">ERMITTLUNG LÄUFT</span>
                         </div>
                     
+                    
                 </div>
 
                 <div class="card-content">
-                    <h3>Die drei ??? und das Erbe des Geisterpiraten</h3>
+                    <h3>
+                        Die drei ??? und das Erbe des Geisterpiraten
+                        
+                    </h3>
                     <p class="card-meta">Die drei ??? Mission Rocky Beach | Köln</p>
                     
                     
                         <div style="margin: 10px 0; color: #888; font-size: 0.9rem; font-family: 'Courier New';">
                             [Daten werden noch ausgewertet...]
                         </div>
+                    
+                    
                     
                     
                     <p class="card-summary"></p>
@@ -212,8 +305,10 @@
                 <div class="card-image-wrapper">
                     
 
-                    <img src="/assets/images/rooms/Koeln-Illusionen.webp" alt="Die drei ??? und die Nacht der Illusionen" loading="lazy" width="400" height="200" style="object-fit: cover;" />
+                    <img src="/assets/images/rooms/Koeln-Illusionen.webp" alt="Die drei ??? und die Nacht der Illusionen" loading="lazy" width="400" height="200" style="object-fit: cover; " />
                     
+                    
+
                     
                         <div class="rating-badge">
                             ★ 3.1
@@ -222,8 +317,13 @@
                 </div>
 
                 <div class="card-content">
-                    <h3>Die drei ??? und die Nacht der Illusionen</h3>
+                    <h3>
+                        Die drei ??? und die Nacht der Illusionen
+                        
+                    </h3>
                     <p class="card-meta">Die drei ??? Mission Rocky Beach | Köln</p>
+                    
+                    
                     
                     
                         <div class="stars small" style="--score: 3.1;">★★★★★</div>
@@ -245,8 +345,10 @@
                 <div class="card-image-wrapper">
                     
 
-                    <img src="/assets/images/rooms/Koeln-Truhe.webp" alt="Die drei ??? und die Truhe der Meister" loading="lazy" width="400" height="200" style="object-fit: cover;" />
+                    <img src="/assets/images/rooms/Koeln-Truhe.webp" alt="Die drei ??? und die Truhe der Meister" loading="lazy" width="400" height="200" style="object-fit: cover; " />
                     
+                    
+
                     
                         <div class="rating-badge">
                             ★ 3.9
@@ -255,8 +357,13 @@
                 </div>
 
                 <div class="card-content">
-                    <h3>Die drei ??? und die Truhe der Meister</h3>
+                    <h3>
+                        Die drei ??? und die Truhe der Meister
+                        
+                    </h3>
                     <p class="card-meta">Die drei ??? Mission Rocky Beach | Köln</p>
+                    
+                    
                     
                     
                         <div class="stars small" style="--score: 3.9;">★★★★★</div>
@@ -278,23 +385,31 @@
                 <div class="card-image-wrapper">
                     
 
-                    <img src="/assets/images/rooms/Krefeld-Experiment.webp" alt="Das Experiment" loading="lazy" width="400" height="200" style="object-fit: cover;" />
+                    <img src="/assets/images/rooms/Krefeld-Experiment.webp" alt="Das Experiment" loading="lazy" width="400" height="200" style="object-fit: cover; " />
                     
+                    
+
                     
                         <div class="pending-overlay">
                             <span class="pending-stamp">ERMITTLUNG LÄUFT</span>
                         </div>
                     
+                    
                 </div>
 
                 <div class="card-content">
-                    <h3>Das Experiment</h3>
+                    <h3>
+                        Das Experiment
+                        
+                    </h3>
                     <p class="card-meta">Limbus Escape Games | Krefeld</p>
                     
                     
                         <div style="margin: 10px 0; color: #888; font-size: 0.9rem; font-family: 'Courier New';">
                             [Daten werden noch ausgewertet...]
                         </div>
+                    
+                    
                     
                     
                     <p class="card-summary"></p>
@@ -313,8 +428,10 @@
                 <div class="card-image-wrapper">
                     
 
-                    <img src="/assets/images/rooms/EinsatzGeplant.webp" alt="Die magische Reise, Kapitel 1" loading="lazy" width="400" height="200" style="object-fit: cover;" />
+                    <img src="/assets/images/rooms/EinsatzGeplant.webp" alt="Die magische Reise, Kapitel 1" loading="lazy" width="400" height="200" style="object-fit: cover; " />
                     
+                    
+
                     
                         <div class="pending-overlay">
                             <span class="planned-stamp">EINSATZ GEPLANT</span>
@@ -323,13 +440,18 @@
                 </div>
 
                 <div class="card-content">
-                    <h3>Die magische Reise, Kapitel 1</h3>
+                    <h3>
+                        Die magische Reise, Kapitel 1
+                        
+                    </h3>
                     <p class="card-meta">Limbus Escape Games | Krefeld</p>
                     
                     
                         <div style="margin: 10px 0; color: #1E88E5; font-size: 0.9rem; font-family: 'Courier New'; font-weight: bold;">
                             [Termin: 24.01.2026]
                         </div>
+                    
+                    
                     
                     
                     <p class="card-summary"></p>
@@ -348,8 +470,10 @@
                 <div class="card-image-wrapper">
                     
 
-                    <img src="/assets/images/rooms/Krefeld-Panzerknacker.webp" alt="Panzerknacker" loading="lazy" width="400" height="200" style="object-fit: cover;" />
+                    <img src="/assets/images/rooms/Krefeld-Panzerknacker.webp" alt="Panzerknacker" loading="lazy" width="400" height="200" style="object-fit: cover; " />
                     
+                    
+
                     
                         <div class="rating-badge">
                             ★ 4.6
@@ -358,8 +482,13 @@
                 </div>
 
                 <div class="card-content">
-                    <h3>Panzerknacker</h3>
+                    <h3>
+                        Panzerknacker
+                        
+                    </h3>
                     <p class="card-meta">Limbus Escape Games | Krefeld</p>
+                    
+                    
                     
                     
                         <div class="stars small" style="--score: 4.6;">★★★★★</div>
@@ -381,8 +510,10 @@
                 <div class="card-image-wrapper">
                     
 
-                    <img src="/assets/images/rooms/Moenchengladbach-Crystal.webp" alt="Crystal Camper" loading="lazy" width="400" height="200" style="object-fit: cover;" />
+                    <img src="/assets/images/rooms/Moenchengladbach-Crystal.webp" alt="Crystal Camper" loading="lazy" width="400" height="200" style="object-fit: cover; " />
                     
+                    
+
                     
                         <div class="rating-badge">
                             ★ 3.9
@@ -391,8 +522,13 @@
                 </div>
 
                 <div class="card-content">
-                    <h3>Crystal Camper</h3>
+                    <h3>
+                        Crystal Camper
+                        
+                    </h3>
                     <p class="card-meta">TIMEBREAK Mönchengladbach | Mönchengladbach</p>
+                    
+                    
                     
                     
                         <div class="stars small" style="--score: 3.9;">★★★★★</div>
@@ -414,8 +550,10 @@
                 <div class="card-image-wrapper">
                     
 
-                    <img src="/assets/images/rooms/Moenchengladbach-Hollywood.webp" alt="Hollywood Bombs" loading="lazy" width="400" height="200" style="object-fit: cover;" />
+                    <img src="/assets/images/rooms/Moenchengladbach-Hollywood.webp" alt="Hollywood Bombs" loading="lazy" width="400" height="200" style="object-fit: cover; " />
                     
+                    
+
                     
                         <div class="rating-badge">
                             ★ 3.4
@@ -424,8 +562,13 @@
                 </div>
 
                 <div class="card-content">
-                    <h3>Hollywood Bombs</h3>
+                    <h3>
+                        Hollywood Bombs
+                        
+                    </h3>
                     <p class="card-meta">TIMEBREAK Mönchengladbach | Mönchengladbach</p>
+                    
+                    
                     
                     
                         <div class="stars small" style="--score: 3.4;">★★★★★</div>
@@ -447,23 +590,31 @@
                 <div class="card-image-wrapper">
                     
 
-                    <img src="/assets/images/rooms/Moenchengladbach-Nervenheilanstalt.webp" alt="Dr. Brown Boyd's Nervenheilanstalt" loading="lazy" width="400" height="200" style="object-fit: cover;" />
+                    <img src="/assets/images/rooms/Moenchengladbach-Nervenheilanstalt.webp" alt="Dr. Brown Boyd's Nervenheilanstalt" loading="lazy" width="400" height="200" style="object-fit: cover; " />
                     
+                    
+
                     
                         <div class="pending-overlay">
                             <span class="pending-stamp">ERMITTLUNG LÄUFT</span>
                         </div>
                     
+                    
                 </div>
 
                 <div class="card-content">
-                    <h3>Dr. Brown Boyd's Nervenheilanstalt</h3>
+                    <h3>
+                        Dr. Brown Boyd's Nervenheilanstalt
+                        
+                    </h3>
                     <p class="card-meta">TIMEBREAK Mönchengladbach | Mönchengladbach</p>
                     
                     
                         <div style="margin: 10px 0; color: #888; font-size: 0.9rem; font-family: 'Courier New';">
                             [Daten werden noch ausgewertet...]
                         </div>
+                    
+                    
                     
                     
                     <p class="card-summary"></p>
@@ -482,8 +633,10 @@
                 <div class="card-image-wrapper">
                     
 
-                    <img src="/assets/images/rooms/Moenchengladbach-Zagini.webp" alt="Dunkle Machenschaften in Zaginis Zauberladen" loading="lazy" width="400" height="200" style="object-fit: cover;" />
+                    <img src="/assets/images/rooms/Moenchengladbach-Zagini.webp" alt="Dunkle Machenschaften in Zaginis Zauberladen" loading="lazy" width="400" height="200" style="object-fit: cover; " />
                     
+                    
+
                     
                         <div class="rating-badge">
                             ★ 4.3
@@ -492,8 +645,13 @@
                 </div>
 
                 <div class="card-content">
-                    <h3>Dunkle Machenschaften in Zaginis Zauberladen</h3>
+                    <h3>
+                        Dunkle Machenschaften in Zaginis Zauberladen
+                        
+                    </h3>
                     <p class="card-meta">TIMEBREAK Mönchengladbach | Mönchengladbach</p>
+                    
+                    
                     
                     
                         <div class="stars small" style="--score: 4.3;">★★★★★</div>
@@ -515,8 +673,10 @@
                 <div class="card-image-wrapper">
                     
 
-                    <img src="/assets/images/thumbnails/Wuppertal-Sherlock.webp" alt="Der Fall Sherlock Holmes" loading="lazy" width="400" height="200" style="object-fit: cover;" />
+                    <img src="/assets/images/thumbnails/Wuppertal-Sherlock.webp" alt="Der Fall Sherlock Holmes" loading="lazy" width="400" height="200" style="object-fit: cover; " />
                     
+                    
+
                     
                         <div class="rating-badge">
                             ★ 3.0
@@ -525,8 +685,13 @@
                 </div>
 
                 <div class="card-content">
-                    <h3>Der Fall Sherlock Holmes</h3>
+                    <h3>
+                        Der Fall Sherlock Holmes
+                        
+                    </h3>
                     <p class="card-meta">Escape Stories | Wuppertal</p>
+                    
+                    
                     
                     
                         <div class="stars small" style="--score: 3.0;">★★★★★</div>

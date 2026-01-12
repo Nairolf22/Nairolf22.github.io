@@ -4,6 +4,20 @@ title: Das vollständige Archiv
 permalink: /archiv/
 ---
 
+<style>
+    /* Neuer Style für den geschlossenen Status auf Kacheln */
+    .closed-stamp {
+        background-color: #d32f2f; /* Alarm-Rot */
+        color: white;
+        padding: 4px 8px;
+        font-weight: bold;
+        text-transform: uppercase;
+        font-size: 0.8rem;
+        letter-spacing: 1px;
+        border: 1px solid rgba(255,255,255,0.3);
+    }
+</style>
+
 <div id="archive-top"></div>
 
 <section class="archive-section">
@@ -57,9 +71,15 @@ permalink: /archiv/
                         loading="lazy" 
                         width="400" 
                         height="200" 
-                        style="object-fit: cover;"
+                        style="object-fit: cover; {% if review.closed %}filter: grayscale(100%);{% endif %}"
                     >
                     
+                    {% if review.closed %}
+                        <div class="pending-overlay">
+                            <span class="closed-stamp">AKTE GESCHLOSSEN</span>
+                        </div>
+                    {% endif %}
+
                     {% if review.planned %}
                         <div class="pending-overlay">
                             <span class="planned-stamp">EINSATZ GEPLANT</span>
@@ -68,6 +88,7 @@ permalink: /archiv/
                         <div class="pending-overlay">
                             <span class="pending-stamp">ERMITTLUNG LÄUFT</span>
                         </div>
+                    
                     {% else %}
                         <div class="rating-badge">
                             ★ {{ calculated_avg | round: 1 }}
@@ -76,10 +97,19 @@ permalink: /archiv/
                 </div>
 
                 <div class="card-content">
-                    <h3>{{ review.title }}</h3>
+                    <h3>
+                        {{ review.title }}
+                        {% if review.closed %}
+                            <span style="color: #d32f2f; font-size: 0.7em;">[INAKTIV]</span>
+                        {% endif %}
+                    </h3>
                     <p class="card-meta">{{ review.provider }} | {{ review.location.city }}</p>
                     
-                    {% if review.planned %}
+                    {% if review.closed %}
+                        <div style="margin: 10px 0; color: #d32f2f; font-size: 0.9rem; font-family: 'Courier New'; font-weight: bold;">
+                            [NICHT MEHR BUCHBAR]
+                        </div>
+                    {% elsif review.planned %}
                         <div style="margin: 10px 0; color: #1E88E5; font-size: 0.9rem; font-family: 'Courier New'; font-weight: bold;">
                             [Termin: {{ review.visit_date | date: "%d.%m.%Y" }}]
                         </div>
@@ -87,9 +117,11 @@ permalink: /archiv/
                         <div style="margin: 10px 0; color: #888; font-size: 0.9rem; font-family: 'Courier New';">
                             [Daten werden noch ausgewertet...]
                         </div>
-                    {% else %}
-                        <div class="stars small" style="--score: {{ calculated_avg }};">★★★★★</div>
                     {% endif %}
+                    
+                    {% unless review.planned or review.pending %}
+                        <div class="stars small" style="--score: {{ calculated_avg }};">★★★★★</div>
+                    {% endunless %}
                     
                     <p class="card-summary">{{ review.summary | truncate: 100, "..." }}</p>
                 </div>
