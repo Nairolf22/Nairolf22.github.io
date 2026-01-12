@@ -19,7 +19,7 @@ participants:
   - Jessica
 ratings:
   atmosphere:
-    score: 3.5
+    score: 3.0
     text: "Die Atmosphäre profitiert stark von den Live-Schauspielern, die einen bereits bei der Begrüßung in Empfang nehmen und direkt in die Welt des Hotels ziehen. Es herrscht eine angenehm schaurige ('spooky') Grundstimmung, ohne dass es sich um einen klassischen Horror-Raum handelt. Ein deutlicher Abzug resultiert jedoch aus technischen Mängeln: Mehrere Mechanismen funktionierten trotz korrekter Lösung nicht einwandfrei, was den Spielfluss und die Immersion leider empfindlich störte. Wir hoffen, dass diese Mängel nur kurzzeitig da waren und inzwischen behoben sind."
   story:
     score: 4.0

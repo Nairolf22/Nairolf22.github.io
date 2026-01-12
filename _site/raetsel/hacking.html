@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Terminal Zugriff | Escape Room Reviews</title>
+
+  <meta name="description"
+    content="Reviewing the best and darkest escape rooms.">
+  <link rel="canonical" href="http://localhost:4000/raetsel/hacking">
+
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.Default.css" />
+
+
+  
+</head>
+
+<body>
+
+  <div class="site-wrapper">
+
+    <header>
+      <a href="/" style="text-decoration:none;">
+        <h1>The Escape Archive</h1>
+      </a>
+      <p style="color: #ccc; margin-top: 10px;">• EST. 2025 • CLASSIFIED REVIEWS •</p>
+    </header>
+
+    <nav>
+        <a href="/karte/">Karte</a>
+        <a href="/archiv/">Alle Akten</a>
+        <a href="/team/">Über uns</a>
+        <a href="/kontakt/">Kontakt</a>
+        <a href="/raetsel/">Training</a>
+    </nav>
+
+    <main>
+      <style>
+    /* --- HACKING TERMINAL STYLES --- */
+    .puzzle-container {
+        max-width: 800px;
+        margin: 2rem auto;
+        font-family: 'Courier New', monospace;
+    }
+
+    /* Lesbare Box für Instruktionen (Standardisiert) */
+    .readable-panel {
+        background-color: rgba(0, 0, 0, 0.8);
+        padding: 1.5rem;
+        border-radius: 8px;
+        border: 1px solid #444;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+        margin-bottom: 2rem;
+    }
+
+    /* Der CRT Monitor Look */
+    .monitor-casing {
+        background: #111;
+        padding: 20px;
+        border-radius: 15px;
+        box-shadow: inset 0 0 50px rgba(0,0,0,0.8), 0 0 20px rgba(0,0,0,0.5);
+        border: 2px solid #333;
+    }
+
+    .terminal-screen {
+        background-color: #000;
+        color: #0f0; /* Matrix Grün */
+        font-family: 'Courier New', monospace;
+        padding: 20px;
+        border-radius: 5px;
+        min-height: 400px;
+        position: relative;
+        overflow: hidden;
+        border: 1px solid #0f0;
+        box-shadow: 0 0 10px rgba(0, 255, 0, 0.2);
+    }
+
+    /* Scanline Effekt (Retro TV) */
+    .terminal-screen::before {
+        content: " ";
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+        z-index: 2;
+        background-size: 100% 2px, 3px 100%;
+        pointer-events: none;
+    }
+
+    /* Der flackernde Cursor */
+    .cursor {
+        display: inline-block;
+        width: 10px;
+        height: 18px;
+        background-color: #0f0;
+        animation: blink 1s step-end infinite;
+        vertical-align: middle;
+    }
+
+    @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+    /* Grid für die "Pakete" */
+    .packet-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 15px;
+        margin-top: 20px;
+        position: relative;
+        z-index: 5; /* Über den Scanlines */
+    }
+
+    .packet-btn {
+        background: rgba(0, 50, 0, 0.8);
+        border: 1px solid #0f0;
+        color: #0f0;
+        padding: 10px;
+        text-align: center;
+        cursor: pointer;
+        transition: all 0.2s;
+        font-size: 1.1rem;
+        text-transform: uppercase;
+    }
+    
+    .packet-btn:hover {
+        background: #0f0;
+        color: #000;
+        box-shadow: 0 0 15px #0f0;
+    }
+
+    /* Log Output Bereich */
+    .log-output {
+        height: 150px;
+        overflow-y: auto;
+        border-bottom: 1px dashed #0f0;
+        margin-bottom: 20px;
+        padding-bottom: 10px;
+        font-size: 0.9rem;
+        line-height: 1.4;
+    }
+    
+    .log-line { margin: 2px 0; }
+    .log-error { color: #d32f2f; }
+    .log-success { color: #0f0; font-weight: bold; }
+    .log-sys { color: #005500; }
+
+    /* Success Overlay */
+    #system-unlocked {
+        display: none;
+        position: absolute;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: rgba(0,0,0,0.9);
+        z-index: 10;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .ascii-art {
+        font-size: 0.7rem; 
+        line-height: 1; 
+        white-space: pre; 
+        margin-bottom: 2rem;
+    }
+
+</style>
+
+<div class="review-dossier">
+    
+    <div class="mission-briefing">
+        <h1>System-Eingriff</h1>
+        <h3>// CYBER-WARFARE MODUL</h3>
+        
+        <div class="readable-panel" style="margin-top: 2rem;">
+            <p style="color: #f0f0f0; margin: 0; line-height: 1.6;">
+                <strong>Mission:</strong> Die Firewall blockiert den Zugriff auf die Mainframe-Daten. 
+                Wir haben einen Backdoor-Port gefunden, aber wir müssen das richtige Datenpaket senden, um ihn zu öffnen.
+                
+                <br><br>
+                <strong>Die Kriterien für das korrekte Paket:</strong>
+            </p>
+            <ul style="color: #bbb; margin-top: 1rem; line-height: 1.6;">
+                <li>Das Protokoll muss eine <strong>ungerade Zahl</strong> sein.</li>
+                <li>Das Protokoll muss <strong>durch 7 teilbar</strong> sein.</li>
+                <li>Die <strong>Quersumme</strong> (Summe der Ziffern) muss genau <strong>13</strong> ergeben.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="puzzle-container">
+        
+        <div class="monitor-casing">
+            <div class="terminal-screen">
+                
+                <div id="system-unlocked">
+                    <div class="ascii-art" style="color: #0f0;">
+   _____ _    _  _____ _____ 
+  / ____| |  | |/ ____/ ____|
+ | (___ | |  | | |   | |     
+  \___ \| |  | | |   | |     
+  ____) | |__| | |___| |____ 
+ |_____/ \____/ \_____\_____|
+                    </div>
+                    <h2 style="color: #0f0; margin-bottom: 1rem;">FIREWALL DOWN</h2>
+                    <p style="color: #fff; margin-bottom: 2rem;">Zugriff auf Mainframe gewährt.</p>
+                    <a href="/" class="btn-back" style="background: #0f0; color: #000; font-weight: bold; padding: 10px 20px; text-decoration: none;">
+                        SYSTEM VERLASSEN
+                    </a>
+                </div>
+
+                <div class="log-output" id="console-log">
+                    <div class="log-line">> SYSTEM INITIALIZED...</div>
+                    <div class="log-line">> CONNECTING TO NODE 192.168.0.X...</div>
+                    <div class="log-line">> CONNECTION ESTABLISHED.</div>
+                    <div class="log-line">> WAITING FOR HANDSHAKE PROTOCOL...</div>
+                    <div class="log-line log-sys">_</div>
+                </div>
+
+                <div style="border-top: 1px solid #004400; padding-top: 10px;">
+                    <div style="margin-bottom: 10px;">SELECT PROTOCOL ID: <span class="cursor"></span></div>
+                    
+                    <div class="packet-grid">
+                        <button class="packet-btn" onclick="tryHack(42)">ID_042</button>
+                        
+                        <button class="packet-btn" onclick="tryHack(21)">ID_021</button>
+                        
+                        <button class="packet-btn" onclick="tryHack(139)">ID_139</button>
+                        
+                        <button class="packet-btn" onclick="tryHack(49)">ID_049</button>
+                        
+                        <button class="packet-btn" onclick="tryHack(56)">ID_056</button>
+                        
+                        <button class="packet-btn" onclick="tryHack(77)">ID_077</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+    const consoleLog = document.getElementById('console-log');
+    
+    function log(message, type = 'normal') {
+        const line = document.createElement('div');
+        line.classList.add('log-line');
+        if (type === 'error') line.classList.add('log-error');
+        if (type === 'success') line.classList.add('log-success');
+        
+        // Zeitstempel hinzufügen
+        const now = new Date();
+        const time = now.toLocaleTimeString('de-DE', { hour12: false });
+        line.innerText = `[${time}] ${message}`;
+        
+        consoleLog.appendChild(line);
+        consoleLog.scrollTop = consoleLog.scrollHeight; // Auto-Scroll nach unten
+    }
+
+    function tryHack(id) {
+        log(`SENDING PACKET ID_${id.toString().padStart(3, '0')}...`);
+        
+        // Künstliche Verzögerung für Spannung
+        setTimeout(() => {
+            if (id === 49) {
+                // SUCCESS
+                log(`PACKET ACCEPTED. CHECKSUM OK.`, 'success');
+                log(`BYPASSING SECURITY...`, 'success');
+                
+                setTimeout(() => {
+                    document.getElementById('system-unlocked').style.display = 'flex';
+                }, 1000);
+            } else {
+                // FAILURE ANALYSIS
+                let reason = "UNKNOWN ERROR";
+                
+                // Analyse für den User
+                if (id % 2 === 0) reason = "PARITY ERROR (NUMBER IS EVEN)";
+                else if (id % 7 !== 0) reason = "PROTOCOL MISMATCH (NOT DIVISIBLE BY 7)";
+                else {
+                    // Quersumme berechnen
+                    let sum = 0;
+                    let str = id.toString();
+                    for(let i=0; i<str.length; i++) sum += parseInt(str[i]);
+                    reason = `CHECKSUM INVALID (SUM IS ${sum}, REQUIRED 13)`;
+                }
+
+                log(`ACCESS DENIED: ${reason}`, 'error');
+            }
+        }, 600);
+    }
+</script>
+
+
+    </main>
+
+    <footer id="footer">
+          <p>&copy; The Escape Archive.</p>
+          <p>
+            <a href="/philosophie/" style="color: var(--rust-light);">Unsere Philosophie</a>
+            <span style="color: #666; margin: 0 5px;">•</span>
+            
+            <a href="/bewertungssystem/" style="color: var(--rust-light);">Bewertungssystem</a>
+            <span style="color: #666; margin: 0 5px;">•</span>
+            
+            <a href="/hall-of-fame/" style="color: var(--rust-light);">Hall of Fame</a>
+            <span style="color: #666; margin: 0 5px;">•</span>
+            
+            <a href="/was-ist-ein-escape-room/" style="color: var(--rust-light);">Was ist ein Escape-Room?</a>
+            <span style="color: #666; margin: 0 5px;">•</span>
+            
+            <a href="/impressum/" style="color: var(--rust-light);">Impressum & Datenschutz</a>
+          </p>
+        </footer>
+
+  </div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/leaflet.markercluster/dist/leaflet.markercluster.js"></script>
+
+  <script src="/assets/js/main.js"></script>
+  <script data-goatcounter="https://nairolf22.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+  
+  <style>
+      /* --- MASTER MOBILE FIX (ALLE PATCHES VEREINT) --- */
+
+      /* 1. Genereller Überlauf-Schutz */
+      /* Verhindert, dass irgendetwas breiter als der Bildschirm wird */
+      html, body {
+          overflow-x: hidden; /* Schneidet seitliches Scrollen ab */
+          max-width: 100%;
+          position: relative;
+      }
+
+      /* Sorgt dafür, dass Rahmen und Padding in die Breite eingerechnet werden */
+      * {
+          box-sizing: border-box;
+      }
+
+      /* 2. Text-Handling & Umbrüche */
+      /* Zuerst erlauben wir überall Umbrüche und Silbentrennung ... */
+      p, h1, h2, h3, h4, h5, h6, div, span, a {
+          overflow-wrap: break-word;
+          word-wrap: break-word;
+          hyphens: auto; /* Gut für Fließtext */
+      }
+
+      /* ... ABER für Überschriften verbieten wir die Silbentrennung wieder (WICHTIG!) */
+      /* Damit wird "Legacy" nicht getrennt, "The Escape Archive" bleibt ganz, etc. */
+      h1, h2, h3, h4, h5, h6,
+      header h1,
+      .card-content h3,
+      .dossier-header h2 {
+          hyphens: none !important;
+          -webkit-hyphens: none !important;
+          word-break: normal !important;
+      }
+
+      /* 3. Navigation reparieren */
+      @media (max-width: 600px) {
+          nav {
+              display: flex;
+              flex-wrap: wrap;       /* Erlaubt Umbruch in neue Zeile */
+              justify-content: center;
+              gap: 10px;
+              padding: 10px 0;
+          }
+          
+          nav a {
+              margin: 0 5px;
+              font-size: 0.85rem;
+              white-space: nowrap;   /* Link-Text bricht nicht in sich um */
+          }
+          
+          /* Spezialanpassung für den Haupttitel auf kleinen Handys */
+          header h1 {
+              font-size: 2rem;
+          }
+      }
+
+      /* 4. Breite Elemente bändigen (Kontaktboxen etc.) */
+      .contact-box, div[style*="border"] {
+          max-width: 100%;
+          width: auto;
+      }
+      
+      main, .site-wrapper {
+          padding-left: 15px;
+          padding-right: 15px;
+          width: 100%;
+      }
+
+      /* 5. REPARATUR DER REVIEW-DETAILSEITE (WICHTIG!) */
+      /* Sorgt dafür, dass der "Zum Anbieter"-Button mobil nicht rechts rausfliegt */
+      @media (max-width: 768px) {
+          
+          /* Header untereinander anordnen */
+          .dossier-header {
+              flex-direction: column !important;
+          }
+
+          /* Metadaten auf volle Breite */
+          .dossier-meta {
+              margin-right: 0 !important;
+              width: 100% !important;
+          }
+
+          /* Titel anpassen */
+          .dossier-meta h2 {
+              padding-right: 0 !important;
+              font-size: 1.8rem;
+          }
+
+          /* Den Button "einfangen" und über den Titel setzen */
+          .dossier-meta > div[style*="position: absolute"] {
+              position: static !important; /* Löst die starre Positionierung */
+              margin-bottom: 1rem;
+              display: block;
+              width: 100%; /* Volle Breite für den Button */
+          }
+
+          /* Button zentrieren */
+          .btn-provider {
+              display: block;
+              text-align: center;
+              width: 100%;
+              margin-top: 0 !important;
+          }
+
+          /* Rating-Box positionieren */
+          .stamp-box {
+              margin-top: 1rem;
+              align-self: flex-start;
+          }
+      }
+  </style>
+</body>
+
+</html>

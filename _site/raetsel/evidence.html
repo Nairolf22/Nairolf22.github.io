@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Die Beweiskette | Escape Room Reviews</title>
+
+  <meta name="description"
+    content="Reviewing the best and darkest escape rooms.">
+  <link rel="canonical" href="http://localhost:4000/raetsel/evidence">
+
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.Default.css" />
+
+
+  
+</head>
+
+<body>
+
+  <div class="site-wrapper">
+
+    <header>
+      <a href="/" style="text-decoration:none;">
+        <h1>The Escape Archive</h1>
+      </a>
+      <p style="color: #ccc; margin-top: 10px;">• EST. 2025 • CLASSIFIED REVIEWS •</p>
+    </header>
+
+    <nav>
+        <a href="/karte/">Karte</a>
+        <a href="/archiv/">Alle Akten</a>
+        <a href="/team/">Über uns</a>
+        <a href="/kontakt/">Kontakt</a>
+        <a href="/raetsel/">Training</a>
+    </nav>
+
+    <main>
+      <style>
+    /* --- STYLES FÜR DAS DEDUKTIONS-BOARD --- */
+    .puzzle-container {
+        max-width: 900px;
+        margin: 2rem auto;
+        font-family: 'Courier New', monospace;
+    }
+
+    /* Lesbare Textbox */
+    .readable-panel {
+        background-color: rgba(0, 0, 0, 0.7);
+        padding: 1.5rem;
+        border-radius: 8px;
+        border: 1px solid #444;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+        margin-bottom: 2rem;
+    }
+
+    /* Das Grid für die Aussagen */
+    .suspect-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1.5rem;
+        margin-top: 2rem;
+    }
+
+    /* Die einzelne Aussage-Karte */
+    .suspect-card {
+        background: #1a1a1a;
+        border: 2px solid #444;
+        border-radius: 4px;
+        padding: 0;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .suspect-card:hover {
+        border-color: #888;
+        transform: translateY(-2px);
+    }
+
+    /* Wenn ausgewählt */
+    .suspect-card.selected {
+        border-color: var(--rust-primary, #e57373);
+        box-shadow: 0 0 15px rgba(229, 115, 115, 0.3);
+        background: #222;
+    }
+    .suspect-card.selected::before {
+        content: "VERDÄCHTIG";
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        color: var(--rust-primary, #e57373);
+        font-weight: bold;
+        font-size: 0.8rem;
+        border: 1px solid var(--rust-primary, #e57373);
+        padding: 2px 6px;
+        transform: rotate(-5deg);
+    }
+    
+    /* NEU: Style für gesperrte Karten nach Lösung */
+    .suspect-card.locked {
+        cursor: default;
+        opacity: 0.6;
+    }
+    .suspect-card.locked:hover {
+        border-color: #444; /* Kein Hover-Effekt mehr */
+        transform: none;
+    }
+    /* Die richtige Karte bleibt voll sichtbar */
+    .suspect-card.locked.selected {
+        opacity: 1;
+        border-color: #4CAF50; /* Grün statt Rot bei Erfolg */
+        box-shadow: 0 0 20px rgba(76, 175, 80, 0.4);
+    }
+    .suspect-card.locked.selected::before {
+        content: "LÜGNER";
+        color: #4CAF50;
+        border-color: #4CAF50;
+    }
+
+    /* Header der Karte (Name & Rolle) */
+    .card-header {
+        background: #111;
+        padding: 1rem;
+        border-bottom: 1px solid #333;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    .avatar-placeholder {
+        width: 40px;
+        height: 40px;
+        background: #333;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        color: #777;
+    }
+    .agent-name {
+        color: #fff;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    /* Der Text der Aussage */
+    .statement-box {
+        padding: 1.5rem;
+        color: #ccc;
+        font-style: italic;
+        line-height: 1.5;
+        position: relative;
+    }
+    .statement-box::before {
+        content: "“";
+        font-size: 3rem;
+        position: absolute;
+        top: 0;
+        left: 10px;
+        color: #333;
+        font-family: serif;
+    }
+
+    /* Action Bereich */
+    .action-area {
+        text-align: center;
+        margin-top: 3rem;
+    }
+    
+    .btn-analyze {
+        background-color: #333;
+        color: #fff;
+        border: 1px solid #fff;
+        padding: 1rem 3rem;
+        font-family: 'Courier New', monospace;
+        font-size: 1.1rem;
+        cursor: pointer;
+        transition: all 0.3s;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+    }
+    .btn-analyze:hover {
+        background-color: #fff;
+        color: #000;
+    }
+    .btn-analyze:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+
+    /* Ergebnis Screen */
+    #result-screen {
+        display: none;
+        margin-top: 2rem;
+        text-align: center;
+        animation: fadeIn 0.5s;
+    }
+    .result-box {
+        padding: 2rem;
+        border: 2px solid;
+        display: inline-block;
+        max-width: 600px;
+        background: rgba(0,0,0,0.8);
+    }
+    .result-success { border-color: #4CAF50; color: #fff; }
+    .result-fail { border-color: #d32f2f; color: #fff; }
+
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+</style>
+
+<div class="review-dossier">
+    
+    <div class="mission-briefing">
+        <h1>Die Beweiskette</h1>
+        <h3>// LOGIK-MODUL: FINDE DEN WIDERSPRUCH</h3>
+        
+        <div class="readable-panel" style="margin-top: 2rem;">
+            <p style="color: #f0f0f0; margin: 0; line-height: 1.6;">
+                <strong>Vorfall #92-B:</strong> Um 03:00 Uhr wurde im Archiv der "Stille Alarm" ausgelöst.
+                Vier Agenten waren zu dieser Zeit im Gebäude.
+                Wir wissen: <strong>Genau einer von ihnen lügt</strong>.
+                Die anderen drei sagen die Wahrheit.
+            </p>
+            <hr style="border:0; border-top:1px dashed #666; margin: 1rem 0;">
+            <p style="color: #bbb; font-size: 0.9rem;">
+                <strong>Auftrag:</strong> Analysieren Sie die Aussagen. Identifizieren Sie den Lügner, um den Fall zu lösen.
+                Klicken Sie auf die Aussage, die logisch falsch sein muss.
+            </p>
+        </div>
+    </div>
+
+    <div class="puzzle-container">
+        
+        <div class="suspect-grid">
+            
+            <div class="suspect-card" onclick="selectSuspect('florian', this)">
+                <div class="card-header">
+                    <div class="avatar-placeholder">F</div>
+                    <div class="agent-name">Agent Florian</div>
+                </div>
+                <div class="statement-box">
+                    "Ich habe gesehen, wie Jessica den Alarm ausgelöst hat. Sie war es!"
+                </div>
+            </div>
+
+            <div class="suspect-card" onclick="selectSuspect('jessica', this)">
+                <div class="card-header">
+                    <div class="avatar-placeholder">J</div>
+                    <div class="agent-name">Agent Jessica</div>
+                </div>
+                <div class="statement-box">
+                    "Das ist Unsinn. Marvin hat den Alarm ausgelöst!"
+                </div>
+            </div>
+
+            <div class="suspect-card" onclick="selectSuspect('christine', this)">
+                <div class="card-header">
+                    <div class="avatar-placeholder">C</div>
+                    <div class="agent-name">Agent Christine</div>
+                </div>
+                <div class="statement-box">
+                    "Ich kann versichern: Ich war es auf keinen Fall."
+                </div>
+            </div>
+
+            <div class="suspect-card" onclick="selectSuspect('marvin', this)">
+                <div class="card-header">
+                    <div class="avatar-placeholder">M</div>
+                    <div class="agent-name">Agent Marvin</div>
+                </div>
+                <div class="statement-box">
+                    "Glaubt ihr nicht. Jessica sagt nicht die Wahrheit."
+                </div>
+            </div>
+
+        </div>
+
+        <div class="action-area">
+            <button id="btn-check" class="btn-analyze" onclick="analyzeEvidence()" disabled>
+                LÜGNER ENTLARVEN
+            </button>
+        </div>
+
+        <div id="result-screen">
+            <div id="result-content" class="result-box">
+                </div>
+            <br><br>
+            <a href="/" id="btn-back" class="btn-back" style="display:none; color: #000; text-decoration: underline;">
+                ← Fall abschließen & Zurück
+            </a>
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+    let selectedSuspect = null;
+    let gameSolved = false; // NEU: Statusvariable
+    const LIAR_ID = "jessica";
+
+    function selectSuspect(id, element) {
+        // WICHTIG: Wenn gelöst, keine Interaktion mehr zulassen
+        if (gameSolved) return;
+
+        // Reset selection visual
+        document.querySelectorAll('.suspect-card').forEach(el => el.classList.remove('selected'));
+        
+        // Set new selection
+        element.classList.add('selected');
+        selectedSuspect = id;
+        
+        // Enable button
+        document.getElementById('btn-check').disabled = false;
+        
+        // Hide result if visible (reset try)
+        document.getElementById('result-screen').style.display = 'none';
+    }
+
+    function analyzeEvidence() {
+        const resultScreen = document.getElementById('result-screen');
+        const resultContent = document.getElementById('result-content');
+        const btnBack = document.getElementById('btn-back');
+
+        resultScreen.style.display = 'block';
+
+        if (selectedSuspect === LIAR_ID) {
+            // SUCCESS
+            gameSolved = true; // NEU: Spiel sperren
+            
+            // Alle Karten visuell sperren
+            document.querySelectorAll('.suspect-card').forEach(el => el.classList.add('locked'));
+
+            resultContent.className = "result-box result-success";
+            resultContent.innerHTML = `
+                <h2 style="color:#4CAF50; margin-top:0;">DEDUKTION KORREKT</h2>
+                <p><strong>Analyse bestätigt:</strong> Agent Jessica lügt.</p>
+                <hr style="border:0; border-top:1px solid #4CAF50; margin:1rem 0; opacity:0.5;">
+                <p style="font-size:0.9rem;">
+                    Wenn Jessica lügt, ist ihre Aussage "Marvin war es" falsch.<br>
+                    Florians Aussage "Jessica war es" ist wahr.<br>
+                    Marvins Aussage "Jessica lügt" ist wahr.<br>
+                    Christines Aussage "Ich war es nicht" ist wahr.<br>
+                    <br>
+                    <strong>Ergebnis:</strong> Es gibt genau eine Lüge. Der Fall ist gelöst.
+                </p>
+            `;
+            btnBack.style.display = 'inline-block';
+            document.getElementById('btn-check').style.display = 'none'; // Button entfernen
+            
+        } else {
+            // FAIL
+            resultContent.className = "result-box result-fail";
+            resultContent.innerHTML = `
+                <h2 style="color:#d32f2f; margin-top:0;">FEHLKALKULATION</h2>
+                <p>Das ergibt einen logischen Widerspruch.</p>
+                <p style="font-size:0.9rem; color:#ccc;">
+                    Wenn dieser Agent lügen würde, müssten plötzlich zwei Personen lügen oder jemand Unschuldiges wäre belastet. 
+                    <br>Überprüfen Sie die Aussagen erneut.
+                </p>
+            `;
+        }
+    }
+</script>
+
+
+    </main>
+
+    <footer id="footer">
+          <p>&copy; The Escape Archive.</p>
+          <p>
+            <a href="/philosophie/" style="color: var(--rust-light);">Unsere Philosophie</a>
+            <span style="color: #666; margin: 0 5px;">•</span>
+            
+            <a href="/bewertungssystem/" style="color: var(--rust-light);">Bewertungssystem</a>
+            <span style="color: #666; margin: 0 5px;">•</span>
+            
+            <a href="/hall-of-fame/" style="color: var(--rust-light);">Hall of Fame</a>
+            <span style="color: #666; margin: 0 5px;">•</span>
+            
+            <a href="/was-ist-ein-escape-room/" style="color: var(--rust-light);">Was ist ein Escape-Room?</a>
+            <span style="color: #666; margin: 0 5px;">•</span>
+            
+            <a href="/impressum/" style="color: var(--rust-light);">Impressum & Datenschutz</a>
+          </p>
+        </footer>
+
+  </div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/leaflet.markercluster/dist/leaflet.markercluster.js"></script>
+
+  <script src="/assets/js/main.js"></script>
+  <script data-goatcounter="https://nairolf22.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+  
+  <style>
+      /* --- MASTER MOBILE FIX (ALLE PATCHES VEREINT) --- */
+
+      /* 1. Genereller Überlauf-Schutz */
+      /* Verhindert, dass irgendetwas breiter als der Bildschirm wird */
+      html, body {
+          overflow-x: hidden; /* Schneidet seitliches Scrollen ab */
+          max-width: 100%;
+          position: relative;
+      }
+
+      /* Sorgt dafür, dass Rahmen und Padding in die Breite eingerechnet werden */
+      * {
+          box-sizing: border-box;
+      }
+
+      /* 2. Text-Handling & Umbrüche */
+      /* Zuerst erlauben wir überall Umbrüche und Silbentrennung ... */
+      p, h1, h2, h3, h4, h5, h6, div, span, a {
+          overflow-wrap: break-word;
+          word-wrap: break-word;
+          hyphens: auto; /* Gut für Fließtext */
+      }
+
+      /* ... ABER für Überschriften verbieten wir die Silbentrennung wieder (WICHTIG!) */
+      /* Damit wird "Legacy" nicht getrennt, "The Escape Archive" bleibt ganz, etc. */
+      h1, h2, h3, h4, h5, h6,
+      header h1,
+      .card-content h3,
+      .dossier-header h2 {
+          hyphens: none !important;
+          -webkit-hyphens: none !important;
+          word-break: normal !important;
+      }
+
+      /* 3. Navigation reparieren */
+      @media (max-width: 600px) {
+          nav {
+              display: flex;
+              flex-wrap: wrap;       /* Erlaubt Umbruch in neue Zeile */
+              justify-content: center;
+              gap: 10px;
+              padding: 10px 0;
+          }
+          
+          nav a {
+              margin: 0 5px;
+              font-size: 0.85rem;
+              white-space: nowrap;   /* Link-Text bricht nicht in sich um */
+          }
+          
+          /* Spezialanpassung für den Haupttitel auf kleinen Handys */
+          header h1 {
+              font-size: 2rem;
+          }
+      }
+
+      /* 4. Breite Elemente bändigen (Kontaktboxen etc.) */
+      .contact-box, div[style*="border"] {
+          max-width: 100%;
+          width: auto;
+      }
+      
+      main, .site-wrapper {
+          padding-left: 15px;
+          padding-right: 15px;
+          width: 100%;
+      }
+
+      /* 5. REPARATUR DER REVIEW-DETAILSEITE (WICHTIG!) */
+      /* Sorgt dafür, dass der "Zum Anbieter"-Button mobil nicht rechts rausfliegt */
+      @media (max-width: 768px) {
+          
+          /* Header untereinander anordnen */
+          .dossier-header {
+              flex-direction: column !important;
+          }
+
+          /* Metadaten auf volle Breite */
+          .dossier-meta {
+              margin-right: 0 !important;
+              width: 100% !important;
+          }
+
+          /* Titel anpassen */
+          .dossier-meta h2 {
+              padding-right: 0 !important;
+              font-size: 1.8rem;
+          }
+
+          /* Den Button "einfangen" und über den Titel setzen */
+          .dossier-meta > div[style*="position: absolute"] {
+              position: static !important; /* Löst die starre Positionierung */
+              margin-bottom: 1rem;
+              display: block;
+              width: 100%; /* Volle Breite für den Button */
+          }
+
+          /* Button zentrieren */
+          .btn-provider {
+              display: block;
+              text-align: center;
+              width: 100%;
+              margin-top: 0 !important;
+          }
+
+          /* Rating-Box positionieren */
+          .stamp-box {
+              margin-top: 1rem;
+              align-self: flex-start;
+          }
+      }
+  </style>
+</body>
+
+</html>

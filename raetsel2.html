@@ -1,0 +1,335 @@
+---
+layout: default
+title: "Die Beweiskette"
+permalink: /raetsel/evidence
+---
+
+<style>
+    /* --- STYLES FÜR DAS DEDUKTIONS-BOARD --- */
+    .puzzle-container {
+        max-width: 900px;
+        margin: 2rem auto;
+        font-family: 'Courier New', monospace;
+    }
+
+    /* Lesbare Textbox */
+    .readable-panel {
+        background-color: rgba(0, 0, 0, 0.7);
+        padding: 1.5rem;
+        border-radius: 8px;
+        border: 1px solid #444;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+        margin-bottom: 2rem;
+    }
+
+    /* Das Grid für die Aussagen */
+    .suspect-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1.5rem;
+        margin-top: 2rem;
+    }
+
+    /* Die einzelne Aussage-Karte */
+    .suspect-card {
+        background: #1a1a1a;
+        border: 2px solid #444;
+        border-radius: 4px;
+        padding: 0;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .suspect-card:hover {
+        border-color: #888;
+        transform: translateY(-2px);
+    }
+
+    /* Wenn ausgewählt */
+    .suspect-card.selected {
+        border-color: var(--rust-primary, #e57373);
+        box-shadow: 0 0 15px rgba(229, 115, 115, 0.3);
+        background: #222;
+    }
+    .suspect-card.selected::before {
+        content: "VERDÄCHTIG";
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        color: var(--rust-primary, #e57373);
+        font-weight: bold;
+        font-size: 0.8rem;
+        border: 1px solid var(--rust-primary, #e57373);
+        padding: 2px 6px;
+        transform: rotate(-5deg);
+    }
+    
+    /* NEU: Style für gesperrte Karten nach Lösung */
+    .suspect-card.locked {
+        cursor: default;
+        opacity: 0.6;
+    }
+    .suspect-card.locked:hover {
+        border-color: #444; /* Kein Hover-Effekt mehr */
+        transform: none;
+    }
+    /* Die richtige Karte bleibt voll sichtbar */
+    .suspect-card.locked.selected {
+        opacity: 1;
+        border-color: #4CAF50; /* Grün statt Rot bei Erfolg */
+        box-shadow: 0 0 20px rgba(76, 175, 80, 0.4);
+    }
+    .suspect-card.locked.selected::before {
+        content: "LÜGNER";
+        color: #4CAF50;
+        border-color: #4CAF50;
+    }
+
+    /* Header der Karte (Name & Rolle) */
+    .card-header {
+        background: #111;
+        padding: 1rem;
+        border-bottom: 1px solid #333;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    .avatar-placeholder {
+        width: 40px;
+        height: 40px;
+        background: #333;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        color: #777;
+    }
+    .agent-name {
+        color: #fff;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    /* Der Text der Aussage */
+    .statement-box {
+        padding: 1.5rem;
+        color: #ccc;
+        font-style: italic;
+        line-height: 1.5;
+        position: relative;
+    }
+    .statement-box::before {
+        content: "“";
+        font-size: 3rem;
+        position: absolute;
+        top: 0;
+        left: 10px;
+        color: #333;
+        font-family: serif;
+    }
+
+    /* Action Bereich */
+    .action-area {
+        text-align: center;
+        margin-top: 3rem;
+    }
+    
+    .btn-analyze {
+        background-color: #333;
+        color: #fff;
+        border: 1px solid #fff;
+        padding: 1rem 3rem;
+        font-family: 'Courier New', monospace;
+        font-size: 1.1rem;
+        cursor: pointer;
+        transition: all 0.3s;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+    }
+    .btn-analyze:hover {
+        background-color: #fff;
+        color: #000;
+    }
+    .btn-analyze:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+
+    /* Ergebnis Screen */
+    #result-screen {
+        display: none;
+        margin-top: 2rem;
+        text-align: center;
+        animation: fadeIn 0.5s;
+    }
+    .result-box {
+        padding: 2rem;
+        border: 2px solid;
+        display: inline-block;
+        max-width: 600px;
+        background: rgba(0,0,0,0.8);
+    }
+    .result-success { border-color: #4CAF50; color: #fff; }
+    .result-fail { border-color: #d32f2f; color: #fff; }
+
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+</style>
+
+<div class="review-dossier">
+    
+    <div class="mission-briefing">
+        <h1>Die Beweiskette</h1>
+        <h3>// LOGIK-MODUL: FINDE DEN WIDERSPRUCH</h3>
+        
+        <div class="readable-panel" style="margin-top: 2rem;">
+            <p style="color: #f0f0f0; margin: 0; line-height: 1.6;">
+                <strong>Vorfall #92-B:</strong> Um 03:00 Uhr wurde im Archiv der "Stille Alarm" ausgelöst.
+                Vier Agenten waren zu dieser Zeit im Gebäude.
+                Wir wissen: <strong>Genau einer von ihnen lügt</strong>.
+                Die anderen drei sagen die Wahrheit.
+            </p>
+            <hr style="border:0; border-top:1px dashed #666; margin: 1rem 0;">
+            <p style="color: #bbb; font-size: 0.9rem;">
+                <strong>Auftrag:</strong> Analysieren Sie die Aussagen. Identifizieren Sie den Lügner, um den Fall zu lösen.
+                Klicken Sie auf die Aussage, die logisch falsch sein muss.
+            </p>
+        </div>
+    </div>
+
+    <div class="puzzle-container">
+        
+        <div class="suspect-grid">
+            
+            <div class="suspect-card" onclick="selectSuspect('florian', this)">
+                <div class="card-header">
+                    <div class="avatar-placeholder">F</div>
+                    <div class="agent-name">Agent Florian</div>
+                </div>
+                <div class="statement-box">
+                    "Ich habe gesehen, wie Jessica den Alarm ausgelöst hat. Sie war es!"
+                </div>
+            </div>
+
+            <div class="suspect-card" onclick="selectSuspect('jessica', this)">
+                <div class="card-header">
+                    <div class="avatar-placeholder">J</div>
+                    <div class="agent-name">Agent Jessica</div>
+                </div>
+                <div class="statement-box">
+                    "Das ist Unsinn. Marvin hat den Alarm ausgelöst!"
+                </div>
+            </div>
+
+            <div class="suspect-card" onclick="selectSuspect('christine', this)">
+                <div class="card-header">
+                    <div class="avatar-placeholder">C</div>
+                    <div class="agent-name">Agent Christine</div>
+                </div>
+                <div class="statement-box">
+                    "Ich kann versichern: Ich war es auf keinen Fall."
+                </div>
+            </div>
+
+            <div class="suspect-card" onclick="selectSuspect('marvin', this)">
+                <div class="card-header">
+                    <div class="avatar-placeholder">M</div>
+                    <div class="agent-name">Agent Marvin</div>
+                </div>
+                <div class="statement-box">
+                    "Glaubt ihr nicht. Jessica sagt nicht die Wahrheit."
+                </div>
+            </div>
+
+        </div>
+
+        <div class="action-area">
+            <button id="btn-check" class="btn-analyze" onclick="analyzeEvidence()" disabled>
+                LÜGNER ENTLARVEN
+            </button>
+        </div>
+
+        <div id="result-screen">
+            <div id="result-content" class="result-box">
+                </div>
+            <br><br>
+            <a href="/" id="btn-back" class="btn-back" style="display:none; color: #000; text-decoration: underline;">
+                ← Fall abschließen & Zurück
+            </a>
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+    let selectedSuspect = null;
+    let gameSolved = false; // NEU: Statusvariable
+    const LIAR_ID = "jessica";
+
+    function selectSuspect(id, element) {
+        // WICHTIG: Wenn gelöst, keine Interaktion mehr zulassen
+        if (gameSolved) return;
+
+        // Reset selection visual
+        document.querySelectorAll('.suspect-card').forEach(el => el.classList.remove('selected'));
+        
+        // Set new selection
+        element.classList.add('selected');
+        selectedSuspect = id;
+        
+        // Enable button
+        document.getElementById('btn-check').disabled = false;
+        
+        // Hide result if visible (reset try)
+        document.getElementById('result-screen').style.display = 'none';
+    }
+
+    function analyzeEvidence() {
+        const resultScreen = document.getElementById('result-screen');
+        const resultContent = document.getElementById('result-content');
+        const btnBack = document.getElementById('btn-back');
+
+        resultScreen.style.display = 'block';
+
+        if (selectedSuspect === LIAR_ID) {
+            // SUCCESS
+            gameSolved = true; // NEU: Spiel sperren
+            
+            // Alle Karten visuell sperren
+            document.querySelectorAll('.suspect-card').forEach(el => el.classList.add('locked'));
+
+            resultContent.className = "result-box result-success";
+            resultContent.innerHTML = `
+                <h2 style="color:#4CAF50; margin-top:0;">DEDUKTION KORREKT</h2>
+                <p><strong>Analyse bestätigt:</strong> Agent Jessica lügt.</p>
+                <hr style="border:0; border-top:1px solid #4CAF50; margin:1rem 0; opacity:0.5;">
+                <p style="font-size:0.9rem;">
+                    Wenn Jessica lügt, ist ihre Aussage "Marvin war es" falsch.<br>
+                    Florians Aussage "Jessica war es" ist wahr.<br>
+                    Marvins Aussage "Jessica lügt" ist wahr.<br>
+                    Christines Aussage "Ich war es nicht" ist wahr.<br>
+                    <br>
+                    <strong>Ergebnis:</strong> Es gibt genau eine Lüge. Der Fall ist gelöst.
+                </p>
+            `;
+            btnBack.style.display = 'inline-block';
+            document.getElementById('btn-check').style.display = 'none'; // Button entfernen
+            
+        } else {
+            // FAIL
+            resultContent.className = "result-box result-fail";
+            resultContent.innerHTML = `
+                <h2 style="color:#d32f2f; margin-top:0;">FEHLKALKULATION</h2>
+                <p>Das ergibt einen logischen Widerspruch.</p>
+                <p style="font-size:0.9rem; color:#ccc;">
+                    Wenn dieser Agent lügen würde, müssten plötzlich zwei Personen lügen oder jemand Unschuldiges wäre belastet. 
+                    <br>Überprüfen Sie die Aussagen erneut.
+                </p>
+            `;
+        }
+    }
+</script>

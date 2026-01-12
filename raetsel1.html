@@ -1,0 +1,298 @@
+---
+layout: default
+title: "Sicherheitsüberprüfung"
+permalink: /raetsel/pin
+---
+
+<style>
+    /* --- RÄTSEL STYLES --- */
+    .puzzle-container {
+        max-width: 600px;
+        margin: 2rem auto;
+        font-family: 'Courier New', monospace;
+    }
+
+    /* Neu: Lesbarkeits-Box für Texte */
+    .readable-panel {
+        background-color: rgba(0, 0, 0, 0.7); /* Dunkler Hintergrund für Kontrast */
+        padding: 1.5rem;
+        border-radius: 8px;
+        border: 1px solid #444;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    }
+
+    /* Das "Display" */
+    .terminal-screen {
+        background-color: #000;
+        border: 4px solid #333;
+        border-radius: 10px;
+        padding: 2rem;
+        text-align: center;
+        margin-bottom: 2rem;
+        box-shadow: 0 0 20px rgba(0,0,0,0.5);
+        position: relative;
+    }
+    
+    .status-text {
+        color: #d32f2f; /* Rot für LOCKED */
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-weight: bold;
+        text-shadow: 0 0 5px rgba(211, 47, 47, 0.5);
+    }
+
+    .code-display {
+        background: #111;
+        color: #fff;
+        font-size: 2.5rem;
+        letter-spacing: 10px;
+        padding: 10px;
+        border: 1px solid #444;
+        margin: 1rem 0;
+        min-height: 60px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* Das Tastenfeld */
+    .keypad {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
+        max-width: 300px;
+        margin: 0 auto;
+    }
+
+    .key {
+        background: #222;
+        border: 1px solid #444;
+        color: #fff; /* Heller Text auf Tasten */
+        padding: 15px;
+        font-size: 1.5rem;
+        cursor: pointer;
+        transition: all 0.1s;
+        border-radius: 5px;
+        user-select: none;
+        text-align: center;
+        font-weight: bold;
+    }
+    .key:active {
+        background: #444;
+        transform: scale(0.95);
+    }
+    .key-action {
+        background: #333;
+        font-size: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-transform: uppercase;
+    }
+    .key-clear { color: #e57373; }
+    .key-enter { color: #8BC34A; }
+
+    /* Die Hinweise - Jetzt mit Kontrast-Hintergrund */
+    .clue-box {
+        margin-top: 3rem;
+        text-align: left;
+        /* Erbt jetzt .readable-panel Styles */
+    }
+    .clue-title {
+        color: var(--rust-primary, #e57373);
+        font-weight: bold;
+        margin-bottom: 1rem;
+        text-transform: uppercase;
+        font-size: 1.1rem;
+        border-bottom: 1px dashed #666;
+        padding-bottom: 0.5rem;
+    }
+    
+    .clue-list li {
+        margin-bottom: 0.8rem;
+        color: #fff; /* Reines Weiß für den Haupttext */
+    }
+
+    /* Erfolgsscreen */
+    #success-screen {
+        display: none;
+        text-align: center;
+        animation: fadeIn 1s ease;
+    }
+    
+    .success-stamp {
+        border: 3px solid #4CAF50;
+        color: #4CAF50;
+        font-size: 2rem;
+        font-weight: bold;
+        padding: 1rem 2rem;
+        display: inline-block;
+        transform: rotate(-5deg);
+        margin-bottom: 2rem;
+        text-transform: uppercase;
+        background: rgba(0,0,0,0.8);
+    }
+
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes shake {
+        0% { transform: translate(1px, 1px) rotate(0deg); }
+        10% { transform: translate(-1px, -2px) rotate(-1deg); }
+        20% { transform: translate(-3px, 0px) rotate(1deg); }
+        30% { transform: translate(3px, 2px) rotate(0deg); }
+        40% { transform: translate(1px, -1px) rotate(1deg); }
+        50% { transform: translate(-1px, 2px) rotate(-1deg); }
+        60% { transform: translate(-3px, 1px) rotate(0deg); }
+        70% { transform: translate(3px, 1px) rotate(-1deg); }
+        80% { transform: translate(-1px, -1px) rotate(1deg); }
+        90% { transform: translate(1px, 2px) rotate(0deg); }
+        100% { transform: translate(1px, -2px) rotate(-1deg); }
+    }
+    .shake { animation: shake 0.5s; }
+
+</style>
+
+<div class="review-dossier">
+    
+    <div class="mission-briefing">
+        <h1>Sicherheitsüberprüfung</h1>
+        <h3>// LEVEL 5 ZUGRIFF ERFORDERLICH</h3>
+        
+        <div class="readable-panel" style="margin-top: 2rem;">
+            <p style="color: #f0f0f0; margin: 0; line-height: 1.6;">
+                <strong>Achtung, Agent.</strong> Zeigen Sie, dass sie bereit sind, Escape Rooms zu lösen.
+                Identifizieren Sie sich, indem Sie den 4-stelligen Override-Code eingeben.
+                Die Hinweise zur Lösung finden Sie in den öffentlich zugänglichen Akten unserer Einheit.
+            </p>
+        </div>
+    </div>
+
+    <div id="puzzle-interface" class="puzzle-container">
+        
+        <div class="terminal-screen" id="screen">
+            <div id="status-text" class="status-text">ZUGRIFF GESPERRT</div>
+            <div id="code-display" class="code-display">_ _ _ _</div>
+            <p style="font-size: 0.8rem; color: #888;">Geben Sie den Passcode ein</p>
+        </div>
+
+        <div class="keypad">
+            <div class="key" onclick="pressKey(1)">1</div>
+            <div class="key" onclick="pressKey(2)">2</div>
+            <div class="key" onclick="pressKey(3)">3</div>
+            <div class="key" onclick="pressKey(4)">4</div>
+            <div class="key" onclick="pressKey(5)">5</div>
+            <div class="key" onclick="pressKey(6)">6</div>
+            <div class="key" onclick="pressKey(7)">7</div>
+            <div class="key" onclick="pressKey(8)">8</div>
+            <div class="key" onclick="pressKey(9)">9</div>
+            <div class="key key-action key-clear" onclick="clearCode()">C</div>
+            <div class="key" onclick="pressKey(0)">0</div>
+            <div class="key key-action key-enter" onclick="checkCode()">↵</div>
+        </div>
+
+        <div class="clue-box readable-panel">
+            <div class="clue-title">Hinweise zur Dechiffrierung:</div>
+            <ul class="clue-list" style="list-style: none; padding: 0; line-height: 1.8;">
+                <li>
+                    <strong>Ziffer 1:</strong> Wie viele Personen gehören zum Kernteam "Die Anrufbeantworter"?
+                </li>
+                <li>
+                    <strong>Ziffer 2:</strong> Quersumme des Jahres, in dem unser gegründet wurde.
+                </li>
+                <li>
+                    <strong>Ziffer 3:</strong> Anzahl der Generationen von Escape Rooms, die wir unterscheiden.
+                </li>
+                <li>
+                    <strong>Ziffer 4:</strong> Ab wie vielen Sternen beginnt die "Eliteliga" (Herausragend)?
+                </li>
+            </ul>
+        </div>
+
+    </div>
+
+    <div id="success-screen">
+        <div class="terminal-screen" style="border-color: #4CAF50; background-color: rgba(0,0,0,0.9);">
+            <div class="status-text" style="color: #4CAF50;">ZUGRIFF GEWÄHRT</div>
+            <div class="success-stamp">MISSION SUCCESS</div>
+            <p style="color: #fff; margin-bottom: 2rem; font-size: 1.1rem;">
+                Identität bestätigt. Hervorragende Arbeit, Agent. <br>
+                Ihr logisches Verständnis qualifiziert Sie für weitere Einsätze.
+            </p>
+            
+            <a href="/" class="btn-back" style="background-color: #333; color: #fff; padding: 1rem 2rem; text-decoration: none; border: 1px solid #4CAF50; display: inline-block;">
+                ZURÜCK ZUR ZENTRALE
+            </a>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    // --- KONFIGURATION ---
+    // Lösung basierend auf deinen Daten:
+    // 1. Teamgröße: 6
+    // 2. EST 2025 -> 2+0+2+5 = 9
+    // 3. Generationen: 3
+    // 4. Elite ab: 4
+    const CORRECT_CODE = "6934";
+
+    let currentInput = "";
+    const display = document.getElementById('code-display');
+    const screen = document.getElementById('screen');
+    const statusText = document.getElementById('status-text');
+
+    function updateDisplay() {
+        let text = "";
+        for (let i = 0; i < 4; i++) {
+            if (i < currentInput.length) {
+                text += "• ";
+            } else {
+                text += "_ ";
+            }
+        }
+        display.innerText = text.trim();
+    }
+
+    function pressKey(num) {
+        if (currentInput.length < 4) {
+            currentInput += num.toString();
+            updateDisplay();
+        }
+    }
+
+    function clearCode() {
+        currentInput = "";
+        updateDisplay();
+        screen.classList.remove("shake");
+        statusText.innerText = "ZUGRIFF GESPERRT";
+        statusText.style.color = "#d32f2f";
+        screen.style.borderColor = "#333";
+    }
+
+    function checkCode() {
+        if (currentInput.length !== 4) return;
+
+        if (currentInput === CORRECT_CODE) {
+            // SUCCESS
+            statusText.innerText = "VERIFIZIERE...";
+            statusText.style.color = "#FFD700";
+            
+            setTimeout(() => {
+                document.getElementById('puzzle-interface').style.display = 'none';
+                document.getElementById('success-screen').style.display = 'block';
+            }, 800);
+
+        } else {
+            // FAIL
+            screen.classList.add("shake");
+            statusText.innerText = "CODE FALSCH";
+            display.innerText = "ERROR";
+            screen.style.borderColor = "#d32f2f";
+            
+            setTimeout(() => {
+                clearCode();
+            }, 1000);
+        }
+    }
+</script>
