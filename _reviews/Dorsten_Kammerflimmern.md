@@ -11,7 +11,7 @@ location:
 images:
   - "rooms/Dorsten-Kammerflimmern.webp"
 thumbnail: "thumbnails/Dorsten-Kammerflimmern.webp"
-visit_date: 2022-12-27   # Format: Jahr-Monat-Tag
+visit_date: 2022-01-15   # Format: Jahr-Monat-Tag
 participants:
   - Florian
   - Christine
