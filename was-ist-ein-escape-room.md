@@ -9,7 +9,7 @@ permalink: /was-ist-ein-escape-room/
     <div class="dossier-header">
         <h2 style="border-bottom: none; margin-bottom: 0;">Grundlagenwissen</h2>
         <p style="font-family: 'Courier New'; color: #666; margin-top: 0; font-size: 0.9rem;">
-            // DEFINITION & EVOLUTION: VOM SCHLOSS ZUR IMMERSION
+            // DEFINITION & EVOLUTION: WAS IST ESCAPE ROOM?
         </p>
     </div>
 
