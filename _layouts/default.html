@@ -4,7 +4,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{ page.title }} | Escape Room Reviews</title>
+  <title>
+    {% if page.layout == 'review' %}
+      {{ page.title }} ({{ page.provider }}, {{ page.location.city }}) - Test & Erfahrungen
+    {% else %}
+      {{ page.title }} | Escape Archive
+    {% endif %}
+  </title>
 
   <meta name="description"
     content="{% if page.summary %}{{ page.summary | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
