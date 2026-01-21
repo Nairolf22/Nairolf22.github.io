@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Unsere Philosophie & Tipps
+title: Escape Room HowTo - Unsere Philosophie & Tipps
 permalink: /philosophie/
 ---
 

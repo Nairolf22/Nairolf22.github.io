@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Die Hall of Fame
+title: Die besten Escape Rooms Deutschlands - Hall of Fame & Ranking
 permalink: /hall-of-fame/
 ---
 
