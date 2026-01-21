@@ -12,7 +12,7 @@ location:
 images:
   - "rooms/dummy.webp"
 thumbnail: "thumbnails/dummy.webp"
-visit_date: 1970-01-01   # Format: Jahr-Monat-Tag
+visit_date: 2023-12-22   # Format: Jahr-Monat-Tag
 participants:
   - Moritz
   - Lea
