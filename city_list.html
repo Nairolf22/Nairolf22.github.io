@@ -1,0 +1,75 @@
+---
+layout: default
+title: "Alle Städte im Überblick"
+permalink: /city/
+---
+
+<div class="review-dossier">
+    
+    <div class="mission-briefing">
+        <h1>Regionale Archive</h1>
+        <h3>// WÄHLEN SIE EINEN EINSATZORT</h3>
+        <p>
+            Unsere Agenten waren in ganz Deutschland unterwegs. 
+            Hier finden Sie alle Städte, in denen wir bereits Akten angelegt haben.
+        </p>
+    </div>
+
+    <hr style="border: 0; border-top: 2px dashed #444; margin: 3rem 0;">
+
+    <div class="card-grid">
+        
+        {% assign city_pages = site.pages | where_exp: "item", "item.city" | sort: "city" %}
+
+        {% for page in city_pages %}
+            
+            {% assign city_name = page.city %}
+            {% assign city_reviews = site.reviews | where: "location.city", city_name %}
+            {% assign room_count = city_reviews.size %}
+            {% assign first_room = city_reviews | first %}
+            
+            <a href="{{ page.url }}" class="room-card-link">
+                <article class="room-card">
+                    <div class="card-image-wrapper">
+                        {% if first_room.thumbnail %}
+                            <img src="/assets/images/{{ first_room.thumbnail }}" alt="{{ city_name }}" style="object-fit: cover; filter: sepia(0.3) contrast(1.1);">
+                        {% elsif first_room.images[0] %}
+                             <img src="/assets/images/{{ first_room.images[0] }}" alt="{{ city_name }}" style="object-fit: cover; filter: sepia(0.3) contrast(1.1);">
+                        {% else %}
+                             <img src="/assets/images/ui/no-signal.jpg" alt="{{ city_name }}">
+                        {% endif %}
+                        
+                        <div class="rating-badge" style="background: var(--rust-primary); color: #fff; border: none;">
+                            {{ room_count }} {% if room_count == 1 %}Akte{% else %}Akten{% endif %}
+                        </div>
+                    </div>
+
+                    <div class="card-content">
+                        <h3 style="text-transform: uppercase; font-size: 1.5rem; margin-bottom: 5px;">{{ city_name }}</h3>
+                        <p class="card-meta" style="margin-bottom: 1rem;">
+                            Sektor-Status: {% if room_count > 2 %}AKTIV{% else %}ERFORSCHUNG{% endif %}
+                        </p>
+                        
+                        <p class="card-summary" style="color: #666; font-size: 0.9rem;">
+                            Zeige alle getesteten Escape Rooms und Erfahrungsberichte aus dem Raum {{ city_name }}.
+                        </p>
+                        
+                        <span style="display: inline-block; margin-top: 15px; font-weight: bold; color: var(--rust-primary); font-size: 0.8rem;">
+                            >> ARCHIV ÖFFNEN
+                        </span>
+                    </div>
+                </article>
+            </a>
+
+        {% endfor %}
+
+    </div>
+
+    <div style="margin-top: 4rem; text-align: center;">
+        <p style="color: #888; font-family: 'Courier New'; font-size: 0.9rem;">
+            // Sie suchen etwas anderes?
+        </p>
+        <a href="/karte/" class="btn-back" style="margin-top: 10px;">Zur interaktiven Karte</a>
+    </div>
+
+</div>

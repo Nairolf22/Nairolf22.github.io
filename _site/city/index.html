@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alle Städte im Überblick | Escape Room Reviews</title>
+
+  <meta name="description"
+    content="Reviewing the best and darkest escape rooms.">
+  <link rel="canonical" href="http://localhost:4000/city/">
+
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.Default.css" />
+
+
+  
+</head>
+
+<body>
+
+  <div class="site-wrapper">
+
+    <header>
+      <a href="/" style="text-decoration:none;">
+        <h1>The Escape Archive</h1>
+      </a>
+      <p style="color: #ccc; margin-top: 10px;">• EST. 2025 • CLASSIFIED REVIEWS •</p>
+    </header>
+
+    <nav>
+        <a href="/karte/">Karte</a>
+        <a href="/archiv/">Alle Akten</a>
+        <a href="/team/">Über uns</a>
+        <a href="/kontakt/">Kontakt</a>
+        <a href="/raetsel/">Trainingslager</a>
+    </nav>
+
+    <main>
+      <div class="review-dossier">
+    
+    <div class="mission-briefing">
+        <h1>Regionale Archive</h1>
+        <h3>// WÄHLEN SIE EINEN EINSATZORT</h3>
+        <p>
+            Unsere Agenten waren in ganz Deutschland unterwegs. 
+            Hier finden Sie alle Städte, in denen wir bereits Akten angelegt haben.
+        </p>
+    </div>
+
+    <hr style="border: 0; border-top: 2px dashed #444; margin: 3rem 0;">
+
+    <div class="card-grid">
+        
+        
+
+        
+            
+            
+            
+            
+            
+            
+            <a href="/city/dorsten/" class="room-card-link">
+                <article class="room-card">
+                    <div class="card-image-wrapper">
+                        
+                            <img src="/assets/images/thumbnails/Dorsten-GefangenImSchacht.webp" alt="Dorsten" style="object-fit: cover; filter: sepia(0.3) contrast(1.1);">
+                        
+                        
+                        <div class="rating-badge" style="background: var(--rust-primary); color: #fff; border: none;">
+                            3 Akten
+                        </div>
+                    </div>
+
+                    <div class="card-content">
+                        <h3 style="text-transform: uppercase; font-size: 1.5rem; margin-bottom: 5px;">Dorsten</h3>
+                        <p class="card-meta" style="margin-bottom: 1rem;">
+                            Sektor-Status: AKTIV
+                        </p>
+                        
+                        <p class="card-summary" style="color: #666; font-size: 0.9rem;">
+                            Zeige alle getesteten Escape Rooms und Erfahrungsberichte aus dem Raum Dorsten.
+                        </p>
+                        
+                        <span style="display: inline-block; margin-top: 15px; font-weight: bold; color: var(--rust-primary); font-size: 0.8rem;">
+                            >> ARCHIV ÖFFNEN
+                        </span>
+                    </div>
+                </article>
+            </a>
+
+        
+            
+            
+            
+            
+            
+            
+            <a href="/city/hagen/" class="room-card-link">
+                <article class="room-card">
+                    <div class="card-image-wrapper">
+                        
+                            <img src="/assets/images/thumbnails/Hagen-BiggsLegacy.webp" alt="Hagen" style="object-fit: cover; filter: sepia(0.3) contrast(1.1);">
+                        
+                        
+                        <div class="rating-badge" style="background: var(--rust-primary); color: #fff; border: none;">
+                            1 Akte
+                        </div>
+                    </div>
+
+                    <div class="card-content">
+                        <h3 style="text-transform: uppercase; font-size: 1.5rem; margin-bottom: 5px;">Hagen</h3>
+                        <p class="card-meta" style="margin-bottom: 1rem;">
+                            Sektor-Status: ERFORSCHUNG
+                        </p>
+                        
+                        <p class="card-summary" style="color: #666; font-size: 0.9rem;">
+                            Zeige alle getesteten Escape Rooms und Erfahrungsberichte aus dem Raum Hagen.
+                        </p>
+                        
+                        <span style="display: inline-block; margin-top: 15px; font-weight: bold; color: var(--rust-primary); font-size: 0.8rem;">
+                            >> ARCHIV ÖFFNEN
+                        </span>
+                    </div>
+                </article>
+            </a>
+
+        
+            
+            
+            
+            
+            
+            
+            <a href="/city/krefeld/" class="room-card-link">
+                <article class="room-card">
+                    <div class="card-image-wrapper">
+                        
+                             <img src="/assets/images/rooms/Krefeld-Experiment.webp" alt="Krefeld" style="object-fit: cover; filter: sepia(0.3) contrast(1.1);">
+                        
+                        
+                        <div class="rating-badge" style="background: var(--rust-primary); color: #fff; border: none;">
+                            3 Akten
+                        </div>
+                    </div>
+
+                    <div class="card-content">
+                        <h3 style="text-transform: uppercase; font-size: 1.5rem; margin-bottom: 5px;">Krefeld</h3>
+                        <p class="card-meta" style="margin-bottom: 1rem;">
+                            Sektor-Status: AKTIV
+                        </p>
+                        
+                        <p class="card-summary" style="color: #666; font-size: 0.9rem;">
+                            Zeige alle getesteten Escape Rooms und Erfahrungsberichte aus dem Raum Krefeld.
+                        </p>
+                        
+                        <span style="display: inline-block; margin-top: 15px; font-weight: bold; color: var(--rust-primary); font-size: 0.8rem;">
+                            >> ARCHIV ÖFFNEN
+                        </span>
+                    </div>
+                </article>
+            </a>
+
+        
+            
+            
+            
+            
+            
+            
+            <a href="/city/koeln/" class="room-card-link">
+                <article class="room-card">
+                    <div class="card-image-wrapper">
+                        
+                             <img src="/assets/images/rooms/Koeln-Geisterpirat.webp" alt="Köln" style="object-fit: cover; filter: sepia(0.3) contrast(1.1);">
+                        
+                        
+                        <div class="rating-badge" style="background: var(--rust-primary); color: #fff; border: none;">
+                            3 Akten
+                        </div>
+                    </div>
+
+                    <div class="card-content">
+                        <h3 style="text-transform: uppercase; font-size: 1.5rem; margin-bottom: 5px;">Köln</h3>
+                        <p class="card-meta" style="margin-bottom: 1rem;">
+                            Sektor-Status: AKTIV
+                        </p>
+                        
+                        <p class="card-summary" style="color: #666; font-size: 0.9rem;">
+                            Zeige alle getesteten Escape Rooms und Erfahrungsberichte aus dem Raum Köln.
+                        </p>
+                        
+                        <span style="display: inline-block; margin-top: 15px; font-weight: bold; color: var(--rust-primary); font-size: 0.8rem;">
+                            >> ARCHIV ÖFFNEN
+                        </span>
+                    </div>
+                </article>
+            </a>
+
+        
+            
+            
+            
+            
+            
+            
+            <a href="/city/moenchengladbach/" class="room-card-link">
+                <article class="room-card">
+                    <div class="card-image-wrapper">
+                        
+                             <img src="/assets/images/rooms/Moenchengladbach-Crystal.webp" alt="Mönchengladbach" style="object-fit: cover; filter: sepia(0.3) contrast(1.1);">
+                        
+                        
+                        <div class="rating-badge" style="background: var(--rust-primary); color: #fff; border: none;">
+                            4 Akten
+                        </div>
+                    </div>
+
+                    <div class="card-content">
+                        <h3 style="text-transform: uppercase; font-size: 1.5rem; margin-bottom: 5px;">Mönchengladbach</h3>
+                        <p class="card-meta" style="margin-bottom: 1rem;">
+                            Sektor-Status: AKTIV
+                        </p>
+                        
+                        <p class="card-summary" style="color: #666; font-size: 0.9rem;">
+                            Zeige alle getesteten Escape Rooms und Erfahrungsberichte aus dem Raum Mönchengladbach.
+                        </p>
+                        
+                        <span style="display: inline-block; margin-top: 15px; font-weight: bold; color: var(--rust-primary); font-size: 0.8rem;">
+                            >> ARCHIV ÖFFNEN
+                        </span>
+                    </div>
+                </article>
+            </a>
+
+        
+            
+            
+            
+            
+            
+            
+            <a href="/city/wuppertal/" class="room-card-link">
+                <article class="room-card">
+                    <div class="card-image-wrapper">
+                        
+                            <img src="/assets/images/thumbnails/Wuppertal-Sherlock.webp" alt="Wuppertal" style="object-fit: cover; filter: sepia(0.3) contrast(1.1);">
+                        
+                        
+                        <div class="rating-badge" style="background: var(--rust-primary); color: #fff; border: none;">
+                            1 Akte
+                        </div>
+                    </div>
+
+                    <div class="card-content">
+                        <h3 style="text-transform: uppercase; font-size: 1.5rem; margin-bottom: 5px;">Wuppertal</h3>
+                        <p class="card-meta" style="margin-bottom: 1rem;">
+                            Sektor-Status: ERFORSCHUNG
+                        </p>
+                        
+                        <p class="card-summary" style="color: #666; font-size: 0.9rem;">
+                            Zeige alle getesteten Escape Rooms und Erfahrungsberichte aus dem Raum Wuppertal.
+                        </p>
+                        
+                        <span style="display: inline-block; margin-top: 15px; font-weight: bold; color: var(--rust-primary); font-size: 0.8rem;">
+                            >> ARCHIV ÖFFNEN
+                        </span>
+                    </div>
+                </article>
+            </a>
+
+        
+
+    </div>
+
+    <div style="margin-top: 4rem; text-align: center;">
+        <p style="color: #888; font-family: 'Courier New'; font-size: 0.9rem;">
+            // Sie suchen etwas anderes?
+        </p>
+        <a href="/karte/" class="btn-back" style="margin-top: 10px;">Zur interaktiven Karte</a>
+    </div>
+
+</div>
+
+    </main>
+
+    <footer id="footer">
+          <p>&copy; The Escape Archive.</p>
+          <p>
+            <a href="/philosophie/" style="color: var(--rust-light);">Unsere Philosophie</a>
+            <span style="color: #666; margin: 0 5px;">•</span>
+            
+            <a href="/bewertungssystem/" style="color: var(--rust-light);">Bewertungssystem</a>
+            <span style="color: #666; margin: 0 5px;">•</span>
+            
+            <a href="/was-ist-ein-escape-room/" style="color: var(--rust-light);">Was ist ein Escape-Room?</a>
+            <span style="color: #666; margin: 0 5px;">•</span>
+            
+            <a href="/hall-of-fame/" style="color: var(--rust-light);">Hall of Fame</a>
+            <span style="color: #666; margin: 0 5px;">•</span>
+            
+            <a href="/city/" style="color: var(--rust-light);">Regionale Archive</a>
+            <span style="color: #666; margin: 0 5px;">•</span>
+            
+            <a href="/impressum/" style="color: var(--rust-light);">Impressum & Datenschutz</a>
+          </p>
+        </footer>
+
+  </div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/leaflet.markercluster/dist/leaflet.markercluster.js"></script>
+
+  <script src="/assets/js/main.js"></script>
+  <script data-goatcounter="https://nairolf22.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+  
+  <style>
+      /* --- MASTER MOBILE FIX (ALLE PATCHES VEREINT) --- */
+
+      /* 1. Genereller Überlauf-Schutz */
+      /* Verhindert, dass irgendetwas breiter als der Bildschirm wird */
+      html, body {
+          overflow-x: hidden; /* Schneidet seitliches Scrollen ab */
+          max-width: 100%;
+          position: relative;
+      }
+
+      /* Sorgt dafür, dass Rahmen und Padding in die Breite eingerechnet werden */
+      * {
+          box-sizing: border-box;
+      }
+
+      /* 2. Text-Handling & Umbrüche */
+      /* Zuerst erlauben wir überall Umbrüche und Silbentrennung ... */
+      p, h1, h2, h3, h4, h5, h6, div, span, a {
+          overflow-wrap: break-word;
+          word-wrap: break-word;
+          hyphens: auto; /* Gut für Fließtext */
+      }
+
+      /* ... ABER für Überschriften verbieten wir die Silbentrennung wieder (WICHTIG!) */
+      /* Damit wird "Legacy" nicht getrennt, "The Escape Archive" bleibt ganz, etc. */
+      h1, h2, h3, h4, h5, h6,
+      header h1,
+      .card-content h3,
+      .dossier-header h2 {
+          hyphens: none !important;
+          -webkit-hyphens: none !important;
+          word-break: normal !important;
+      }
+
+      /* 3. Navigation reparieren */
+      @media (max-width: 600px) {
+          nav {
+              display: flex;
+              flex-wrap: wrap;       /* Erlaubt Umbruch in neue Zeile */
+              justify-content: center;
+              gap: 10px;
+              padding: 10px 0;
+          }
+          
+          nav a {
+              margin: 0 5px;
+              font-size: 0.85rem;
+              white-space: nowrap;   /* Link-Text bricht nicht in sich um */
+          }
+          
+          /* Spezialanpassung für den Haupttitel auf kleinen Handys */
+          header h1 {
+              font-size: 2rem;
+          }
+      }
+
+      /* 4. Breite Elemente bändigen (Kontaktboxen etc.) */
+      .contact-box, div[style*="border"] {
+          max-width: 100%;
+          width: auto;
+      }
+      
+      main, .site-wrapper {
+          padding-left: 15px;
+          padding-right: 15px;
+          width: 100%;
+      }
+
+      /* 5. REPARATUR DER REVIEW-DETAILSEITE (WICHTIG!) */
+      /* Sorgt dafür, dass der "Zum Anbieter"-Button mobil nicht rechts rausfliegt */
+      @media (max-width: 768px) {
+          
+          /* Header untereinander anordnen */
+          .dossier-header {
+              flex-direction: column !important;
+          }
+
+          /* Metadaten auf volle Breite */
+          .dossier-meta {
+              margin-right: 0 !important;
+              width: 100% !important;
+          }
+
+          /* Titel anpassen */
+          .dossier-meta h2 {
+              padding-right: 0 !important;
+              font-size: 1.8rem;
+          }
+
+          /* Den Button "einfangen" und über den Titel setzen */
+          .dossier-meta > div[style*="position: absolute"] {
+              position: static !important; /* Löst die starre Positionierung */
+              margin-bottom: 1rem;
+              display: block;
+              width: 100%; /* Volle Breite für den Button */
+          }
+
+          /* Button zentrieren */
+          .btn-provider {
+              display: block;
+              text-align: center;
+              width: 100%;
+              margin-top: 0 !important;
+          }
+
+          /* Rating-Box positionieren */
+          .stamp-box {
+              margin-top: 1rem;
+              align-self: flex-start;
+          }
+      }
+  </style>
+</body>
+
+</html>
