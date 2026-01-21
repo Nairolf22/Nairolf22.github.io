@@ -72,7 +72,7 @@ permalink: /was-ist-ein-escape-room/
         </h2>
         <p>Ein typischer Besuch folgt diesem Protokoll:</p>
         <ol>
-            <li><strong>Das Briefing:</strong> Ein Spielleiter (Gamemaster) erklärt euch die Regeln und führt euch in die Story ein (z.B. "Ihr seid Diebe und brecht in eine Bank ein").</li>
+            <li><strong>Das Briefing:</strong> Ein Spielleiter (Gamemaster) erklärt euch die Regeln und führt euch in die Story ein (z.B. <a href="/reviews/Krefeld_Panzerknacker/" style="color: var(--rust-primary);">„Ihr seid Diebe und brecht in eine Bank ein.“</a>).</li>
             <li><strong>Der Start:</strong> Die Tür schließt sich (symbolisch), die Uhr startet. Ihr durchsucht den Raum nach Schlüsseln, Codes und versteckten Mechanismen.</li>
             <li><strong>Die Hinweise:</strong> Kommt ihr nicht weiter? Der Gamemaster beobachtet euch über Kameras und gibt bei Bedarf Tipps über einen Monitor oder Funk.</li>
             <li><strong>Das Finale:</strong> Entweder ihr schafft es in der Zeit (Sieg) oder die Zeit läuft ab (Game Over). In beiden Fällen holt euch der Gamemaster am Ende wieder ab.</li>

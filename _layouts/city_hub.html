@@ -1,0 +1,83 @@
+---
+layout: default
+---
+
+{% assign current_city = page.city %}
+{% assign city_reviews = site.reviews | where: "location.city", current_city %}
+
+{% assign room_count = city_reviews.size %}
+
+<div class="review-dossier">
+
+    <div class="mission-briefing">
+        <h1>Einsatzort: {{ current_city }}</h1>
+        <h3>// REGIONALES ARCHIV & TESTBERICHTE</h3>
+        
+        <div class="seo-text">
+            <p>
+                Willkommen im Sektor <strong>{{ current_city }}</strong>. 
+                Aktuell haben wir hier <strong>{{ room_count }}</strong> {% if room_count == 1 %}Akte{% else %}Akten{% endif %} angelegt.
+                Unten findest du alle getesteten Escape Rooms in dieser Stadt, sortiert nach unserer Bewertung.
+            </p>
+            <p style="font-size: 0.9rem; color: #888;">
+                Suchen Sie gezielt nach <a href="/karte/" style="color: var(--rust-light);">Standorten auf der Karte</a>?
+            </p>
+        </div>
+    </div>
+
+    <hr style="border: 0; border-top: 2px dashed #444; margin: 3rem 0;">
+
+    <div class="card-grid">
+        
+        {% assign sorted_reviews = "" | split: "" %}
+        
+        {% assign sorted_reviews = city_reviews | sort: 'visit_date' | reverse %}
+
+        {% for review in sorted_reviews %}
+        
+            {% assign r = review.ratings %}
+            {% assign sum = r.atmosphere.score | plus: r.story.score | plus: r.puzzles.score | plus: r.scenery.score | plus: r.gamemaster.score %}
+            {% assign calculated_avg = sum | divided_by: 5.0 %}
+
+            <a href="{{ review.url }}" class="room-card-link">
+                <article class="room-card">
+                    <div class="card-image-wrapper">
+                        {% if review.thumbnail %}
+                            {% assign img_src = review.thumbnail %}
+                        {% elsif review.images.size > 0 %}
+                            {% assign img_src = review.images[0] %}
+                        {% else %}
+                            {% assign img_src = "ui/no-signal.jpg" %}
+                        {% endif %}
+
+                        <img src="/assets/images/{{ img_src }}" alt="{{ review.title }}" loading="lazy" width="400" height="200" style="object-fit: cover; {% if review.closed %}filter: grayscale(100%);{% endif %}">
+                        
+                        {% if review.closed %}
+                            <div class="pending-overlay"><span style="background:#d32f2f; color:#fff; padding:4px;">GESCHLOSSEN</span></div>
+                        {% elsif review.pending %}
+                            <div class="pending-overlay"><span class="pending-stamp">ERMITTLUNG LÄUFT</span></div>
+                        {% else %}
+                            <div class="rating-badge">★ {{ calculated_avg | round: 1 }}</div>
+                        {% endif %}
+                    </div>
+
+                    <div class="card-content">
+                        <h3>{{ review.title }}</h3>
+                        <p class="card-meta">{{ review.provider }}</p>
+                        
+                        {% unless review.pending or review.planned %}
+                            <div class="stars small" style="--score: {{ calculated_avg }};">★★★★★</div>
+                        {% endunless %}
+                        
+                        <p class="card-summary" style="font-size: 0.9rem; color: #aaa;">{{ review.summary | truncate: 80 }}</p>
+                    </div>
+                </article>
+            </a>
+        {% endfor %}
+    </div>
+
+    <div style="margin-top: 3rem; text-align: center;">
+        <a href="/archiv/" class="btn-back">← Zurück zum kompletten Archiv</a>
+    </div>
+
+</div>
