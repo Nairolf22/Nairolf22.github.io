@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Escape Room HowTo - Unsere Philosophie & Tipps
+title: "Escape Room Tipps & Tricks: Der ultimative Taktik-Guide für Teams"
 permalink: /philosophie/
 ---
 

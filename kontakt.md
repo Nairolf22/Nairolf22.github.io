@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Kontakt & Kooperation
+title: "Kontakt & Kooperation: Laden Sie unser Tester-Team ein"
 permalink: /kontakt/
 ---
 

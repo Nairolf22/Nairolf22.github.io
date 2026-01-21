@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Was ist ein Escape Room? Erklärung, Ablauf & Generationen"
+title: "Was ist ein Escape Room? Erklärung, Ablauf & Tipps für Anfänger"
 description: "Der ultimative Guide für Anfänger: Was ist ein Escape Room? Wie läuft das Spiel ab? Bin ich wirklich eingesperrt? Alles über Gen 1.0, 2.0 und 3.0."
 permalink: /was-ist-ein-escape-room/
 ---

@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Die Anrufbeantworter
+title: "Wer wir sind: Das Escape Room Tester-Team \"Die Anrufbeantworter\""
 permalink: /team/
 ---
 

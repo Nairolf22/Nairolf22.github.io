@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Das vollständige Archiv
+title: "Alle Escape Room Tests im Überblick: Das große Archiv & Verzeichnis"
 permalink: /archiv/
 ---
 
