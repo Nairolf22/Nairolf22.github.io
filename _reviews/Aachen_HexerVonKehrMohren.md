@@ -13,6 +13,7 @@ images:
   - "rooms/dummy.webp"
 visit_date: 2022-05-21
 participants:
+  - Florian
   - Christine
 ratings:
   atmosphere:
