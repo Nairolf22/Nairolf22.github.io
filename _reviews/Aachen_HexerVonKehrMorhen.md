@@ -1,7 +1,7 @@
 ---
 pending: true
 layout: review
-title: "Die Hexer von Kaer Mohren"
+title: "Die Hexer von Kaer Morhen"
 provider: "Thout - The House of Unwritten Tales"
 website: "https://www.thout.de/unsere-raeume/die-hexer-von-kaer-mohren/"
 location:
