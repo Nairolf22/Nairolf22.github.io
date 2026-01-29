@@ -21,7 +21,8 @@ permalink: /impressum/
 
         <p>
             <strong>Kontakt:</strong><br>
-            E-Mail: kontakt@escapearchive.de
+            E-Mail: kontakt@escapearchive.de<br>
+            Telefon: 02161 9994628
         </p>
 
         <p>
