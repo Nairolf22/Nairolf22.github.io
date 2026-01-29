@@ -43,7 +43,10 @@
     </nav>
 
     <main>
-      <style>
+      <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+<style>
     .closed-stamp {
         background-color: #d32f2f;
         color: white;
@@ -54,19 +57,91 @@
         letter-spacing: 1px;
         border: 1px solid rgba(255,255,255,0.3);
     }
+
+    /* --- DATENSCHUTZ / 2-KLICK-LÖSUNG STYLES --- */
+    .osm-placeholder {
+        width: 100%;
+        height: 500px; /* Sollte der Höhe deiner Map entsprechen */
+        background-color: #2c2c2c;
+        background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%233a3a3a' fill-opacity='0.4' fill-rule='evenodd'%3E%3Cpath d='M0 40L40 0H20L0 20M40 40V20L20 40'/%3E%3C/g%3E%3C/svg%3E");
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        border: 1px solid #444;
+        color: #fff;
+        font-family: sans-serif;
+        position: relative;
+        border-radius: 4px;
+    }
+
+    .osm-content {
+        padding: 20px;
+        max-width: 450px;
+        background: rgba(0, 0, 0, 0.6);
+        border: 1px solid #555;
+        border-radius: 8px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    }
+
+    .osm-content h3 {
+        margin-top: 0;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-size: 1.2rem;
+        color: #f0f0f0;
+    }
+
+    .osm-content p {
+        font-size: 0.9rem;
+        color: #ccc;
+        margin-bottom: 20px;
+        line-height: 1.5;
+    }
+
+    .osm-button {
+        background-color: #d9534f;
+        color: white;
+        border: none;
+        padding: 12px 24px;
+        font-size: 1rem;
+        cursor: pointer;
+        text-transform: uppercase;
+        font-weight: bold;
+        border-radius: 4px;
+        transition: all 0.3s ease;
+        letter-spacing: 1px;
+    }
+
+    .osm-button:hover {
+        background-color: #c9302c;
+        transform: scale(1.05);
+        box-shadow: 0 0 10px rgba(217, 83, 79, 0.5);
+    }
 </style>
 
 <section class="map-section">
     <h2 class="section-title">Einsatzorte</h2>
-    <div id="escapeMap" class="grunge-map"></div>
+    
+    <div id="osm-wrapper" class="osm-placeholder">
+        <div class="osm-content">
+            <h3>🔒 Einsatzkarte verschlüsselt</h3>
+            <p>
+                Aus Datenschutzgründen wird die Karte von <strong>OpenStreetMap</strong> erst geladen, wenn Sie zustimmen.
+                Dabei werden Ihre IP-Adresse und Nutzungsdaten an die Server von OpenStreetMap übertragen.
+            </p>
+            <button id="load-map-btn" class="osm-button">Karte aktivieren</button>
+        </div>
+    </div>
+
+    <div id="escapeMap" class="grunge-map" style="display: none; height: 500px; width: 100%;"></div>
+
 </section>
 
 <hr style="border: 0; margin: 1rem 0;">
 
 <section class="archive-section">
     <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap;">
-
-        
         <div class="sort-controls" style="margin-top: 1rem;">
             <span style="color:#888; margin-right:10px; text-transform:uppercase; font-size:0.8rem;">Sortieren nach:</span>
             <button class="btn-sort" onclick="sortRooms('name')">Name</button>
@@ -1144,7 +1219,6 @@
     </div>
 </section>
 
-<script src="/assets/js/map.js"></script>
 <script>
     var roomData = [
         
@@ -1489,6 +1563,30 @@
         }
         
     ];
+</script>
+
+<script>
+document.getElementById('load-map-btn').addEventListener('click', function() {
+    var placeholder = document.getElementById('osm-wrapper');
+    var mapDiv = document.getElementById('escapeMap');
+
+    // 1. Platzhalter ausblenden
+    placeholder.style.display = 'none';
+    
+    // 2. Karten-Div sichtbar machen
+    mapDiv.style.display = 'block';
+
+    // 3. Map-Script (Leaflet Logik) dynamisch nachladen
+    var script = document.createElement('script');
+    script.src = "/assets/js/map.js";
+    script.onload = function() {
+        // Falls Leaflet ein Resize-Event braucht, weil der Container vorher unsichtbar war
+        if (typeof map !== 'undefined') {
+            map.invalidateSize();
+        }
+    };
+    document.body.appendChild(script);
+});
 </script>
 
 

@@ -1,8 +1,11 @@
-document.addEventListener('DOMContentLoaded', function() {
-    
-    if (!document.getElementById('escapeMap')) return;
+/* map.js - Angepasst für dynamisches Nachladen (2-Klick-Lösung)
+   Der 'DOMContentLoaded' Event-Listener wurde entfernt.
+*/
+
+if (document.getElementById('escapeMap')) {
 
     // 1. Karte initialisieren
+    // Wir setzen den View initial auf Deutschland/Mitte, fitBounds macht später den Rest
     var map = L.map('escapeMap').setView([51.1657, 10.4515], 6);
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -10,9 +13,11 @@ document.addEventListener('DOMContentLoaded', function() {
         maxZoom: 19
     }).addTo(map);
 
+    // Prüfen, ob Daten vorhanden sind
     if (typeof roomData !== 'undefined') {
         
         // --- CLUSTER GRUPPE ERSTELLEN ---
+        // WICHTIG: Das erfordert, dass das Leaflet.markercluster Plugin im HTML geladen ist!
         var markers = L.markerClusterGroup({
             showCoverageOnHover: false,
             maxClusterRadius: 50,
@@ -101,10 +106,13 @@ document.addEventListener('DOMContentLoaded', function() {
             map.fitBounds(allLatLngs, { padding: [50, 50] });
         }
 
-        /* --- NEU: LISTE NACH KARTE FILTERN --- */
+        // Event: Wenn Leaflet geladen ist, einmal Größe neu berechnen (wichtig beim Einblenden)
+        map.invalidateSize();
+
+        /* --- LISTE NACH KARTE FILTERN --- */
         function filterGridByMap() {
             var grid = document.getElementById('roomGrid');
-            // Abbruch, wenn wir gar nicht auf der Startseite mit Grid sind
+            // Abbruch, wenn wir gar nicht auf der Seite mit Grid sind
             if (!grid) return;
             
             // 1. Hole die Grenzen des aktuellen Kartenausschnitts
@@ -138,4 +146,4 @@ document.addEventListener('DOMContentLoaded', function() {
         // Initial ausführen, damit direkt gefiltert wird
         filterGridByMap();
     }
-});
+}
