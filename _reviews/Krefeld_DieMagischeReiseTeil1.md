@@ -18,7 +18,7 @@ participants:
   - Jessica
 ratings:
   atmosphere:
-    score: 5
+    score: 5.0
     text: "Die Immersion beginnt schon mit dem genialen Einstieg im „Zug“, der einen nahtlosen Übergang in die Spielwelt schafft. Die stimmungsvolle Beleuchtung und Soundkulisse sorgen für ein tiefes Eintauchen. Besonders die Lichteffekte und die Abwesenheit von störender Technik haben uns das Gefühl gegeben, wirklich in einer magischen Welt zu sein."
   story:
     score: 3.5
@@ -30,7 +30,7 @@ ratings:
     score: 4.5
     text: "Die Kulisse wirkt durch echte Materialien wie Glas und Holz extrem hochwertig. Highlight war der Zauberkessel mit Nebel- und Soundeffekten, der für echte Wow-Momente sorgte. Die Liebe zum Detail in der Dekoration hat uns sehr beeindruckt."
   gamemaster:
-    score: 5
+    score: 5.0
     text: "Der Service war professionell und herzlich. Die Spielleitung hat ihre Rolle inklusive der passenden „Panik“ sehr überzeugend gespielt. Das Hinweissystem war perfekt in die Story integriert, sodass sich Tipps nie wie externe Hilfe anfühlten. Auch die Nachbesprechung war top."
     
 summary: "Ein magischer, extrem familienfreundlicher Raum, der vor allem durch seine hochwertige Kulisse und die dichte Atmosphäre besticht."
