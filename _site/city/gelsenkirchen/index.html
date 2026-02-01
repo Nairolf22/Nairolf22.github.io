@@ -28,9 +28,13 @@
   <div class="site-wrapper">
 
     <header>
-      <a href="/" class="site-logo-link">
-        <img src="/assets/images/logo-escape-archive_800.webp" alt="The Escape Archive Logo - Die Anrufbeantworter" class="site-logo">
-      </a>
+      <h1 class="logo-heading">
+        <a href="/" class="site-logo-link">
+          <img src="/assets/images/logo-escape-archive_800.webp"
+               alt="The Escape Archive - Escape Room Reviews & Analysen (Die Anrufbeantworter)"
+               class="site-logo">
+        </a>
+      </h1>
       <p style="color: #ccc; margin-top: 10px;">• EST. 2025 • CLASSIFIED REVIEWS •</p>
     </header>
 
@@ -144,50 +148,68 @@
   <script data-goatcounter="https://nairolf22.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
   
   <style>
-      /* --- NEUE STYLES FÜR DAS LOGO --- */
+      /* --- HEADER & LOGO STYLES --- */
       header {
-          text-align: center; /* Zentriert das Logo und den Untertitel */
+          text-align: center;
           padding-top: 1rem;
       }
 
+      .logo-heading {
+          margin: 0;
+          padding: 0;
+          line-height: 1;
+          font-weight: normal;
+          display: block;
+          border: none; /* Sicherheitshalber */
+      }
+
+      /* UPDATE: Hier werden alle Rahmen/Boxen entfernt */
       .site-logo-link {
           display: inline-block;
           text-decoration: none;
+          border: none !important;
+          outline: none !important;      /* Entfernt gepunktete Linie bei Klick */
+          box-shadow: none !important;   /* Entfernt Schatten */
+          -webkit-tap-highlight-color: transparent; /* Entfernt graue Box beim Tippen auf Handy */
+      }
+      
+      /* Auch beim Hover/Fokus sicherstellen, dass nichts erscheint */
+      .site-logo-link:focus,
+      .site-logo-link:active,
+      .site-logo-link:hover {
+          outline: none !important;
+          border: none !important;
+          box-shadow: none !important;
       }
 
       .site-logo {
-          max-width: 95%; /* Verhindert Überlauf auf sehr kleinen Screens */
-          width: 450px;   /* Maximale Breite auf Desktop */
-          height: auto;   /* Behält das Seitenverhältnis bei */
-          display: block; /* Verhindert unerwünschte Abstände unter dem Bild */
-          margin: 0 auto; /* Zentrierung */
+          max-width: 95%;
+          width: 450px;
+          height: auto;
+          display: block;
+          margin: 0 auto;
+          border: none !important; /* Entfernt Bildrahmen (alte Browser) */
+          outline: none !important;
       }
 
-      /* --- MASTER MOBILE FIX (ALLE PATCHES VEREINT) --- */
+      /* --- MASTER MOBILE FIX --- */
 
-      /* 1. Genereller Überlauf-Schutz */
-      /* Verhindert, dass irgendetwas breiter als der Bildschirm wird */
       html, body {
-          overflow-x: hidden; /* Schneidet seitliches Scrollen ab */
+          overflow-x: hidden;
           max-width: 100%;
           position: relative;
       }
 
-      /* Sorgt dafür, dass Rahmen und Padding in die Breite eingerechnet werden */
       * {
           box-sizing: border-box;
       }
 
-      /* 2. Text-Handling & Umbrüche */
-      /* Zuerst erlauben wir überall Umbrüche und Silbentrennung ... */
       p, h1, h2, h3, h4, h5, h6, div, span, a {
           overflow-wrap: break-word;
           word-wrap: break-word;
-          hyphens: auto; /* Gut für Fließtext */
+          hyphens: auto;
       }
 
-      /* ... ABER für Überschriften verbieten wir die Silbentrennung wieder (WICHTIG!) */
-      /* Damit wird "Legacy" nicht getrennt, "The Escape Archive" bleibt ganz, etc. */
       h1, h2, h3, h4, h5, h6,
       header h1,
       .card-content h3,
@@ -197,11 +219,10 @@
           word-break: normal !important;
       }
 
-      /* 3. Navigation reparieren */
       @media (max-width: 600px) {
           nav {
               display: flex;
-              flex-wrap: wrap;       /* Erlaubt Umbruch in neue Zeile */
+              flex-wrap: wrap;
               justify-content: center;
               gap: 10px;
               padding: 10px 0;
@@ -210,20 +231,19 @@
           nav a {
               margin: 0 5px;
               font-size: 0.85rem;
-              white-space: nowrap;   /* Link-Text bricht nicht in sich um */
+              white-space: nowrap;
           }
           
-          /* Spezialanpassung für den Haupttitel auf kleinen Handys - FALLS H1 GENUTZT WIRD */
-          header h1 {
-              font-size: 2rem;
+          header h1.logo-heading {
+              margin-bottom: 0;
+              font-size: 1rem;
           }
-          /* Anpassung für das Logo auf kleinen Handys */
+
           .site-logo {
-              width: 300px; /* Etwas kleiner auf Smartphones */
+              width: 300px;
           }
       }
 
-      /* 4. Breite Elemente bändigen (Kontaktboxen etc.) */
       .contact-box, div[style*="border"] {
           max-width: 100%;
           width: auto;
@@ -235,36 +255,29 @@
           width: 100%;
       }
 
-      /* 5. REPARATUR DER REVIEW-DETAILSEITE (WICHTIG!) */
-      /* Sorgt dafür, dass der "Zum Anbieter"-Button mobil nicht rechts rausfliegt */
       @media (max-width: 768px) {
           
-          /* Header untereinander anordnen */
           .dossier-header {
               flex-direction: column !important;
           }
 
-          /* Metadaten auf volle Breite */
           .dossier-meta {
               margin-right: 0 !important;
               width: 100% !important;
           }
 
-          /* Titel anpassen */
           .dossier-meta h2 {
               padding-right: 0 !important;
               font-size: 1.8rem;
           }
 
-          /* Den Button "einfangen" und über den Titel setzen */
           .dossier-meta > div[style*="position: absolute"] {
-              position: static !important; /* Löst die starre Positionierung */
+              position: static !important;
               margin-bottom: 1rem;
               display: block;
-              width: 100%; /* Volle Breite für den Button */
+              width: 100%;
           }
 
-          /* Button zentrieren */
           .btn-provider {
               display: block;
               text-align: center;
@@ -272,7 +285,6 @@
               margin-top: 0 !important;
           }
 
-          /* Rating-Box positionieren */
           .stamp-box {
               margin-top: 1rem;
               align-self: flex-start;
