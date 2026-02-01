@@ -155,6 +155,15 @@ permalink: /was-ist-ein-escape-room/
             </li>
         </ul>
 
+        <div style="margin: 2rem 0; padding: 20px; background: rgba(0,0,0,0.03); border-left: 4px solid var(--rust-primary);">
+            <h3 style="margin-top: 0; color: var(--rust-primary);">Welche Aufgaben erwarten mich?</h3>
+            <p>
+                Von klassischen Zahlenschlössern bis hin zu unsichtbaren Magnet-Mechanismen: Die Vielfalt der Aufgaben ist riesig. Wir haben die häufigsten Rätsel-Typen analysiert und kategorisiert.
+            </p>
+            <a href="/arten-von-raetseln/" style="font-weight: bold; text-decoration: underline; color: #333;">
+                >> DIESE 5 RÄTSEL-ARTEN SOLLTEST DU KENNEN
+            </a>
+        </div>
 
         <div style="margin-top: 3rem; padding: 20px; border: 2px solid var(--rust-primary); text-align: center; background: rgba(255,255,255,0.8); transform: rotate(1deg); box-shadow: 5px 5px 15px rgba(0,0,0,0.1);">
             <p style="margin: 0; font-weight: bold; font-size: 1.1rem;">

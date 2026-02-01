@@ -101,17 +101,19 @@ permalink: /arten-von-raetseln/
 
         <hr style="border: 0; border-top: 2px solid #333; margin: 3rem 0;">
 
-        <div style="text-align: center;">
-            <p style="font-size: 1.1rem; font-weight: bold;">
+        <div style="margin-top: 3rem; padding: 20px; border: 2px solid var(--rust-primary); text-align: center; background: rgba(255,255,255,0.8); transform: rotate(1deg); box-shadow: 5px 5px 15px rgba(0,0,0,0.1);">
+            <p style="margin: 0; font-weight: bold; font-size: 1.1rem;">
                 Bereit, diese Rätsel in der Praxis zu testen?
             </p>
+            <p style="margin-top: 15px;">
+                <a href="/karte/" class="btn-provider" style="background: var(--rust-primary); color: #fff; text-decoration: none; padding: 10px 20px; display: inline-block;">
+                    >> FINDE EINEN RAUM IN DEINER NÄHE
+                </a>
+            </p>
             <br>
-            <a href="/karte/" class="btn-provider" style="background: var(--rust-primary); color: #fff; text-decoration: none; padding: 15px 30px; display: inline-block; font-size: 1.1rem;">
-                >> FINDE EINEN RAUM IN DEINER NÄHE
-            </a>
-            <br><br>
             <a href="/was-ist-ein-escape-room/" style="color: #666; font-size: 0.9rem;">← Zurück zur Übersicht "Was ist ein Escape Room?"</a>
         </div>
+
 
     </div>
 </div>
