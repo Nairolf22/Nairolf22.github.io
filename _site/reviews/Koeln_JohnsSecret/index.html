@@ -28,8 +28,8 @@
   <div class="site-wrapper">
 
     <header>
-      <a href="/" style="text-decoration:none;">
-        <h1>The Escape Archive</h1>
+      <a href="/" class="site-logo-link">
+        <img src="/assets/images/logo-escape-archive.png" alt="The Escape Archive Logo - Die Anrufbeantworter" class="site-logo">
       </a>
       <p style="color: #ccc; margin-top: 10px;">• EST. 2025 • CLASSIFIED REVIEWS •</p>
     </header>
@@ -232,6 +232,25 @@
   <script data-goatcounter="https://nairolf22.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
   
   <style>
+      /* --- NEUE STYLES FÜR DAS LOGO --- */
+      header {
+          text-align: center; /* Zentriert das Logo und den Untertitel */
+          padding-top: 1rem;
+      }
+
+      .site-logo-link {
+          display: inline-block;
+          text-decoration: none;
+      }
+
+      .site-logo {
+          max-width: 95%; /* Verhindert Überlauf auf sehr kleinen Screens */
+          width: 450px;   /* Maximale Breite auf Desktop */
+          height: auto;   /* Behält das Seitenverhältnis bei */
+          display: block; /* Verhindert unerwünschte Abstände unter dem Bild */
+          margin: 0 auto; /* Zentrierung */
+      }
+
       /* --- MASTER MOBILE FIX (ALLE PATCHES VEREINT) --- */
 
       /* 1. Genereller Überlauf-Schutz */
@@ -282,9 +301,13 @@
               white-space: nowrap;   /* Link-Text bricht nicht in sich um */
           }
           
-          /* Spezialanpassung für den Haupttitel auf kleinen Handys */
+          /* Spezialanpassung für den Haupttitel auf kleinen Handys - FALLS H1 GENUTZT WIRD */
           header h1 {
               font-size: 2rem;
+          }
+          /* Anpassung für das Logo auf kleinen Handys */
+          .site-logo {
+              width: 300px; /* Etwas kleiner auf Smartphones */
           }
       }
 
