@@ -34,5 +34,5 @@ ratings:
     score: 4.0
     text: "Der Service war einwandfrei und sehr freundlich. Die Begrüßung und die Betreuung entsprachen voll den Erwartungen an eine gute Spielleitung. Da wir keine Hilfestellungen benötigten, können wir das Hinweissystem innerhalb des Spiels nicht im Detail bewerten."
     
-summary: "Ein solider Einsteiger-Raum, der besonders durch die Einbindung der Original-Sprecher punktet. Aufgrund der räumlichen Enge und der Rätselstruktur empfehlen wir den Besuch jedoch mit einer deutlich kleineren Gruppe als sechs Personen."
+summary: "Ein solider Einsteiger-Raum im Universum der 'Die drei ???', der besonders durch die Einbindung der Original-Sprecher punktet. Aufgrund der räumlichen Enge und der Rätselstruktur empfehlen wir den Besuch jedoch mit einer deutlich kleineren Gruppe als sechs Personen."
 ---
