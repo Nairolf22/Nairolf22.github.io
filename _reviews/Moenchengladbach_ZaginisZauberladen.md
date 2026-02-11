@@ -34,5 +34,5 @@ ratings:
     score: 4.5
     text: "Wir wurden sehr freundlich und passend 'schrullig' empfangen. Die Spielleitung blieb konsequent in ihrer Rolle, was den Einstieg sehr atmosphärisch machte. Einziges kleines Manko war die Akustik des Hinweisgebers, der manchmal schwer zu verstehen war, weshalb wir öfter nachfragen mussten – das Gimmick an sich war aber genial."
     
-summary: "Ein fantastischer Einsteiger-Raum, der besonders durch seine Detailverliebtheit und die magische Atmosphäre besticht. Wer Lust auf eine Reise durch verschiedene Ebenen und ein stimmiges Zauber-Setting hat, ist hier genau richtig."
+summary: "Ein fantastischer Einsteiger-Raum mit Harry Potter Vibes, der besonders durch seine Detailverliebtheit und die magische Atmosphäre besticht. Wer Lust auf eine Reise durch verschiedene Ebenen und ein stimmiges Zauber-Setting hat, ist hier genau richtig."
 ---
