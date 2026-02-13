@@ -9,8 +9,7 @@ location:
   lat: 51.51426315307617
   lng: 7.465049743652344
 images:
-  - "rooms/dummy.webp"
-thumbnail: "thumbnails/dummy.webp"
+  - "rooms/Dortmund-SecretService.webp"
 visit_date: 2025-11-01   # Format: Jahr-Monat-Tag
 participants:
   - Moritz
