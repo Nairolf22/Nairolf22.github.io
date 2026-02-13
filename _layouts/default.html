@@ -16,6 +16,33 @@
     content="{% if page.summary %}{{ page.summary | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
   <link rel="canonical" href="{{ site.url }}{{ page.url }}">
 
+  <!-- SEO & Social Media Tags -->
+  <link rel="shortcut icon" type="image/png" href="{{ '/favicon.png?v=4' | relative_url }}">
+  <link rel="icon" type="image/png" sizes="512x512" href="{{ '/favicon.png?v=4' | relative_url }}">
+  <link rel="apple-touch-icon" href="{{ '/favicon.png?v=4' | relative_url }}">
+  <meta name="author" content="Die Anrufbeantworter">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph -->
+  <meta property="og:site_name" content="The Escape Archive">
+  <meta property="og:title"
+    content="{% if page.layout == 'review' %}{{ page.title }} ({{ page.provider }}){% else %}{{ page.title }} | Escape Archive{% endif %}">
+  <meta property="og:type" content="{% if page.layout == 'review' %}article{% else %}website{% endif %}">
+  <meta property="og:url" content="{{ site.url }}{{ page.url }}">
+  <meta property="og:description"
+    content="{% if page.summary %}{{ page.summary | strip_html | strip_newlines | truncate: 200 }}{% else %}{{ site.description }}{% endif %}">
+  <meta property="og:image"
+    content="{{ site.url }}/assets/images/{% if page.thumbnail %}{{ page.thumbnail }}{% elsif page.images[0] %}{{ page.images[0] }}{% else %}logo-escape-archive_800.webp{% endif %}">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title"
+    content="{% if page.layout == 'review' %}{{ page.title }} ({{ page.provider }}){% else %}{{ page.title }} | Escape Archive{% endif %}">
+  <meta name="twitter:description"
+    content="{% if page.summary %}{{ page.summary | strip_html | strip_newlines | truncate: 200 }}{% else %}{{ site.description }}{% endif %}">
+  <meta name="twitter:image"
+    content="{{ site.url }}/assets/images/{% if page.thumbnail %}{{ page.thumbnail }}{% elsif page.images[0] %}{{ page.images[0] }}{% else %}logo-escape-archive_800.webp{% endif %}">
+
   <link rel="stylesheet" href="/assets/css/style.css">
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.css" />
