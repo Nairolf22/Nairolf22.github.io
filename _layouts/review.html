@@ -8,7 +8,8 @@ r.gamemaster.score %}
 
 <style>
     .closed-alert {
-        border: 2px solid #d32f2f; /* Alarm-Rot */
+        border: 2px solid #d32f2f;
+        /* Alarm-Rot */
         background-color: rgba(211, 47, 47, 0.05);
         color: #d32f2f;
         padding: 1rem;
@@ -19,7 +20,7 @@ r.gamemaster.score %}
         position: relative;
         overflow: hidden;
     }
-    
+
     .closed-alert strong {
         font-size: 1.2rem;
         display: block;
@@ -40,6 +41,57 @@ r.gamemaster.score %}
         letter-spacing: 2px;
         margin-top: 5px;
         font-family: 'Courier New', monospace;
+    }
+
+    /* Stempel-Effekt "GEPLANT" */
+    .stamp-planned {
+        display: inline-block;
+        border: 3px solid #f57f17;
+        /* Dunkles Orange / Gold */
+        color: #f57f17;
+        padding: 0.2rem 1rem;
+        font-weight: bold;
+        font-size: 1.5rem;
+        text-transform: uppercase;
+        transform: rotate(-3deg);
+        opacity: 0.9;
+        letter-spacing: 2px;
+        margin-top: 5px;
+        font-family: 'Courier New', monospace;
+    }
+
+    .planned-date-box {
+        margin: 2rem 0;
+        padding: 1.5rem;
+        background-color: #fff8e1;
+        /* Sehr helles Gelb */
+        border: 1px dashed #f57f17;
+        text-align: center;
+    }
+
+    .planned-date-title {
+        font-size: 1rem;
+        text-transform: uppercase;
+        color: #795548;
+        margin-bottom: 0.5rem;
+        font-family: 'Courier New', monospace;
+    }
+
+    .planned-date-value {
+        font-size: 2.5rem;
+        font-weight: bold;
+        color: #e65100;
+        font-family: 'Special Elite', 'Courier New', monospace;
+    }
+
+    .planned-teaser {
+        font-size: 1.2rem;
+        line-height: 1.6;
+        margin: 2rem 0;
+        padding: 0 1rem;
+        text-align: center;
+        font-style: italic;
+        color: #444;
     }
 </style>
 
@@ -71,13 +123,17 @@ r.gamemaster.score %}
 
             <h2 style="padding-right: 220px;">
                 {{ page.title }}
-                {% if page.closed %} <span style="color: #d32f2f; font-size: 0.6em; vertical-align: middle;">[INAKTIV]</span>{% endif %}
+                {% if page.closed %} <span
+                    style="color: #d32f2f; font-size: 0.6em; vertical-align: middle;">[INAKTIV]</span>{% endif %}
+                {% if page.planned %} <span
+                    style="color: #f57f17; font-size: 0.6em; vertical-align: middle;">[GEPLANT]</span>{% endif %}
             </h2>
 
             <p style="margin:0; font-size: 0.9rem; color: #555;">
                 <strong>Ort:</strong> {{ page.location.city }} | {{ page.location.address }}
             </p>
 
+            {% unless page.planned %}
             <div style="margin-top: 1rem; padding-top: 0.5rem; border-top: 1px dotted #888;">
                 <p style="margin: 0.2rem 0;">
                     <strong>Einsatzdatum:</strong>
@@ -90,12 +146,19 @@ r.gamemaster.score %}
                     endfor %}
                 </p>
             </div>
+            {% endunless %}
         </div>
 
+        {% unless page.planned %}
         <div class="stamp-box">
             Overall<br>
             <span style="font-size: 2rem;">{{ calculated_avg | round: 1 }}</span> / 5
         </div>
+        {% else %}
+        <div class="stamp-planned">
+            GEPLANT
+        </div>
+        {% endunless %}
     </div>
 
     {% if page.images.size > 0 %}
@@ -111,6 +174,19 @@ r.gamemaster.score %}
     <hr style="border: 0; border-top: 1px dashed #999; margin: 2rem 0;">
 
     {% assign siblings = site.reviews | where: "provider", page.provider | where_exp: "item", "item.url != page.url" %}
+
+    {% if page.planned %}
+
+    <div class="planned-date-box">
+        <div class="planned-date-title">Geplanter Einsatz am:</div>
+        <div class="planned-date-value">{{ page.visit_date | date: "%d.%m.%Y" }}</div>
+    </div>
+
+    <div class="planned-teaser">
+        {{ page.summary }}
+    </div>
+
+    {% else %}
 
     <div class="criterion">
         <h3>Atmosphäre & Immersion</h3>
@@ -156,6 +232,8 @@ r.gamemaster.score %}
         <h3 data-nosnippet style="margin-top:0; color: var(--rust-light);">FAZIT DES ERMITTLERS:</h3>
         <p>{{ page.summary }}</p>
     </div>
+
+    {% endif %}
 
     {% if siblings.size > 0 %}
     <div style="margin-top: 3rem; background: #e8e8e8; border: 1px dashed #666; padding: 1rem;">
