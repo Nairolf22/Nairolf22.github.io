@@ -26,15 +26,15 @@ ratings:
   puzzles:
     score: 3.0
     text: >-
-      Ein Mix aus klassischen Schlössern/Zählen und technischen Spielereien mit Zauberstäben. Die Idee mit den Zauberstäben ist cool, die Umsetzung war aber teils hakelig (Sensoren lösten nicht sofort aus). Die Rätsel sind meist linear (ein Raum, ein Rätsel), was den 'Flow' manchmal bremst. Wirkliche Verknüpfungen waren nicht notwendig. Schön war, dass auch Geschicklichkeit eine Rolle spielte. Es gab einige Logik-Lücken (z.B. eine Brunnenpumpe, die offensichtlich ein technischer Defekt ist und im Raum keine Rolle spielte).
+      Ein Mix aus klassischen Schlössern/Zählen und technischen Spielereien mit Zauberstäben und mehr. Die Idee mit den Zauberstäben ist cool, die Umsetzung war aber teils hakelig. Die Rätsel sind meist linear (ein Raum, ein Rätsel), was den 'Flow' manchmal bremst. Wirkliche Verknüpfungen waren nicht notwendig. Schön war, dass auch Geschicklichkeit eine Rolle spielte.
   scenery:
-    score: 2.5
+    score: 2.0
     text: >-
-      Die Kulisse schwankt stark. Vor allem der Schlussraum war kreativ und gut umgesetzt. Andere Räume wirkten lieblos und spartanisch eingerichtet (Kissen deckten Kabel ab). Es fehlte die Detailverliebtheit, die man aus neueren Top-Räumen kennt. Vor allem, dass man zwischendurch Heizungen, Fenster oder defekte Technik (hier eine Brunnenpumpe) sah, wurde dem sehr großen Areal nicht gerecht.
+      Die Kulisse schwankt stark. Vor allem der Schlussraum war recht detailliert und gut umgesetzt. Andere Räume wirkten lieblos und spartanisch eingerichtet (Kissen deckten beispielsweise Kabel ab). Es fehlte die Detailverliebtheit, die man aus neueren Top-Räumen kennt. Vor allem, dass man zwischendurch Heizungen, Fenster oder defekte Technik (hier eine Brunnenpumpe) sah, wurde dem sehr großen Areal mit viel Potenzial nicht gerecht.
   gamemaster:
     score: 3.5
     text: >-
       Der Gamemaster trat als Mitschüler auf und war in seiner Rolle sehr engagiert, authentisch und motiviert. Das Schauspiel hat Spaß gemacht. Abzüge gibt es für das 'Hint-System': Die eingespielten Anweisungen waren akustisch teils schwer zu verstehen. Auch wenn die Idee, zusätzliche Hilfe durch den Mitschüler zu geben, gut war, kamen diese Hilfen manchmal etwas plump daher.
 
-summary: "Ein solider Raum für Einsteiger oder Potter-Fans, der jedoch nicht mit der aktuellen 'Elite' der Escape Rooms mithalten kann. Florian und sein Team fanden einige gute Ansätze, wurden aber durch technische Ungenauigkeiten, teils leere Kulissen und ein schwaches Finale etwas ernüchtert. Der engagierte Gamemaster holt einiges raus, aber insgesamt bleibt das Erlebnis im Durchschnitt stecken. Für uns passt das Preis-Leistungs-Verhältnis hier leider nicht."
+summary: "Ein Raum für Potter-Fans, der jedoch nicht mit der aktuellen 'Elite' der Escape Rooms mithalten kann. Wir fanden einige gute Ansätze, wurden aber durch technische Ungenauigkeiten, teils eher leer wirkende Kulissen und ein schwaches Finale etwas ernüchtert. Der engagierte Gamemaster holt einiges raus, aber insgesamt bleibt das Erlebnis im Durchschnitt stecken. Für uns passt das Preis-Leistungs-Verhältnis hier leider nicht."
 ---
