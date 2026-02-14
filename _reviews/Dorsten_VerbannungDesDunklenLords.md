@@ -28,7 +28,7 @@ ratings:
     text: >-
       Ein Mix aus klassischen Schlössern/Zählen und technischen Spielereien mit Zauberstäben und mehr. Die Idee mit den Zauberstäben ist cool, die Umsetzung war aber teils hakelig. Die Rätsel sind meist linear (ein Raum, ein Rätsel), was den 'Flow' manchmal bremst. Wirkliche Verknüpfungen waren nicht notwendig. Schön war, dass auch Geschicklichkeit eine Rolle spielte.
   scenery:
-    score: 2.0
+    score: 2.5
     text: >-
       Die Kulisse schwankt stark. Vor allem der Schlussraum war recht detailliert und gut umgesetzt. Andere Räume wirkten lieblos und spartanisch eingerichtet (Kissen deckten beispielsweise Kabel ab). Es fehlte die Detailverliebtheit, die man aus neueren Top-Räumen kennt. Vor allem, dass man zwischendurch Heizungen, Fenster oder defekte Technik (hier eine Brunnenpumpe) sah, wurde dem sehr großen Areal mit viel Potenzial nicht gerecht.
   gamemaster:
