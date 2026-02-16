@@ -30,7 +30,7 @@ permalink: /arten-von-raetseln/
                 1. Search & Find (Suchen & Finden)
             </h3>
             <p>
-                Der Klassiker, besonders in <a href="/was-ist-ein-escape-room/" style="color: #666; text-decoration: underline;">Generation 1.0 Räumen</a>. Bevor man etwas lösen kann, muss man die Teile dafür haben.
+                Der Klassiker, besonders in <a href="/was-ist-ein-escape-room/" style="color: #666; text-decoration: underline;">Generation 1.0 Räumen</a>. Bevor man etwas lösen kann, muss man die Teile dafür haben. Oft sucht ihr hier direkt nach dem passenden Schlüssel für eines der <a href="/schloss-typen/" style="color: #666; text-decoration: underline;">mechanischen Schlösser</a>.
             </p>
             <ul style="list-style-type: square; padding-left: 20px;">
                 <li><strong>Der versteckte Schlüssel:</strong> Unter der Fußmatte, im Buchrücken oder hinter einem Gemälde.</li>
@@ -47,7 +47,7 @@ permalink: /arten-von-raetseln/
                 2. Logik & Deduktion
             </h3>
             <p>
-                Hier rauchen die Köpfe. Diese Rätsel erfordern keine körperliche Geschicklichkeit, sondern reines Nachdenken.
+                Hier rauchen die Köpfe. Diese Rätsel erfordern keine körperliche Geschicklichkeit, sondern reines Nachdenken. Das Ergebnis ist meist ein Zahlencode.
             </p>
             <ul style="list-style-type: square; padding-left: 20px;">
                 <li><strong>Mustererkennung:</strong> "Wenn A = 1 und B = 2..."</li>
@@ -90,7 +90,7 @@ permalink: /arten-von-raetseln/
                 5. Tech & "Magie" (Sensorik)
             </h3>
             <p>
-                In modernen Räumen (Gen 2.0 & 3.0) gibt es oft gar keine sichtbaren Schlösser mehr.
+                In modernen Räumen (Gen 2.0 & 3.0) gibt es oft gar keine <a href="/schloss-typen/" style="color: #666; text-decoration: underline;">sichtbaren Schlösser</a> mehr. Die Technik ist in den Wänden versteckt.
             </p>
             <ul style="list-style-type: square; padding-left: 20px;">
                 <li><strong>RFID:</strong> Stelle die Statue auf den richtigen Sockel -> Die Tür öffnet sich.</li>
@@ -108,6 +108,15 @@ permalink: /arten-von-raetseln/
             <p style="margin-top: 15px;">
                 <a href="/karte/" class="btn-provider" style="background: var(--rust-primary); color: #fff; text-decoration: none; padding: 10px 20px; display: inline-block;">
                     >> FINDE EINEN RAUM IN DEINER NÄHE
+                </a>
+            </p>
+            <hr style="border: 0; border-top: 2px solid #333; margin: 3rem 0;">
+            <p style="margin: 0; font-weight: bold; font-size: 1.1rem;">
+                Du hast das Rätsel gelöst, aber das Schloss geht nicht auf?
+            </p>
+            <p style="margin-top: 15px;">
+                <a href="/schloss-typen/" class="btn-provider" style="background: var(--rust-primary); color: #fff; text-decoration: none; padding: 10px 20px; display: inline-block;">
+                    >> ZUM GUIDE: GÄNGIGE SCHLOSS-TYPEN & WIE MAN SIE ÖFFNET
                 </a>
             </p>
             <br>

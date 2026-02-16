@@ -75,7 +75,7 @@ permalink: /schloss-typen/
             Häufig in Sci-Fi oder Agenten-Szenarien. Meistens muss man erst den "Abdruck" eines Dritten im Raum finden (z.B. auf einer Folie), um den Sensor zu überlisten.</p>
         </div>
 
-        <div style="margin-top: 4rem; padding: 20px; background: #f9f9f9; border: 1px solid #ddd; text-align: center;">
+        <div style="margin-top: 3rem; padding: 20px; border: 2px solid var(--rust-primary); text-align: center; background: rgba(255,255,255,0.8); transform: rotate(1deg); box-shadow: 5px 5px 15px rgba(0,0,0,0.1);">
             <p><strong>Bereit, deine Fähigkeiten an echten Schlössern zu testen?</strong></p>
             <a href="/karte/" class="btn-provider" style="background: var(--rust-primary); color: #fff; text-decoration: none; padding: 10px 20px; display: inline-block; margin-top: 10px;">
                 >> ZUR EINSATZKARTE

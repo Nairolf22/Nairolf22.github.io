@@ -41,7 +41,7 @@ Kurzfazit: Technisch top und solide gebaut, aber optisch noch Luft nach oben fü
 Hinweise wurden gezielt und passend gegeben, ohne das Spiel zu stören. Besonders die Betreuung vor und nach dem Spiel war angenehm und strukturiert.<br><br>
 Kurzfazit: Sehr guter Service und kompetente Betreuung – das Team wirkt engagiert und kundenorientiert.
 "
-summary: "Der Escape Room Secret Service überzeugt mit einer klaren Story, stimmungsvoller Atmosphäre und gut durchdachten Rätseln. Besonders der Gamemaster-Service und die technische Zuverlässigkeit verdienen Lob. Kleinere Schwächen liegen in der Tiefe der Agenten-Thematik und bei den „Wow“-Momenten innerhalb der Kulisse.<br><br>
+summary: "Einmal wie James Bond fühlen? Der Escape Room Secret Service überzeugt mit einer klaren Story, stimmungsvoller Atmosphäre und gut durchdachten Rätseln. Besonders der Gamemaster-Service und die technische Zuverlässigkeit verdienen Lob. Kleinere Schwächen liegen in der Tiefe der Agenten-Thematik und bei den „Wow“-Momenten innerhalb der Kulisse.<br><br>
 
 Empfehlung: Ideal für Gruppen mit 3–5 Personen, egal ob Einsteiger oder leicht Fortgeschrittene. Wer Spaß an logischen Rätseln mit sauberem Ablauf sucht, ist hier gut aufgehoben – Fans besonders spektakulärer Kulissen könnten sich aber etwas mehr „Geheimagenten-Flair“ wünschen.
 "
