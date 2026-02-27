@@ -11,16 +11,18 @@ title: "Sondereinheit für Escape Room Analysen & Tests"
         margin: 2rem auto 4rem;
         font-family: 'Courier New', monospace;
     }
+
     .mission-briefing h1 {
         text-transform: uppercase;
         border-bottom: 2px solid #333;
         display: inline-block;
         padding-bottom: 0.5rem;
         margin-bottom: 1.5rem;
-        
+
         font-size: 2.rem;
         font-weight: bold;
     }
+
     /* Style für die H3 unten */
     .mission-briefing h3 {
         font-size: 0.9rem;
@@ -28,11 +30,13 @@ title: "Sondereinheit für Escape Room Analysen & Tests"
         margin-bottom: 1rem;
         font-weight: normal;
     }
+
     .seo-text {
         font-size: 1.1rem;
         line-height: 1.5;
         color: #ddd;
     }
+
     /* Links im Fließtext hervorheben */
     .seo-text a {
         color: var(--rust-light, #e57373);
@@ -40,6 +44,7 @@ title: "Sondereinheit für Escape Room Analysen & Tests"
         text-underline-offset: 3px;
         transition: color 0.2s;
     }
+
     .seo-text a:hover {
         color: #fff;
     }
@@ -48,6 +53,7 @@ title: "Sondereinheit für Escape Room Analysen & Tests"
     .latest-case-section {
         margin-bottom: 4rem;
     }
+
     .latest-badge {
         background-color: #d32f2f;
         color: white;
@@ -59,12 +65,13 @@ title: "Sondereinheit für Escape Room Analysen & Tests"
         display: inline-block;
         margin-bottom: 1rem;
     }
-    
+
     .hero-card {
         display: grid;
-        grid-template-columns: 1.2fr 3.8fr; /* Bild ca. 30% */
+        grid-template-columns: 1.2fr 3.8fr;
+        /* Bild ca. 30% */
         gap: 2rem;
-        background: rgba(255,255,255,0.05);
+        background: rgba(255, 255, 255, 0.05);
         border: 1px solid #444;
         border-radius: 8px;
         overflow: hidden;
@@ -76,12 +83,13 @@ title: "Sondereinheit für Escape Room Analysen & Tests"
         height: 100%;
         min-height: 250px;
     }
-    
+
     .hero-image {
         width: 100%;
         height: 100%;
         object-fit: cover;
     }
+
     .hero-content {
         padding: 2rem;
         display: flex;
@@ -96,6 +104,7 @@ title: "Sondereinheit für Escape Room Analysen & Tests"
         gap: 1.5rem;
         margin-bottom: 4rem;
     }
+
     .nav-box {
         position: relative;
         height: 200px;
@@ -111,27 +120,35 @@ title: "Sondereinheit für Escape Room Analysen & Tests"
         overflow: hidden;
         border-radius: 4px;
     }
+
     .nav-box::before {
         content: '';
         position: absolute;
-        top:0; left:0; right:0; bottom:0;
-        background: rgba(0,0,0,0.7);
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.7);
         transition: background 0.3s;
     }
+
     .nav-box:hover {
         border-style: solid;
         border-color: #fff;
         transform: translateY(-5px);
     }
+
     .nav-box:hover::before {
-        background: rgba(0,0,0,0.5);
+        background: rgba(0, 0, 0, 0.5);
     }
+
     .nav-text {
         position: relative;
         z-index: 2;
         text-align: center;
         padding: 0 10px;
     }
+
     .nav-title {
         font-size: 1.4rem;
         font-weight: bold;
@@ -140,6 +157,7 @@ title: "Sondereinheit für Escape Room Analysen & Tests"
         margin-bottom: 0.5rem;
         color: #fff;
     }
+
     .nav-subtitle {
         font-family: 'Courier New', monospace;
         color: #ccc;
@@ -151,14 +169,17 @@ title: "Sondereinheit für Escape Room Analysen & Tests"
         .hero-card {
             grid-template-columns: 1fr;
         }
+
         .hero-image-wrapper {
             height: 250px;
             min-height: auto;
         }
+
         .nav-split {
             grid-template-columns: 1fr;
             gap: 2rem;
         }
+
         .nav-box {
             height: 150px;
         }
@@ -169,81 +190,135 @@ title: "Sondereinheit für Escape Room Analysen & Tests"
     <h1>Einsatz-Briefing</h1>
     <div class="seo-text">
         <p>
-            Willkommen in der Zentrale. Wir analysieren <a href="/karte/"><strong>Escape Rooms</strong></a> in ganz Deutschland.
-            Unsere <a href="/archiv/"><strong>Akten</strong></a> enthalten detaillierte Berichte zu Atmosphäre, Rätseln und Story.
+            Willkommen in der Zentrale. Wir analysieren <a href="/karte/"><strong>Escape Rooms</strong></a> in ganz
+            Deutschland.
+            Unsere <a href="/archiv/"><strong>Akten</strong></a> enthalten detaillierte Berichte zu Atmosphäre, Rätseln
+            und Story.
             Egal ob Anfänger oder Profi-Ermittler – hier findest du deinen nächsten Einsatzort.
         </p>
     </div>
 </section>
 
+{% comment %} Nächster geplanter Raum {% endcomment %}
+{% assign planned_rooms = site.reviews | where_exp: "item", "item.planned == true" %}
+{% assign next_planned = planned_rooms | sort: 'visit_date' | first %}
+
+{% if next_planned %}
+<section class="latest-case-section">
+    <div class="latest-badge" style="background-color: #1E88E5;">+++ Nächste Mission - Geplanter Einsatz +++</div>
+
+    <a href="{{ next_planned.url }}" style="text-decoration: none; color: inherit;">
+        <article class="hero-card">
+            <div class="hero-image-wrapper">
+                {% if next_planned.thumbnail %}
+                {% assign hero_img = next_planned.thumbnail %}
+                {% elsif next_planned.images.size > 0 %}
+                {% assign hero_img = next_planned.images[0] %}
+                {% else %}
+                {% assign hero_img = "ui/no-signal.jpg" %}
+                {% endif %}
+
+                <img src="/assets/images/{{ hero_img }}" alt="Titelbild {{ next_planned.title }}" class="hero-image">
+
+                {% if next_planned.visit_date %}
+                <div
+                    style="position: absolute; bottom: 10px; right: 10px; background: #000; color: #fff; padding: 5px 10px; font-weight: bold;">
+                    📅 {{ next_planned.visit_date | date: "%d.%m.%Y" }}
+                </div>
+                {% endif %}
+            </div>
+
+            <div class="hero-content">
+                <h2 style="margin-top: 0; color: #fff;">{{ next_planned.title }}</h2>
+                <p style="font-family: 'Courier New'; color: #888; margin-bottom: 1rem;">
+                    {{ next_planned.provider }} | {{ next_planned.location.city }}
+                </p>
+
+                <p style="color: #ccc;">{{ next_planned.summary | truncate: 300 }}</p>
+
+                <span style="margin-top: auto; text-decoration: underline; color: var(--rust-light, #e57373);">
+                    Zum Vorab-Dossier &rarr;
+                </span>
+            </div>
+        </article>
+    </a>
+</section>
+{% endif %}
+
 {% comment %} 1. Erst alle Reviews filtern, die NICHT pending oder planned sind {% endcomment %}
-{% assign finished_reviews = site.reviews | where_exp: "item", "item.pending != true" | where_exp: "item", "item.planned != true" %}
+{% assign finished_reviews = site.reviews | where_exp: "item", "item.pending != true" | where_exp: "item", "item.planned
+!= true" %}
 
 {% comment %} 2. Dann nach visit_date sortieren und den neuesten nehmen {% endcomment %}
 {% assign latest_review = finished_reviews | sort: 'visit_date' | reverse | first %}
 
 {% if latest_review %}
-    {% assign r = latest_review.ratings %}
-    {% assign sum = r.atmosphere.score | plus: r.story.score | plus: r.puzzles.score | plus: r.scenery.score | plus: r.gamemaster.score %}
-    {% assign calculated_avg = sum | divided_by: 5.0 %}
-    
-    <section class="latest-case-section">
-        <div class="latest-badge">+++ Aktuelle Ermittlung - Neueste Rezension +++</div>
-        
-        <a href="{{ latest_review.url }}" style="text-decoration: none; color: inherit;">
-            <article class="hero-card">
-                <div class="hero-image-wrapper">
-                    {% if latest_review.thumbnail %}
-                        {% assign hero_img = latest_review.thumbnail %}
-                    {% elsif latest_review.images.size > 0 %}
-                        {% assign hero_img = latest_review.images[0] %}
-                    {% else %}
-                        {% assign hero_img = "ui/no-signal.jpg" %}
-                    {% endif %}
-                    
-                    <img src="/assets/images/{{ hero_img }}" alt="Titelbild {{ latest_review.title }}" class="hero-image">
-                    
-                    <div style="position: absolute; bottom: 10px; right: 10px; background: #000; color: #fff; padding: 5px 10px; font-weight: bold;">
-                        ★ {{ calculated_avg | round: 1 }}
-                    </div>
+{% assign r = latest_review.ratings %}
+{% assign sum = r.atmosphere.score | plus: r.story.score | plus: r.puzzles.score | plus: r.scenery.score | plus:
+r.gamemaster.score %}
+{% assign calculated_avg = sum | divided_by: 5.0 %}
+
+<section class="latest-case-section">
+    <div class="latest-badge">+++ Aktuelle Ermittlung - Neueste Rezension +++</div>
+
+    <a href="{{ latest_review.url }}" style="text-decoration: none; color: inherit;">
+        <article class="hero-card">
+            <div class="hero-image-wrapper">
+                {% if latest_review.thumbnail %}
+                {% assign hero_img = latest_review.thumbnail %}
+                {% elsif latest_review.images.size > 0 %}
+                {% assign hero_img = latest_review.images[0] %}
+                {% else %}
+                {% assign hero_img = "ui/no-signal.jpg" %}
+                {% endif %}
+
+                <img src="/assets/images/{{ hero_img }}" alt="Titelbild {{ latest_review.title }}" class="hero-image">
+
+                <div
+                    style="position: absolute; bottom: 10px; right: 10px; background: #000; color: #fff; padding: 5px 10px; font-weight: bold;">
+                    ★ {{ calculated_avg | round: 1 }}
                 </div>
-                
-                <div class="hero-content">
-                    <h2 style="margin-top: 0; color: #fff;">{{ latest_review.title }}</h2>
-                    <p style="font-family: 'Courier New'; color: #888; margin-bottom: 1rem;">
-                        {{ latest_review.provider }} | {{ latest_review.location.city }}
-                    </p>
-                    
-                    <p style="color: #ccc;">{{ latest_review.summary | truncate: 300 }}</p>
-                    
-                    <span style="margin-top: auto; text-decoration: underline; color: var(--rust-light, #e57373);">
-                        Zur Fallakte &rarr;
-                    </span>
-                </div>
-            </article>
-        </a>
-    </section>
+            </div>
+
+            <div class="hero-content">
+                <h2 style="margin-top: 0; color: #fff;">{{ latest_review.title }}</h2>
+                <p style="font-family: 'Courier New'; color: #888; margin-bottom: 1rem;">
+                    {{ latest_review.provider }} | {{ latest_review.location.city }}
+                </p>
+
+                <p style="color: #ccc;">{{ latest_review.summary | truncate: 300 }}</p>
+
+                <span style="margin-top: auto; text-decoration: underline; color: var(--rust-light, #e57373);">
+                    Zur Fallakte &rarr;
+                </span>
+            </div>
+        </article>
+    </a>
+</section>
 {% endif %}
 
 <hr style="border: 0; border-top: 1px solid #333; margin: 3rem 0;">
 
 <section class="nav-split">
-    
-    <a href="/hall-of-fame/" class="nav-box" style="background-image: url('/assets/images/ui/trophy-room.webp'); background-color: #111;">
+
+    <a href="/hall-of-fame/" class="nav-box"
+        style="background-image: url('/assets/images/ui/trophy-room.webp'); background-color: #111;">
         <div class="nav-text">
             <span class="nav-title">Hall of Fame</span>
             <span class="nav-subtitle">★ Die Elite-Missionen ★</span>
         </div>
     </a>
 
-    <a href="/karte/" class="nav-box" style="background-image: url('/assets/images/ui/map-bg.webp'); background-color: #111;">
+    <a href="/karte/" class="nav-box"
+        style="background-image: url('/assets/images/ui/map-bg.webp'); background-color: #111;">
         <div class="nav-text">
             <span class="nav-title">Einsatzkarte</span>
             <span class="nav-subtitle">Geografische Übersicht</span>
         </div>
     </a>
 
-    <a href="/archiv/" class="nav-box" style="background-image: url('/assets/images/ui/archive-bg.webp'); background-color: #111;">
+    <a href="/archiv/" class="nav-box"
+        style="background-image: url('/assets/images/ui/archive-bg.webp'); background-color: #111;">
         <div class="nav-text">
             <span class="nav-title">Aktenarchiv</span>
             <span class="nav-subtitle">Alle Berichte (Liste)</span>
@@ -256,16 +331,21 @@ title: "Sondereinheit für Escape Room Analysen & Tests"
 
 <section class="mission-briefing" style="margin-bottom: 0;">
     <h3>// INTERNE RESSOURCEN & HINTERGRÜNDE</h3>
-    
+
     <div class="seo-text">
         <p>
-            Bevor du dich in die nächste Ermittlung stürzt: Möchtest du wissen, wer eigentlich hinter diesen Berichten steckt?
+            Bevor du dich in die nächste Ermittlung stürzt: Möchtest du wissen, wer eigentlich hinter diesen Berichten
+            steckt?
             In der <a href="/team/">Personalakte</a> stellen wir das Team "Die Anrufbeantworter" genauer vor.
         </p>
         <br>
         <p>
-            Falls du ganz neu im Dienst bist, empfehlen wir dir zunächst das Briefing <a href="/was-ist-ein-escape-room/">Was ist eigentlich ein Escape Room?</a>, um die Unterschiede zwischen den Generationen zu verstehen.
-            Erfahrenen Agenten, die ihre Erfolgsquote maximieren wollen, öffnen wir unser <a href="/philosophie/">privates Feldbuch</a>: Hier verraten wir unsere Philosophie, Taktiken & Tipps für erfolgreiche Fluchtversuche.
+            Falls du ganz neu im Dienst bist, empfehlen wir dir zunächst das Briefing <a
+                href="/was-ist-ein-escape-room/">Was ist eigentlich ein Escape Room?</a>, um die Unterschiede zwischen
+            den Generationen zu verstehen.
+            Erfahrenen Agenten, die ihre Erfolgsquote maximieren wollen, öffnen wir unser <a
+                href="/philosophie/">privates Feldbuch</a>: Hier verraten wir unsere Philosophie, Taktiken & Tipps für
+            erfolgreiche Fluchtversuche.
         </p>
     </div>
 </section>
