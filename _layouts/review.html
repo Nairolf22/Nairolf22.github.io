@@ -93,6 +93,38 @@ r.gamemaster.score %}
         font-style: italic;
         color: #444;
     }
+
+    /* --- Mobile Responsive --- */
+    @media (max-width: 600px) {
+        .planned-date-value {
+            font-size: 2rem;
+            word-break: break-word;
+        }
+
+        .stamp-planned {
+            font-size: 1.2rem;
+            padding: 0.2rem 0.6rem;
+        }
+
+        .dossier-header h2 {
+            padding-right: 0 !important;
+            margin-top: 2rem;
+        }
+
+        .dossier-meta {
+            margin-right: 0 !important;
+        }
+
+        .dossier-header {
+            flex-direction: column;
+        }
+
+        .stamp-box,
+        .stamp-planned {
+            margin-top: 1rem;
+            align-self: flex-start;
+        }
+    }
 </style>
 
 <article class="review-dossier">
