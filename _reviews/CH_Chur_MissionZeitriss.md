@@ -10,7 +10,7 @@ location:
   lat: 46.85011291503906
   lng: 9.531054496765137
 images:
-  - "rooms/dummy.webp"
+  - "rooms/CH-Chur-MissionZeitriss.webp"
 visit_date: 2026-03-09
 participants:
   - Jessica
