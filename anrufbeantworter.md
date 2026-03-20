@@ -56,12 +56,23 @@ permalink: /team/
         <h3 style="font-family: 'Courier New', monospace; text-align: center; margin-bottom: 30px;">Identifizierte Teammitglieder:</h3>
         
         {% for member in site.data.members %}
+        {% assign review_count = 0 %}
+        {% for review in site.reviews %}
+            {% if review.participants contains member.name %}
+                {% assign review_count = review_count | plus: 1 %}
+            {% endif %}
+        {% endfor %}
         <div class="team-card" id="{{ member.name | slugify }}">
-            <div class="team-photo">
-                <img src="/assets/images/{{ member.image }}" alt="{{ member.name }}" onerror="this.src='/assets/images/ui/no-signal.jpg'">
+            <div class="team-photo" style="position: relative;">
+                <a href="/team/{{ member.name | slugify }}/">
+                    <img src="/assets/images/{{ member.image }}" alt="{{ member.name }}" onerror="this.src='/assets/images/ui/no-signal.jpg'" style="display: block; width: 100%;">
+                </a>
+                <div style="position: absolute; bottom: 10px; right: 10px; background-color: var(--rust-primary, #a0522d); color: white; padding: 5px 12px; border-radius: 20px; font-weight: bold; font-size: 0.85em; box-shadow: 0 2px 5px rgba(0,0,0,0.4); pointer-events: none;">
+                    {{ review_count }} {% if review_count == 1 %}Review{% else %}Reviews{% endif %}
+                </div>
             </div>
             <div class="team-info">
-                <h3 class="team-name">{{ member.name }}</h3>
+                <h3 class="team-name"><a href="/team/{{ member.name | slugify }}/" style="color: inherit; text-decoration: none;">{{ member.name }}</a></h3>
                 <span class="team-role">{{ member.role }}</span>
                 <p class="team-bio">{{ member.bio }}</p>
             </div>

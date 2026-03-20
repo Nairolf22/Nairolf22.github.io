@@ -1,0 +1,54 @@
+---
+layout: default
+---
+<div class="member-profile" style="max-width: 800px; margin: 0 auto; padding: 20px;">
+    {% assign member = site.data.members | where: "name", page.member_name | first %}
+    
+    <div style="display: flex; gap: 30px; align-items: flex-start; margin-bottom: 40px; flex-wrap: wrap;">
+        <div style="flex: 0 0 250px;">
+            <img src="/assets/images/{{ member.image }}" alt="{{ member.name }}" style="width: 100%; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);" onerror="this.src='/assets/images/ui/no-signal.jpg'">
+        </div>
+        <div style="flex: 1; min-width: 300px;">
+            <h1 style="color: var(--rust-primary, #a0522d); margin-top: 0; font-family: 'Courier New', Courier, monospace;">Akte: {{ member.name }}</h1>
+            <h3 style="margin-top: -10px; color: #666; font-family: 'Courier New', Courier, monospace;">{{ member.role }}</h3>
+            <p style="font-family: 'Courier New', Courier, monospace; line-height: 1.6; margin-top: 20px; font-size: 1.1em;">
+                {{ member.bio }}
+            </p>
+        </div>
+    </div>
+
+    <hr style="border: 0; border-top: 2px solid #333; margin: 40px 0;">
+
+    <h2 style="font-family: 'Courier New', Courier, monospace; margin-bottom: 30px;">Gespielte Räume von {{ member.name }}</h2>
+
+    <div class="reviews-list">
+        {% assign member_reviews = site.reviews | where_exp: "item", "item.participants contains page.member_name" | sort: "visit_date" | reverse %}
+        
+        {% if member_reviews.size > 0 %}
+            <ul style="list-style-type: none; padding: 0;">
+            {% for review in member_reviews %}
+                <li style="margin-bottom: 20px; padding: 15px; background: #fdfdfd; border-left: 4px solid var(--rust-primary, #a0522d); box-shadow: 0 2px 4px rgba(0,0,0,0.05); border-radius: 0 8px 8px 0;">
+                    <h3 style="margin: 0 0 10px 0; font-size: 1.25em;">
+                        <a href="{{ review.url }}" style="color: #333; text-decoration: none;">
+                            {{ review.title }}
+                        </a>
+                    </h3>
+                    <div style="font-size: 0.9em; color: #666; line-height: 1.4;">
+                        <strong style="color: #444;">Anbieter:</strong> {{ review.provider }} <br>
+                        <strong style="color: #444;">Stadt:</strong> {{ review.location.city }} <br>
+                        {% if review.visit_date %}<strong style="color: #444;">Gespielt am:</strong> {{ review.visit_date | date: "%d.%m.%Y" }}{% endif %}
+                    </div>
+                </li>
+            {% endfor %}
+            </ul>
+        {% else %}
+            <p style="font-style: italic; color: #666;">Bisher noch keine Räume in der Akte verzeichnet.</p>
+        {% endif %}
+    </div>
+
+    <div style="margin-top: 50px; text-align: center;">
+        <a href="/team/" style="font-weight: bold; color: white; background-color: var(--rust-primary, #a0522d); padding: 10px 20px; text-decoration: none; border-radius: 4px; display: inline-block;">
+            &laquo; Zurück zur Team-Übersicht
+        </a>
+    </div>
+</div>
