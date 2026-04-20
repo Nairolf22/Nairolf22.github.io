@@ -1,6 +1,7 @@
 ---
 layout: default
 title: "Kontakt & Kooperation: Laden Sie unser Tester-Team ein"
+description: "Kontaktieren Sie The Escape Archive für Kooperationen, Einladungen zu neuen Escape Rooms oder bei Fragen zu unseren Tests."
 permalink: /kontakt/
 ---
 

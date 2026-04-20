@@ -55,12 +55,16 @@
   <div class="site-wrapper">
 
     <header>
-      <h1 class="logo-heading">
+      
+      <div class="logo-heading">
+      
         <a href="/" class="site-logo-link">
           <img src="/assets/images/logo-escape-archive_800.webp"
             alt="The Escape Archive - Escape Room Reviews & Analysen (Die Anrufbeantworter)" class="site-logo">
         </a>
-      </h1>
+      
+      </div>
+      
       <p style="color: #ccc; margin-top: 10px;">• EST. 2025 • CLASSIFIED REVIEWS •</p>
     </header>
 
@@ -181,7 +185,7 @@
             padding: 0.2rem 0.6rem;
         }
 
-        .dossier-header h2 {
+        .dossier-header h1, .dossier-header h2 {
             padding-right: 0 !important;
             margin-top: 2rem;
         }
@@ -220,12 +224,12 @@
 
             <span class="provider">Rätselraum Ruhrpott</span>
 
-            <h2 style="padding-right: 220px;">
+            <h1 style="padding-right: 220px; font-size: 2em; margin-top: 0.5rem; margin-bottom: 0.5rem;">
                 Die Gasse
                 
                  <span
                     style="color: #f57f17; font-size: 0.6em; vertical-align: middle;">[GEPLANT]</span>
-            </h2>
+            </h1>
 
             <p style="margin:0; font-size: 0.9rem; color: #555;">
                 <strong>Ort:</strong> Bochum | Kortumstraße 53, 44787 Bochum
@@ -400,6 +404,7 @@
     h6,
     header h1,
     .card-content h3,
+    .dossier-header h1,
     .dossier-header h2 {
       hyphens: none !important;
       -webkit-hyphens: none !important;
@@ -441,6 +446,7 @@
         width: 100% !important;
       }
 
+      .dossier-meta h1,
       .dossier-meta h2 {
         padding-right: 0 !important;
         font-size: 1.8rem;

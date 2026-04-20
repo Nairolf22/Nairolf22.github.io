@@ -1,6 +1,7 @@
 ---
 layout: default
 title: "Escape Room Tipps & Tricks: Der ultimative Taktik-Guide für Teams"
+description: "Unser Taktik-Guide für Escape Rooms: Erfolgreiche Strategien, Tipps und Philosophie für Anfänger und Profi-Teams."
 permalink: /philosophie/
 ---
 

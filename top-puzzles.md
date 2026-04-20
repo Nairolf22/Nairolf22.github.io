@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Die Top 5 der Rätsel
+description: "Die besten Escape Room Rätsel: Unsere Top 5 für kreative, logische und perfekt in die Story integrierte Aufgaben."
 permalink: /hall-of-fame/top-puzzles/
 ---
 

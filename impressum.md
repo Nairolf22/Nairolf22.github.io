@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Impressum & Datenschutz
+description: "Impressum und Datenschutzerklärung von The Escape Archive."
 permalink: /impressum/
 ---
 

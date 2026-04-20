@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Die Top 5 der Immersion
+description: "Die immersivsten Escape Rooms: Unsere Top 5 Spiele, bei denen du alles um dich herum vergisst."
 permalink: /hall-of-fame/top-immersion/
 ---
 

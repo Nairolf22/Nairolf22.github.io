@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Die Top 5 der Story
+description: "Die packendsten Geschichten: Unsere Top 5 Escape Rooms mit fesselnder Storyline und perfekter Erzählweise."
 permalink: /hall-of-fame/top-story/
 ---
 

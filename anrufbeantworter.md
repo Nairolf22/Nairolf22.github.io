@@ -1,6 +1,7 @@
 ---
 layout: default
 title: "Wer wir sind: Das Escape Room Tester-Team \"Die Anrufbeantworter\""
+description: "Lerne das Tester-Team 'Die Anrufbeantworter' kennen. Wir testen und bewerten Escape Rooms in ganz Deutschland nach strengen Kriterien."
 permalink: /team/
 ---
 

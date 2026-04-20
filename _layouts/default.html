@@ -13,7 +13,7 @@
   </title>
 
   <meta name="description"
-    content="{% if page.summary %}{{ page.summary | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
+    content="{% if page.description %}{{ page.description | strip_html | strip_newlines | truncate: 160 }}{% elsif page.summary %}{{ page.summary | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
   <link rel="canonical" href="{{ site.url }}{{ page.url }}">
 
   <!-- SEO & Social Media Tags -->
@@ -30,7 +30,7 @@
   <meta property="og:type" content="{% if page.layout == 'review' %}article{% else %}website{% endif %}">
   <meta property="og:url" content="{{ site.url }}{{ page.url }}">
   <meta property="og:description"
-    content="{% if page.summary %}{{ page.summary | strip_html | strip_newlines | truncate: 200 }}{% else %}{{ site.description }}{% endif %}">
+    content="{% if page.description %}{{ page.description | strip_html | strip_newlines | truncate: 200 }}{% elsif page.summary %}{{ page.summary | strip_html | strip_newlines | truncate: 200 }}{% else %}{{ site.description }}{% endif %}">
   <meta property="og:image"
     content="{{ site.url }}/assets/images/{% if page.thumbnail %}{{ page.thumbnail }}{% elsif page.images[0] %}{{ page.images[0] }}{% else %}logo-escape-archive_800.webp{% endif %}">
 
@@ -39,7 +39,7 @@
   <meta name="twitter:title"
     content="{% if page.layout == 'review' %}{{ page.title }} ({{ page.provider }}){% else %}{{ page.title }} | Escape Archive{% endif %}">
   <meta name="twitter:description"
-    content="{% if page.summary %}{{ page.summary | strip_html | strip_newlines | truncate: 200 }}{% else %}{{ site.description }}{% endif %}">
+    content="{% if page.description %}{{ page.description | strip_html | strip_newlines | truncate: 200 }}{% elsif page.summary %}{{ page.summary | strip_html | strip_newlines | truncate: 200 }}{% else %}{{ site.description }}{% endif %}">
   <meta name="twitter:image"
     content="{{ site.url }}/assets/images/{% if page.thumbnail %}{{ page.thumbnail }}{% elsif page.images[0] %}{{ page.images[0] }}{% else %}logo-escape-archive_800.webp{% endif %}">
 
@@ -100,12 +100,20 @@
   <div class="site-wrapper">
 
     <header>
+      {% if page.url == '/' %}
       <h1 class="logo-heading">
+      {% else %}
+      <div class="logo-heading">
+      {% endif %}
         <a href="/" class="site-logo-link">
           <img src="/assets/images/logo-escape-archive_800.webp"
             alt="The Escape Archive - Escape Room Reviews & Analysen (Die Anrufbeantworter)" class="site-logo">
         </a>
+      {% if page.url == '/' %}
       </h1>
+      {% else %}
+      </div>
+      {% endif %}
       <p style="color: #ccc; margin-top: 10px;">• EST. 2025 • CLASSIFIED REVIEWS •</p>
     </header>
 
@@ -248,6 +256,7 @@
     h6,
     header h1,
     .card-content h3,
+    .dossier-header h1,
     .dossier-header h2 {
       hyphens: none !important;
       -webkit-hyphens: none !important;
@@ -289,6 +298,7 @@
         width: 100% !important;
       }
 
+      .dossier-meta h1,
       .dossier-meta h2 {
         padding-right: 0 !important;
         font-size: 1.8rem;

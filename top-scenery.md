@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Die Top 5 der Kulisse
+description: "Die beeindruckendsten Kulissen: Unsere Top 5 Escape Rooms mit spektakulärem Setdesign und Atmosphäre."
 permalink: /hall-of-fame/top-scenery/
 ---
 

@@ -1,6 +1,7 @@
 ---
 layout: default
 title: "Alle Escape Room Tests im Überblick: Das große Archiv & Verzeichnis"
+description: "Das große Escape Room Archiv: Alle unsere ausführlichen Tests und Bewertungen zu Escape Rooms in Deutschland auf einen Blick."
 permalink: /archiv/
 ---
 

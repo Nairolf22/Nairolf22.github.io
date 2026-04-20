@@ -1,6 +1,7 @@
 ---
 layout: default
 title: "Trainingsmodul: Schloss-Identifikation"
+description: "Trainingsmodul Schloss-Identifikation: Lerne die verschiedenen Schlosstypen in Escape Rooms kennen und wie man sie knackt."
 permalink: /raetsel/schloesser/
 ---
 

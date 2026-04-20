@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Die Top 5 für Gamemaster & Service
+description: "Die besten Gamemaster in Escape Rooms: Unsere Top 5 für exzellenten Service, Begrüßung und Spielführung."
 permalink: /hall-of-fame/top-gamemaster/
 ---
 

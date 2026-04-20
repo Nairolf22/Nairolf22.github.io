@@ -1,6 +1,7 @@
 ---
 layout: default
 title: "Die besten Escape Rooms: Unsere Top 5 Testsieger (Gesamtwertung)"
+description: "Die absoluten Spitzenreiter: Unsere Top 5 Testsieger mit der höchsten Gesamtwertung aus all unseren Escape Room Tests."
 permalink: /hall-of-fame/top-rooms/
 ---
 
