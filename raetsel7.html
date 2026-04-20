@@ -1,0 +1,238 @@
+---
+layout: default
+title: "Notstrom-Aktivierung"
+description: "Trainings-Center: Stellen Sie die Notstromversorgung durch logisches Kombinieren wieder her."
+permalink: /raetsel/power
+---
+
+<style>
+    .puzzle-container {
+        max-width: 600px;
+        margin: 2rem auto;
+        font-family: 'Courier New', monospace;
+    }
+    .readable-panel {
+        background-color: rgba(0, 0, 0, 0.7);
+        padding: 1.5rem;
+        border-radius: 8px;
+        border: 1px solid #444;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    }
+    .power-panel {
+        background: #2a2a2a;
+        border: 4px solid #111;
+        border-radius: 10px;
+        padding: 2rem;
+        position: relative;
+        box-shadow: inset 0 0 20px rgba(0,0,0,0.8);
+        margin-bottom: 2rem;
+    }
+    .switch-board {
+        display: flex;
+        justify-content: space-around;
+        margin-bottom: 2rem;
+    }
+    .switch-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+    .switch-label {
+        color: #fff;
+        font-weight: bold;
+        font-size: 1.2rem;
+    }
+    .switch {
+        width: 60px;
+        height: 100px;
+        background: #111;
+        border: 2px solid #555;
+        border-radius: 5px;
+        position: relative;
+        cursor: pointer;
+        box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    }
+    .switch-handle {
+        width: 100%;
+        height: 50%;
+        background: #d32f2f;
+        position: absolute;
+        top: 0;
+        left: 0;
+        border-radius: 3px;
+        transition: top 0.2s, background 0.2s;
+        box-shadow: inset 0 0 5px rgba(0,0,0,0.3);
+    }
+    .switch.on .switch-handle {
+        top: 50%;
+        background: #4CAF50;
+    }
+    
+    .status-indicator {
+        text-align: center;
+        padding: 1rem;
+        background: #000;
+        border: 2px solid #555;
+        color: #d32f2f;
+        font-size: 1.5rem;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        font-weight: bold;
+        border-radius: 5px;
+        margin-bottom: 2rem;
+    }
+    .status-indicator.active {
+        color: #4CAF50;
+        border-color: #4CAF50;
+        box-shadow: 0 0 15px rgba(76, 175, 80, 0.5);
+    }
+
+    .btn-action {
+        background: var(--rust-primary, #e57373);
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        font-size: 1.2rem;
+        font-weight: bold;
+        text-transform: uppercase;
+        cursor: pointer;
+        border-radius: 4px;
+        width: 100%;
+    }
+    
+    #success-screen div.success-stamp {
+        border: 3px solid #4CAF50;
+        color: #4CAF50;
+        font-size: 2rem;
+        font-weight: bold;
+        padding: 1rem 2rem;
+        display: inline-block;
+        transform: rotate(-5deg);
+        margin-bottom: 2rem;
+        background: rgba(0,0,0,0.8);
+    }
+</style>
+
+<div class="review-dossier">
+    <div class="mission-briefing">
+        <h1>Notstrom-Aktivierung</h1>
+        <h3>// LEVEL 6 LOGIK-RÄTSEL</h3>
+        <div class="readable-panel" style="margin-top: 2rem;">
+            <p style="color: #f0f0f0; margin: 0; line-height: 1.6;">
+                <strong>Stromausfall im Sektor.</strong> Die Hauptenergieversorgung ist unterbrochen. 
+                Sie müssen das Notstrom-Aggregat manuell hochfahren. Die vier Hauptschalter müssen in der exakt richtigen 
+                Konfiguration (ON/OFF) stehen, um den Stromkreis zu schließen.
+            </p>
+        </div>
+    </div>
+
+    <div id="puzzle-interface" class="puzzle-container">
+        
+        <div class="power-panel">
+            <div class="status-indicator" id="status-indicator">SYSTEM OFFLINE</div>
+            
+            <div class="switch-board">
+                <div class="switch-container">
+                    <span class="switch-label">1</span>
+                    <div class="switch" onclick="toggleSwitch(1)" id="sw1">
+                        <div class="switch-handle"></div>
+                    </div>
+                </div>
+                <div class="switch-container">
+                    <span class="switch-label">2</span>
+                    <div class="switch" onclick="toggleSwitch(2)" id="sw2">
+                        <div class="switch-handle"></div>
+                    </div>
+                </div>
+                <div class="switch-container">
+                    <span class="switch-label">3</span>
+                    <div class="switch" onclick="toggleSwitch(3)" id="sw3">
+                        <div class="switch-handle"></div>
+                    </div>
+                </div>
+                <div class="switch-container">
+                    <span class="switch-label">4</span>
+                    <div class="switch" onclick="toggleSwitch(4)" id="sw4">
+                        <div class="switch-handle"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <button class="btn-action" onclick="checkPower()">Strom aktivieren</button>
+        </div>
+
+        <div class="readable-panel">
+            <div style="color: var(--rust-primary, #e57373); font-weight: bold; margin-bottom: 1rem; border-bottom: 1px dashed #666; padding-bottom: 0.5rem; text-transform: uppercase;">Handbuch "Elektronik für Ermittler":</div>
+            <ul style="list-style: none; padding: 0; line-height: 1.8; color: #fff;">
+                <li>Der erste Hebel (1) muss entgegengesetzt zum dritten Hebel (3) positioniert sein.</li>
+                <li>Der vierte Hebel (4) liefert die Hauptspannung und muss unbedingt aktiviert (ON) sein.</li>
+                <li>Die Hebel (2) und (3) sind gekoppelt und müssen beide zwingend in derselben Position stehen.</li>
+                <li>Solange Hebel (4) aktiv ist (ON), darf Hebel (1) auf keinen Fall aktiviert werden (OFF).</li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="success-screen" style="display:none; text-align:center; padding: 3rem 0;">
+        <div class="success-stamp">STROMVERSORGUNG AKTIV</div>
+        <p style="color: #fff; margin-bottom: 2rem; font-size: 1.1rem;">
+            Perfekt gelöst! (Konfiguration: OFF - ON - ON - ON).<br>
+            Solche Logik-Zuordnungen, auch "Einstein-Rätsel" genannt, kommen häufig vor, wenn abstrakte Symbole oder Schalter anhand von Text-Hinweisen richtig angeordnet werden müssen.
+        </p>
+        <a href="/raetsel/" class="btn-action" style="text-decoration:none; display: inline-block; width: auto;">ZUM TRAININGS-CENTER</a>
+    </div>
+
+</div>
+
+<script>
+    // State of switches: false = OFF, true = ON
+    let switches = {
+        1: false,
+        2: false,
+        3: false,
+        4: false
+    };
+
+    function toggleSwitch(id) {
+        switches[id] = !switches[id];
+        const sw = document.getElementById('sw' + id);
+        if (switches[id]) {
+            sw.classList.add('on');
+        } else {
+            sw.classList.remove('on');
+        }
+    }
+
+    function checkPower() {
+        const status = document.getElementById('status-indicator');
+        
+        // Solution constraints based on hints:
+        // H4 must be ON
+        // H4 is ON -> H1 must be OFF
+        // H1 and H3 are opposite -> H1 is OFF, so H3 must be ON
+        // H2 and H3 are same -> H3 is ON, so H2 must be ON
+        // Correct is: {1: false, 2: true, 3: true, 4: true}
+        
+        const isCorrect = 
+            (switches[4] === true) && 
+            (switches[1] === false) && 
+            (switches[3] === true) && 
+            (switches[2] === true);
+
+        if (isCorrect) {
+            status.innerText = "SYSTEM ONLINE";
+            status.classList.add('active');
+            setTimeout(() => {
+                document.getElementById('puzzle-interface').style.display = 'none';
+                document.getElementById('success-screen').style.display = 'block';
+            }, 1000);
+        } else {
+            document.querySelector('.power-panel').classList.add('shake');
+            status.innerText = "KURZSCHLUSS! FEHLER";
+            setTimeout(() => {
+                document.querySelector('.power-panel').classList.remove('shake');
+                status.innerText = "SYSTEM OFFLINE";
+            }, 1000);
+        }
+    }
+</script>
