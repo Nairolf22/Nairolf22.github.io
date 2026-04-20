@@ -88,29 +88,89 @@ header h1 {
 /* --- NAVIGATION --- */
 nav {
   background-color: #000;
-  display: flex;
-  justify-content: center;
-  padding: 1rem;
   border-bottom: 2px solid var(--rust-primary);
 }
 
-nav a {
+.nav-links {
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.nav-links a {
   margin: 0 1.5rem;
   font-size: 1.2rem;
   text-transform: uppercase;
   font-weight: bold;
   border-bottom: 2px solid transparent;
+  display: block;
 }
 
-nav a:hover {
+.nav-links a:hover {
   border-bottom: 2px solid var(--rust-light);
 }
+
+.nav-toggle {
+  display: none; /* Checkbox is hidden */
+}
+
+.burger-icon {
+  display: none;
+  background-color: #000;
+  color: var(--rust-light);
+  padding: 1rem;
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  text-transform: uppercase;
+  user-select: none;
+}
+
+.burger-icon:hover {
+  background-color: #111;
+  color: #ffcc00;
+}
+
+/* Tablet & Mobile responsiveness */
+@media (max-width: 800px) {
+  .burger-icon {
+    display: block;
+  }
+  
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    padding: 0;
+  }
+  
+  .nav-links a {
+    text-align: center;
+    padding: 1rem;
+    margin: 0;
+    border-bottom: 1px solid #333;
+  }
+  
+  .nav-toggle:checked ~ .nav-links {
+    display: flex;
+  }
+}
+
 
 /* --- MAIN CONTENT --- */
 main {
   flex: 1; /* Füllt den verfügbaren Platz */
   padding: 2rem;
   background-image: radial-gradient(#333, #222); /* "Dreckige Wand" */
+}
+
+@media (max-width: 600px) {
+  main {
+    padding: 1rem 0.5rem;
+  }
+  .review-dossier {
+    padding: 1rem;
+  }
 }
 
 /* --- FOOTER --- */
@@ -209,9 +269,22 @@ footer {
 .dossier-meta h2 {
   font-family: 'Arial Black', sans-serif;
   text-transform: uppercase;
-  font-size: 2rem;
+  font-size: 2.2rem;
   margin: 0;
   color: #222;
+  word-wrap: break-word; /* Prevent long titles from breaking the layout */
+}
+
+@media (max-width: 800px) {
+  .dossier-meta h2 {
+    font-size: 1.6rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .dossier-meta h2 {
+    font-size: 1.4rem;
+  }
 }
 
 .dossier-meta .provider {

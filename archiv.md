@@ -27,19 +27,23 @@ permalink: /archiv/
             <span style="border-bottom: 5px solid var(--rust-primary);">FALL-ARCHIV</span>
         </h2>
         
-        <div class="sort-controls" style="margin-top: 1rem;">
-            <span style="color:#888; margin-right:5px; text-transform:uppercase; font-size:0.8rem;">Sortieren:</span>
-            <button class="btn-sort" onclick="sortRooms('name')">Name</button>
-            <button class="btn-sort" onclick="sortRooms('provider')">Anbieter</button>
-            <button class="btn-sort" onclick="sortRooms('rating')">Bewertung</button>
-
-            <span style="color:#888; margin-left:15px; margin-right:5px; text-transform:uppercase; font-size:0.8rem;">Anzeigen:</span>
-            <select class="select-filter" onchange="changeItemsPerPage(this.value)">
-                <option value="6">6 Akten</option>
-                <option value="12" selected>12 Akten</option>
-                <option value="24">24 Akten</option>
-                <option value="all">Alle</option>
-            </select>
+        <div class="sort-controls" style="margin-top: 1rem; display: flex; flex-wrap: wrap; gap: 10px; align-items: center;">
+            <div style="display: flex; align-items: center;">
+                <span style="color:#888; margin-right:5px; text-transform:uppercase; font-size:0.8rem;">Sortieren:</span>
+                <button class="btn-sort" onclick="sortRooms('name')">Name</button>
+                <button class="btn-sort" onclick="sortRooms('provider')">Anbieter</button>
+                <button class="btn-sort" onclick="sortRooms('rating')">Bewertung</button>
+            </div>
+            
+            <div style="display: flex; align-items: center;">
+                <span style="color:#888; margin-right:5px; text-transform:uppercase; font-size:0.8rem;">Anzeigen:</span>
+                <select class="select-filter" onchange="changeItemsPerPage(this.value)" style="margin-left: 0;">
+                    <option value="6">6 Akten</option>
+                    <option value="12" selected>12 Akten</option>
+                    <option value="24">24 Akten</option>
+                    <option value="all">Alle</option>
+                </select>
+            </div>
         </div>
     </div>
 
