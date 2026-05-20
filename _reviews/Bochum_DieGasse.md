@@ -22,7 +22,7 @@ ratings:
     score: 4.5
     text: "Die Handlung ist klar verständlich, logisch aufgebaut und wird überaus spannend präsentiert. Besonders die unerwarteten Wendungen und tollen Überraschungen machen die Geschichte lebendig. Man fiebert richtig mit und fühlt sich stellenweise herrlich von Charakteren an der Nase herumgeführt."
   puzzles:
-    score: 4.5
+    score: 5.0
     text: "Das Rätseldesign verdient die volle Punktzahl. Es ist extrem abwechslungsreich und bietet eine perfekte Mischung aus mechanischen, logischen, technischen und haptischen Aufgaben. Von Stromkreisen bis hin zu vielfältigen Schlössern (Magnet, Richtung, Zahlen) ist alles dabei. Die Rätsel sind fair, nachvollziehbar und folgen einem klaren roten Faden, was für einen tollen, linearen Spielfluss sorgt."
   scenery:
     score: 5.0
