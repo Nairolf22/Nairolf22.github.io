@@ -3,6 +3,7 @@
  */
 let currentPage = 1;
 let itemsPerPage = 12; // Standardwert
+let activeCategory = 'all';
 
 document.addEventListener('DOMContentLoaded', function() {
     // Wenn wir auf der Archiv-Seite sind, initialisieren wir die Ansicht
@@ -74,14 +75,32 @@ function goToPage(page) {
  */
 function updatePagination() {
     const grid = document.getElementById('roomGrid');
+    if (!grid) return;
     const items = Array.from(grid.getElementsByClassName('room-card-link'));
     const controls = document.getElementById('paginationControls');
+    if (!controls) return;
     
-    // 1. Items ein-/ausblenden
+    // 1. Filtere Items nach aktiver Kategorie
+    const filteredItems = items.filter(item => {
+        if (activeCategory === 'all') return true;
+        const isOutdoor = item.dataset.outdoor === 'true';
+        if (activeCategory === 'outdoor') return isOutdoor;
+        if (activeCategory === 'indoor') return !isOutdoor;
+        return true;
+    });
+
+    // Blende alle nicht passenden aus
+    items.forEach(item => {
+        if (!filteredItems.includes(item)) {
+            item.style.display = 'none';
+        }
+    });
+
+    // 2. Zeige nur die Items der aktuellen Seite an
     const start = (currentPage - 1) * itemsPerPage;
     const end = start + itemsPerPage;
 
-    items.forEach((item, index) => {
+    filteredItems.forEach((item, index) => {
         if (index >= start && index < end) {
             item.style.display = 'block'; // Anzeigen
         } else {
@@ -89,8 +108,8 @@ function updatePagination() {
         }
     });
 
-    // 2. Buttons generieren
-    const totalPages = Math.ceil(items.length / itemsPerPage);
+    // 3. Buttons generieren
+    const totalPages = Math.ceil(filteredItems.length / itemsPerPage);
     let buttonsHtml = '';
 
     if (totalPages > 1) {
@@ -115,4 +134,25 @@ function updatePagination() {
     }
 
     controls.innerHTML = buttonsHtml;
+}
+
+/**
+ * Filtert das Aktenarchiv nach Kategorie (Indoor, Outdoor, Alle)
+ */
+function filterCategory(type) {
+    activeCategory = type;
+    currentPage = 1; // Reset auf erste Seite
+
+    // Aktualisiere die Buttons in der Filterleiste
+    const buttons = document.getElementsByClassName('btn-filter');
+    Array.from(buttons).forEach(btn => {
+        btn.classList.remove('active');
+    });
+
+    const activeBtn = document.getElementById('filter-' + type);
+    if (activeBtn) {
+        activeBtn.classList.add('active');
+    }
+
+    updatePagination();
 }

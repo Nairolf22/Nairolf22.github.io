@@ -143,22 +143,34 @@ r.gamemaster.score %}
 
         <div class="dossier-meta" style="position: relative; flex: 1; margin-right: 30px;">
 
-            {% if page.website and page.closed != true %}
-            <div style="position: absolute; top: 0; right: 0; z-index: 10;">
+            <div class="provider-badge-container">
+                {% if page.website and page.closed != true %}
                 <a href="{{ page.website }}" target="_blank" rel="noopener" class="btn-provider" style="margin-top: 0;">
                     ZUM ANBIETER &raquo;
                 </a>
+                {% endif %}
+
+                {% if page.badge %}
+                <div class="dossier-badge-wrapper-new">
+                    <img src="/assets/images/{{ page.badge }}.png" alt="Badge" class="dossier-badge-img-new">
+                </div>
+                {% endif %}
             </div>
-            {% endif %}
 
             <span class="provider">{{ page.provider }}</span>
 
-            <h1 style="padding-right: 220px; font-size: 2em; margin-top: 0.5rem; margin-bottom: 0.5rem;">
+            <h1 style="padding-right: 220px; font-size: 2em; margin-top: 0.5rem; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
                 {{ page.title }}
                 {% if page.closed %} <span
                     style="color: #d32f2f; font-size: 0.6em; vertical-align: middle;">[INAKTIV]</span>{% endif %}
                 {% if page.planned %} <span
                     style="color: #f57f17; font-size: 0.6em; vertical-align: middle;">[GEPLANT]</span>{% endif %}
+                
+                {% if page.outdoor %}
+                    <span class="room-type-tag type-outdoor">🌳 Outdoor Game</span>
+                {% else %}
+                    <span class="room-type-tag type-indoor">🏠 Escape Room</span>
+                {% endif %}
             </h1>
 
             <p style="margin:0; font-size: 0.9rem; color: #555;">
@@ -221,7 +233,7 @@ r.gamemaster.score %}
     {% else %}
 
     <div class="criterion">
-        <h3>Atmosphäre & Immersion</h3>
+        <h3>{% if page.outdoor %}Atmosphäre und Umgebung{% else %}Atmosphäre & Immersion{% endif %}</h3>
         <div class="stars" style="--score: {{ page.ratings.atmosphere.score }};">★★★★★</div>
         <div class="criterion-text">
             {{ page.ratings.atmosphere.text }}
@@ -245,7 +257,7 @@ r.gamemaster.score %}
     </div>
 
     <div class="criterion">
-        <h3>Kulisse & Ausstattung</h3>
+        <h3>{% if page.outdoor %}Routenführung{% else %}Kulisse & Ausstattung{% endif %}</h3>
         <div class="stars" style="--score: {{ page.ratings.scenery.score }};">★★★★★</div>
         <div class="criterion-text">
             {{ page.ratings.scenery.text }}
@@ -253,7 +265,7 @@ r.gamemaster.score %}
     </div>
 
     <div class="criterion">
-        <h3>Gamemaster & Service</h3>
+        <h3>{% if page.outdoor %}Support und Feedback{% else %}Gamemaster & Service{% endif %}</h3>
         <div class="stars" style="--score: {{ page.ratings.gamemaster.score }};">★★★★★</div>
         <div class="criterion-text">
             {{ page.ratings.gamemaster.text }}

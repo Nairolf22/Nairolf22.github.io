@@ -127,7 +127,7 @@ permalink: /karte/
            data-lng="{{ review.location.lng }}"
            data-rating="{% if review.pending or review.planned %}-1{% else %}{{ calculated_avg }}{% endif %}">
             
-            <article class="room-card">
+            <article class="room-card {% if review.outdoor %}outdoor-card{% endif %}">
                 <div class="card-image-wrapper">
                     {% if review.thumbnail %}
                         {% assign img_src = review.thumbnail %}
@@ -166,6 +166,12 @@ permalink: /karte/
                             ★ {{ calculated_avg | round: 1 }}
                         </div>
                     {% endif %}
+
+                    {% if review.badge %}
+                        <div class="card-badge-image-container">
+                            <img src="/assets/images/{{ review.badge }}.png" class="card-badge-img" alt="Badge">
+                        </div>
+                    {% endif %}
                 </div>
 
                 <div class="card-content">
@@ -175,7 +181,9 @@ permalink: /karte/
                             <span style="color: #d32f2f; font-size: 0.7em;">[INAKTIV]</span>
                         {% endif %}
                     </h3>
-                    <p class="card-meta">{{ review.provider }} | {{ review.location.city }}</p>
+                    <p class="card-meta">
+                        {{ review.provider }} | {{ review.location.city }}
+                    </p>
                     
                     {% if review.closed %}
                          <div style="margin: 10px 0; color: #d32f2f; font-size: 0.9rem; font-family: 'Courier New'; font-weight: bold;">
@@ -220,7 +228,8 @@ permalink: /karte/
             "provider": "{{ review.provider }}",
             "pending": {{ review.pending | default: false }},
             "planned": {{ review.planned | default: false }},
-            "closed": {{ review.closed | default: false }}
+            "closed": {{ review.closed | default: false }},
+            "outdoor": {{ review.outdoor | default: false }}
         }{% unless forloop.last %},{% endunless %}
         {% endfor %}
     ];

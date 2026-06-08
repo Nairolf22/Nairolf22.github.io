@@ -48,6 +48,12 @@ permalink: /archiv/
         </div>
     </div>
 
+    <div class="filter-bar">
+        <button class="btn-filter active" id="filter-all" onclick="filterCategory('all')">Alle Akten</button>
+        <button class="btn-filter" id="filter-indoor" onclick="filterCategory('indoor')">Indoor Escape Rooms</button>
+        <button class="btn-filter" id="filter-outdoor" onclick="filterCategory('outdoor')">Outdoor Games</button>
+    </div>
+
     <div class="card-grid" id="roomGrid">
         {% for review in site.reviews %}
         
@@ -58,9 +64,10 @@ permalink: /archiv/
         <a href="{{ review.url }}" class="room-card-link"
            data-title="{{ review.title | downcase }}"
            data-provider="{{ review.provider | downcase }}"
+           data-outdoor="{% if review.outdoor %}true{% else %}false{% endif %}"
            data-rating="{% if review.pending or review.planned %}-1{% else %}{{ calculated_avg }}{% endif %}">
             
-            <article class="room-card">
+            <article class="room-card {% if review.outdoor %}outdoor-card{% endif %}">
                 <div class="card-image-wrapper">
                     {% if review.thumbnail %}
                         {% assign img_src = review.thumbnail %}
@@ -99,6 +106,12 @@ permalink: /archiv/
                             ★ {{ calculated_avg | round: 1 }}
                         </div>
                     {% endif %}
+
+                    {% if review.badge %}
+                        <div class="card-badge-image-container">
+                            <img src="/assets/images/{{ review.badge }}.png" class="card-badge-img" alt="Badge">
+                        </div>
+                    {% endif %}
                 </div>
 
                 <div class="card-content">
@@ -108,7 +121,9 @@ permalink: /archiv/
                             <span style="color: #d32f2f; font-size: 0.7em;">[INAKTIV]</span>
                         {% endif %}
                     </h3>
-                    <p class="card-meta">{{ review.provider }} | {{ review.location.city }}</p>
+                    <p class="card-meta">
+                        {{ review.provider }} | {{ review.location.city }}
+                    </p>
                     
                     {% if review.closed %}
                         <div style="margin: 10px 0; color: #d32f2f; font-size: 0.9rem; font-family: 'Courier New'; font-weight: bold;">

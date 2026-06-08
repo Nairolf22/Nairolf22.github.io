@@ -735,3 +735,177 @@ footer {
     cursor: default;
     transform: scale(1.1);
 }
+
+/* --- PREMIUM IMAGE BADGES --- */
+
+/* Container on the top right for "Zum Anbieter" and Badge */
+.provider-badge-container {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 15px;
+}
+
+/* New Badge Wrapper in Dossier Page Header */
+.dossier-badge-wrapper-new {
+    transform: rotate(4deg);
+    transition: transform 0.3s ease;
+}
+
+.dossier-badge-wrapper-new:hover {
+    transform: scale(1.05) rotate(0deg);
+}
+
+.dossier-badge-img-new {
+    height: 180px; /* Ungefähr die Höhe der Polaroids (Fotos) */
+    width: auto;
+    filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.25));
+}
+
+@media (max-width: 800px) {
+    .provider-badge-container {
+        position: static;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+        margin-bottom: 1.5rem;
+        width: 100%;
+    }
+    .dossier-badge-wrapper-new {
+        transform: none;
+    }
+    .dossier-badge-img-new {
+        height: 120px; /* Etwas kompakter für Mobilgeräte */
+    }
+    .dossier-meta h1 {
+        padding-right: 0 !important;
+        text-align: center;
+        justify-content: center;
+    }
+}
+
+/* Floating Badge in the Dossier Page Header (Legacy fallback) */
+.dossier-badge-wrapper {
+    position: absolute;
+    top: 20px;
+    right: 180px; /* Platziert es links neben der Overall-Wertung */
+    z-index: 15;
+    transform: rotate(6deg);
+    transition: transform 0.3s ease;
+}
+
+.dossier-badge-wrapper:hover {
+    transform: scale(1.1) rotate(0deg);
+}
+
+.dossier-badge-img {
+    width: 100px;
+    height: auto;
+    filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.25));
+}
+
+@media (max-width: 800px) {
+    .dossier-badge-wrapper {
+        position: static;
+        display: block;
+        text-align: center;
+        margin: 1.5rem auto 0;
+        transform: none;
+    }
+    .dossier-badge-img {
+        width: 85px;
+    }
+}
+
+/* Badge overlay on Room Cards (Image container) */
+.card-badge-image-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 6;
+    transition: transform 0.2s ease;
+}
+
+.card-badge-image-container:hover {
+    transform: scale(1.1);
+}
+
+.card-badge-img {
+    height: 90px !important; /* Ca. 1/4 des 180px hohen Bildbereichs der Kachel (1/2 Höhe & 1/2 Breite = 1/4 Fläche) */
+    width: auto !important;
+    filter: drop-shadow(1px 2px 4px rgba(0,0,0,0.5)) !important;
+    border: none !important;
+}
+
+/* Room Type Tag (Indoor vs Outdoor) */
+.room-type-tag {
+    display: inline-block;
+    padding: 2px 6px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    border-radius: 3px;
+    text-transform: uppercase;
+    font-family: 'Courier New', monospace;
+    letter-spacing: 0.5px;
+    margin-left: 8px;
+    vertical-align: middle;
+}
+
+.room-type-tag.type-indoor {
+    background-color: #556B2F; /* Olive green / subtle gray-green */
+    color: #fff;
+}
+
+.room-type-tag.type-outdoor {
+    background-color: #2E7D32;
+    color: #fff;
+}
+
+/* Category Filter Bar in Archive */
+.filter-bar {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.btn-filter {
+    background-color: #222;
+    color: #aaa;
+    border: 1px solid #444;
+    padding: 8px 16px;
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: all 0.2s;
+    border-radius: 4px;
+}
+
+.btn-filter:hover, .btn-filter.active {
+    background-color: var(--rust-primary);
+    color: #fff;
+    border-color: var(--rust-light);
+    box-shadow: 0 0 8px rgba(141, 64, 4, 0.5);
+}
+
+.btn-filter.active {
+    transform: scale(1.05);
+}
+
+/* Custom Card background for Outdoor Escape Games */
+.room-card.outdoor-card {
+    background-color: #1b2e22; /* Sehr dezentes, dunkles Tannengrün */
+    border-color: #2e5339;     /* Farblich passender, etwas hellerer Rahmen */
+}
+
+.room-card.outdoor-card:hover {
+    border-color: #3b7a50;
+    box-shadow: 10px 10px 20px rgba(0,0,0,0.7), 0 0 10px rgba(46, 125, 50, 0.3);
+}

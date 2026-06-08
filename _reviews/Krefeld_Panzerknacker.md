@@ -1,5 +1,6 @@
 ---
 layout: review
+badge: Badge_BesterRaum
 title: "Panzerknacker"
 provider: "Limbus Escape Games"
 website: "https://www.limbus-escape.de/angebote/panzerknacker"

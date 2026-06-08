@@ -62,15 +62,18 @@ if (document.getElementById('escapeMap')) {
 
             // --- PIN DESIGN ---
             var coloredIcon = L.divIcon({
-                className: 'custom-pin-container',
+                className: 'custom-pin-container' + (room.outdoor === true ? ' pin-outdoor' : ''),
                 html: `<div style="
                         background-color: ${colorString};
                         width: 24px;
                         height: 24px;
-                        border-radius: 50%;
+                        border-radius: ${room.outdoor === true ? '4px' : '50%'};
                         border: 2px solid #fff;
                         box-shadow: 2px 2px 5px rgba(0,0,0,0.8);
-                      "></div>`,
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                      ">${room.outdoor === true ? '<span style="font-size:12px; line-height:1; display:block; padding-bottom:1px;">🌳</span>' : ''}</div>`,
                 iconSize: [24, 24],
                 iconAnchor: [12, 12],
                 popupAnchor: [0, -12]
@@ -80,14 +83,19 @@ if (document.getElementById('escapeMap')) {
             var marker = L.marker([room.lat, room.lng], { icon: coloredIcon });
             
             // --- POPUP INHALT ---
+            var badgeHtml = room.outdoor === true ? 
+                `<span style="background-color: #2e7d32; color: #fff; padding: 2px 6px; font-size: 0.75rem; font-weight: bold; border-radius: 3px; display: inline-block; margin-bottom: 6px; font-family: 'Courier New', monospace;">🌳 Outdoor Game</span><br>` : 
+                `<span style="background-color: #555; color: #fff; padding: 2px 6px; font-size: 0.75rem; font-weight: bold; border-radius: 3px; display: inline-block; margin-bottom: 6px; font-family: 'Courier New', monospace;">🏠 Escape Room</span><br>`;
+
             var popupContent = `
                 <div style="text-align:center;">
+                    ${badgeHtml}
                     <b style="font-size:1.1rem;">${room.title}</b><br>
                     <span style="font-size:0.8rem; text-transform:uppercase; color:#888;">${room.provider}</span><br>
                     
                     ${statusHtml}
                     
-                    <a href="${room.url}" style="background:#333; color:#fff; padding:2px 8px; text-decoration:none; font-size:0.8rem;">>> ZUR AKTE</a>
+                    <a href="${room.url}" style="background:#333; color:#fff; padding:2px 8px; text-decoration:none; font-size:0.8rem; display: inline-block; margin-top: 5px;">>> ZUR AKTE</a>
                 </div>
             `;
 
