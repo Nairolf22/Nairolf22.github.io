@@ -10,7 +10,7 @@ layout: null
         <loc>{{ site.url }}{{ page.url }}</loc>
         <lastmod>{% if page.last_modified_at %}{{ page.last_modified_at | date_to_xmlschema }}{% else %}{{ site.time | date_to_xmlschema }}{% endif %}</lastmod>
         <changefreq>monthly</changefreq>
-        <priority>{% if page.url == '/' %}1.0{% else %}0.5{% endif %}</priority>
+        <priority>{% if page.url == '/' %}1.0{% elsif page.url == '/archiv/' or page.url == '/karte/' or page.url == '/hall-of-fame/' or page.url == '/city/' %}0.9{% elsif page.city %}0.8{% elsif page.url contains '/hall-of-fame/' or page.url == '/team/' or page.url == '/bewertungssystem/' or page.url == '/was-ist-ein-escape-room/' %}0.7{% else %}0.5{% endif %}</priority>
       </url>
     {% endunless %}
   {% endfor %}

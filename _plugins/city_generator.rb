@@ -15,6 +15,7 @@ module CityPageGenerator
       
       # SEO Titel setzen
       self.data['title'] = "Escape Rooms in #{city} - Testberichte & Erfahrungen"
+      self.data['description'] = "Escape Rooms in #{city}: Alle ausführlichen Erfahrungsberichte, Tests und Bewertungen zu Live Escape Games in #{city} im Überblick."
     end
   end
 

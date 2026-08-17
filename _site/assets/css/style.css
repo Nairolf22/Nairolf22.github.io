@@ -186,8 +186,15 @@ footer {
 /* --- UI ELEMENTS: Karten & Boxen --- */
 .card-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 2rem;
+}
+
+@media (max-width: 480px) {
+  .card-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
 }
 
 .room-card, .review-container {
@@ -246,13 +253,14 @@ footer {
   content: '';
   position: absolute;
   top: -15px;
-  left: 20px;
-  width: 20px;
-  height: 60px;
+  left: 8px;
+  width: 16px;
+  height: 50px;
   background-color: #888;
-  border-radius: 10px;
+  border-radius: 8px;
   box-shadow: inset 2px 2px 5px rgba(0,0,0,0.5), 2px 2px 5px rgba(0,0,0,0.3);
   z-index: 10;
+  pointer-events: none;
 }
 
 /* Header Bereich der Akte */
@@ -707,7 +715,8 @@ footer {
     text-align: center;
     display: flex;
     justify-content: center;
-    gap: 5px;
+    flex-wrap: wrap;
+    gap: 8px;
 }
 
 .btn-page {
@@ -718,6 +727,12 @@ footer {
     font-family: 'Courier New', monospace;
     font-size: 1.1rem;
     cursor: pointer;
+    min-width: 44px;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 3px;
     transition: all 0.2s;
 }
 

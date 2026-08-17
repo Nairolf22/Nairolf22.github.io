@@ -10,9 +10,12 @@
     
   </title>
 
-  <meta name="description"
-    content="The Escape Archive – Unabhängige und detaillierte Tests, Reviews und Analysen von Escape Rooms in Deutschland.">
-  <link rel="canonical" href="http://localhost:4000/">
+  
+  
+  
+
+  <meta name="description" content="The Escape Archive – Unabhängige und detaillierte Tests, Reviews und Analysen von Escape Rooms in Deutschland.">
+  <link rel="canonical" href="https://www.escapearchive.de/">
 
   <!-- SEO & Social Media Tags -->
   <link rel="shortcut icon" type="image/png" href="/favicon.png?v=4">
@@ -26,26 +29,72 @@
   <meta property="og:title"
     content="Escape Room Tests & Reviews: Das unabhängige Archiv für Deutschland | Escape Archive">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="http://localhost:4000/">
-  <meta property="og:description"
-    content="The Escape Archive – Unabhängige und detaillierte Tests, Reviews und Analysen von Escape Rooms in Deutschland.">
+  <meta property="og:url" content="https://www.escapearchive.de/">
+  <meta property="og:description" content="The Escape Archive – Unabhängige und detaillierte Tests, Reviews und Analysen von Escape Rooms in Deutschland.">
   <meta property="og:image"
-    content="http://localhost:4000/assets/images/logo-escape-archive_800.webp">
+    content="https://www.escapearchive.de/assets/images/logo-escape-archive_800.webp">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title"
     content="Escape Room Tests & Reviews: Das unabhängige Archiv für Deutschland | Escape Archive">
-  <meta name="twitter:description"
-    content="The Escape Archive – Unabhängige und detaillierte Tests, Reviews und Analysen von Escape Rooms in Deutschland.">
+  <meta name="twitter:description" content="The Escape Archive – Unabhängige und detaillierte Tests, Reviews und Analysen von Escape Rooms in Deutschland.">
   <meta name="twitter:image"
-    content="http://localhost:4000/assets/images/logo-escape-archive_800.webp">
+    content="https://www.escapearchive.de/assets/images/logo-escape-archive_800.webp">
 
   <link rel="stylesheet" href="/assets/css/style.css">
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.css" />
-  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.Default.css" />
 
+  
+
+  <!-- Schema.org BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Startseite",
+        "item": "https://www.escapearchive.de/"
+      }
+      
+    ]
+  }
+  </script>
+
+  
+  <!-- Schema.org WebSite & Organization for Homepage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://www.escapearchive.de/#website",
+        "url": "https://www.escapearchive.de/",
+        "name": "The Escape Archive",
+        "description": "Reviewing the best and darkest escape rooms.",
+        "inLanguage": "de-DE",
+        "publisher": {
+          "@id": "https://www.escapearchive.de/#organization"
+        }
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://www.escapearchive.de/#organization",
+        "name": "Die Anrufbeantworter",
+        "url": "https://www.escapearchive.de/team/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.escapearchive.de/assets/images/logo-escape-archive_800.webp"
+        },
+        "description": "Escape Room Tester-Team 'Die Anrufbeantworter' - Authentische Tests, Reviews & Analysen."
+      }
+    ]
+  }
+  </script>
+  
 
   
 </head>
@@ -55,22 +104,18 @@
   <div class="site-wrapper">
 
     <header>
-      
-      <h1 class="logo-heading">
-      
-        <a href="/" class="site-logo-link">
+      <div class="logo-heading">
+        <a href="/" class="site-logo-link" aria-label="Zur Startseite von The Escape Archive">
           <img src="/assets/images/logo-escape-archive_800.webp"
-            alt="The Escape Archive - Escape Room Reviews & Analysen (Die Anrufbeantworter)" class="site-logo">
+            alt="The Escape Archive - Escape Room Reviews & Analysen" class="site-logo" width="450" height="150" fetchpriority="high">
         </a>
-      
-      </h1>
-      
+      </div>
       <p style="color: #ccc; margin-top: 10px;">• EST. 2025 • CLASSIFIED REVIEWS •</p>
     </header>
 
-    <nav>
-      <input type="checkbox" id="nav-toggle" class="nav-toggle">
-      <label for="nav-toggle" class="burger-icon">☰ Menü</label>
+    <nav aria-label="Hauptnavigation">
+      <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-label="Menü ein- oder ausblenden">
+      <label for="nav-toggle" class="burger-icon" aria-label="Menü">☰ Menü</label>
       <div class="nav-links">
         <a href="/karte/">Karte</a>
         <a href="/archiv/">Alle Akten</a>
@@ -96,8 +141,7 @@
         display: inline-block;
         padding-bottom: 0.5rem;
         margin-bottom: 1.5rem;
-
-        font-size: 2.rem;
+        font-size: 2rem;
         font-weight: bold;
     }
 
@@ -271,7 +315,7 @@
 </style>
 
 <section class="mission-briefing">
-    <h1>Einsatz-Briefing</h1>
+    <h1>Einsatz-Briefing: Escape Room Analysen & Tests</h1>
     <div class="seo-text">
         <p>
             Willkommen in der Zentrale. Wir analysieren <a href="/karte/"><strong>Escape Rooms</strong></a> in ganz
@@ -418,8 +462,7 @@
 
   </div>
 
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-  <script src="https://unpkg.com/leaflet.markercluster/dist/leaflet.markercluster.js"></script>
+  
 
   <script src="/assets/js/main.js"></script>
   <script data-goatcounter="https://nairolf22.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
@@ -438,23 +481,17 @@
       font-weight: normal;
       display: block;
       border: none;
-      /* Sicherheitshalber */
     }
 
-    /* UPDATE: Hier werden alle Rahmen/Boxen entfernt */
     .site-logo-link {
       display: inline-block;
       text-decoration: none;
       border: none !important;
       outline: none !important;
-      /* Entfernt gepunktete Linie bei Klick */
       box-shadow: none !important;
-      /* Entfernt Schatten */
       -webkit-tap-highlight-color: transparent;
-      /* Entfernt graue Box beim Tippen auf Handy */
     }
 
-    /* Auch beim Hover/Fokus sicherstellen, dass nichts erscheint */
     .site-logo-link:focus,
     .site-logo-link:active,
     .site-logo-link:hover {
@@ -470,7 +507,6 @@
       display: block;
       margin: 0 auto;
       border: none !important;
-      /* Entfernt Bildrahmen (alte Browser) */
       outline: none !important;
     }
 
@@ -518,13 +554,8 @@
     }
 
     @media (max-width: 600px) {
-      header h1.logo-heading {
-        margin-bottom: 0;
-        font-size: 1rem;
-      }
-
       .site-logo {
-        width: 300px;
+        width: 280px;
       }
     }
 

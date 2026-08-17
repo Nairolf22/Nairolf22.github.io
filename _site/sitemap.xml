@@ -4,8 +4,26 @@
   
     
       <url>
-        <loc>http://localhost:4000/team/</loc>
-        <lastmod>2026-06-08T16:43:57+02:00</lastmod>
+        <loc>https://www.escapearchive.de/team/</loc>
+        <lastmod>2026-08-16T22:51:37+02:00</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://www.escapearchive.de/archiv/</loc>
+        <lastmod>2026-08-16T22:51:37+02:00</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://www.escapearchive.de/arten-von-raetseln/</loc>
+        <lastmod>2026-08-16T22:51:37+02:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
       </url>
@@ -13,8 +31,17 @@
   
     
       <url>
-        <loc>http://localhost:4000/archiv/</loc>
-        <lastmod>2026-06-08T16:43:57+02:00</lastmod>
+        <loc>https://www.escapearchive.de/bewertungssystem/</loc>
+        <lastmod>2026-08-16T22:51:37+02:00</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://www.escapearchive.de/team/christine/</loc>
+        <lastmod>2026-08-16T22:51:37+02:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
       </url>
@@ -22,8 +49,17 @@
   
     
       <url>
-        <loc>http://localhost:4000/arten-von-raetseln/</loc>
-        <lastmod>2026-06-08T16:43:57+02:00</lastmod>
+        <loc>https://www.escapearchive.de/city/</loc>
+        <lastmod>2026-08-16T22:51:37+02:00</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://www.escapearchive.de/team/florian/</loc>
+        <lastmod>2026-08-16T22:51:37+02:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
       </url>
@@ -31,8 +67,17 @@
   
     
       <url>
-        <loc>http://localhost:4000/bewertungssystem/</loc>
-        <lastmod>2026-06-08T16:43:57+02:00</lastmod>
+        <loc>https://www.escapearchive.de/hall-of-fame/</loc>
+        <lastmod>2026-08-16T22:51:37+02:00</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://www.escapearchive.de/impressum/</loc>
+        <lastmod>2026-08-16T22:51:37+02:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
       </url>
@@ -40,53 +85,8 @@
   
     
       <url>
-        <loc>http://localhost:4000/team/christine/</loc>
-        <lastmod>2026-06-08T16:43:57+02:00</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.5</priority>
-      </url>
-    
-  
-    
-      <url>
-        <loc>http://localhost:4000/city/</loc>
-        <lastmod>2026-06-08T16:43:57+02:00</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.5</priority>
-      </url>
-    
-  
-    
-      <url>
-        <loc>http://localhost:4000/team/florian/</loc>
-        <lastmod>2026-06-08T16:43:57+02:00</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.5</priority>
-      </url>
-    
-  
-    
-      <url>
-        <loc>http://localhost:4000/hall-of-fame/</loc>
-        <lastmod>2026-06-08T16:43:57+02:00</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.5</priority>
-      </url>
-    
-  
-    
-      <url>
-        <loc>http://localhost:4000/impressum/</loc>
-        <lastmod>2026-06-08T16:43:57+02:00</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.5</priority>
-      </url>
-    
-  
-    
-      <url>
-        <loc>http://localhost:4000/</loc>
-        <lastmod>2026-06-08T16:43:57+02:00</lastmod>
+        <loc>https://www.escapearchive.de/</loc>
+        <lastmod>2026-08-16T22:51:37+02:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>1.0</priority>
       </url>
@@ -94,8 +94,8 @@
   
     
       <url>
-        <loc>http://localhost:4000/team/jessica/</loc>
-        <lastmod>2026-06-08T16:43:57+02:00</lastmod>
+        <loc>https://www.escapearchive.de/team/jessica/</loc>
+        <lastmod>2026-08-16T22:51:37+02:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
       </url>
@@ -103,8 +103,17 @@
   
     
       <url>
-        <loc>http://localhost:4000/karte/</loc>
-        <lastmod>2026-06-08T16:43:57+02:00</lastmod>
+        <loc>https://www.escapearchive.de/karte/</loc>
+        <lastmod>2026-08-16T22:51:37+02:00</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://www.escapearchive.de/kontakt/</loc>
+        <lastmod>2026-08-16T22:51:37+02:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
       </url>
@@ -112,8 +121,8 @@
   
     
       <url>
-        <loc>http://localhost:4000/kontakt/</loc>
-        <lastmod>2026-06-08T16:43:57+02:00</lastmod>
+        <loc>https://www.escapearchive.de/team/lea/</loc>
+        <lastmod>2026-08-16T22:51:37+02:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
       </url>
@@ -121,8 +130,8 @@
   
     
       <url>
-        <loc>http://localhost:4000/team/lea/</loc>
-        <lastmod>2026-06-08T16:43:57+02:00</lastmod>
+        <loc>https://www.escapearchive.de/team/marvin/</loc>
+        <lastmod>2026-08-16T22:51:37+02:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
       </url>
@@ -130,8 +139,8 @@
   
     
       <url>
-        <loc>http://localhost:4000/team/marvin/</loc>
-        <lastmod>2026-06-08T16:43:57+02:00</lastmod>
+        <loc>https://www.escapearchive.de/team/moritz/</loc>
+        <lastmod>2026-08-16T22:51:37+02:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
       </url>
@@ -139,8 +148,8 @@
   
     
       <url>
-        <loc>http://localhost:4000/team/moritz/</loc>
-        <lastmod>2026-06-08T16:43:57+02:00</lastmod>
+        <loc>https://www.escapearchive.de/philosophie/</loc>
+        <lastmod>2026-08-16T22:51:37+02:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
       </url>
@@ -148,8 +157,8 @@
   
     
       <url>
-        <loc>http://localhost:4000/philosophie/</loc>
-        <lastmod>2026-06-08T16:43:57+02:00</lastmod>
+        <loc>https://www.escapearchive.de/raetsel/</loc>
+        <lastmod>2026-08-16T22:51:37+02:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
       </url>
@@ -157,8 +166,8 @@
   
     
       <url>
-        <loc>http://localhost:4000/raetsel/</loc>
-        <lastmod>2026-06-08T16:43:57+02:00</lastmod>
+        <loc>https://www.escapearchive.de/raetsel/pin</loc>
+        <lastmod>2026-08-16T22:51:37+02:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
       </url>
@@ -166,8 +175,8 @@
   
     
       <url>
-        <loc>http://localhost:4000/raetsel/pin</loc>
-        <lastmod>2026-06-08T16:43:57+02:00</lastmod>
+        <loc>https://www.escapearchive.de/raetsel/evidence</loc>
+        <lastmod>2026-08-16T22:51:37+02:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
       </url>
@@ -175,8 +184,8 @@
   
     
       <url>
-        <loc>http://localhost:4000/raetsel/evidence</loc>
-        <lastmod>2026-06-08T16:43:57+02:00</lastmod>
+        <loc>https://www.escapearchive.de/raetsel/hacking</loc>
+        <lastmod>2026-08-16T22:51:37+02:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
       </url>
@@ -184,8 +193,8 @@
   
     
       <url>
-        <loc>http://localhost:4000/raetsel/hacking</loc>
-        <lastmod>2026-06-08T16:43:57+02:00</lastmod>
+        <loc>https://www.escapearchive.de/raetsel/schloesser/</loc>
+        <lastmod>2026-08-16T22:51:37+02:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
       </url>
@@ -193,8 +202,8 @@
   
     
       <url>
-        <loc>http://localhost:4000/raetsel/schloesser/</loc>
-        <lastmod>2026-06-08T16:43:57+02:00</lastmod>
+        <loc>https://www.escapearchive.de/raetsel/defusal</loc>
+        <lastmod>2026-08-16T22:51:37+02:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
       </url>
@@ -202,8 +211,8 @@
   
     
       <url>
-        <loc>http://localhost:4000/raetsel/defusal</loc>
-        <lastmod>2026-06-08T16:43:57+02:00</lastmod>
+        <loc>https://www.escapearchive.de/raetsel/crypto</loc>
+        <lastmod>2026-08-16T22:51:37+02:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
       </url>
@@ -211,8 +220,8 @@
   
     
       <url>
-        <loc>http://localhost:4000/raetsel/crypto</loc>
-        <lastmod>2026-06-08T16:43:57+02:00</lastmod>
+        <loc>https://www.escapearchive.de/raetsel/power</loc>
+        <lastmod>2026-08-16T22:51:37+02:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
       </url>
@@ -220,17 +229,8 @@
   
     
       <url>
-        <loc>http://localhost:4000/raetsel/power</loc>
-        <lastmod>2026-06-08T16:43:57+02:00</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.5</priority>
-      </url>
-    
-  
-    
-      <url>
-        <loc>http://localhost:4000/schloss-typen/</loc>
-        <lastmod>2026-06-08T16:43:57+02:00</lastmod>
+        <loc>https://www.escapearchive.de/schloss-typen/</loc>
+        <lastmod>2026-08-16T22:51:37+02:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
       </url>
@@ -240,208 +240,208 @@
   
     
       <url>
-        <loc>http://localhost:4000/hall-of-fame/top-gamemaster/</loc>
-        <lastmod>2026-06-08T16:43:57+02:00</lastmod>
+        <loc>https://www.escapearchive.de/hall-of-fame/top-gamemaster/</loc>
+        <lastmod>2026-08-16T22:51:37+02:00</lastmod>
         <changefreq>monthly</changefreq>
-        <priority>0.5</priority>
+        <priority>0.7</priority>
       </url>
     
   
     
       <url>
-        <loc>http://localhost:4000/hall-of-fame/top-immersion/</loc>
-        <lastmod>2026-06-08T16:43:57+02:00</lastmod>
+        <loc>https://www.escapearchive.de/hall-of-fame/top-immersion/</loc>
+        <lastmod>2026-08-16T22:51:37+02:00</lastmod>
         <changefreq>monthly</changefreq>
-        <priority>0.5</priority>
+        <priority>0.7</priority>
       </url>
     
   
     
       <url>
-        <loc>http://localhost:4000/hall-of-fame/top-puzzles/</loc>
-        <lastmod>2026-06-08T16:43:57+02:00</lastmod>
+        <loc>https://www.escapearchive.de/hall-of-fame/top-puzzles/</loc>
+        <lastmod>2026-08-16T22:51:37+02:00</lastmod>
         <changefreq>monthly</changefreq>
-        <priority>0.5</priority>
+        <priority>0.7</priority>
       </url>
     
   
     
       <url>
-        <loc>http://localhost:4000/hall-of-fame/top-rooms/</loc>
-        <lastmod>2026-06-08T16:43:57+02:00</lastmod>
+        <loc>https://www.escapearchive.de/hall-of-fame/top-rooms/</loc>
+        <lastmod>2026-08-16T22:51:37+02:00</lastmod>
         <changefreq>monthly</changefreq>
-        <priority>0.5</priority>
+        <priority>0.7</priority>
       </url>
     
   
     
       <url>
-        <loc>http://localhost:4000/hall-of-fame/top-scenery/</loc>
-        <lastmod>2026-06-08T16:43:57+02:00</lastmod>
+        <loc>https://www.escapearchive.de/hall-of-fame/top-scenery/</loc>
+        <lastmod>2026-08-16T22:51:37+02:00</lastmod>
         <changefreq>monthly</changefreq>
-        <priority>0.5</priority>
+        <priority>0.7</priority>
       </url>
     
   
     
       <url>
-        <loc>http://localhost:4000/hall-of-fame/top-story/</loc>
-        <lastmod>2026-06-08T16:43:57+02:00</lastmod>
+        <loc>https://www.escapearchive.de/hall-of-fame/top-story/</loc>
+        <lastmod>2026-08-16T22:51:37+02:00</lastmod>
         <changefreq>monthly</changefreq>
-        <priority>0.5</priority>
+        <priority>0.7</priority>
       </url>
     
   
     
       <url>
-        <loc>http://localhost:4000/was-ist-ein-escape-room/</loc>
-        <lastmod>2026-06-08T16:43:57+02:00</lastmod>
+        <loc>https://www.escapearchive.de/was-ist-ein-escape-room/</loc>
+        <lastmod>2026-08-16T22:51:37+02:00</lastmod>
         <changefreq>monthly</changefreq>
-        <priority>0.5</priority>
+        <priority>0.7</priority>
       </url>
     
   
     
       <url>
-        <loc>http://localhost:4000/city/aachen/</loc>
-        <lastmod>2026-06-08T16:43:57+02:00</lastmod>
+        <loc>https://www.escapearchive.de/city/aachen/</loc>
+        <lastmod>2026-08-16T22:51:37+02:00</lastmod>
         <changefreq>monthly</changefreq>
-        <priority>0.5</priority>
+        <priority>0.8</priority>
       </url>
     
   
     
       <url>
-        <loc>http://localhost:4000/city/bochum/</loc>
-        <lastmod>2026-06-08T16:43:57+02:00</lastmod>
+        <loc>https://www.escapearchive.de/city/bochum/</loc>
+        <lastmod>2026-08-16T22:51:37+02:00</lastmod>
         <changefreq>monthly</changefreq>
-        <priority>0.5</priority>
+        <priority>0.8</priority>
       </url>
     
   
     
       <url>
-        <loc>http://localhost:4000/city/bonn/</loc>
-        <lastmod>2026-06-08T16:43:57+02:00</lastmod>
+        <loc>https://www.escapearchive.de/city/bonn/</loc>
+        <lastmod>2026-08-16T22:51:37+02:00</lastmod>
         <changefreq>monthly</changefreq>
-        <priority>0.5</priority>
+        <priority>0.8</priority>
       </url>
     
   
     
       <url>
-        <loc>http://localhost:4000/city/bottrop/</loc>
-        <lastmod>2026-06-08T16:43:57+02:00</lastmod>
+        <loc>https://www.escapearchive.de/city/bottrop/</loc>
+        <lastmod>2026-08-16T22:51:37+02:00</lastmod>
         <changefreq>monthly</changefreq>
-        <priority>0.5</priority>
+        <priority>0.8</priority>
       </url>
     
   
     
       <url>
-        <loc>http://localhost:4000/city/chur/</loc>
-        <lastmod>2026-06-08T16:43:57+02:00</lastmod>
+        <loc>https://www.escapearchive.de/city/chur/</loc>
+        <lastmod>2026-08-16T22:51:37+02:00</lastmod>
         <changefreq>monthly</changefreq>
-        <priority>0.5</priority>
+        <priority>0.8</priority>
       </url>
     
   
     
       <url>
-        <loc>http://localhost:4000/city/dorsten/</loc>
-        <lastmod>2026-06-08T16:43:57+02:00</lastmod>
+        <loc>https://www.escapearchive.de/city/dorsten/</loc>
+        <lastmod>2026-08-16T22:51:37+02:00</lastmod>
         <changefreq>monthly</changefreq>
-        <priority>0.5</priority>
+        <priority>0.8</priority>
       </url>
     
   
     
       <url>
-        <loc>http://localhost:4000/city/dortmund/</loc>
-        <lastmod>2026-06-08T16:43:57+02:00</lastmod>
+        <loc>https://www.escapearchive.de/city/dortmund/</loc>
+        <lastmod>2026-08-16T22:51:37+02:00</lastmod>
         <changefreq>monthly</changefreq>
-        <priority>0.5</priority>
+        <priority>0.8</priority>
       </url>
     
   
     
       <url>
-        <loc>http://localhost:4000/city/gelsenkirchen/</loc>
-        <lastmod>2026-06-08T16:43:57+02:00</lastmod>
+        <loc>https://www.escapearchive.de/city/gelsenkirchen/</loc>
+        <lastmod>2026-08-16T22:51:37+02:00</lastmod>
         <changefreq>monthly</changefreq>
-        <priority>0.5</priority>
+        <priority>0.8</priority>
       </url>
     
   
     
       <url>
-        <loc>http://localhost:4000/city/hagen/</loc>
-        <lastmod>2026-06-08T16:43:57+02:00</lastmod>
+        <loc>https://www.escapearchive.de/city/hagen/</loc>
+        <lastmod>2026-08-16T22:51:37+02:00</lastmod>
         <changefreq>monthly</changefreq>
-        <priority>0.5</priority>
+        <priority>0.8</priority>
       </url>
     
   
     
       <url>
-        <loc>http://localhost:4000/city/hamburg/</loc>
-        <lastmod>2026-06-08T16:43:57+02:00</lastmod>
+        <loc>https://www.escapearchive.de/city/hamburg/</loc>
+        <lastmod>2026-08-16T22:51:37+02:00</lastmod>
         <changefreq>monthly</changefreq>
-        <priority>0.5</priority>
+        <priority>0.8</priority>
       </url>
     
   
     
       <url>
-        <loc>http://localhost:4000/city/koeln/</loc>
-        <lastmod>2026-06-08T16:43:57+02:00</lastmod>
+        <loc>https://www.escapearchive.de/city/koeln/</loc>
+        <lastmod>2026-08-16T22:51:37+02:00</lastmod>
         <changefreq>monthly</changefreq>
-        <priority>0.5</priority>
+        <priority>0.8</priority>
       </url>
     
   
     
       <url>
-        <loc>http://localhost:4000/city/krefeld/</loc>
-        <lastmod>2026-06-08T16:43:57+02:00</lastmod>
+        <loc>https://www.escapearchive.de/city/krefeld/</loc>
+        <lastmod>2026-08-16T22:51:37+02:00</lastmod>
         <changefreq>monthly</changefreq>
-        <priority>0.5</priority>
+        <priority>0.8</priority>
       </url>
     
   
     
       <url>
-        <loc>http://localhost:4000/city/luedenscheid/</loc>
-        <lastmod>2026-06-08T16:43:57+02:00</lastmod>
+        <loc>https://www.escapearchive.de/city/luedenscheid/</loc>
+        <lastmod>2026-08-16T22:51:37+02:00</lastmod>
         <changefreq>monthly</changefreq>
-        <priority>0.5</priority>
+        <priority>0.8</priority>
       </url>
     
   
     
       <url>
-        <loc>http://localhost:4000/city/moenchengladbach/</loc>
-        <lastmod>2026-06-08T16:43:57+02:00</lastmod>
+        <loc>https://www.escapearchive.de/city/moenchengladbach/</loc>
+        <lastmod>2026-08-16T22:51:37+02:00</lastmod>
         <changefreq>monthly</changefreq>
-        <priority>0.5</priority>
+        <priority>0.8</priority>
       </url>
     
   
     
       <url>
-        <loc>http://localhost:4000/city/sonthofen/</loc>
-        <lastmod>2026-06-08T16:43:57+02:00</lastmod>
+        <loc>https://www.escapearchive.de/city/sonthofen/</loc>
+        <lastmod>2026-08-16T22:51:37+02:00</lastmod>
         <changefreq>monthly</changefreq>
-        <priority>0.5</priority>
+        <priority>0.8</priority>
       </url>
     
   
     
       <url>
-        <loc>http://localhost:4000/city/wuppertal/</loc>
-        <lastmod>2026-06-08T16:43:57+02:00</lastmod>
+        <loc>https://www.escapearchive.de/city/wuppertal/</loc>
+        <lastmod>2026-08-16T22:51:37+02:00</lastmod>
         <changefreq>monthly</changefreq>
-        <priority>0.5</priority>
+        <priority>0.8</priority>
       </url>
     
   
@@ -451,7 +451,7 @@
   
     
       <url>
-        <loc>http://localhost:4000/reviews/Bochum_DieGasse/</loc>
+        <loc>https://www.escapearchive.de/reviews/Bochum_DieGasse/</loc>
         <lastmod>2026-05-10T00:00:00+02:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
@@ -460,7 +460,7 @@
   
     
       <url>
-        <loc>http://localhost:4000/reviews/Bonn_AncumDerGro%C3%9Fe/</loc>
+        <loc>https://www.escapearchive.de/reviews/Bonn_AncumDerGro%C3%9Fe/</loc>
         <lastmod>2025-04-26T00:00:00+02:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
@@ -471,7 +471,7 @@
   
     
       <url>
-        <loc>http://localhost:4000/reviews/CH_Chur_MissionZeitriss/</loc>
+        <loc>https://www.escapearchive.de/reviews/CH_Chur_MissionZeitriss/</loc>
         <lastmod>2026-03-09T00:00:00+01:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
@@ -480,7 +480,7 @@
   
     
       <url>
-        <loc>http://localhost:4000/reviews/Dorsten_GefangenImSchacht/</loc>
+        <loc>https://www.escapearchive.de/reviews/Dorsten_GefangenImSchacht/</loc>
         <lastmod>2022-12-27T00:00:00+01:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
@@ -489,7 +489,7 @@
   
     
       <url>
-        <loc>http://localhost:4000/reviews/Dorsten_HotelDerGeheimnisvollenUhren/</loc>
+        <loc>https://www.escapearchive.de/reviews/Dorsten_HotelDerGeheimnisvollenUhren/</loc>
         <lastmod>2024-12-14T00:00:00+01:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
@@ -498,7 +498,7 @@
   
     
       <url>
-        <loc>http://localhost:4000/reviews/Dorsten_Kammerflimmern/</loc>
+        <loc>https://www.escapearchive.de/reviews/Dorsten_Kammerflimmern/</loc>
         <lastmod>2022-01-15T00:00:00+01:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
@@ -507,7 +507,7 @@
   
     
       <url>
-        <loc>http://localhost:4000/reviews/Dorsten_VerbannungDesDunklenLords/</loc>
+        <loc>https://www.escapearchive.de/reviews/Dorsten_VerbannungDesDunklenLords/</loc>
         <lastmod>2026-02-14T00:00:00+01:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
@@ -516,7 +516,7 @@
   
     
       <url>
-        <loc>http://localhost:4000/reviews/Dortmund_DieZeitmaschine/</loc>
+        <loc>https://www.escapearchive.de/reviews/Dortmund_DieZeitmaschine/</loc>
         <lastmod>2024-01-27T00:00:00+01:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
@@ -525,7 +525,7 @@
   
     
       <url>
-        <loc>http://localhost:4000/reviews/Dortmund_KolumbusLetzteReise/</loc>
+        <loc>https://www.escapearchive.de/reviews/Dortmund_KolumbusLetzteReise/</loc>
         <lastmod>2023-12-22T00:00:00+01:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
@@ -534,7 +534,7 @@
   
     
       <url>
-        <loc>http://localhost:4000/reviews/Dortmund_SecretService/</loc>
+        <loc>https://www.escapearchive.de/reviews/Dortmund_SecretService/</loc>
         <lastmod>2025-11-01T00:00:00+01:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
@@ -545,7 +545,7 @@
   
     
       <url>
-        <loc>http://localhost:4000/reviews/Hagen_BiggsTheLegacy/</loc>
+        <loc>https://www.escapearchive.de/reviews/Hagen_BiggsTheLegacy/</loc>
         <lastmod>2026-01-07T00:00:00+01:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
@@ -554,7 +554,7 @@
   
     
       <url>
-        <loc>http://localhost:4000/reviews/Hamburg_Insomnia/</loc>
+        <loc>https://www.escapearchive.de/reviews/Hamburg_Insomnia/</loc>
         <lastmod>2024-01-16T00:00:00+01:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
@@ -565,7 +565,7 @@
   
     
       <url>
-        <loc>http://localhost:4000/reviews/Koeln_DreiFragezeichenErbeDesGeisterpiraten/</loc>
+        <loc>https://www.escapearchive.de/reviews/Koeln_DreiFragezeichenErbeDesGeisterpiraten/</loc>
         <lastmod>2023-10-08T00:00:00+02:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
@@ -574,7 +574,7 @@
   
     
       <url>
-        <loc>http://localhost:4000/reviews/Koeln_DreiFragezeichenNachtDerIllusionen/</loc>
+        <loc>https://www.escapearchive.de/reviews/Koeln_DreiFragezeichenNachtDerIllusionen/</loc>
         <lastmod>2025-11-16T00:00:00+01:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
@@ -583,7 +583,7 @@
   
     
       <url>
-        <loc>http://localhost:4000/reviews/Koeln_DreiFragezeichenTruheDerMeister/</loc>
+        <loc>https://www.escapearchive.de/reviews/Koeln_DreiFragezeichenTruheDerMeister/</loc>
         <lastmod>2022-12-23T00:00:00+01:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
@@ -594,7 +594,7 @@
   
     
       <url>
-        <loc>http://localhost:4000/reviews/Krefeld_DasExperiment/</loc>
+        <loc>https://www.escapearchive.de/reviews/Krefeld_DasExperiment/</loc>
         <lastmod>2024-12-29T00:00:00+01:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
@@ -603,7 +603,7 @@
   
     
       <url>
-        <loc>http://localhost:4000/reviews/Krefeld_DieMagischeReiseTeil1/</loc>
+        <loc>https://www.escapearchive.de/reviews/Krefeld_DieMagischeReiseTeil1/</loc>
         <lastmod>2026-01-24T00:00:00+01:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
@@ -612,7 +612,7 @@
   
     
       <url>
-        <loc>http://localhost:4000/reviews/Krefeld_Panzerknacker/</loc>
+        <loc>https://www.escapearchive.de/reviews/Krefeld_Panzerknacker/</loc>
         <lastmod>2025-07-12T00:00:00+02:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
@@ -621,7 +621,7 @@
   
     
       <url>
-        <loc>http://localhost:4000/reviews/Luedenscheid_DerJournalist/</loc>
+        <loc>https://www.escapearchive.de/reviews/Luedenscheid_DerJournalist/</loc>
         <lastmod>2026-05-25T00:00:00+02:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
@@ -630,7 +630,7 @@
   
     
       <url>
-        <loc>http://localhost:4000/reviews/Moenchengladbach_CrystalCamper/</loc>
+        <loc>https://www.escapearchive.de/reviews/Moenchengladbach_CrystalCamper/</loc>
         <lastmod>2025-08-02T00:00:00+02:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
@@ -639,7 +639,7 @@
   
     
       <url>
-        <loc>http://localhost:4000/reviews/Moenchengladbach_HollywoodBombs/</loc>
+        <loc>https://www.escapearchive.de/reviews/Moenchengladbach_HollywoodBombs/</loc>
         <lastmod>2024-11-17T00:00:00+01:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
@@ -648,7 +648,7 @@
   
     
       <url>
-        <loc>http://localhost:4000/reviews/Moenchengladbach_Nervenheilanstalt/</loc>
+        <loc>https://www.escapearchive.de/reviews/Moenchengladbach_Nervenheilanstalt/</loc>
         <lastmod>2024-11-17T00:00:00+01:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
@@ -657,7 +657,7 @@
   
     
       <url>
-        <loc>http://localhost:4000/reviews/Moenchengladbach_Spielerkabine/</loc>
+        <loc>https://www.escapearchive.de/reviews/Moenchengladbach_Spielerkabine/</loc>
         <lastmod>2026-02-21T00:00:00+01:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
@@ -666,7 +666,7 @@
   
     
       <url>
-        <loc>http://localhost:4000/reviews/Moenchengladbach_ZaginisZauberladen/</loc>
+        <loc>https://www.escapearchive.de/reviews/Moenchengladbach_ZaginisZauberladen/</loc>
         <lastmod>2024-10-06T00:00:00+02:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
@@ -675,7 +675,7 @@
   
     
       <url>
-        <loc>http://localhost:4000/reviews/Sonthofen_MissionRedCrystal/</loc>
+        <loc>https://www.escapearchive.de/reviews/Sonthofen_MissionRedCrystal/</loc>
         <lastmod>2026-02-27T00:00:00+01:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
@@ -684,7 +684,7 @@
   
     
       <url>
-        <loc>http://localhost:4000/reviews/Wuppertal_Sherlock/</loc>
+        <loc>https://www.escapearchive.de/reviews/Wuppertal_Sherlock/</loc>
         <lastmod>2025-12-27T00:00:00+01:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>

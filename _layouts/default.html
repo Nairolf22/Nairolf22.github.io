@@ -12,8 +12,23 @@
     {% endif %}
   </title>
 
-  <meta name="description"
-    content="{% if page.description %}{{ page.description | strip_html | strip_newlines | truncate: 160 }}{% elsif page.summary %}{{ page.summary | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
+  {% assign desc_len = page.description | strip_html | strip_newlines | size %}
+  {% assign sum_len = page.summary | strip_html | strip_newlines | size %}
+  {% capture meta_desc %}
+    {% if desc_len > 0 %}
+      {{ page.description | strip_html | strip_newlines | truncate: 160 }}
+    {% elsif sum_len > 0 %}
+      {{ page.summary | strip_html | strip_newlines | truncate: 160 }}
+    {% elsif page.layout == 'review' %}
+      {{ page.title }} ({{ page.provider }}, {{ page.location.city }}) - Ausführlicher Testbericht und Bewertung von Die Anrufbeantworter.
+    {% elsif page.city %}
+      Escape Rooms in {{ page.city }}: Alle Erfahrungsberichte, Tests und Bewertungen zu Live Escape Games in {{ page.city }} im Überblick.
+    {% else %}
+      {{ site.description }}
+    {% endif %}
+  {% endcapture %}
+
+  <meta name="description" content="{{ meta_desc | strip }}">
   <link rel="canonical" href="{{ site.url }}{{ page.url }}">
 
   <!-- SEO & Social Media Tags -->
@@ -29,68 +44,151 @@
     content="{% if page.layout == 'review' %}{{ page.title }} ({{ page.provider }}){% else %}{{ page.title }} | Escape Archive{% endif %}">
   <meta property="og:type" content="{% if page.layout == 'review' %}article{% else %}website{% endif %}">
   <meta property="og:url" content="{{ site.url }}{{ page.url }}">
-  <meta property="og:description"
-    content="{% if page.description %}{{ page.description | strip_html | strip_newlines | truncate: 200 }}{% elsif page.summary %}{{ page.summary | strip_html | strip_newlines | truncate: 200 }}{% else %}{{ site.description }}{% endif %}">
+  <meta property="og:description" content="{{ meta_desc | strip }}">
   <meta property="og:image"
-    content="{{ site.url }}/assets/images/{% if page.thumbnail %}{{ page.thumbnail }}{% elsif page.images[0] %}{{ page.images[0] }}{% else %}logo-escape-archive_800.webp{% endif %}">
+    content="{{ site.url }}/assets/images/{% if page.thumbnail %}{{ page.thumbnail }}{% elsif page.images.size > 0 %}{{ page.images[0] }}{% else %}logo-escape-archive_800.webp{% endif %}">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title"
     content="{% if page.layout == 'review' %}{{ page.title }} ({{ page.provider }}){% else %}{{ page.title }} | Escape Archive{% endif %}">
-  <meta name="twitter:description"
-    content="{% if page.description %}{{ page.description | strip_html | strip_newlines | truncate: 200 }}{% elsif page.summary %}{{ page.summary | strip_html | strip_newlines | truncate: 200 }}{% else %}{{ site.description }}{% endif %}">
+  <meta name="twitter:description" content="{{ meta_desc | strip }}">
   <meta name="twitter:image"
-    content="{{ site.url }}/assets/images/{% if page.thumbnail %}{{ page.thumbnail }}{% elsif page.images[0] %}{{ page.images[0] }}{% else %}logo-escape-archive_800.webp{% endif %}">
+    content="{{ site.url }}/assets/images/{% if page.thumbnail %}{{ page.thumbnail }}{% elsif page.images.size > 0 %}{{ page.images[0] }}{% else %}logo-escape-archive_800.webp{% endif %}">
 
   <link rel="stylesheet" href="/assets/css/style.css">
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+  {% if page.url == '/karte/' %}
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
   <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.css" />
   <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.Default.css" />
+  {% endif %}
 
+  <!-- Schema.org BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Startseite",
+        "item": "{{ site.url }}/"
+      }
+      {% if page.layout == 'review' %}
+      ,{
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Fall-Archiv",
+        "item": "{{ site.url }}/archiv/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "{{ page.title | escape }}",
+        "item": "{{ site.url }}{{ page.url }}"
+      }
+      {% elsif page.city %}
+      ,{
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Regionale Archive",
+        "item": "{{ site.url }}/city/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "{{ page.city | escape }}",
+        "item": "{{ site.url }}{{ page.url }}"
+      }
+      {% elsif page.url != '/' %}
+      ,{
+        "@type": "ListItem",
+        "position": 2,
+        "name": "{{ page.title | escape }}",
+        "item": "{{ site.url }}{{ page.url }}"
+      }
+      {% endif %}
+    ]
+  }
+  </script>
+
+  {% if page.url == '/' %}
+  <!-- Schema.org WebSite & Organization for Homepage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "{{ site.url }}/#website",
+        "url": "{{ site.url }}/",
+        "name": "The Escape Archive",
+        "description": "{{ site.description }}",
+        "inLanguage": "de-DE",
+        "publisher": {
+          "@id": "{{ site.url }}/#organization"
+        }
+      },
+      {
+        "@type": "Organization",
+        "@id": "{{ site.url }}/#organization",
+        "name": "Die Anrufbeantworter",
+        "url": "{{ site.url }}/team/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "{{ site.url }}/assets/images/logo-escape-archive_800.webp"
+        },
+        "description": "Escape Room Tester-Team 'Die Anrufbeantworter' - Authentische Tests, Reviews & Analysen."
+      }
+    ]
+  }
+  </script>
+  {% endif %}
 
   {% if page.layout == 'review' and page.pending != true and page.planned != true %}
-
   {% assign r = page.ratings %}
-  {% assign sum = r.atmosphere.score | plus: r.story.score | plus: r.puzzles.score | plus: r.scenery.score | plus:
-  r.gamemaster.score %}
+  {% assign sum = r.atmosphere.score | plus: r.story.score | plus: r.puzzles.score | plus: r.scenery.score | plus: r.gamemaster.score %}
   {% assign calculated_avg = sum | divided_by: 5.0 %}
 
   <script type="application/ld+json">
-            {
-              "@context": "https://schema.org/",
-              "@type": "Review",
-              "itemReviewed": {
-                "@type": "LocalBusiness",
-                "name": "{{ page.title }} | {{ page.provider }}",
-                "image": "{{ site.url }}/assets/images/{% if page.thumbnail %}{{ page.thumbnail }}{% else %}{{ page.images[0] }}{% endif %}",
-                "address": {
-                  "@type": "PostalAddress",
-                  "streetAddress": "{{ page.location.address }}",
-                  "addressLocality": "{{ page.location.city }}",
-                  "addressCountry": "DE"
-                },
-                "priceRange": "$$"
-              },
-              "reviewRating": {
-                "@type": "Rating",
-                "ratingValue": "{{ calculated_avg | round: 1 }}",
-                "bestRating": "5",
-                "worstRating": "1"
-              },
-              "author": {
-                "@type": "Organization",
-                "name": "Die Anrufbeantworter",
-                "url": "{{ site.url }}/team"
-              },
-              "publisher": {
-                "@type": "Organization",
-                "name": "The Escape Archive",
-                "url": "{{ site.url }}"
-              },
-              "datePublished": "{{ page.visit_date | date_to_xmlschema }}",
-              "description": "{{ page.summary | strip_html | strip_newlines | truncate: 160 }}"
-            }
+  {
+    "@context": "https://schema.org/",
+    "@type": "Review",
+    "headline": "{{ page.title | escape }} ({{ page.provider | escape }}) - Test & Bewertung",
+    "inLanguage": "de-DE",
+    "itemReviewed": {
+      "@type": "LocalBusiness",
+      "name": "{{ page.title | escape }} | {{ page.provider | escape }}",
+      "image": "{{ site.url }}/assets/images/{% if page.thumbnail %}{{ page.thumbnail }}{% elsif page.images.size > 0 %}{{ page.images[0] }}{% else %}logo-escape-archive_800.webp{% endif %}",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "{{ page.location.address | escape }}",
+        "addressLocality": "{{ page.location.city | escape }}",
+        "addressCountry": "DE"
+      },
+      "priceRange": "$$"
+    },
+    "reviewRating": {
+      "@type": "Rating",
+      "ratingValue": "{{ calculated_avg | round: 1 }}",
+      "bestRating": "5",
+      "worstRating": "1"
+    },
+    "author": {
+      "@type": "Organization",
+      "name": "Die Anrufbeantworter",
+      "url": "{{ site.url }}/team/"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "The Escape Archive",
+      "url": "{{ site.url }}/"
+    },
+    "datePublished": "{{ page.visit_date | date_to_xmlschema }}",
+    "reviewBody": "{{ meta_desc | strip | escape }}"
+  }
   </script>
   {% endif %}
 </head>
@@ -100,26 +198,18 @@
   <div class="site-wrapper">
 
     <header>
-      {% if page.url == '/' %}
-      <h1 class="logo-heading">
-      {% else %}
       <div class="logo-heading">
-      {% endif %}
-        <a href="/" class="site-logo-link">
+        <a href="/" class="site-logo-link" aria-label="Zur Startseite von The Escape Archive">
           <img src="/assets/images/logo-escape-archive_800.webp"
-            alt="The Escape Archive - Escape Room Reviews & Analysen (Die Anrufbeantworter)" class="site-logo">
+            alt="The Escape Archive - Escape Room Reviews & Analysen" class="site-logo" width="450" height="150" fetchpriority="high">
         </a>
-      {% if page.url == '/' %}
-      </h1>
-      {% else %}
       </div>
-      {% endif %}
       <p style="color: #ccc; margin-top: 10px;">• EST. 2025 • CLASSIFIED REVIEWS •</p>
     </header>
 
-    <nav>
-      <input type="checkbox" id="nav-toggle" class="nav-toggle">
-      <label for="nav-toggle" class="burger-icon">☰ Menü</label>
+    <nav aria-label="Hauptnavigation">
+      <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-label="Menü ein- oder ausblenden">
+      <label for="nav-toggle" class="burger-icon" aria-label="Menü">☰ Menü</label>
       <div class="nav-links">
         <a href="/karte/">Karte</a>
         <a href="/archiv/">Alle Akten</a>
@@ -164,8 +254,10 @@
 
   </div>
 
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  {% if page.url == '/karte/' %}
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
   <script src="https://unpkg.com/leaflet.markercluster/dist/leaflet.markercluster.js"></script>
+  {% endif %}
 
   <script src="/assets/js/main.js"></script>
   <script data-goatcounter="https://nairolf22.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
@@ -184,23 +276,17 @@
       font-weight: normal;
       display: block;
       border: none;
-      /* Sicherheitshalber */
     }
 
-    /* UPDATE: Hier werden alle Rahmen/Boxen entfernt */
     .site-logo-link {
       display: inline-block;
       text-decoration: none;
       border: none !important;
       outline: none !important;
-      /* Entfernt gepunktete Linie bei Klick */
       box-shadow: none !important;
-      /* Entfernt Schatten */
       -webkit-tap-highlight-color: transparent;
-      /* Entfernt graue Box beim Tippen auf Handy */
     }
 
-    /* Auch beim Hover/Fokus sicherstellen, dass nichts erscheint */
     .site-logo-link:focus,
     .site-logo-link:active,
     .site-logo-link:hover {
@@ -216,7 +302,6 @@
       display: block;
       margin: 0 auto;
       border: none !important;
-      /* Entfernt Bildrahmen (alte Browser) */
       outline: none !important;
     }
 
@@ -264,13 +349,8 @@
     }
 
     @media (max-width: 600px) {
-      header h1.logo-heading {
-        margin-bottom: 0;
-        font-size: 1rem;
-      }
-
       .site-logo {
-        width: 300px;
+        width: 280px;
       }
     }
 
