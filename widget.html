@@ -143,6 +143,55 @@ permalink: /widget.html
       text-overflow: ellipsis;
     }
 
+    /* Standard Medallion Badge Format */
+    .ea-standard-layout {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      background: transparent !important;
+      box-shadow: none !important;
+      border: none !important;
+      padding: 0;
+    }
+    .ea-standard-badge-wrap {
+      position: relative;
+      display: inline-block;
+      width: 176px;
+      height: 176px;
+      max-width: 100%;
+      transition: transform 0.2s ease;
+      filter: drop-shadow(0 4px 10px rgba(0,0,0,0.3));
+    }
+    .ea-standard-badge-wrap:hover {
+      transform: scale(1.05);
+    }
+    .ea-standard-badge-img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+      border: none;
+    }
+    .ea-standard-badge-score {
+      position: absolute;
+      top: 79.5%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 70%;
+      text-align: center;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 1.15rem;
+      font-weight: 900;
+      color: #2c1606;
+      text-shadow: 0 1px 0 rgba(255,255,255,0.4);
+      letter-spacing: 1px;
+      pointer-events: none;
+      white-space: nowrap;
+      user-select: none;
+    }
+
     /* Badge Format */
     .ea-badge-layout {
       padding: 10px 14px;
@@ -282,7 +331,7 @@ permalink: /widget.html
   <script>
     (function() {
       const params = new URLSearchParams(window.location.search);
-      const type = params.get('type') || 'badge'; // 'badge' or 'scorecard'
+      const type = params.get('type') || 'standard'; // 'standard', 'badge' or 'scorecard'
       const theme = params.get('theme') || 'dark'; // 'dark' or 'light'
       
       const title = params.get('title') || 'Escape Room';
@@ -307,7 +356,15 @@ permalink: /widget.html
 
       const container = document.getElementById('eaWidgetContent');
 
-      if (type === 'badge') {
+      if (type === 'standard') {
+        card.className = 'ea-card ea-standard-layout';
+        container.innerHTML = `
+          <div class="ea-standard-badge-wrap">
+            <img src="/assets/images/Badge_Bewertung.png" class="ea-standard-badge-img" alt="The Escape Archive Bewertung für ${title}">
+            <span class="ea-standard-badge-score">${score} / 5</span>
+          </div>
+        `;
+      } else if (type === 'badge') {
         container.className = 'ea-badge-layout';
         container.innerHTML = `
           <div class="ea-score-box">
