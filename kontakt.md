@@ -8,7 +8,7 @@ permalink: /kontakt/
 <div class="review-dossier">
 
     <div class="dossier-header">
-        <h2>Kontakt-Aufnahme</h2>
+        <h1>Kontakt-Aufnahme</h1>
     </div>
 
     <div style="font-family: 'Courier New', monospace; line-height: 1.6; color: #333;">

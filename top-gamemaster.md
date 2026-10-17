@@ -31,7 +31,7 @@ permalink: /hall-of-fame/top-gamemaster/
 <div class="review-dossier">
 
     <div class="dossier-header">
-        <h2 style="border-bottom: none; margin-bottom: 0;">Die Hall of Fame für Gamemaster & Service</h2>
+        <h1 style="border-bottom: none; margin-bottom: 0;">Die Hall of Fame für Gamemaster & Service</h1>
         <p style="font-family: 'Courier New'; color: #666; margin-top: 0; font-size: 0.9rem;">
             // TOP 5 RANKING: SPIELLEITUNG & SCHAUSPIEL
         </p>
@@ -40,7 +40,7 @@ permalink: /hall-of-fame/top-gamemaster/
     <div style="font-family: 'Courier New', monospace; line-height: 1.6; color: #333;">
         
         <div style="background: rgba(0,0,0,0.03); padding: 20px; border-left: 5px solid var(--rust-primary); margin-bottom: 3rem;">
-            <h3 style="margin-top: 0; text-transform: uppercase;">Der Geist in der Maschine</h3>
+            <h2 style="margin-top: 0; text-transform: uppercase; font-size: 1.15rem;">Der Geist in der Maschine</h2>
             <p>
                 Ein Escape Room steht und fällt mit der Spielleitung. Ein guter Gamemaster ist mehr als nur ein Tipp-Geber – er ist Regisseur, Schauspieler und unser direkter Draht in die Spielwelt.
             </p>
@@ -72,7 +72,7 @@ permalink: /hall-of-fame/top-gamemaster/
                             {% else %}
                                 {% assign img_src = room.images[0] %}
                             {% endif %}
-                            <img src="/assets/images/{{ img_src }}" alt="{{ room.title }}">
+                            <img src="/assets/images/{{ img_src }}" alt="Platz {{ rank }} Gamemaster: {{ room.title }} ({{ room.provider }}, {{ room.location.city }})" loading="lazy" width="400" height="250">
                         </div>
 
                         <div class="ranking-card-body">

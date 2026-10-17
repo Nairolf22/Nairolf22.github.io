@@ -30,7 +30,7 @@ permalink: /hall-of-fame/top-puzzles/
 <div class="review-dossier">
 
     <div class="dossier-header">
-        <h2 style="border-bottom: none; margin-bottom: 0;">Die Hall of Fame der Rätsel</h2>
+        <h1 style="border-bottom: none; margin-bottom: 0;">Die Hall of Fame der Rätsel</h1>
         <p style="font-family: 'Courier New'; color: #666; margin-top: 0; font-size: 0.9rem;">
             // TOP 5 RANKING: LOGIK, MECHANIK & FLOW
         </p>
@@ -39,7 +39,7 @@ permalink: /hall-of-fame/top-puzzles/
     <div style="font-family: 'Courier New', monospace; line-height: 1.6; color: #333;">
         
         <div style="background: rgba(0,0,0,0.03); padding: 20px; border-left: 5px solid var(--rust-primary); margin-bottom: 3rem;">
-            <h3 style="margin-top: 0; text-transform: uppercase;">Was macht ein perfektes Rätsel aus?</h3>
+            <h2 style="margin-top: 0; text-transform: uppercase; font-size: 1.15rem;">Was macht ein perfektes Rätsel aus?</h2>
             <p>
                 Für uns ist ein Rätsel nicht einfach nur ein Hindernis, sondern der Motor des Spiels. Wir suchen nach dem perfekten "Flow" – dem Zustand, in dem eine Lösung logisch zur nächsten führt.
             </p>
@@ -74,7 +74,7 @@ permalink: /hall-of-fame/top-puzzles/
                             {% else %}
                                 {% assign img_src = room.images[0] %}
                             {% endif %}
-                            <img src="/assets/images/{{ img_src }}" alt="{{ room.title }}">
+                            <img src="/assets/images/{{ img_src }}" alt="Platz {{ rank }} Rätsel: {{ room.title }} ({{ room.provider }}, {{ room.location.city }})" loading="lazy" width="400" height="250">
                         </div>
 
                         <div class="ranking-card-body">

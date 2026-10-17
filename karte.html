@@ -1,11 +1,9 @@
 ---
 layout: default
 title: "Escape Rooms in meiner Nähe finden: Die interaktive Test-Karte"
-description: "Interaktive Escape Room Karte: Finde getestete und empfohlene Escape Rooms in deiner Nähe."
+description: "Interaktive Escape Room Karte für Deutschland: Finde getestete und empfohlene Escape Rooms sowie Outdoor Escape Games in deiner Nähe."
 permalink: /karte/
 ---
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 
 <style>
     .closed-stamp {
@@ -117,7 +115,7 @@ permalink: /karte/
 </style>
 
 <section class="map-section">
-    <h2 class="section-title">Einsatzorte</h2>
+    <h1 class="section-title">Einsatzorte: Escape Room Karte</h1>
     
     <div id="osm-wrapper" class="osm-placeholder">
         <div class="osm-content">
@@ -170,7 +168,7 @@ permalink: /karte/
 
                     <img
                         src="/assets/images/{{ img_src }}"
-                        alt="{{ review.title }}"
+                        alt="{{ review.title }} ({{ review.provider }}, {{ review.location.city }}) – Escape Room Test"
                         {% if forloop.first %} loading="eager" fetchpriority="high" {% else %} loading="lazy" {% endif %}
                         width="400"
                         height="200"
@@ -200,7 +198,7 @@ permalink: /karte/
 
                     {% if review.badge %}
                         <div class="card-badge-image-container">
-                            <img src="/assets/images/{{ review.badge }}.png" class="card-badge-img" alt="Badge">
+                            <img src="/assets/images/{{ review.badge }}.png" class="card-badge-img" alt="Auszeichnung: {{ review.badge }}">
                         </div>
                     {% endif %}
                 </div>

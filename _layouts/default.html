@@ -4,59 +4,105 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>
+  <meta name="theme-color" content="#8D4004">
+
+  {% if page.layout == 'review' and page.pending != true and page.planned != true %}
+    {% assign r = page.ratings %}
+    {% assign sum = r.atmosphere.score | plus: r.story.score | plus: r.puzzles.score | plus: r.scenery.score | plus: r.gamemaster.score %}
+    {% assign calculated_avg = sum | divided_by: 5.0 %}
+  {% endif %}
+
+  {% if page.layout == 'member' %}
+    {% assign current_member = site.data.members | where: "name", page.member_name | first %}
+  {% endif %}
+
+  {% capture seo_title %}
     {% if page.layout == 'review' %}
-    {{ page.title }} ({{ page.provider }}, {{ page.location.city }}) - Test & Erfahrungen
+      {% if page.planned %}
+        {{ page.title }} ({{ page.provider }}, {{ page.location.city }}) – Geplanter Einsatz | The Escape Archive
+      {% elsif page.outdoor %}
+        {{ page.title }} ({{ page.provider }}, {{ page.location.city }}) – Outdoor Escape Test & Erfahrung
+      {% else %}
+        {{ page.title }} ({{ page.provider }}, {{ page.location.city }}) – Escape Room Test & Erfahrung
+      {% endif %}
+    {% elsif page.layout == 'member' and current_member %}
+      {{ current_member.name }} ({{ current_member.role }}) – Escape Room Tester | Die Anrufbeantworter
+    {% elsif page.url == '/' %}
+      Escape Room Tests, Erfahrungen & Bewertungen in Deutschland | The Escape Archive
+    {% elsif page.city %}
+      Escape Rooms in {{ page.city }} – Alle Tests, Bewertungen & Erfahrungen | Escape Archive
     {% else %}
-    {{ page.title }} | Escape Archive
+      {{ page.title }} | The Escape Archive
     {% endif %}
-  </title>
+  {% endcapture %}
+  <title>{{ seo_title | strip_newlines | strip }}</title>
 
   {% assign desc_len = page.description | strip_html | strip_newlines | size %}
   {% assign sum_len = page.summary | strip_html | strip_newlines | size %}
   {% capture meta_desc %}
-    {% if desc_len > 0 %}
+    {% if page.layout == 'review' %}
+      {% if page.planned %}
+        {{ page.title }} bei {{ page.provider }} in {{ page.location.city }}: Geplanter Einsatz am {{ page.visit_date | date: "%d.%m.%Y" }} – {{ page.summary | strip_html | strip_newlines | truncate: 110 }}
+      {% elsif page.pending %}
+        {{ page.title }} ({{ page.provider }}, {{ page.location.city }}) – Escape Room Ermittlungsakte von Die Anrufbeantworter wird aktuell ausgewertet.
+      {% elsif sum_len > 0 %}
+        {{ page.title }} ({{ page.provider }}, {{ page.location.city }}) im Test: ★ {{ calculated_avg | round: 1 }}/5. {{ page.summary | strip_html | strip_newlines | truncate: 115 }}
+      {% else %}
+        {{ page.title }} ({{ page.provider }}, {{ page.location.city }}) – Ausführlicher Escape Room Testbericht, Bewertung und Erfahrungen von Die Anrufbeantworter.
+      {% endif %}
+    {% elsif desc_len > 0 %}
       {{ page.description | strip_html | strip_newlines | truncate: 160 }}
-    {% elsif sum_len > 0 %}
-      {{ page.summary | strip_html | strip_newlines | truncate: 160 }}
-    {% elsif page.layout == 'review' %}
-      {{ page.title }} ({{ page.provider }}, {{ page.location.city }}) - Ausführlicher Testbericht und Bewertung von Die Anrufbeantworter.
+    {% elsif page.layout == 'member' and current_member %}
+      Ermittler-Akte {{ current_member.name }} ({{ current_member.role }}) vom Escape Room Tester-Team Die Anrufbeantworter: {{ current_member.bio | strip_html | strip_newlines }}
     {% elsif page.city %}
-      Escape Rooms in {{ page.city }}: Alle Erfahrungsberichte, Tests und Bewertungen zu Live Escape Games in {{ page.city }} im Überblick.
+      Escape Rooms in {{ page.city }}: Alle unabhängigen Erfahrungsberichte, Tests und Bewertungen zu Live Escape Games in {{ page.city }} im Überblick.
     {% else %}
       {{ site.description }}
     {% endif %}
   {% endcapture %}
 
-  <meta name="description" content="{{ meta_desc | strip }}">
+  <meta name="description" content="{{ meta_desc | strip_newlines | strip | escape }}">
   <link rel="canonical" href="{{ site.url }}{{ page.url }}">
+  <link rel="alternate" hreflang="de" href="{{ site.url }}{{ page.url }}">
+  <link rel="alternate" hreflang="x-default" href="{{ site.url }}{{ page.url }}">
 
-  <!-- SEO & Social Media Tags -->
+  <!-- SEO & Robots Directives -->
   <link rel="shortcut icon" type="image/png" href="{{ '/favicon.png?v=4' | relative_url }}">
   <link rel="icon" type="image/png" sizes="512x512" href="{{ '/favicon.png?v=4' | relative_url }}">
   <link rel="apple-touch-icon" href="{{ '/favicon.png?v=4' | relative_url }}">
-  <meta name="author" content="Die Anrufbeantworter">
-  <meta name="robots" content="index, follow">
+  <meta name="author" content="Die Anrufbeantworter (The Escape Archive)">
+  {% if page.pending == true or page.noindex == true %}
+  <meta name="robots" content="noindex, follow">
+  {% else %}
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  {% endif %}
+
+  {% capture og_img %}{% if page.thumbnail %}{{ page.thumbnail }}{% elsif page.images.size > 0 %}{{ page.images[0] }}{% elsif page.layout == 'member' and current_member.image %}{{ current_member.image }}{% else %}logo-escape-archive_800.webp{% endif %}{% endcapture %}
+  {% capture og_img_alt %}{% if page.layout == 'review' %}{{ page.title }} bei {{ page.provider }} in {{ page.location.city }} – Escape Room Test{% elsif page.layout == 'member' and current_member %}{{ current_member.name }} – Die Anrufbeantworter{% else %}{{ page.title | default: site.title }} | The Escape Archive{% endif %}{% endcapture %}
 
   <!-- Open Graph -->
-  <meta property="og:site_name" content="The Escape Archive">
-  <meta property="og:title"
-    content="{% if page.layout == 'review' %}{{ page.title }} ({{ page.provider }}){% else %}{{ page.title }} | Escape Archive{% endif %}">
-  <meta property="og:type" content="{% if page.layout == 'review' %}article{% else %}website{% endif %}">
+  <meta property="og:locale" content="de_DE">
+  <meta property="og:site_name" content="The Escape Archive • Die Anrufbeantworter">
+  <meta property="og:title" content="{{ seo_title | strip_newlines | strip | escape }}">
+  <meta property="og:type" content="{% if page.layout == 'review' %}article{% elsif page.layout == 'member' %}profile{% else %}website{% endif %}">
   <meta property="og:url" content="{{ site.url }}{{ page.url }}">
-  <meta property="og:description" content="{{ meta_desc | strip }}">
-  <meta property="og:image"
-    content="{{ site.url }}/assets/images/{% if page.thumbnail %}{{ page.thumbnail }}{% elsif page.images.size > 0 %}{{ page.images[0] }}{% else %}logo-escape-archive_800.webp{% endif %}">
+  <meta property="og:description" content="{{ meta_desc | strip_newlines | strip | escape }}">
+  <meta property="og:image" content="{{ site.url }}/assets/images/{{ og_img | strip }}">
+  <meta property="og:image:alt" content="{{ og_img_alt | strip | escape }}">
+  {% if page.layout == 'review' and page.visit_date %}
+  <meta property="article:published_time" content="{{ page.visit_date | date_to_xmlschema }}">
+  <meta property="article:author" content="{{ site.url }}/team/">
+  <meta property="article:section" content="Escape Room Tests">
+  {% endif %}
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title"
-    content="{% if page.layout == 'review' %}{{ page.title }} ({{ page.provider }}){% else %}{{ page.title }} | Escape Archive{% endif %}">
-  <meta name="twitter:description" content="{{ meta_desc | strip }}">
-  <meta name="twitter:image"
-    content="{{ site.url }}/assets/images/{% if page.thumbnail %}{{ page.thumbnail }}{% elsif page.images.size > 0 %}{{ page.images[0] }}{% else %}logo-escape-archive_800.webp{% endif %}">
+  <meta name="twitter:title" content="{{ seo_title | strip_newlines | strip | escape }}">
+  <meta name="twitter:description" content="{{ meta_desc | strip_newlines | strip | escape }}">
+  <meta name="twitter:image" content="{{ site.url }}/assets/images/{{ og_img | strip }}">
+  <meta name="twitter:image:alt" content="{{ og_img_alt | strip | escape }}">
 
-  <link rel="stylesheet" href="/assets/css/style.css?v=20261018b">
+  <link rel="stylesheet" href="/assets/css/style.css?v=20261018c">
 
   {% if page.url == '/karte/' %}
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
@@ -86,7 +132,7 @@
       {
         "@type": "ListItem",
         "position": 3,
-        "name": "{{ page.title | escape }}",
+        "name": "{{ page.title | escape }} ({{ page.location.city | escape }})",
         "item": "{{ site.url }}{{ page.url }}"
       }
       {% elsif page.city %}
@@ -99,7 +145,46 @@
       {
         "@type": "ListItem",
         "position": 3,
-        "name": "{{ page.city | escape }}",
+        "name": "Escape Rooms in {{ page.city | escape }}",
+        "item": "{{ site.url }}{{ page.url }}"
+      }
+      {% elsif page.url contains '/hall-of-fame/' and page.url != '/hall-of-fame/' %}
+      ,{
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Hall of Fame",
+        "item": "{{ site.url }}/hall-of-fame/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "{{ page.title | escape }}",
+        "item": "{{ site.url }}{{ page.url }}"
+      }
+      {% elsif page.layout == 'member' %}
+      ,{
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Über uns – Die Anrufbeantworter",
+        "item": "{{ site.url }}/team/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "{{ page.member_name | escape }}",
+        "item": "{{ site.url }}{{ page.url }}"
+      }
+      {% elsif page.url contains '/raetsel/' and page.url != '/raetsel/' %}
+      ,{
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Trainingslager",
+        "item": "{{ site.url }}/raetsel/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "{{ page.title | escape }}",
         "item": "{{ site.url }}{{ page.url }}"
       }
       {% elsif page.url != '/' %}
@@ -125,7 +210,8 @@
         "@id": "{{ site.url }}/#website",
         "url": "{{ site.url }}/",
         "name": "The Escape Archive",
-        "description": "{{ site.description }}",
+        "alternateName": "Die Anrufbeantworter – Escape Room Tests",
+        "description": "{{ site.description | escape }}",
         "inLanguage": "de-DE",
         "publisher": {
           "@id": "{{ site.url }}/#organization"
@@ -135,12 +221,15 @@
         "@type": "Organization",
         "@id": "{{ site.url }}/#organization",
         "name": "Die Anrufbeantworter",
+        "alternateName": "The Escape Archive",
         "url": "{{ site.url }}/team/",
         "logo": {
           "@type": "ImageObject",
-          "url": "{{ site.url }}/assets/images/logo-escape-archive_800.webp"
+          "url": "{{ site.url }}/assets/images/logo-escape-archive_800.webp",
+          "width": 800,
+          "height": 437
         },
-        "description": "Escape Room Tester-Team 'Die Anrufbeantworter' - Authentische Tests, Reviews & Analysen."
+        "description": "Unabhängiges Escape Room Tester-Team 'Die Anrufbeantworter' – Authentische Tests, Reviews & Analysen von Live Escape Games in Deutschland."
       }
     ]
   }
@@ -148,26 +237,34 @@
   {% endif %}
 
   {% if page.layout == 'review' and page.pending != true and page.planned != true %}
-  {% assign r = page.ratings %}
-  {% assign sum = r.atmosphere.score | plus: r.story.score | plus: r.puzzles.score | plus: r.scenery.score | plus: r.gamemaster.score %}
-  {% assign calculated_avg = sum | divided_by: 5.0 %}
-
+  {% capture full_review_body %}{{ page.summary | strip_html | strip_newlines }} Atmosphäre: {{ page.ratings.atmosphere.text | strip_html | strip_newlines }} Story: {{ page.ratings.story.text | strip_html | strip_newlines }} Rätsel: {{ page.ratings.puzzles.text | strip_html | strip_newlines }} Kulisse: {{ page.ratings.scenery.text | strip_html | strip_newlines }} Gamemaster: {{ page.ratings.gamemaster.text | strip_html | strip_newlines }}{% endcapture %}
   <script type="application/ld+json">
   {
     "@context": "https://schema.org/",
     "@type": "Review",
-    "headline": "{{ page.title | escape }} ({{ page.provider | escape }}) - Test & Bewertung",
+    "name": "{{ page.title | escape }} ({{ page.provider | escape }}, {{ page.location.city | escape }}) – Test & Erfahrung",
+    "headline": "{{ page.title | escape }} ({{ page.provider | escape }}) – Escape Room Testbericht",
     "inLanguage": "de-DE",
+    "url": "{{ site.url }}{{ page.url }}",
+    "datePublished": "{{ page.visit_date | date_to_xmlschema }}",
     "itemReviewed": {
       "@type": "LocalBusiness",
-      "name": "{{ page.title | escape }} | {{ page.provider | escape }}",
+      "name": "{{ page.title | escape }} – {{ page.provider | escape }}",
       "image": "{{ site.url }}/assets/images/{% if page.thumbnail %}{{ page.thumbnail }}{% elsif page.images.size > 0 %}{{ page.images[0] }}{% else %}logo-escape-archive_800.webp{% endif %}",
+      {% if page.website %}"sameAs": "{{ page.website }}",{% endif %}
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "{{ page.location.address | escape }}",
         "addressLocality": "{{ page.location.city | escape }}",
-        "addressCountry": "DE"
+        "addressCountry": "{% if page.url contains 'CH_' %}CH{% else %}DE{% endif %}"
       },
+      {% if page.location.lat and page.location.lng %}
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": {{ page.location.lat }},
+        "longitude": {{ page.location.lng }}
+      },
+      {% endif %}
       "priceRange": "$$"
     },
     "reviewRating": {
@@ -184,10 +281,88 @@
     "publisher": {
       "@type": "Organization",
       "name": "The Escape Archive",
-      "url": "{{ site.url }}/"
+      "url": "{{ site.url }}/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "{{ site.url }}/assets/images/logo-escape-archive_800.webp"
+      }
     },
-    "datePublished": "{{ page.visit_date | date_to_xmlschema }}",
-    "reviewBody": "{{ meta_desc | strip | escape }}"
+    "reviewBody": "{{ full_review_body | strip | escape }}"
+  }
+  </script>
+  {% endif %}
+
+  {% if page.city %}
+  {% assign city_schema_reviews = site.reviews | where: "location.city", page.city | where_exp: "item", "item.pending != true" %}
+  {% if city_schema_reviews.size > 0 %}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Getestete Escape Rooms in {{ page.city | escape }}",
+    "description": "Übersicht aller getesteten Escape Rooms und Live Escape Games in {{ page.city | escape }} von Die Anrufbeantworter.",
+    "numberOfItems": {{ city_schema_reviews.size }},
+    "itemListElement": [
+      {% for rev in city_schema_reviews %}
+      {
+        "@type": "ListItem",
+        "position": {{ forloop.index }},
+        "name": "{{ rev.title | escape }} ({{ rev.provider | escape }})",
+        "url": "{{ site.url }}{{ rev.url }}"
+      }{% unless forloop.last %},{% endunless %}
+      {% endfor %}
+    ]
+  }
+  </script>
+  {% endif %}
+  {% endif %}
+
+  {% if page.layout == 'member' and current_member %}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfilePage",
+    "mainEntity": {
+      "@type": "Person",
+      "name": "{{ current_member.name | escape }}",
+      "jobTitle": "{{ current_member.role | escape }}",
+      "description": "{{ current_member.bio | escape }}",
+      "image": "{{ site.url }}/assets/images/{{ current_member.image }}",
+      "url": "{{ site.url }}{{ page.url }}",
+      "memberOf": {
+        "@type": "Organization",
+        "name": "Die Anrufbeantworter",
+        "url": "{{ site.url }}/team/"
+      }
+    }
+  }
+  </script>
+  {% endif %}
+
+  {% if page.url == '/was-ist-ein-escape-room/' or page.url == '/arten-von-raetseln/' or page.url == '/schloss-typen/' or page.url == '/philosophie/' or page.url == '/bewertungssystem/' %}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "{{ page.title | escape }}",
+    "description": "{{ meta_desc | strip_newlines | strip | escape }}",
+    "inLanguage": "de-DE",
+    "mainEntityOfPage": "{{ site.url }}{{ page.url }}",
+    "image": "{{ site.url }}/assets/images/logo-escape-archive_800.webp",
+    "author": {
+      "@type": "Organization",
+      "name": "Die Anrufbeantworter",
+      "url": "{{ site.url }}/team/"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "The Escape Archive",
+      "url": "{{ site.url }}/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "{{ site.url }}/assets/images/logo-escape-archive_800.webp"
+      }
+    }
   }
   </script>
   {% endif %}

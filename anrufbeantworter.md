@@ -7,12 +7,12 @@ permalink: /team/
 
 <div class="review-dossier">
     <div class="dossier-header">
-        <h2>Akte: Die Anrufbeantworter</h2>
+        <h1>Akte: Die Anrufbeantworter</h1>
         <p>Ermittlerprofil & Mission: Die Experten für Escape Room Reviews</p>
     </div>
 
     <div style="font-family: 'Courier New', Courier, monospace; line-height: 1.6; margin-bottom: 40px; color: #333;">
-        <h3 style="color: var(--rust-primary, #a0522d);">Gegenstand der Untersuchung: Wer sind die Anrufbeantworter?</h3>
+        <h2 style="color: var(--rust-primary, #a0522d); font-size: 1.25rem;">Gegenstand der Untersuchung: Wer sind die Anrufbeantworter?</h2>
         <p>
             Willkommen im <strong>The Escape Archive</strong>. Wir sind "Die Anrufbeantworter" – ein Team aus sechs passionierten Rätsellösern, die seit Jahren die Welt der <strong>Live Escape Games</strong> unsicher machen. Unsere Gruppe ist organisch gewachsen und tief verwurzelt: Wir sind zwei Cousins und eine Cousine, die gemeinsam mit ihren Partnern die Faszination für immersive <strong>Escape Room Erfahrungen</strong> teilen.
         </p>
@@ -22,7 +22,7 @@ permalink: /team/
             Dieser Name ist das Ergebnis einer langen, ereignisreichen Reise durch unzählige Räume. Er steht für unsere ganz eigene Art, Hinweise zu empfangen, zu verarbeiten und im Team zu kommunizieren. Was als Hobby begann, wurde schnell zur Mission: Wir wollten unsere <strong>Erfahrungsberichte</strong> bündeln und anderen Spielern zugänglich machen.
         </p>
 
-        <h3 style="color: var(--rust-primary, #a0522d); margin-top: 30px;">Unsere Bewertungskriterien & Philosophie</h3>
+        <h2 style="color: var(--rust-primary, #a0522d); margin-top: 30px; font-size: 1.25rem;">Unsere Bewertungskriterien & Philosophie</h2>
         <p>
             Auf dieser Seite findet ihr unsere gesammelten <strong>Escape Room Bewertungen</strong>. Unser Ziel ist es, dass andere Teams von unseren Erlebnissen profitieren können. Dabei legen wir besonderen Wert auf:
         </p>
@@ -54,7 +54,7 @@ permalink: /team/
     <hr style="border: 0; border-top: 2px solid #333; margin: 40px 0;">
 
     <div class="team-grid">
-        <h3 style="font-family: 'Courier New', monospace; text-align: center; margin-bottom: 30px;">Identifizierte Teammitglieder:</h3>
+        <h2 style="font-family: 'Courier New', monospace; text-align: center; margin-bottom: 30px; font-size: 1.3rem;">Identifizierte Teammitglieder:</h2>
         
         {% for member in site.data.members %}
         {% assign review_count = 0 %}
@@ -66,7 +66,7 @@ permalink: /team/
         <div class="team-card" id="{{ member.name | slugify }}">
             <div class="team-photo" style="position: relative;">
                 <a href="/team/{{ member.name | slugify }}/">
-                    <img src="/assets/images/{{ member.image }}" alt="{{ member.name }}" onerror="this.src='/assets/images/ui/no-signal.jpg'" style="display: block; width: 100%;">
+                    <img src="/assets/images/{{ member.image }}" alt="{{ member.name }} ({{ member.role }}) – Escape Room Tester bei Die Anrufbeantworter" loading="lazy" width="300" height="300" onerror="this.src='/assets/images/ui/no-signal.jpg'" style="display: block; width: 100%;">
                 </a>
                 <div style="position: absolute; bottom: 10px; right: 10px; background-color: var(--rust-primary, #a0522d); color: white; padding: 5px 12px; border-radius: 20px; font-weight: bold; font-size: 0.85em; box-shadow: 0 2px 5px rgba(0,0,0,0.4); pointer-events: none;">
                     {{ review_count }} {% if review_count == 1 %}Review{% else %}Reviews{% endif %}

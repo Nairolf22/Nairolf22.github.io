@@ -5,17 +5,17 @@
     
       <url>
         <loc>http://localhost:4000/team/</loc>
-        <lastmod>2026-10-17T21:44:52+02:00</lastmod>
+        <lastmod>2026-10-17T21:59:27+02:00</lastmod>
         <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
+        <priority>0.8</priority>
       </url>
     
   
     
       <url>
         <loc>http://localhost:4000/archiv/</loc>
-        <lastmod>2026-10-17T21:44:52+02:00</lastmod>
-        <changefreq>monthly</changefreq>
+        <lastmod>2026-10-17T21:59:27+02:00</lastmod>
+        <changefreq>weekly</changefreq>
         <priority>0.9</priority>
       </url>
     
@@ -23,34 +23,34 @@
     
       <url>
         <loc>http://localhost:4000/arten-von-raetseln/</loc>
-        <lastmod>2026-10-17T21:44:52+02:00</lastmod>
+        <lastmod>2026-10-17T21:59:27+02:00</lastmod>
         <changefreq>monthly</changefreq>
-        <priority>0.5</priority>
+        <priority>0.8</priority>
       </url>
     
   
     
       <url>
         <loc>http://localhost:4000/bewertungssystem/</loc>
-        <lastmod>2026-10-17T21:44:52+02:00</lastmod>
+        <lastmod>2026-10-17T21:59:27+02:00</lastmod>
         <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
+        <priority>0.8</priority>
       </url>
     
   
     
       <url>
         <loc>http://localhost:4000/team/christine/</loc>
-        <lastmod>2026-10-17T21:44:52+02:00</lastmod>
+        <lastmod>2026-10-17T21:59:27+02:00</lastmod>
         <changefreq>monthly</changefreq>
-        <priority>0.5</priority>
+        <priority>0.6</priority>
       </url>
     
   
     
       <url>
         <loc>http://localhost:4000/city/</loc>
-        <lastmod>2026-10-17T21:44:52+02:00</lastmod>
+        <lastmod>2026-10-17T21:59:27+02:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
       </url>
@@ -59,16 +59,16 @@
     
       <url>
         <loc>http://localhost:4000/team/florian/</loc>
-        <lastmod>2026-10-17T21:44:52+02:00</lastmod>
+        <lastmod>2026-10-17T21:59:27+02:00</lastmod>
         <changefreq>monthly</changefreq>
-        <priority>0.5</priority>
+        <priority>0.6</priority>
       </url>
     
   
     
       <url>
         <loc>http://localhost:4000/hall-of-fame/</loc>
-        <lastmod>2026-10-17T21:44:52+02:00</lastmod>
+        <lastmod>2026-10-17T21:59:27+02:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
       </url>
@@ -77,17 +77,17 @@
     
       <url>
         <loc>http://localhost:4000/impressum/</loc>
-        <lastmod>2026-10-17T21:44:52+02:00</lastmod>
+        <lastmod>2026-10-17T21:59:27+02:00</lastmod>
         <changefreq>monthly</changefreq>
-        <priority>0.5</priority>
+        <priority>0.6</priority>
       </url>
     
   
     
       <url>
         <loc>http://localhost:4000/</loc>
-        <lastmod>2026-10-17T21:44:52+02:00</lastmod>
-        <changefreq>monthly</changefreq>
+        <lastmod>2026-10-17T21:59:27+02:00</lastmod>
+        <changefreq>weekly</changefreq>
         <priority>1.0</priority>
       </url>
     
@@ -95,17 +95,17 @@
     
       <url>
         <loc>http://localhost:4000/team/jessica/</loc>
-        <lastmod>2026-10-17T21:44:52+02:00</lastmod>
+        <lastmod>2026-10-17T21:59:27+02:00</lastmod>
         <changefreq>monthly</changefreq>
-        <priority>0.5</priority>
+        <priority>0.6</priority>
       </url>
     
   
     
       <url>
         <loc>http://localhost:4000/karte/</loc>
-        <lastmod>2026-10-17T21:44:52+02:00</lastmod>
-        <changefreq>monthly</changefreq>
+        <lastmod>2026-10-17T21:59:27+02:00</lastmod>
+        <changefreq>weekly</changefreq>
         <priority>0.9</priority>
       </url>
     
@@ -113,126 +113,126 @@
     
       <url>
         <loc>http://localhost:4000/kontakt/</loc>
-        <lastmod>2026-10-17T21:44:52+02:00</lastmod>
+        <lastmod>2026-10-17T21:59:27+02:00</lastmod>
         <changefreq>monthly</changefreq>
-        <priority>0.5</priority>
+        <priority>0.6</priority>
       </url>
     
   
     
       <url>
         <loc>http://localhost:4000/team/lea/</loc>
-        <lastmod>2026-10-17T21:44:52+02:00</lastmod>
+        <lastmod>2026-10-17T21:59:27+02:00</lastmod>
         <changefreq>monthly</changefreq>
-        <priority>0.5</priority>
+        <priority>0.6</priority>
       </url>
     
   
     
       <url>
         <loc>http://localhost:4000/team/marvin/</loc>
-        <lastmod>2026-10-17T21:44:52+02:00</lastmod>
+        <lastmod>2026-10-17T21:59:27+02:00</lastmod>
         <changefreq>monthly</changefreq>
-        <priority>0.5</priority>
+        <priority>0.6</priority>
       </url>
     
   
     
       <url>
         <loc>http://localhost:4000/team/moritz/</loc>
-        <lastmod>2026-10-17T21:44:52+02:00</lastmod>
+        <lastmod>2026-10-17T21:59:27+02:00</lastmod>
         <changefreq>monthly</changefreq>
-        <priority>0.5</priority>
+        <priority>0.6</priority>
       </url>
     
   
     
       <url>
         <loc>http://localhost:4000/philosophie/</loc>
-        <lastmod>2026-10-17T21:44:52+02:00</lastmod>
+        <lastmod>2026-10-17T21:59:27+02:00</lastmod>
         <changefreq>monthly</changefreq>
-        <priority>0.5</priority>
+        <priority>0.8</priority>
       </url>
     
   
     
       <url>
         <loc>http://localhost:4000/raetsel/</loc>
-        <lastmod>2026-10-17T21:44:52+02:00</lastmod>
+        <lastmod>2026-10-17T21:59:27+02:00</lastmod>
         <changefreq>monthly</changefreq>
-        <priority>0.5</priority>
+        <priority>0.6</priority>
       </url>
     
   
     
       <url>
         <loc>http://localhost:4000/raetsel/pin</loc>
-        <lastmod>2026-10-17T21:44:52+02:00</lastmod>
+        <lastmod>2026-10-17T21:59:27+02:00</lastmod>
         <changefreq>monthly</changefreq>
-        <priority>0.5</priority>
+        <priority>0.6</priority>
       </url>
     
   
     
       <url>
         <loc>http://localhost:4000/raetsel/evidence</loc>
-        <lastmod>2026-10-17T21:44:52+02:00</lastmod>
+        <lastmod>2026-10-17T21:59:27+02:00</lastmod>
         <changefreq>monthly</changefreq>
-        <priority>0.5</priority>
+        <priority>0.6</priority>
       </url>
     
   
     
       <url>
         <loc>http://localhost:4000/raetsel/hacking</loc>
-        <lastmod>2026-10-17T21:44:52+02:00</lastmod>
+        <lastmod>2026-10-17T21:59:27+02:00</lastmod>
         <changefreq>monthly</changefreq>
-        <priority>0.5</priority>
+        <priority>0.6</priority>
       </url>
     
   
     
       <url>
         <loc>http://localhost:4000/raetsel/schloesser/</loc>
-        <lastmod>2026-10-17T21:44:52+02:00</lastmod>
+        <lastmod>2026-10-17T21:59:27+02:00</lastmod>
         <changefreq>monthly</changefreq>
-        <priority>0.5</priority>
+        <priority>0.6</priority>
       </url>
     
   
     
       <url>
         <loc>http://localhost:4000/raetsel/defusal</loc>
-        <lastmod>2026-10-17T21:44:52+02:00</lastmod>
+        <lastmod>2026-10-17T21:59:27+02:00</lastmod>
         <changefreq>monthly</changefreq>
-        <priority>0.5</priority>
+        <priority>0.6</priority>
       </url>
     
   
     
       <url>
         <loc>http://localhost:4000/raetsel/crypto</loc>
-        <lastmod>2026-10-17T21:44:52+02:00</lastmod>
+        <lastmod>2026-10-17T21:59:27+02:00</lastmod>
         <changefreq>monthly</changefreq>
-        <priority>0.5</priority>
+        <priority>0.6</priority>
       </url>
     
   
     
       <url>
         <loc>http://localhost:4000/raetsel/power</loc>
-        <lastmod>2026-10-17T21:44:52+02:00</lastmod>
+        <lastmod>2026-10-17T21:59:27+02:00</lastmod>
         <changefreq>monthly</changefreq>
-        <priority>0.5</priority>
+        <priority>0.6</priority>
       </url>
     
   
     
       <url>
         <loc>http://localhost:4000/schloss-typen/</loc>
-        <lastmod>2026-10-17T21:44:52+02:00</lastmod>
+        <lastmod>2026-10-17T21:59:27+02:00</lastmod>
         <changefreq>monthly</changefreq>
-        <priority>0.5</priority>
+        <priority>0.8</priority>
       </url>
     
   
@@ -241,79 +241,72 @@
     
       <url>
         <loc>http://localhost:4000/hall-of-fame/top-gamemaster/</loc>
-        <lastmod>2026-10-17T21:44:52+02:00</lastmod>
+        <lastmod>2026-10-17T21:59:27+02:00</lastmod>
         <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
+        <priority>0.8</priority>
       </url>
     
   
     
       <url>
         <loc>http://localhost:4000/hall-of-fame/top-immersion/</loc>
-        <lastmod>2026-10-17T21:44:52+02:00</lastmod>
+        <lastmod>2026-10-17T21:59:27+02:00</lastmod>
         <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
+        <priority>0.8</priority>
       </url>
     
   
     
       <url>
         <loc>http://localhost:4000/hall-of-fame/top-puzzles/</loc>
-        <lastmod>2026-10-17T21:44:52+02:00</lastmod>
+        <lastmod>2026-10-17T21:59:27+02:00</lastmod>
         <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
+        <priority>0.8</priority>
       </url>
     
   
     
       <url>
         <loc>http://localhost:4000/hall-of-fame/top-rooms/</loc>
-        <lastmod>2026-10-17T21:44:52+02:00</lastmod>
+        <lastmod>2026-10-17T21:59:27+02:00</lastmod>
         <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
+        <priority>0.8</priority>
       </url>
     
   
     
       <url>
         <loc>http://localhost:4000/hall-of-fame/top-scenery/</loc>
-        <lastmod>2026-10-17T21:44:52+02:00</lastmod>
+        <lastmod>2026-10-17T21:59:27+02:00</lastmod>
         <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
+        <priority>0.8</priority>
       </url>
     
   
     
       <url>
         <loc>http://localhost:4000/hall-of-fame/top-story/</loc>
-        <lastmod>2026-10-17T21:44:52+02:00</lastmod>
+        <lastmod>2026-10-17T21:59:27+02:00</lastmod>
         <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
+        <priority>0.8</priority>
       </url>
     
   
     
       <url>
         <loc>http://localhost:4000/was-ist-ein-escape-room/</loc>
-        <lastmod>2026-10-17T21:44:52+02:00</lastmod>
+        <lastmod>2026-10-17T21:59:27+02:00</lastmod>
         <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
+        <priority>0.8</priority>
       </url>
     
   
-    
-      <url>
-        <loc>http://localhost:4000/widget.html</loc>
-        <lastmod>2026-10-17T21:44:52+02:00</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.5</priority>
-      </url>
     
   
     
       <url>
         <loc>http://localhost:4000/city/aachen/</loc>
-        <lastmod>2026-10-17T21:44:52+02:00</lastmod>
+        <lastmod>2026-10-17T21:59:27+02:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
       </url>
@@ -322,7 +315,7 @@
     
       <url>
         <loc>http://localhost:4000/city/bochum/</loc>
-        <lastmod>2026-10-17T21:44:52+02:00</lastmod>
+        <lastmod>2026-10-17T21:59:27+02:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
       </url>
@@ -331,7 +324,7 @@
     
       <url>
         <loc>http://localhost:4000/city/bonn/</loc>
-        <lastmod>2026-10-17T21:44:52+02:00</lastmod>
+        <lastmod>2026-10-17T21:59:27+02:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
       </url>
@@ -340,7 +333,7 @@
     
       <url>
         <loc>http://localhost:4000/city/bottrop/</loc>
-        <lastmod>2026-10-17T21:44:52+02:00</lastmod>
+        <lastmod>2026-10-17T21:59:27+02:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
       </url>
@@ -349,7 +342,7 @@
     
       <url>
         <loc>http://localhost:4000/city/chur/</loc>
-        <lastmod>2026-10-17T21:44:52+02:00</lastmod>
+        <lastmod>2026-10-17T21:59:27+02:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
       </url>
@@ -358,7 +351,7 @@
     
       <url>
         <loc>http://localhost:4000/city/dorsten/</loc>
-        <lastmod>2026-10-17T21:44:52+02:00</lastmod>
+        <lastmod>2026-10-17T21:59:27+02:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
       </url>
@@ -367,7 +360,7 @@
     
       <url>
         <loc>http://localhost:4000/city/dortmund/</loc>
-        <lastmod>2026-10-17T21:44:52+02:00</lastmod>
+        <lastmod>2026-10-17T21:59:27+02:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
       </url>
@@ -376,7 +369,7 @@
     
       <url>
         <loc>http://localhost:4000/city/duesseldorf/</loc>
-        <lastmod>2026-10-17T21:44:52+02:00</lastmod>
+        <lastmod>2026-10-17T21:59:27+02:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
       </url>
@@ -385,7 +378,7 @@
     
       <url>
         <loc>http://localhost:4000/city/gelsenkirchen/</loc>
-        <lastmod>2026-10-17T21:44:52+02:00</lastmod>
+        <lastmod>2026-10-17T21:59:27+02:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
       </url>
@@ -394,7 +387,7 @@
     
       <url>
         <loc>http://localhost:4000/city/hagen/</loc>
-        <lastmod>2026-10-17T21:44:52+02:00</lastmod>
+        <lastmod>2026-10-17T21:59:27+02:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
       </url>
@@ -403,7 +396,7 @@
     
       <url>
         <loc>http://localhost:4000/city/hamburg/</loc>
-        <lastmod>2026-10-17T21:44:52+02:00</lastmod>
+        <lastmod>2026-10-17T21:59:27+02:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
       </url>
@@ -412,7 +405,7 @@
     
       <url>
         <loc>http://localhost:4000/city/koeln/</loc>
-        <lastmod>2026-10-17T21:44:52+02:00</lastmod>
+        <lastmod>2026-10-17T21:59:27+02:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
       </url>
@@ -421,7 +414,7 @@
     
       <url>
         <loc>http://localhost:4000/city/krefeld/</loc>
-        <lastmod>2026-10-17T21:44:52+02:00</lastmod>
+        <lastmod>2026-10-17T21:59:27+02:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
       </url>
@@ -430,7 +423,7 @@
     
       <url>
         <loc>http://localhost:4000/city/luedenscheid/</loc>
-        <lastmod>2026-10-17T21:44:52+02:00</lastmod>
+        <lastmod>2026-10-17T21:59:27+02:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
       </url>
@@ -439,7 +432,7 @@
     
       <url>
         <loc>http://localhost:4000/city/meinerzhagen/</loc>
-        <lastmod>2026-10-17T21:44:52+02:00</lastmod>
+        <lastmod>2026-10-17T21:59:27+02:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
       </url>
@@ -448,7 +441,7 @@
     
       <url>
         <loc>http://localhost:4000/city/moenchengladbach/</loc>
-        <lastmod>2026-10-17T21:44:52+02:00</lastmod>
+        <lastmod>2026-10-17T21:59:27+02:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
       </url>
@@ -457,7 +450,7 @@
     
       <url>
         <loc>http://localhost:4000/city/sonthofen/</loc>
-        <lastmod>2026-10-17T21:44:52+02:00</lastmod>
+        <lastmod>2026-10-17T21:59:27+02:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
       </url>
@@ -466,7 +459,7 @@
     
       <url>
         <loc>http://localhost:4000/city/wuppertal/</loc>
-        <lastmod>2026-10-17T21:44:52+02:00</lastmod>
+        <lastmod>2026-10-17T21:59:27+02:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
       </url>

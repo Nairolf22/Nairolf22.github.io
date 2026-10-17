@@ -5,10 +5,32 @@ description: "Vom klassischen Vorhängeschloss bis zum biometrischen Fingerabdru
 permalink: /schloss-typen/
 ---
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [{
+    "@type": "Question",
+    "name": "Wie öffnet man ein Richtungsschloss im Escape Room?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Ein Richtungsschloss (Directional Lock) muss vor jeder neuen Eingabe durch zwei- bis dreimaliges Zusammendrücken des Bügels zurückgesetzt (geresettet) werden. Danach bewegt man den mittleren Knopf nacheinander in die gesuchten Richtungen (Oben, Unten, Links, Rechts) und zieht am Bügel."
+    }
+  }, {
+    "@type": "Question",
+    "name": "Welche Schloss-Typen kommen in Escape Rooms am häufigsten vor?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Neben klassischen Schlüssel- und Zahlenschlössern (3- bis 5-stellig) kommen häufig Buchstaben-/Wortschlösser, Richtungsschlösser, Tresor-Drehschlösser, elektronische PIN-Keypads sowie unsichtbare RFID- und Magnetschlösser zum Einsatz."
+    }
+  }]
+}
+</script>
+
 <div class="review-dossier">
 
     <div class="dossier-header">
-        <h2 style="border-bottom: none; margin-bottom: 0;">Handbuch: Schloss-Technologien</h2>
+        <h1 style="border-bottom: none; margin-bottom: 0;">Handbuch: Schloss-Technologien</h1>
         <p style="font-family: 'Courier New'; color: #666; margin-top: 0; font-size: 0.9rem;">
             // IDENTIFIZIERUNG & MECHANIK PHYSISCHER BARRIEREN
         </p>

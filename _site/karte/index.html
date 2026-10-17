@@ -4,45 +4,55 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>
-    
-    Escape Rooms in meiner Nähe finden: Die interaktive Test-Karte | Escape Archive
-    
-  </title>
+  <meta name="theme-color" content="#8D4004">
+
+  
+
+  
+
+  
+  <title>Escape Rooms in meiner Nähe finden: Die interaktive Test-Karte | The Escape Archive</title>
 
   
   
   
 
-  <meta name="description" content="Interaktive Escape Room Karte: Finde getestete und empfohlene Escape Rooms in deiner Nähe.">
+  <meta name="description" content="Interaktive Escape Room Karte für Deutschland: Finde getestete und empfohlene Escape Rooms sowie Outdoor Escape Games in deiner Nähe.">
   <link rel="canonical" href="http://localhost:4000/karte/">
+  <link rel="alternate" hreflang="de" href="http://localhost:4000/karte/">
+  <link rel="alternate" hreflang="x-default" href="http://localhost:4000/karte/">
 
-  <!-- SEO & Social Media Tags -->
+  <!-- SEO & Robots Directives -->
   <link rel="shortcut icon" type="image/png" href="/favicon.png?v=4">
   <link rel="icon" type="image/png" sizes="512x512" href="/favicon.png?v=4">
   <link rel="apple-touch-icon" href="/favicon.png?v=4">
-  <meta name="author" content="Die Anrufbeantworter">
-  <meta name="robots" content="index, follow">
+  <meta name="author" content="Die Anrufbeantworter (The Escape Archive)">
+  
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  
+
+  
+  
 
   <!-- Open Graph -->
-  <meta property="og:site_name" content="The Escape Archive">
-  <meta property="og:title"
-    content="Escape Rooms in meiner Nähe finden: Die interaktive Test-Karte | Escape Archive">
+  <meta property="og:locale" content="de_DE">
+  <meta property="og:site_name" content="The Escape Archive • Die Anrufbeantworter">
+  <meta property="og:title" content="Escape Rooms in meiner Nähe finden: Die interaktive Test-Karte | The Escape Archive">
   <meta property="og:type" content="website">
   <meta property="og:url" content="http://localhost:4000/karte/">
-  <meta property="og:description" content="Interaktive Escape Room Karte: Finde getestete und empfohlene Escape Rooms in deiner Nähe.">
-  <meta property="og:image"
-    content="http://localhost:4000/assets/images/logo-escape-archive_800.webp">
+  <meta property="og:description" content="Interaktive Escape Room Karte für Deutschland: Finde getestete und empfohlene Escape Rooms sowie Outdoor Escape Games in deiner Nähe.">
+  <meta property="og:image" content="http://localhost:4000/assets/images/logo-escape-archive_800.webp">
+  <meta property="og:image:alt" content="Escape Rooms in meiner Nähe finden: Die interaktive Test-Karte | The Escape Archive">
+  
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title"
-    content="Escape Rooms in meiner Nähe finden: Die interaktive Test-Karte | Escape Archive">
-  <meta name="twitter:description" content="Interaktive Escape Room Karte: Finde getestete und empfohlene Escape Rooms in deiner Nähe.">
-  <meta name="twitter:image"
-    content="http://localhost:4000/assets/images/logo-escape-archive_800.webp">
+  <meta name="twitter:title" content="Escape Rooms in meiner Nähe finden: Die interaktive Test-Karte | The Escape Archive">
+  <meta name="twitter:description" content="Interaktive Escape Room Karte für Deutschland: Finde getestete und empfohlene Escape Rooms sowie Outdoor Escape Games in deiner Nähe.">
+  <meta name="twitter:image" content="http://localhost:4000/assets/images/logo-escape-archive_800.webp">
+  <meta name="twitter:image:alt" content="Escape Rooms in meiner Nähe finden: Die interaktive Test-Karte | The Escape Archive">
 
-  <link rel="stylesheet" href="/assets/css/style.css?v=20261018b">
+  <link rel="stylesheet" href="/assets/css/style.css?v=20261018c">
 
   
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
@@ -73,6 +83,12 @@
     ]
   }
   </script>
+
+  
+
+  
+
+  
 
   
 
@@ -123,10 +139,7 @@
     </nav>
 
     <main>
-      <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-
-<style>
+      <style>
     .closed-stamp {
         background-color: #d32f2f;
         color: white;
@@ -236,7 +249,7 @@
 </style>
 
 <section class="map-section">
-    <h2 class="section-title">Einsatzorte</h2>
+    <h1 class="section-title">Einsatzorte: Escape Room Karte</h1>
     
     <div id="osm-wrapper" class="osm-placeholder">
         <div class="osm-content">
@@ -283,7 +296,7 @@
 
                     <img
                         src="/assets/images/rooms/dummy.webp"
-                        alt="Die Hexer von Kaer Morhen"
+                        alt="Die Hexer von Kaer Morhen (Thout - The House of Unwritten Tales, Aachen) – Escape Room Test"
                          loading="eager" fetchpriority="high" 
                         width="400"
                         height="200"
@@ -342,7 +355,7 @@
 
                     <img
                         src="/assets/images/rooms/Bochum-DieGasse.webp"
-                        alt="Die Gasse"
+                        alt="Die Gasse (Rätselraum Ruhrpott, Bochum) – Escape Room Test"
                          loading="lazy" 
                         width="400"
                         height="200"
@@ -398,7 +411,7 @@
 
                     <img
                         src="/assets/images/thumbnails/dummy.webp"
-                        alt="Ancum - Der Große"
+                        alt="Ancum - Der Große (TIMEBREAK Bonn, Bonn) – Escape Room Test"
                          loading="lazy" 
                         width="400"
                         height="200"
@@ -454,7 +467,7 @@
 
                     <img
                         src="/assets/images/rooms/dummy.webp"
-                        alt="Der Nachtfalter"
+                        alt="Der Nachtfalter (Eloria Erlebnisfabrik, Bottrop) – Escape Room Test"
                          loading="lazy" 
                         width="400"
                         height="200"
@@ -513,7 +526,7 @@
 
                     <img
                         src="/assets/images/rooms/CH-Chur-MissionZeitriss.webp"
-                        alt="Mission Zeitriss"
+                        alt="Mission Zeitriss (enuit adventures!, Chur) – Escape Room Test"
                          loading="lazy" 
                         width="400"
                         height="200"
@@ -569,7 +582,7 @@
 
                     <img
                         src="/assets/images/thumbnails/Dorsten-GefangenImSchacht.webp"
-                        alt="Gefangen im Schacht"
+                        alt="Gefangen im Schacht (Mining Adventure World, Dorsten) – Escape Room Test"
                          loading="lazy" 
                         width="400"
                         height="200"
@@ -625,7 +638,7 @@
 
                     <img
                         src="/assets/images/thumbnails/Dorsten-HotelDerGeheimnisvollenUhren.webp"
-                        alt="Das Hotel der geheimnisvollen Uhren"
+                        alt="Das Hotel der geheimnisvollen Uhren (Mining Adventure World, Dorsten) – Escape Room Test"
                          loading="lazy" 
                         width="400"
                         height="200"
@@ -681,7 +694,7 @@
 
                     <img
                         src="/assets/images/thumbnails/Dorsten-Kammerflimmern.webp"
-                        alt="Kammerflimmern"
+                        alt="Kammerflimmern (Mining Adventure World, Dorsten) – Escape Room Test"
                          loading="lazy" 
                         width="400"
                         height="200"
@@ -747,7 +760,7 @@
 
                     <img
                         src="/assets/images/thumbnails/Dorsten-VerbannungDesDunklenLords.webp"
-                        alt="Die Verbannung des dunklen Lords"
+                        alt="Die Verbannung des dunklen Lords (Mining Adventure World, Dorsten) – Escape Room Test"
                          loading="lazy" 
                         width="400"
                         height="200"
@@ -803,7 +816,7 @@
 
                     <img
                         src="/assets/images/thumbnails/dummy.webp"
-                        alt="Die Zeitmaschine"
+                        alt="Die Zeitmaschine (enigmania Dortmund, Dortmund) – Escape Room Test"
                          loading="lazy" 
                         width="400"
                         height="200"
@@ -859,7 +872,7 @@
 
                     <img
                         src="/assets/images/thumbnails/dummy.webp"
-                        alt="Kolumbus letzte Reise"
+                        alt="Kolumbus letzte Reise (enigmania Dortmund, Dortmund) – Escape Room Test"
                          loading="lazy" 
                         width="400"
                         height="200"
@@ -915,7 +928,7 @@
 
                     <img
                         src="/assets/images/rooms/Dortmund-SecretService.webp"
-                        alt="Secret Service"
+                        alt="Secret Service (KEY & FREE, Dortmund) – Escape Room Test"
                          loading="lazy" 
                         width="400"
                         height="200"
@@ -971,7 +984,7 @@
 
                     <img
                         src="/assets/images/rooms/Duesseldorf-HekatesTraenen.webp"
-                        alt="Hekates Tränen"
+                        alt="Hekates Tränen (The Code Agency, Düsseldorf) – Escape Room Test"
                          loading="lazy" 
                         width="400"
                         height="200"
@@ -1027,7 +1040,7 @@
 
                     <img
                         src="/assets/images/thumbnails/dummy.webp"
-                        alt="Das Erbe Draculas"
+                        alt="Das Erbe Draculas (Alma Park, Gelsenkirchen) – Escape Room Test"
                          loading="lazy" 
                         width="400"
                         height="200"
@@ -1086,7 +1099,7 @@
 
                     <img
                         src="/assets/images/thumbnails/Hagen-BiggsLegacy.webp"
-                        alt="Biggs - The Legacy"
+                        alt="Biggs - The Legacy (EXITNow, Hagen) – Escape Room Test"
                          loading="lazy" 
                         width="400"
                         height="200"
@@ -1142,7 +1155,7 @@
 
                     <img
                         src="/assets/images/rooms/Hamburg-Insomnia.webp"
-                        alt="Insomnia (Christmas Edition)"
+                        alt="Insomnia (Christmas Edition) (Big Break, Hamburg) – Escape Room Test"
                          loading="lazy" 
                         width="400"
                         height="200"
@@ -1198,7 +1211,7 @@
 
                     <img
                         src="/assets/images/rooms/dummy.webp"
-                        alt="Die Kunst des Stehlens"
+                        alt="Die Kunst des Stehlens (TeamEscape Köln, Köln) – Escape Room Test"
                          loading="lazy" 
                         width="400"
                         height="200"
@@ -1257,7 +1270,7 @@
 
                     <img
                         src="/assets/images/rooms/Koeln-Geisterpirat.webp"
-                        alt="Die drei ??? und das Erbe des Geisterpiraten"
+                        alt="Die drei ??? und das Erbe des Geisterpiraten (Die drei ??? Mission Rocky Beach, Köln) – Escape Room Test"
                          loading="lazy" 
                         width="400"
                         height="200"
@@ -1313,7 +1326,7 @@
 
                     <img
                         src="/assets/images/rooms/Koeln-Illusionen.webp"
-                        alt="Die drei ??? und die Nacht der Illusionen"
+                        alt="Die drei ??? und die Nacht der Illusionen (Die drei ??? Mission Rocky Beach, Köln) – Escape Room Test"
                          loading="lazy" 
                         width="400"
                         height="200"
@@ -1369,7 +1382,7 @@
 
                     <img
                         src="/assets/images/rooms/Koeln-Truhe.webp"
-                        alt="Die drei ??? und die Truhe der Meister"
+                        alt="Die drei ??? und die Truhe der Meister (Die drei ??? Mission Rocky Beach, Köln) – Escape Room Test"
                          loading="lazy" 
                         width="400"
                         height="200"
@@ -1425,7 +1438,7 @@
 
                     <img
                         src="/assets/images/rooms/dummy.webp"
-                        alt="John's Secret'"
+                        alt="John's Secret' (Indizio Köln, Köln) – Escape Room Test"
                          loading="lazy" 
                         width="400"
                         height="200"
@@ -1484,7 +1497,7 @@
 
                     <img
                         src="/assets/images/rooms/Krefeld-Experiment.webp"
-                        alt="Das Experiment"
+                        alt="Das Experiment (Limbus Escape Games, Krefeld) – Escape Room Test"
                          loading="lazy" 
                         width="400"
                         height="200"
@@ -1540,7 +1553,7 @@
 
                     <img
                         src="/assets/images/rooms/Krefeld-MagischeReise.webp"
-                        alt="Die magische Reise, Kapitel 1"
+                        alt="Die magische Reise, Kapitel 1 (Limbus Escape Games, Krefeld) – Escape Room Test"
                          loading="lazy" 
                         width="400"
                         height="200"
@@ -1596,7 +1609,7 @@
 
                     <img
                         src="/assets/images/rooms/Krefeld-Panzerknacker.webp"
-                        alt="Panzerknacker"
+                        alt="Panzerknacker (Limbus Escape Games, Krefeld) – Escape Room Test"
                          loading="lazy" 
                         width="400"
                         height="200"
@@ -1613,7 +1626,7 @@
 
                     
                         <div class="card-badge-image-container">
-                            <img src="/assets/images/Badge_BesterRaum.png" class="card-badge-img" alt="Badge">
+                            <img src="/assets/images/Badge_BesterRaum.png" class="card-badge-img" alt="Auszeichnung: Badge_BesterRaum">
                         </div>
                     
                 </div>
@@ -1656,7 +1669,7 @@
 
                     <img
                         src="/assets/images/rooms/Luedenscheid-DerJournalist2.webp"
-                        alt="Der Journalist"
+                        alt="Der Journalist (Verschlusssache Mission Rätselspaß, Lüdenscheid) – Escape Room Test"
                          loading="lazy" 
                         width="400"
                         height="200"
@@ -1712,7 +1725,7 @@
 
                     <img
                         src="/assets/images/rooms/Meinerzhagen-DieVerschwundeneStimmeDesWaldes1.webp"
-                        alt="Die Verschwundene Stimme des Waldes"
+                        alt="Die Verschwundene Stimme des Waldes (Outdoor Escape Meinerzhagen, Meinerzhagen) – Escape Room Test"
                          loading="lazy" 
                         width="400"
                         height="200"
@@ -1729,7 +1742,7 @@
 
                     
                         <div class="card-badge-image-container">
-                            <img src="/assets/images/Badge_BesterOutdoor.png" class="card-badge-img" alt="Badge">
+                            <img src="/assets/images/Badge_BesterOutdoor.png" class="card-badge-img" alt="Auszeichnung: Badge_BesterOutdoor">
                         </div>
                     
                 </div>
@@ -1772,7 +1785,7 @@
 
                     <img
                         src="/assets/images/rooms/Moenchengladbach-Crystal.webp"
-                        alt="Crystal Camper"
+                        alt="Crystal Camper (TIMEBREAK Mönchengladbach, Mönchengladbach) – Escape Room Test"
                          loading="lazy" 
                         width="400"
                         height="200"
@@ -1828,7 +1841,7 @@
 
                     <img
                         src="/assets/images/rooms/Moenchengladbach-Hollywood.webp"
-                        alt="Hollywood Bombs"
+                        alt="Hollywood Bombs (TIMEBREAK Mönchengladbach, Mönchengladbach) – Escape Room Test"
                          loading="lazy" 
                         width="400"
                         height="200"
@@ -1884,7 +1897,7 @@
 
                     <img
                         src="/assets/images/rooms/Moenchengladbach-Nervenheilanstalt.webp"
-                        alt="Dr. Brown Boyd's Nervenheilanstalt"
+                        alt="Dr. Brown Boyd's Nervenheilanstalt (TIMEBREAK Mönchengladbach, Mönchengladbach) – Escape Room Test"
                          loading="lazy" 
                         width="400"
                         height="200"
@@ -1940,7 +1953,7 @@
 
                     <img
                         src="/assets/images/rooms/Moenchengladbach-Spielerkabine.webp"
-                        alt="Die Spielerkabine"
+                        alt="Die Spielerkabine (TIMEBREAK Mönchengladbach, Mönchengladbach) – Escape Room Test"
                          loading="lazy" 
                         width="400"
                         height="200"
@@ -1996,7 +2009,7 @@
 
                     <img
                         src="/assets/images/rooms/Moenchengladbach-Zagini.webp"
-                        alt="Dunkle Machenschaften in Zaginis Zauberladen"
+                        alt="Dunkle Machenschaften in Zaginis Zauberladen (TIMEBREAK Mönchengladbach, Mönchengladbach) – Escape Room Test"
                          loading="lazy" 
                         width="400"
                         height="200"
@@ -2052,7 +2065,7 @@
 
                     <img
                         src="/assets/images/rooms/Sonhofen-MissionRedCrystal1.webp"
-                        alt="Mission Red Crystal"
+                        alt="Mission Red Crystal (Alpen Escape, Sonthofen) – Escape Room Test"
                          loading="lazy" 
                         width="400"
                         height="200"
@@ -2108,7 +2121,7 @@
 
                     <img
                         src="/assets/images/thumbnails/Wuppertal-Sherlock.webp"
-                        alt="Der Fall Sherlock Holmes"
+                        alt="Der Fall Sherlock Holmes (Escape Stories, Wuppertal) – Escape Room Test"
                          loading="lazy" 
                         width="400"
                         height="200"

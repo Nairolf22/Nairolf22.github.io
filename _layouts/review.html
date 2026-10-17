@@ -128,8 +128,9 @@ r.gamemaster.score %}
                 {% endif %}
             </h1>
 
+            {% assign city_slug = page.location.city | downcase | replace: 'ä', 'ae' | replace: 'ö', 'oe' | replace: 'ü', 'ue' | replace: 'ß', 'ss' | slugify %}
             <p class="dossier-location">
-                <strong>Ort:</strong> {{ page.location.city }} | {{ page.location.address }}
+                <strong>Ort:</strong> <a href="/city/{{ city_slug }}/" style="color: var(--rust-primary); font-weight: bold; text-decoration: underline;">{{ page.location.city }}</a> | {{ page.location.address }}
             </p>
 
             {% unless page.planned %}
@@ -150,16 +151,20 @@ r.gamemaster.score %}
 
         <div class="dossier-aside">
             <div class="dossier-stamps-row">
-                {% unless page.planned %}
+                {% if page.planned %}
+                <div class="stamp-planned">
+                    GEPLANT
+                </div>
+                {% elsif page.pending %}
+                <div class="stamp-planned">
+                    IN ARBEIT
+                </div>
+                {% else %}
                 <div class="stamp-box">
                     Overall<br>
                     <span class="stamp-score">{{ calculated_avg | round: 1 }}</span> / 5
                 </div>
-                {% else %}
-                <div class="stamp-planned">
-                    GEPLANT
-                </div>
-                {% endunless %}
+                {% endif %}
             </div>
 
             {% if page.website and page.closed != true %}
@@ -174,10 +179,10 @@ r.gamemaster.score %}
     <div class="evidence-photos{% if page.images.size == 1 %} single-photo{% endif %}">
         {% for img in page.images %}
         <div class="polaroid{% if forloop.first and page.badge %} has-stamped-badge{% endif %}">
-            <img src="/assets/images/{{ img }}" alt="Beweisfoto aus dem Raum {{ page.title }} bei {{ page.provider }}" class="polaroid-photo">
+            <img src="/assets/images/{{ img }}" alt="Beweisfoto: Escape Room {{ page.title }} bei {{ page.provider }} in {{ page.location.city }}" class="polaroid-photo" width="600" height="450" {% if forloop.first %}fetchpriority="high"{% else %}loading="lazy"{% endif %}>
             {% if forloop.first and page.badge %}
             <div class="dossier-photo-badge">
-                <img src="/assets/images/{{ page.badge }}.png" alt="Auszeichnung: {{ page.badge }}" class="dossier-photo-badge-img">
+                <img src="/assets/images/{{ page.badge }}.png" alt="Auszeichnung: {{ page.badge }}" class="dossier-photo-badge-img" width="125" height="115">
             </div>
             {% endif %}
         </div>
@@ -198,6 +203,16 @@ r.gamemaster.score %}
 
     <div class="planned-teaser">
         {{ page.summary }}
+    </div>
+
+    {% elsif page.pending %}
+
+    <div class="planned-date-box">
+        <div class="planned-date-title">Status der Ermittlungsakte:</div>
+        <div class="planned-date-value" style="font-size: clamp(1.3rem, 3.5vw, 1.8rem);">ERMITTLUNG LÄUFT</div>
+        <p style="margin-top: 0.75rem; margin-bottom: 0; color: #444;">
+            Unser Team hat <strong>{{ page.title }}</strong> bei {{ page.provider }} in {{ page.location.city }} bereits gespielt. Der ausführliche Testbericht befindet sich aktuell in der Auswertung.
+        </p>
     </div>
 
     {% else %}
@@ -338,29 +353,32 @@ r.gamemaster.score %}
     {% if siblings.size > 0 %}
     <div style="margin-top: 3rem; background: #e8e8e8; border: 1px dashed #666; padding: 1rem;">
         <h3 style="margin-top: 0; font-size: 0.9rem; text-transform: uppercase; color: #555;">
-            Weitere Akten zu "{{ page.provider }}":
+            Weitere getestete Räume bei „{{ page.provider }}“:
         </h3>
         <ul style="list-style: none; padding: 0; margin: 0;">
             {% for room in siblings %}
             <li style="margin-bottom: 0.5rem; border-bottom: 1px dotted #ccc; padding-bottom: 0.5rem;">
                 <a href="{{ room.url }}" style="font-weight: bold; color: var(--rust-primary); text-decoration: none;">
-                    📂 {{ room.title }}
+                    📂 {{ room.title }} ({{ room.location.city }})
                 </a>
+                {% unless room.pending or room.planned %}
                 <span style="font-size: 0.8rem; color: #666;">
                     {% assign s_r = room.ratings %}
                     {% assign s_sum = s_r.atmosphere.score | plus: s_r.story.score | plus: s_r.puzzles.score | plus:
                     s_r.scenery.score | plus: s_r.gamemaster.score %}
                     {% assign s_avg = s_sum | divided_by: 5.0 %}
-                    (Rating: {{ s_avg | round: 1 }}/5)
+                    (★ {{ s_avg | round: 1 }}/5)
                 </span>
+                {% endunless %}
             </li>
             {% endfor %}
         </ul>
     </div>
     {% endif %}
 
-    <div style="margin-top: 2rem; text-align: center;">
-        <a href="/" class="btn-back">← Zurück zur Übersicht</a>
+    <div style="margin-top: 2rem; display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; text-align: center;">
+        <a href="/city/{{ city_slug }}/" class="btn-back">📍 Alle Escape Rooms in {{ page.location.city }}</a>
+        <a href="/archiv/" class="btn-back">← Zum kompletten Fall-Archiv</a>
     </div>
 
 </article>

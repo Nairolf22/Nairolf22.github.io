@@ -30,6 +30,13 @@ permalink: /was-ist-ein-escape-room/
       "@type": "Answer",
       "text": "Der Standard liegt bei 60 Minuten. Es gibt jedoch auch erweiterte Erlebnisse mit 75, 90 oder sogar 120 Minuten Spielzeit."
     }
+  }, {
+    "@type": "Question",
+    "name": "Was ist der Unterschied zwischen Escape Rooms der 1., 2. und 3. Generation?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Räume der 1. Generation setzen vor allem auf klassische Zahlenschlösser und Schlüssel. Die 2. Generation nutzt versteckte Sensoren, Magnetmechanismen und detailreiche Kulissen für hohe Immersion. In der 3. Generation verschmelzen interaktives Theater, Live-Schauspieler und adaptive Storylines zu einem filmreifen Gesamterlebnis."
+    }
   }]
 }
 </script>
@@ -37,7 +44,7 @@ permalink: /was-ist-ein-escape-room/
 <div class="review-dossier">
 
     <div class="dossier-header">
-        <h2 style="border-bottom: none; margin-bottom: 0;">Grundlagenwissen</h2>
+        <h1 style="border-bottom: none; margin-bottom: 0;">Grundlagenwissen: Was ist ein Escape Room?</h1>
         <p style="font-family: 'Courier New'; color: #666; margin-top: 0; font-size: 0.9rem;">
             // DEFINITION, ABLAUF & EVOLUTION
         </p>

@@ -5,10 +5,32 @@ description: "Welche Aufgaben erwarten mich? Von 'Suchen & Finden' bis zu High-T
 permalink: /arten-von-raetseln/
 ---
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [{
+    "@type": "Question",
+    "name": "Welche Arten von Rätseln gibt es im Escape Room?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Zu den wichtigsten Rätseltypen im Escape Room gehören Suchen & Finden (Search & Find), Logik- und Deduktionsrätsel, Kommunikations- und Team-Aufgaben, haptische Geschicklichkeitsrätsel sowie moderne Sensor- und Magnet-Mechanismen."
+    }
+  }, {
+    "@type": "Question",
+    "name": "Braucht man Vorwissen für Escape Room Rätsel?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Nein. Gute Escape Rooms sind so konzipiert, dass alle benötigten Hinweise, Codes und Entschlüsselungstabellen direkt im Raum zu finden sind. Gefragt sind Beobachtungsgabe, logisches Kombinieren und Kommunikation im Team."
+    }
+  }]
+}
+</script>
+
 <div class="review-dossier">
 
     <div class="dossier-header">
-        <h2 style="border-bottom: none; margin-bottom: 0;">Die Anatomie der Rätsel</h2>
+        <h1 style="border-bottom: none; margin-bottom: 0;">Die Anatomie der Rätsel</h1>
         <p style="font-family: 'Courier New'; color: #666; margin-top: 0; font-size: 0.9rem;">
             // KLASSIFIZIERUNG UNBEKANNTER OBJEKTE & AUFGABEN
         </p>

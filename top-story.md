@@ -31,7 +31,7 @@ permalink: /hall-of-fame/top-story/
 <div class="review-dossier">
 
     <div class="dossier-header">
-        <h2 style="border-bottom: none; margin-bottom: 0;">Die Hall of Fame des Storytelling</h2>
+        <h1 style="border-bottom: none; margin-bottom: 0;">Die Hall of Fame des Storytelling</h1>
         <p style="font-family: 'Courier New'; color: #666; margin-top: 0; font-size: 0.9rem;">
             // TOP 5 RANKING: NARRATIVE & ROTER FADEN
         </p>
@@ -40,7 +40,7 @@ permalink: /hall-of-fame/top-story/
     <div style="font-family: 'Courier New', monospace; line-height: 1.6; color: #333;">
         
         <div style="background: rgba(0,0,0,0.03); padding: 20px; border-left: 5px solid var(--rust-primary); margin-bottom: 3rem;">
-            <h3 style="margin-top: 0; text-transform: uppercase;">Die Kunst des Erzählens</h3>
+            <h2 style="margin-top: 0; text-transform: uppercase; font-size: 1.15rem;">Die Kunst des Erzählens</h2>
             <p>
                 Was nützt das schönste Schloss, wenn man nicht weiß, <em>warum</em> man es öffnen soll? In dieser Kategorie ehren wir die Räume, die uns eine Geschichte erzählt haben.
             </p>
@@ -72,7 +72,7 @@ permalink: /hall-of-fame/top-story/
                             {% else %}
                                 {% assign img_src = room.images[0] %}
                             {% endif %}
-                            <img src="/assets/images/{{ img_src }}" alt="{{ room.title }}">
+                            <img src="/assets/images/{{ img_src }}" alt="Platz {{ rank }} Story: {{ room.title }} ({{ room.provider }}, {{ room.location.city }})" loading="lazy" width="400" height="250">
                         </div>
 
                         <div class="ranking-card-body">

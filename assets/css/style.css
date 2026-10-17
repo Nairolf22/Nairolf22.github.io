@@ -780,6 +780,7 @@ footer {
 
 .dossier-meta h1,
 .dossier-meta h2,
+.dossier-header > h1,
 .dossier-header > h2 {
   font-family: 'Arial Black', Impact, sans-serif;
   text-transform: uppercase;

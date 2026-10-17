@@ -82,9 +82,9 @@ permalink: /archiv/
 <section class="archive-section">
     <div class="archive-header-bar">
         
-        <h2 class="section-title" style="margin-bottom:0; border:none; padding:0;">
+        <h1 class="section-title" style="margin-bottom:0; border:none; padding:0;">
             <span style="border-bottom: 4px solid var(--rust-primary); padding-bottom: 2px;">FALL-ARCHIV</span>
-        </h2>
+        </h1>
         
         <div class="sort-controls">
             <div class="sort-group">
@@ -137,7 +137,7 @@ permalink: /archiv/
 
                     <img 
                         src="/assets/images/{{ img_src }}" 
-                        alt="{{ review.title }}" 
+                        alt="{{ review.title }} ({{ review.provider }}, {{ review.location.city }}) – Escape Room Test" 
                         loading="lazy" 
                         width="400" 
                         height="200" 
@@ -167,7 +167,7 @@ permalink: /archiv/
 
                     {% if review.badge %}
                         <div class="card-badge-image-container">
-                            <img src="/assets/images/{{ review.badge }}.png" class="card-badge-img" alt="Badge">
+                            <img src="/assets/images/{{ review.badge }}.png" class="card-badge-img" alt="Auszeichnung: {{ review.badge }}">
                         </div>
                     {% endif %}
                 </div>
@@ -209,6 +209,22 @@ permalink: /archiv/
     </div>
 
     <div id="paginationControls" class="pagination-container"></div>
+
+    {% assign archive_cities = site.pages | where_exp: "item", "item.city" | sort: "city" %}
+    {% if archive_cities.size > 0 %}
+    <div style="margin-top: 3rem; padding: 1.25rem; background: #181818; border: 1px solid #333; border-radius: 6px; text-align: center;">
+        <h2 style="font-size: 0.95rem; text-transform: uppercase; letter-spacing: 1.5px; color: var(--concrete); margin: 0 0 0.85rem 0;">
+            📍 Escape Rooms nach Stadt durchsuchen:
+        </h2>
+        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem;">
+            {% for cpage in archive_cities %}
+            <a href="{{ cpage.url }}" style="background: #242424; border: 1px solid #3f3f3f; color: var(--rust-light); padding: 0.35rem 0.75rem; border-radius: 4px; font-size: 0.82rem; font-weight: bold;">
+                {{ cpage.city }}
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
 
     <div style="margin-top: 2rem; text-align: center;">
         <a href="/" class="btn-back">← Zurück zur Startseite</a>

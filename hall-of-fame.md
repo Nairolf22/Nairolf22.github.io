@@ -8,7 +8,7 @@ permalink: /hall-of-fame/
 <div class="review-dossier">
 
     <div class="dossier-header">
-        <h2 style="border-bottom: none; margin-bottom: 0;">Die Hall of Fame</h2>
+        <h1 style="border-bottom: none; margin-bottom: 0;">Die Hall of Fame</h1>
         <p style="font-family: 'Courier New'; color: #666; margin-top: 0; font-size: 0.9rem;">
             // DIE ELITE DES ESCAPE ARCHIVES
         </p>

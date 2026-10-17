@@ -30,7 +30,7 @@ permalink: /hall-of-fame/top-immersion/
 <div class="review-dossier">
 
     <div class="dossier-header">
-        <h2 style="border-bottom: none; margin-bottom: 0;">Die Hall of Fame der Immersion</h2>
+        <h1 style="border-bottom: none; margin-bottom: 0;">Die Hall of Fame der Immersion</h1>
         <p style="font-family: 'Courier New'; color: #666; margin-top: 0; font-size: 0.9rem;">
             // TOP 5 RANKING: ATMOSPHÄRE & KULISSE
         </p>
@@ -39,7 +39,7 @@ permalink: /hall-of-fame/top-immersion/
     <div style="font-family: 'Courier New', monospace; line-height: 1.6; color: #333;">
         
         <div style="background: rgba(0,0,0,0.03); padding: 20px; border-left: 5px solid var(--rust-primary); margin-bottom: 3rem;">
-            <h3 style="margin-top: 0; text-transform: uppercase;">Was bedeutet eigentlich "Immersion"?</h3>
+            <h2 style="margin-top: 0; text-transform: uppercase; font-size: 1.15rem;">Was bedeutet eigentlich "Immersion"?</h2>
             <p>
                 Immersion (vom lateinischen <em>immergere</em> „eintauchen“) beschreibt den Zustand, in dem wir die reale Welt um uns herum vergessen und vollständig mit der Spielwelt verschmelzen.
             </p>
@@ -74,7 +74,7 @@ permalink: /hall-of-fame/top-immersion/
                             {% else %}
                                 {% assign img_src = room.images[0] %}
                             {% endif %}
-                            <img src="/assets/images/{{ img_src }}" alt="{{ room.title }}">
+                            <img src="/assets/images/{{ img_src }}" alt="Platz {{ rank }} Immersion: {{ room.title }} ({{ room.provider }}, {{ room.location.city }})" loading="lazy" width="400" height="250">
                         </div>
 
                         <div class="ranking-card-body">

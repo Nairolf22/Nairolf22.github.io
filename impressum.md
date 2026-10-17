@@ -8,7 +8,7 @@ permalink: /impressum/
 <div class="review-dossier" style="font-family: 'Courier New', Courier, 'Lucida Sans Typewriter', 'Lucida Typewriter', monospace; line-height: 1.6; color: #333;">
     
     <div class="dossier-header">
-        <h2>Impressum</h2>
+        <h1>Impressum</h1>
     </div>
 
     <div style="margin-bottom: 40px;">

@@ -5,12 +5,12 @@ layout: null
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
   {% for page in site.pages %}
-    {% unless page.url contains 'assets' or page.url contains '.css' or page.url contains '.js' or page.url contains '.xml' or page.url contains '.txt' or page.url contains '404' %}
+    {% unless page.url contains 'assets' or page.url contains '.css' or page.url contains '.js' or page.url contains '.xml' or page.url contains '.txt' or page.url contains '404' or page.url contains 'widget' or page.noindex == true %}
       <url>
         <loc>{{ site.url }}{{ page.url }}</loc>
         <lastmod>{% if page.last_modified_at %}{{ page.last_modified_at | date_to_xmlschema }}{% else %}{{ site.time | date_to_xmlschema }}{% endif %}</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>{% if page.url == '/' %}1.0{% elsif page.url == '/archiv/' or page.url == '/karte/' or page.url == '/hall-of-fame/' or page.url == '/city/' %}0.9{% elsif page.city %}0.8{% elsif page.url contains '/hall-of-fame/' or page.url == '/team/' or page.url == '/bewertungssystem/' or page.url == '/was-ist-ein-escape-room/' %}0.7{% else %}0.5{% endif %}</priority>
+        <changefreq>{% if page.url == '/' or page.url == '/archiv/' or page.url == '/karte/' %}weekly{% else %}monthly{% endif %}</changefreq>
+        <priority>{% if page.url == '/' %}1.0{% elsif page.url == '/archiv/' or page.url == '/karte/' or page.url == '/hall-of-fame/' or page.url == '/city/' %}0.9{% elsif page.city %}0.8{% elsif page.url contains '/hall-of-fame/' or page.url == '/team/' or page.url == '/bewertungssystem/' or page.url == '/was-ist-ein-escape-room/' or page.url == '/arten-von-raetseln/' or page.url == '/schloss-typen/' or page.url == '/philosophie/' %}0.8{% else %}0.6{% endif %}</priority>
       </url>
     {% endunless %}
   {% endfor %}

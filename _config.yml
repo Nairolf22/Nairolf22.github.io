@@ -1,7 +1,10 @@
 url: "https://www.escapearchive.de"
 baseurl: ""
 title: "The Escape Archive"
-description: "Reviewing the best and darkest escape rooms."
+tagline: "Escape Room Tests, Reviews & Analysen in Deutschland"
+description: "Unabhängige Escape Room Tests, ehrliche Erfahrungsberichte und detaillierte Bewertungen in ganz Deutschland vom Tester-Team Die Anrufbeantworter."
+lang: "de-DE"
+author: "Die Anrufbeantworter"
 permalink: /reviews/:title/
 
 # Aktiviert Markdown

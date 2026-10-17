@@ -29,7 +29,7 @@ permalink: /hall-of-fame/top-rooms/
 <div class="review-dossier">
 
     <div class="dossier-header">
-        <h2 style="border-bottom: none; margin-bottom: 0;">Die Hall of Fame: Gesamtwertung</h2>
+        <h1 style="border-bottom: none; margin-bottom: 0;">Die Hall of Fame: Gesamtwertung</h1>
         <p style="font-family: 'Courier New'; color: #666; margin-top: 0; font-size: 0.9rem;">
             // MISSION REPORT: THE BEST OF THE BEST
         </p>
@@ -38,7 +38,7 @@ permalink: /hall-of-fame/top-rooms/
     <div style="font-family: 'Courier New', monospace; line-height: 1.6; color: #333;">
         
         <div style="background: rgba(0,0,0,0.03); padding: 20px; border-left: 5px solid #FFD700; margin-bottom: 3rem;">
-            <h3 style="margin-top: 0; text-transform: uppercase;">Das perfekte Gesamtpaket</h3>
+            <h2 style="margin-top: 0; text-transform: uppercase; font-size: 1.15rem;">Das perfekte Gesamtpaket</h2>
             <p>
                 Hier ehren wir die Räume, die uns auf ganzer Linie überzeugt haben. Es reicht nicht, nur schöne Kulissen oder knackige Rätsel zu haben – für die Spitze dieser Liste muss alles stimmen.
             </p>
@@ -74,7 +74,7 @@ permalink: /hall-of-fame/top-rooms/
                             {% else %}
                                 {% assign img_src = room.images[0] %}
                             {% endif %}
-                            <img src="/assets/images/{{ img_src }}" alt="{{ room.title }}">
+                            <img src="/assets/images/{{ img_src }}" alt="Platz {{ rank }}: {{ room.title }} ({{ room.provider }}, {{ room.location.city }})" loading="lazy" width="400" height="250">
                         </div>
 
                         <div class="ranking-card-body">
