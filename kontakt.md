@@ -17,12 +17,13 @@ permalink: /kontakt/
             Haben Sie Hinweise zu einem ungelösten Fall? Wollen Sie unser Ermittler-Team anfordern? Oder haben Sie einen Fehler in unseren Akten gefunden?
         </p>
 
-        <div style="text-align: center; margin: 3rem 0;">
+        <div style="text-align: center; margin: 2.5rem 0;">
             <a href="mailto:kontakt@escapearchive.de" style="
                 display: inline-block;
+                max-width: 100%;
                 border: 3px solid var(--rust-primary);
-                padding: 1rem 2rem;
-                font-size: 1.3rem;
+                padding: clamp(0.75rem, 2.5vw, 1rem) clamp(1rem, 4vw, 2rem);
+                font-size: clamp(0.95rem, 3.5vw, 1.3rem);
                 font-weight: bold;
                 text-decoration: none;
                 color: var(--rust-primary);
@@ -30,7 +31,8 @@ permalink: /kontakt/
                 box-shadow: 3px 3px 0 rgba(0,0,0,0.2);
                 transform: rotate(-1deg);
                 transition: all 0.2s;
-            " onmouseover="this.style.transform='rotate(1deg) scale(1.05)'; this.style.background='var(--rust-primary)'; this.style.color='#fff';" 
+                word-break: break-all;
+            " onmouseover="this.style.transform='rotate(1deg) scale(1.03)'; this.style.background='var(--rust-primary)'; this.style.color='#fff';" 
                onmouseout="this.style.transform='rotate(-1deg) scale(1)'; this.style.background='rgba(0,0,0,0.05)'; this.style.color='var(--rust-primary)';">
                 ✉ kontakt@escapearchive.de
             </a>

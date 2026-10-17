@@ -8,37 +8,95 @@ permalink: /archiv/
 <style>
     /* Neuer Style für den geschlossenen Status auf Kacheln */
     .closed-stamp {
-        background-color: #d32f2f; /* Alarm-Rot */
+        background-color: #d32f2f;
         color: white;
-        padding: 4px 8px;
+        padding: 4px 10px;
         font-weight: bold;
         text-transform: uppercase;
-        font-size: 0.8rem;
+        font-size: 0.82rem;
         letter-spacing: 1px;
-        border: 1px solid rgba(255,255,255,0.3);
+        border: 1px solid rgba(255,255,255,0.35);
+        border-radius: 3px;
+    }
+
+    .archive-header-bar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+        border-bottom: 2px solid var(--rust-primary);
+        padding-bottom: 1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .sort-controls {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem 1.25rem;
+        align-items: center;
+    }
+
+    .sort-group {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 6px;
+    }
+
+    .sort-label {
+        color: #999;
+        margin-right: 4px;
+        text-transform: uppercase;
+        font-size: 0.8rem;
+        font-weight: bold;
+    }
+
+    @media (max-width: 640px) {
+        .archive-header-bar {
+            flex-direction: column;
+            align-items: stretch;
+        }
+        .sort-controls {
+            flex-direction: column;
+            align-items: stretch;
+            gap: 0.65rem;
+        }
+        .sort-group {
+            justify-content: space-between;
+        }
+        .sort-group .btn-sort {
+            flex: 1 1 auto;
+            text-align: center;
+            padding: 0.45rem 0.5rem;
+            font-size: 0.8rem;
+        }
+        .sort-group .select-filter {
+            flex: 1 1 auto;
+        }
     }
 </style>
 
 <div id="archive-top"></div>
 
 <section class="archive-section">
-    <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; border-bottom: 2px solid var(--rust-primary); padding-bottom: 1rem; margin-bottom: 2rem;">
+    <div class="archive-header-bar">
         
         <h2 class="section-title" style="margin-bottom:0; border:none; padding:0;">
-            <span style="border-bottom: 5px solid var(--rust-primary);">FALL-ARCHIV</span>
+            <span style="border-bottom: 4px solid var(--rust-primary); padding-bottom: 2px;">FALL-ARCHIV</span>
         </h2>
         
-        <div class="sort-controls" style="margin-top: 1rem; display: flex; flex-wrap: wrap; gap: 10px; align-items: center;">
-            <div style="display: flex; align-items: center;">
-                <span style="color:#888; margin-right:5px; text-transform:uppercase; font-size:0.8rem;">Sortieren:</span>
-                <button class="btn-sort" onclick="sortRooms('name')">Name</button>
-                <button class="btn-sort" onclick="sortRooms('provider')">Anbieter</button>
-                <button class="btn-sort" onclick="sortRooms('rating')">Bewertung</button>
+        <div class="sort-controls">
+            <div class="sort-group">
+                <span class="sort-label">Sortieren:</span>
+                <button class="btn-sort" onclick="sortRooms('name', this)">Name</button>
+                <button class="btn-sort" onclick="sortRooms('provider', this)">Anbieter</button>
+                <button class="btn-sort" onclick="sortRooms('rating', this)">Bewertung</button>
             </div>
             
-            <div style="display: flex; align-items: center;">
-                <span style="color:#888; margin-right:5px; text-transform:uppercase; font-size:0.8rem;">Anzeigen:</span>
-                <select class="select-filter" onchange="changeItemsPerPage(this.value)" style="margin-left: 0;">
+            <div class="sort-group">
+                <span class="sort-label">Anzeigen:</span>
+                <select class="select-filter" onchange="changeItemsPerPage(this.value)">
                     <option value="6">6 Akten</option>
                     <option value="12" selected>12 Akten</option>
                     <option value="24">24 Akten</option>

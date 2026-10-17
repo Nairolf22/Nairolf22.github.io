@@ -22,7 +22,7 @@ permalink: /raetsel/defusal
         background: #2a2a2a;
         border: 4px solid #111;
         border-radius: 10px;
-        padding: 2rem;
+        padding: clamp(1rem, 4vw, 2rem);
         position: relative;
         box-shadow: inset 0 0 20px rgba(0,0,0,0.8);
         display: flex;
@@ -36,8 +36,9 @@ permalink: /raetsel/defusal
         grid-template-columns: repeat(3, 1fr);
         grid-template-rows: repeat(3, 1fr);
         gap: 2px;
-        width: 300px;
-        height: 300px;
+        width: 100%;
+        max-width: 300px;
+        aspect-ratio: 1 / 1;
         background: #000;
         border: 2px solid #555;
     }

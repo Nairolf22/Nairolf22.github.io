@@ -42,7 +42,7 @@
   <meta name="twitter:image"
     content="http://localhost:4000/assets/images/rooms/Moenchengladbach-Nervenheilanstalt.webp">
 
-  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="/assets/css/style.css?v=20261018b">
 
   
 
@@ -131,22 +131,39 @@
     <header>
       <div class="logo-heading">
         <a href="/" class="site-logo-link" aria-label="Zur Startseite von The Escape Archive">
-          <img src="/assets/images/logo-escape-archive_800.webp"
-            alt="The Escape Archive - Escape Room Reviews & Analysen" class="site-logo" width="450" height="150" fetchpriority="high">
+          <img
+            src="/assets/images/logo-escape-archive_800.webp"
+            srcset="/assets/images/logo-escape-archive_400.webp 400w, /assets/images/logo-escape-archive_600.webp 600w, /assets/images/logo-escape-archive_800.webp 800w"
+            sizes="(max-width: 600px) 190px, 260px"
+            alt="The Escape Archive - Escape Room Reviews & Analysen"
+            class="site-logo"
+            width="260"
+            height="142"
+            fetchpriority="high">
         </a>
       </div>
-      <p style="color: #ccc; margin-top: 10px;">• EST. 2025 • CLASSIFIED REVIEWS •</p>
+      <div>
+        <span class="header-tagline">• EST. 2025 • CLASSIFIED REVIEWS •</span>
+      </div>
     </header>
 
-    <nav aria-label="Hauptnavigation">
+    <nav class="site-nav" aria-label="Hauptnavigation">
       <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-label="Menü ein- oder ausblenden">
-      <label for="nav-toggle" class="burger-icon" aria-label="Menü">☰ Menü</label>
+      <label for="nav-toggle" class="burger-icon" aria-label="Menü">
+        <span>Navigation</span>
+        <span class="burger-bars" aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+      </label>
       <div class="nav-links">
-        <a href="/karte/">Karte</a>
-        <a href="/archiv/">Alle Akten</a>
-        <a href="/team/">Über uns</a>
-        <a href="/kontakt/">Kontakt</a>
-        <a href="/raetsel/">Trainingslager</a>
+        <a href="/karte/" >Karte</a>
+        <a href="/archiv/" class="active">Alle Akten</a>
+        <a href="/hall-of-fame/" >Hall of Fame</a>
+        <a href="/team/" >Über uns</a>
+        <a href="/raetsel/" >Trainingslager</a>
+        <a href="/kontakt/" >Kontakt</a>
       </div>
     </nav>
 
@@ -158,14 +175,14 @@
 <style>
     .closed-alert {
         border: 2px solid #d32f2f;
-        /* Alarm-Rot */
-        background-color: rgba(211, 47, 47, 0.05);
-        color: #d32f2f;
-        padding: 1rem;
+        background-color: rgba(211, 47, 47, 0.08);
+        color: #b71c1c;
+        padding: 1.25rem;
         text-align: center;
         margin-bottom: 2rem;
         font-family: 'Courier New', monospace;
         text-transform: uppercase;
+        border-radius: 6px;
         position: relative;
         overflow: hidden;
     }
@@ -181,12 +198,12 @@
         display: inline-block;
         border: 3px solid #d32f2f;
         color: #d32f2f;
-        padding: 0.2rem 1rem;
+        padding: 0.25rem 1rem;
         font-weight: bold;
-        font-size: 1.5rem;
+        font-size: clamp(1.15rem, 3vw, 1.45rem);
         text-transform: uppercase;
         transform: rotate(-3deg);
-        opacity: 0.8;
+        opacity: 0.9;
         letter-spacing: 2px;
         margin-top: 5px;
         font-family: 'Courier New', monospace;
@@ -196,16 +213,15 @@
     .stamp-planned {
         display: inline-block;
         border: 3px solid #f57f17;
-        /* Dunkles Orange / Gold */
         color: #f57f17;
-        padding: 0.2rem 1rem;
+        background: rgba(255, 255, 255, 0.6);
+        padding: 0.35rem 1rem;
         font-weight: bold;
-        font-size: 1.5rem;
+        font-size: clamp(1.15rem, 3vw, 1.45rem);
         text-transform: uppercase;
         transform: rotate(-3deg);
-        opacity: 0.9;
+        opacity: 0.95;
         letter-spacing: 2px;
-        margin-top: 5px;
         font-family: 'Courier New', monospace;
     }
 
@@ -213,8 +229,8 @@
         margin: 2rem 0;
         padding: 1.5rem;
         background-color: #fff8e1;
-        /* Sehr helles Gelb */
         border: 1px dashed #f57f17;
+        border-radius: 6px;
         text-align: center;
     }
 
@@ -227,52 +243,21 @@
     }
 
     .planned-date-value {
-        font-size: 2.5rem;
+        font-size: clamp(1.75rem, 5vw, 2.5rem);
         font-weight: bold;
         color: #e65100;
         font-family: 'Special Elite', 'Courier New', monospace;
+        word-break: break-word;
     }
 
     .planned-teaser {
-        font-size: 1.2rem;
+        font-size: clamp(1.05rem, 2.5vw, 1.2rem);
         line-height: 1.6;
         margin: 2rem 0;
-        padding: 0 1rem;
+        padding: 0 0.5rem;
         text-align: center;
         font-style: italic;
-        color: #444;
-    }
-
-    /* --- Mobile Responsive --- */
-    @media (max-width: 600px) {
-        .planned-date-value {
-            font-size: 2rem;
-            word-break: break-word;
-        }
-
-        .stamp-planned {
-            font-size: 1.2rem;
-            padding: 0.2rem 0.6rem;
-        }
-
-        .dossier-header h1, .dossier-header h2 {
-            padding-right: 0 !important;
-            margin-top: 2rem;
-        }
-
-        .dossier-meta {
-            margin-right: 0 !important;
-        }
-
-        .dossier-header {
-            flex-direction: column;
-        }
-
-        .stamp-box,
-        .stamp-planned {
-            margin-top: 1rem;
-            align-self: flex-start;
-        }
+        color: #333;
     }
 </style>
 
@@ -280,43 +265,32 @@
 
     
 
-    <div class="dossier-header" style="display: flex; justify-content: space-between; align-items: flex-start;">
+    <div class="dossier-header">
 
-        <div class="dossier-meta" style="position: relative; flex: 1; margin-right: 30px;">
-
-            <div class="provider-badge-container">
-                
-                <a href="https://www.timebreak-mg.de/rooms/nervenheilanstalt/" target="_blank" rel="noopener" class="btn-provider" style="margin-top: 0;">
-                    ZUM ANBIETER &raquo;
-                </a>
-                
-
-                
-            </div>
-
+        <div class="dossier-meta">
             <span class="provider">TIMEBREAK Mönchengladbach</span>
 
-            <h1 style="padding-right: 220px; font-size: 2em; margin-top: 0.5rem; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
-                Dr. Brown Boyd's Nervenheilanstalt
+            <h1 class="dossier-title-row">
+                <span>Dr. Brown Boyd's Nervenheilanstalt</span>
                 
                 
                 
                 
-                    <span class="room-type-tag type-indoor">🏠 Escape Room</span>
+                    <span class="room-type-tag type-indoor">Escape Room</span>
                 
             </h1>
 
-            <p style="margin:0; font-size: 0.9rem; color: #555;">
+            <p class="dossier-location">
                 <strong>Ort:</strong> Mönchengladbach | Waldhausener Straße 31, 41061 Mönchengladbach
             </p>
 
             
-            <div style="margin-top: 1rem; padding-top: 0.5rem; border-top: 1px dotted #888;">
-                <p style="margin: 0.2rem 0;">
+            <div class="dossier-investigators">
+                <p>
                     <strong>Einsatzdatum:</strong>
                     17.11.2024
                 </p>
-                <p style="margin: 0.2rem 0;">
+                <p>
                     <strong>Ermittler:</strong>
                     <a href="/team/#florian"
                         class="investigator-link">Florian</a>, <a href="/team/#christine"
@@ -330,19 +304,30 @@
             
         </div>
 
-        
-        <div class="stamp-box">
-            Overall<br>
-            <span style="font-size: 2rem;">4.4</span> / 5
+        <div class="dossier-aside">
+            <div class="dossier-stamps-row">
+                
+                <div class="stamp-box">
+                    Overall<br>
+                    <span class="stamp-score">4.4</span> / 5
+                </div>
+                
+            </div>
+
+            
+            <a href="https://www.timebreak-mg.de/rooms/nervenheilanstalt/" target="_blank" rel="noopener" class="btn-provider">
+                ZUM ANBIETER &raquo;
+            </a>
+            
         </div>
-        
     </div>
 
     
-    <div class="evidence-photos">
+    <div class="evidence-photos single-photo">
         
         <div class="polaroid">
-            <img src="/assets/images/rooms/Moenchengladbach-Nervenheilanstalt.webp" alt="Beweisfoto aus dem Raum Dr. Brown Boyd's Nervenheilanstalt bei TIMEBREAK Mönchengladbach">
+            <img src="/assets/images/rooms/Moenchengladbach-Nervenheilanstalt.webp" alt="Beweisfoto aus dem Raum Dr. Brown Boyd's Nervenheilanstalt bei TIMEBREAK Mönchengladbach" class="polaroid-photo">
+            
         </div>
         
     </div>
@@ -551,186 +536,35 @@
     </div>
 
 </article>
-
     </main>
 
     <footer id="footer">
-      <p>&copy; The Escape Archive.</p>
-      <p>
-        <a href="/philosophie/" style="color: var(--rust-light);">Unsere Philosophie</a>
-        <span style="color: #666; margin: 0 5px;">•</span>
-
-        <a href="/bewertungssystem/" style="color: var(--rust-light);">Bewertungssystem</a>
-        <span style="color: #666; margin: 0 5px;">•</span>
-
-        <a href="/was-ist-ein-escape-room/" style="color: var(--rust-light);">Was ist ein Escape-Room?</a>
-        <span style="color: #666; margin: 0 5px;">•</span>
-        
-        <a href="/arten-von-raetseln/" style="color: var(--rust-light);">Rätselguide</a>
-        <span style="color: #666; margin: 0 5px;">•</span>
-        
-        <a href="/schloss-typen/" style="color: var(--rust-light);">Schlosstypen</a>
-        <span style="color: #666; margin: 0 5px;">•</span>
-
-        <a href="/hall-of-fame/" style="color: var(--rust-light);">Hall of Fame</a>
-        <span style="color: #666; margin: 0 5px;">•</span>
-
-        <a href="/city/" style="color: var(--rust-light);">Regionale Archive</a>
-        <span style="color: #666; margin: 0 5px;">•</span>
-
-        <a href="/impressum/" style="color: var(--rust-light);">Impressum & Datenschutz</a>
-      </p>
+      <p class="footer-brand">&copy; 2026 The Escape Archive • Die Anrufbeantworter</p>
+      <div class="footer-links">
+        <a href="/philosophie/">Unsere Philosophie</a>
+        <span class="footer-sep">•</span>
+        <a href="/bewertungssystem/">Bewertungssystem</a>
+        <span class="footer-sep">•</span>
+        <a href="/was-ist-ein-escape-room/">Was ist ein Escape-Room?</a>
+        <span class="footer-sep">•</span>
+        <a href="/arten-von-raetseln/">Rätselguide</a>
+        <span class="footer-sep">•</span>
+        <a href="/schloss-typen/">Schlosstypen</a>
+        <span class="footer-sep">•</span>
+        <a href="/hall-of-fame/">Hall of Fame</a>
+        <span class="footer-sep">•</span>
+        <a href="/city/">Regionale Archive</a>
+        <span class="footer-sep">•</span>
+        <a href="/impressum/">Impressum &amp; Datenschutz</a>
+      </div>
     </footer>
 
   </div>
 
   
 
-  <script src="/assets/js/main.js"></script>
+  <script src="/assets/js/main.js?v=20261018"></script>
   <script data-goatcounter="https://nairolf22.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-
-  <style>
-    /* --- HEADER & LOGO STYLES --- */
-    header {
-      text-align: center;
-      padding-top: 1rem;
-    }
-
-    .logo-heading {
-      margin: 0;
-      padding: 0;
-      line-height: 1;
-      font-weight: normal;
-      display: block;
-      border: none;
-    }
-
-    .site-logo-link {
-      display: inline-block;
-      text-decoration: none;
-      border: none !important;
-      outline: none !important;
-      box-shadow: none !important;
-      -webkit-tap-highlight-color: transparent;
-    }
-
-    .site-logo-link:focus,
-    .site-logo-link:active,
-    .site-logo-link:hover {
-      outline: none !important;
-      border: none !important;
-      box-shadow: none !important;
-    }
-
-    .site-logo {
-      max-width: 95%;
-      width: 450px;
-      height: auto;
-      display: block;
-      margin: 0 auto;
-      border: none !important;
-      outline: none !important;
-    }
-
-    /* --- MASTER MOBILE FIX --- */
-
-    html,
-    body {
-      overflow-x: hidden;
-      max-width: 100%;
-      position: relative;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    p,
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6,
-    div,
-    span,
-    a {
-      overflow-wrap: break-word;
-      word-wrap: break-word;
-      hyphens: auto;
-    }
-
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6,
-    header h1,
-    .card-content h3,
-    .dossier-header h1,
-    .dossier-header h2 {
-      hyphens: none !important;
-      -webkit-hyphens: none !important;
-      word-break: normal !important;
-    }
-
-    @media (max-width: 600px) {
-      .site-logo {
-        width: 280px;
-      }
-    }
-
-    .contact-box,
-    div[style*="border"] {
-      max-width: 100%;
-      width: auto;
-    }
-
-    main,
-    .site-wrapper {
-      padding-left: 15px;
-      padding-right: 15px;
-      width: 100%;
-    }
-
-    @media (max-width: 768px) {
-
-      .dossier-header {
-        flex-direction: column !important;
-      }
-
-      .dossier-meta {
-        margin-right: 0 !important;
-        width: 100% !important;
-      }
-
-      .dossier-meta h1,
-      .dossier-meta h2 {
-        padding-right: 0 !important;
-        font-size: 1.8rem;
-      }
-
-      .dossier-meta>div[style*="position: absolute"] {
-        position: static !important;
-        margin-bottom: 1rem;
-        display: block;
-        width: 100%;
-      }
-
-      .btn-provider {
-        display: block;
-        text-align: center;
-        width: 100%;
-        margin-top: 0 !important;
-      }
-
-      .stamp-box {
-        margin-top: 1rem;
-        align-self: flex-start;
-      }
-    }
-  </style>
 </body>
 
 </html>

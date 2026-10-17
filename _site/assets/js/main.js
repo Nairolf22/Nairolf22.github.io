@@ -10,15 +10,37 @@ document.addEventListener('DOMContentLoaded', function() {
     if (document.getElementById('paginationControls')) {
         updatePagination();
     }
+
+    // Mobiles Menü automatisch schließen bei Klick auf Link oder außerhalb
+    const navToggle = document.getElementById('nav-toggle');
+    const siteNav = document.querySelector('nav.site-nav');
+    if (navToggle && siteNav) {
+        siteNav.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navToggle.checked = false;
+            });
+        });
+        document.addEventListener('click', (e) => {
+            if (navToggle.checked && !siteNav.contains(e.target)) {
+                navToggle.checked = false;
+            }
+        });
+    }
 });
 
 /**
  * Sortierfunktion für das Fall-Archiv
  * type: 'name', 'provider' oder 'rating'
  */
-function sortRooms(type) {
+function sortRooms(type, btnEl) {
     const grid = document.getElementById('roomGrid');
     if (!grid) return;
+
+    // Aktiven Sortier-Button markieren
+    document.querySelectorAll('.btn-sort').forEach(btn => btn.classList.remove('active'));
+    if (btnEl) {
+        btnEl.classList.add('active');
+    }
 
     const items = Array.from(grid.getElementsByClassName('room-card-link'));
 

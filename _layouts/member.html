@@ -1,17 +1,17 @@
 ---
 layout: default
 ---
-<div class="member-profile" style="max-width: 800px; margin: 0 auto; padding: 20px;">
+<div class="member-profile" style="max-width: 820px; margin: 0 auto; padding: 10px;">
     {% assign member = site.data.members | where: "name", page.member_name | first %}
     
-    <div style="display: flex; gap: 30px; align-items: flex-start; margin-bottom: 40px; flex-wrap: wrap;">
-        <div style="flex: 0 0 250px;">
-            <img src="/assets/images/{{ member.image }}" alt="{{ member.name }}" style="width: 100%; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);" onerror="this.src='/assets/images/ui/no-signal.jpg'">
+    <div style="display: flex; gap: 2rem; align-items: flex-start; margin-bottom: 2.5rem; flex-wrap: wrap; justify-content: center;">
+        <div style="flex: 0 1 240px; max-width: 100%;">
+            <img src="/assets/images/{{ member.image }}" alt="{{ member.name }}" style="width: 100%; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); border: 3px solid #444;" onerror="this.src='/assets/images/ui/no-signal.jpg'">
         </div>
-        <div style="flex: 1; min-width: 300px;">
-            <h1 style="color: var(--rust-primary, #a0522d); margin-top: 0; font-family: 'Courier New', Courier, monospace;">Akte: {{ member.name }}</h1>
-            <h3 style="margin-top: -10px; color: #666; font-family: 'Courier New', Courier, monospace;">{{ member.role }}</h3>
-            <p style="font-family: 'Courier New', Courier, monospace; line-height: 1.6; margin-top: 20px; font-size: 1.1em;">
+        <div style="flex: 1 1 260px; min-width: 0;">
+            <h1 style="color: var(--rust-light, #D75A08); margin-top: 0; font-family: 'Courier New', Courier, monospace;">Akte: {{ member.name }}</h1>
+            <h3 style="margin-top: -8px; color: #999; font-family: 'Courier New', Courier, monospace;">{{ member.role }}</h3>
+            <p style="font-family: 'Courier New', Courier, monospace; line-height: 1.6; margin-top: 20px; font-size: 1.05em;">
                 {{ member.bio }}
             </p>
         </div>

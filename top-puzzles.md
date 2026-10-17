@@ -59,58 +59,48 @@ permalink: /hall-of-fame/top-puzzles/
                 {% assign room = site.reviews | where: "url", room_url | first %}
                 {% assign rank = forloop.index %}
 
-                <a href="{{ room.url }}" style="text-decoration: none; color: inherit; display: block; margin-bottom: 2rem;">
-                    <div class="room-card" style="display: flex; flex-direction: row; align-items: stretch; overflow: hidden; position: relative; border: 2px solid #555; transition: transform 0.2s;">
+                <a href="{{ room.url }}" style="text-decoration: none; color: inherit; display: block; margin-bottom: 1.75rem;">
+                    <div class="room-card ranking-card" style="border: 2px solid #555;">
                         
-                        <div style="
-                            position: absolute; 
-                            top: 0; 
-                            left: 0; 
-                            background: {% if rank == 1 %}#FFD700{% elsif rank == 2 %}#C0C0C0{% elsif rank == 3 %}#CD7F32{% else %}#333{% endif %}; 
-                            color: {% if rank <= 3 %}#000{% else %}#fff{% endif %}; 
-                            padding: 5px 15px; 
-                            font-weight: bold; 
-                            z-index: 10; 
-                            box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
-                            font-family: 'Arial Black', sans-serif;
-                            font-size: 1.2rem;
-                        ">
-                            #{{ rank }}
-                        </div>
-
-                        <div style="flex: 1; min-width: 250px; max-width: 300px; position: relative;">
+                        <div class="ranking-card-media">
+                            <div class="ranking-badge" style="
+                                background: {% if rank == 1 %}#FFD700{% elsif rank == 2 %}#C0C0C0{% elsif rank == 3 %}#CD7F32{% else %}#333{% endif %}; 
+                                color: {% if rank <= 3 %}#000{% else %}#fff{% endif %}; 
+                            ">
+                                #{{ rank }}
+                            </div>
                             {% if room.thumbnail %}
                                 {% assign img_src = room.thumbnail %}
                             {% else %}
                                 {% assign img_src = room.images[0] %}
                             {% endif %}
-                            <img src="/assets/images/{{ img_src }}" alt="{{ room.title }}" style="width: 100%; height: 100%; object-fit: cover; border: none;">
+                            <img src="/assets/images/{{ img_src }}" alt="{{ room.title }}">
                         </div>
 
-                        <div class="card-content" style="flex: 2; padding: 1.5rem; display: flex; flex-direction: column; justify-content: center;">
-                            <h3 style="margin: 0; color: var(--rust-primary); font-size: 1.4rem; padding-left: 40px;">{{ room.title }}</h3>
-                            <span style="color: #666; font-size: 0.9rem; margin-bottom: 10px; padding-left: 40px;">
+                        <div class="ranking-card-body">
+                            <h3 style="margin: 0 0 4px 0; color: var(--rust-light); font-size: 1.35rem;">{{ room.title }}</h3>
+                            <span style="color: #aaa; font-size: 0.88rem; margin-bottom: 10px;">
                                 {{ room.provider }} | {{ room.location.city }}
                             </span>
                             
-                            <hr style="border: 0; border-top: 1px dotted #ccc; margin: 10px 0;">
+                            <hr style="border: 0; border-top: 1px dotted #444; margin: 10px 0;">
 
                             <div style="display: flex; gap: 20px; flex-wrap: wrap;">
                                 <div>
-                                    <span style="font-size: 0.8rem; text-transform: uppercase; color: #888;">Rätsel</span><br>
-                                    <span style="font-size: 1.5rem; font-weight: bold; color: var(--rust-primary);">
+                                    <span style="font-size: 0.78rem; text-transform: uppercase; color: #999;">Rätsel</span><br>
+                                    <span style="font-size: 1.5rem; font-weight: bold; color: var(--rust-light);">
                                         {{ room.ratings.puzzles.score }}
                                     </span>
                                 </div>
                                 <div>
-                                    <span style="font-size: 0.8rem; text-transform: uppercase; color: #888;">Kulisse</span><br>
-                                    <span style="font-size: 1.2rem; font-weight: bold; color: #555;">
+                                    <span style="font-size: 0.78rem; text-transform: uppercase; color: #999;">Kulisse</span><br>
+                                    <span style="font-size: 1.25rem; font-weight: bold; color: #ccc;">
                                         {{ room.ratings.scenery.score }}
                                     </span>
                                 </div>
                                 <div>
-                                    <span style="font-size: 0.8rem; text-transform: uppercase; color: #888;">Story</span><br>
-                                    <span style="font-size: 1.2rem; font-weight: bold; color: #555;">
+                                    <span style="font-size: 0.78rem; text-transform: uppercase; color: #999;">Story</span><br>
+                                    <span style="font-size: 1.25rem; font-weight: bold; color: #ccc;">
                                         {{ room.ratings.story.score }}
                                     </span>
                                 </div>
@@ -126,20 +116,5 @@ permalink: /hall-of-fame/top-puzzles/
 </div>
 
 <div style="margin-top: 2rem; text-align: center;">
-    <a href="/archiv/" class="btn-back">← Zum gesamten Archiv</a>
+    <a href="/hall-of-fame/" class="btn-back">← Zurück zur Hall of Fame</a>
 </div>
-
-<style>
-    @media (max-width: 700px) {
-        .room-card {
-            flex-direction: column !important;
-        }
-        .room-card img {
-            height: 200px !important;
-        }
-        .card-content h3, .card-content span {
-            padding-left: 0 !important;
-            margin-top: 10px;
-        }
-    }
-</style>

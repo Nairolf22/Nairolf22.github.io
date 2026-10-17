@@ -30,7 +30,7 @@ permalink: /raetsel/schloesser/
                 <div id="image-placeholder" style="width: 100%; height: 200px; background: #333; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; border: 1px dashed #666;">
                     <span style="color: #888;">[Bild-Dokument geladen]</span>
                 </div>
-                <div id="options-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                <div id="options-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); gap: 1rem;">
                     </div>
             </div>
         </div>

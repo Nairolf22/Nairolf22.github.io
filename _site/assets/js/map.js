@@ -84,8 +84,8 @@ if (document.getElementById('escapeMap')) {
             
             // --- POPUP INHALT ---
             var badgeHtml = room.outdoor === true ? 
-                `<span style="background-color: #2e7d32; color: #fff; padding: 2px 6px; font-size: 0.75rem; font-weight: bold; border-radius: 3px; display: inline-block; margin-bottom: 6px; font-family: 'Courier New', monospace;">🌳 Outdoor Game</span><br>` : 
-                `<span style="background-color: #555; color: #fff; padding: 2px 6px; font-size: 0.75rem; font-weight: bold; border-radius: 3px; display: inline-block; margin-bottom: 6px; font-family: 'Courier New', monospace;">🏠 Escape Room</span><br>`;
+                `<span class="room-type-tag type-outdoor" style="margin-bottom: 6px;">Outdoor Game</span><br>` : 
+                `<span class="room-type-tag type-indoor" style="margin-bottom: 6px;">Escape Room</span><br>`;
 
             var popupContent = `
                 <div style="text-align:center;">

@@ -42,7 +42,7 @@
   <meta name="twitter:image"
     content="http://localhost:4000/assets/images/logo-escape-archive_800.webp">
 
-  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="/assets/css/style.css?v=20261018b">
 
   
 
@@ -82,22 +82,39 @@
     <header>
       <div class="logo-heading">
         <a href="/" class="site-logo-link" aria-label="Zur Startseite von The Escape Archive">
-          <img src="/assets/images/logo-escape-archive_800.webp"
-            alt="The Escape Archive - Escape Room Reviews & Analysen" class="site-logo" width="450" height="150" fetchpriority="high">
+          <img
+            src="/assets/images/logo-escape-archive_800.webp"
+            srcset="/assets/images/logo-escape-archive_400.webp 400w, /assets/images/logo-escape-archive_600.webp 600w, /assets/images/logo-escape-archive_800.webp 800w"
+            sizes="(max-width: 600px) 190px, 260px"
+            alt="The Escape Archive - Escape Room Reviews & Analysen"
+            class="site-logo"
+            width="260"
+            height="142"
+            fetchpriority="high">
         </a>
       </div>
-      <p style="color: #ccc; margin-top: 10px;">• EST. 2025 • CLASSIFIED REVIEWS •</p>
+      <div>
+        <span class="header-tagline">• EST. 2025 • CLASSIFIED REVIEWS •</span>
+      </div>
     </header>
 
-    <nav aria-label="Hauptnavigation">
+    <nav class="site-nav" aria-label="Hauptnavigation">
       <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-label="Menü ein- oder ausblenden">
-      <label for="nav-toggle" class="burger-icon" aria-label="Menü">☰ Menü</label>
+      <label for="nav-toggle" class="burger-icon" aria-label="Menü">
+        <span>Navigation</span>
+        <span class="burger-bars" aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+      </label>
       <div class="nav-links">
-        <a href="/karte/">Karte</a>
-        <a href="/archiv/">Alle Akten</a>
-        <a href="/team/">Über uns</a>
-        <a href="/kontakt/">Kontakt</a>
-        <a href="/raetsel/">Trainingslager</a>
+        <a href="/karte/" >Karte</a>
+        <a href="/archiv/" >Alle Akten</a>
+        <a href="/hall-of-fame/" class="active">Hall of Fame</a>
+        <a href="/team/" >Über uns</a>
+        <a href="/raetsel/" >Trainingslager</a>
+        <a href="/kontakt/" >Kontakt</a>
       </div>
     </nav>
 
@@ -132,54 +149,44 @@
                 
                 
 
-                <a href="/reviews/Krefeld_Panzerknacker/" style="text-decoration: none; color: inherit; display: block; margin-bottom: 2rem;">
-                    <div class="room-card" style="display: flex; flex-direction: row; align-items: stretch; overflow: hidden; position: relative; border: 2px solid #555; transition: transform 0.2s;">
+                <a href="/reviews/Krefeld_Panzerknacker/" style="text-decoration: none; color: inherit; display: block; margin-bottom: 1.75rem;">
+                    <div class="room-card ranking-card" style="border: 2px solid #555;">
                         
-                        <div style="
-                            position: absolute; 
-                            top: 0; 
-                            left: 0; 
-                            background: #FFD700; 
-                            color: #000; 
-                            padding: 5px 15px; 
-                            font-weight: bold; 
-                            z-index: 10; 
-                            box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
-                            font-family: 'Arial Black', sans-serif;
-                            font-size: 1.2rem;
-                        ">
-                            #1
-                        </div>
-
-                        <div style="flex: 1; min-width: 250px; max-width: 300px; position: relative;">
+                        <div class="ranking-card-media">
+                            <div class="ranking-badge" style="
+                                background: #FFD700; 
+                                color: #000; 
+                            ">
+                                #1
+                            </div>
                             
-                            <img src="/assets/images/rooms/Krefeld-Panzerknacker.webp" alt="Panzerknacker" style="width: 100%; height: 100%; object-fit: cover; border: none;" />
+                            <img src="/assets/images/rooms/Krefeld-Panzerknacker.webp" alt="Panzerknacker" />
                         </div>
 
-                        <div class="card-content" style="flex: 2; padding: 1.5rem; display: flex; flex-direction: column; justify-content: center;">
-                            <h3 style="margin: 0; color: var(--rust-primary); font-size: 1.4rem; padding-left: 40px;">Panzerknacker</h3>
-                            <span style="color: #666; font-size: 0.9rem; margin-bottom: 10px; padding-left: 40px;">
+                        <div class="ranking-card-body">
+                            <h3 style="margin: 0 0 4px 0; color: var(--rust-light); font-size: 1.35rem;">Panzerknacker</h3>
+                            <span style="color: #aaa; font-size: 0.88rem; margin-bottom: 10px;">
                                 Limbus Escape Games | Krefeld
                             </span>
                             
-                            <hr style="border: 0; border-top: 1px dotted #ccc; margin: 10px 0;" />
+                            <hr style="border: 0; border-top: 1px dotted #444; margin: 10px 0;" />
 
                             <div style="display: flex; gap: 20px; flex-wrap: wrap;">
                                 <div>
-                                    <span style="font-size: 0.8rem; text-transform: uppercase; color: #888;">Gamemaster</span><br />
-                                    <span style="font-size: 1.5rem; font-weight: bold; color: var(--rust-primary);">
+                                    <span style="font-size: 0.78rem; text-transform: uppercase; color: #999;">Gamemaster</span><br />
+                                    <span style="font-size: 1.5rem; font-weight: bold; color: var(--rust-light);">
                                         5.0
                                     </span>
                                 </div>
                                 <div>
-                                    <span style="font-size: 0.8rem; text-transform: uppercase; color: #888;">Kulisse</span><br />
-                                    <span style="font-size: 1.2rem; font-weight: bold; color: #555;">
+                                    <span style="font-size: 0.78rem; text-transform: uppercase; color: #999;">Kulisse</span><br />
+                                    <span style="font-size: 1.25rem; font-weight: bold; color: #ccc;">
                                         4.5
                                     </span>
                                 </div>
                                 <div>
-                                    <span style="font-size: 0.8rem; text-transform: uppercase; color: #888;">Atmosphäre</span><br />
-                                    <span style="font-size: 1.2rem; font-weight: bold; color: #555;">
+                                    <span style="font-size: 0.78rem; text-transform: uppercase; color: #999;">Atmosphäre</span><br />
+                                    <span style="font-size: 1.25rem; font-weight: bold; color: #ccc;">
                                         5.0
                                     </span>
                                 </div>
@@ -193,54 +200,44 @@
                 
                 
 
-                <a href="/reviews/Krefeld_DieMagischeReiseTeil1/" style="text-decoration: none; color: inherit; display: block; margin-bottom: 2rem;">
-                    <div class="room-card" style="display: flex; flex-direction: row; align-items: stretch; overflow: hidden; position: relative; border: 2px solid #555; transition: transform 0.2s;">
+                <a href="/reviews/Krefeld_DieMagischeReiseTeil1/" style="text-decoration: none; color: inherit; display: block; margin-bottom: 1.75rem;">
+                    <div class="room-card ranking-card" style="border: 2px solid #555;">
                         
-                        <div style="
-                            position: absolute; 
-                            top: 0; 
-                            left: 0; 
-                            background: #C0C0C0; 
-                            color: #000; 
-                            padding: 5px 15px; 
-                            font-weight: bold; 
-                            z-index: 10; 
-                            box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
-                            font-family: 'Arial Black', sans-serif;
-                            font-size: 1.2rem;
-                        ">
-                            #2
-                        </div>
-
-                        <div style="flex: 1; min-width: 250px; max-width: 300px; position: relative;">
+                        <div class="ranking-card-media">
+                            <div class="ranking-badge" style="
+                                background: #C0C0C0; 
+                                color: #000; 
+                            ">
+                                #2
+                            </div>
                             
-                            <img src="/assets/images/rooms/Krefeld-MagischeReise.webp" alt="Die magische Reise, Kapitel 1" style="width: 100%; height: 100%; object-fit: cover; border: none;" />
+                            <img src="/assets/images/rooms/Krefeld-MagischeReise.webp" alt="Die magische Reise, Kapitel 1" />
                         </div>
 
-                        <div class="card-content" style="flex: 2; padding: 1.5rem; display: flex; flex-direction: column; justify-content: center;">
-                            <h3 style="margin: 0; color: var(--rust-primary); font-size: 1.4rem; padding-left: 40px;">Die magische Reise, Kapitel 1</h3>
-                            <span style="color: #666; font-size: 0.9rem; margin-bottom: 10px; padding-left: 40px;">
+                        <div class="ranking-card-body">
+                            <h3 style="margin: 0 0 4px 0; color: var(--rust-light); font-size: 1.35rem;">Die magische Reise, Kapitel 1</h3>
+                            <span style="color: #aaa; font-size: 0.88rem; margin-bottom: 10px;">
                                 Limbus Escape Games | Krefeld
                             </span>
                             
-                            <hr style="border: 0; border-top: 1px dotted #ccc; margin: 10px 0;" />
+                            <hr style="border: 0; border-top: 1px dotted #444; margin: 10px 0;" />
 
                             <div style="display: flex; gap: 20px; flex-wrap: wrap;">
                                 <div>
-                                    <span style="font-size: 0.8rem; text-transform: uppercase; color: #888;">Gamemaster</span><br />
-                                    <span style="font-size: 1.5rem; font-weight: bold; color: var(--rust-primary);">
+                                    <span style="font-size: 0.78rem; text-transform: uppercase; color: #999;">Gamemaster</span><br />
+                                    <span style="font-size: 1.5rem; font-weight: bold; color: var(--rust-light);">
                                         5.0
                                     </span>
                                 </div>
                                 <div>
-                                    <span style="font-size: 0.8rem; text-transform: uppercase; color: #888;">Kulisse</span><br />
-                                    <span style="font-size: 1.2rem; font-weight: bold; color: #555;">
+                                    <span style="font-size: 0.78rem; text-transform: uppercase; color: #999;">Kulisse</span><br />
+                                    <span style="font-size: 1.25rem; font-weight: bold; color: #ccc;">
                                         4.5
                                     </span>
                                 </div>
                                 <div>
-                                    <span style="font-size: 0.8rem; text-transform: uppercase; color: #888;">Atmosphäre</span><br />
-                                    <span style="font-size: 1.2rem; font-weight: bold; color: #555;">
+                                    <span style="font-size: 0.78rem; text-transform: uppercase; color: #999;">Atmosphäre</span><br />
+                                    <span style="font-size: 1.25rem; font-weight: bold; color: #ccc;">
                                         5.0
                                     </span>
                                 </div>
@@ -254,54 +251,44 @@
                 
                 
 
-                <a href="/reviews/Moenchengladbach_Nervenheilanstalt/" style="text-decoration: none; color: inherit; display: block; margin-bottom: 2rem;">
-                    <div class="room-card" style="display: flex; flex-direction: row; align-items: stretch; overflow: hidden; position: relative; border: 2px solid #555; transition: transform 0.2s;">
+                <a href="/reviews/Moenchengladbach_Nervenheilanstalt/" style="text-decoration: none; color: inherit; display: block; margin-bottom: 1.75rem;">
+                    <div class="room-card ranking-card" style="border: 2px solid #555;">
                         
-                        <div style="
-                            position: absolute; 
-                            top: 0; 
-                            left: 0; 
-                            background: #CD7F32; 
-                            color: #000; 
-                            padding: 5px 15px; 
-                            font-weight: bold; 
-                            z-index: 10; 
-                            box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
-                            font-family: 'Arial Black', sans-serif;
-                            font-size: 1.2rem;
-                        ">
-                            #3
-                        </div>
-
-                        <div style="flex: 1; min-width: 250px; max-width: 300px; position: relative;">
+                        <div class="ranking-card-media">
+                            <div class="ranking-badge" style="
+                                background: #CD7F32; 
+                                color: #000; 
+                            ">
+                                #3
+                            </div>
                             
-                            <img src="/assets/images/rooms/Moenchengladbach-Nervenheilanstalt.webp" alt="Dr. Brown Boyd's Nervenheilanstalt" style="width: 100%; height: 100%; object-fit: cover; border: none;" />
+                            <img src="/assets/images/rooms/Moenchengladbach-Nervenheilanstalt.webp" alt="Dr. Brown Boyd's Nervenheilanstalt" />
                         </div>
 
-                        <div class="card-content" style="flex: 2; padding: 1.5rem; display: flex; flex-direction: column; justify-content: center;">
-                            <h3 style="margin: 0; color: var(--rust-primary); font-size: 1.4rem; padding-left: 40px;">Dr. Brown Boyd's Nervenheilanstalt</h3>
-                            <span style="color: #666; font-size: 0.9rem; margin-bottom: 10px; padding-left: 40px;">
+                        <div class="ranking-card-body">
+                            <h3 style="margin: 0 0 4px 0; color: var(--rust-light); font-size: 1.35rem;">Dr. Brown Boyd's Nervenheilanstalt</h3>
+                            <span style="color: #aaa; font-size: 0.88rem; margin-bottom: 10px;">
                                 TIMEBREAK Mönchengladbach | Mönchengladbach
                             </span>
                             
-                            <hr style="border: 0; border-top: 1px dotted #ccc; margin: 10px 0;" />
+                            <hr style="border: 0; border-top: 1px dotted #444; margin: 10px 0;" />
 
                             <div style="display: flex; gap: 20px; flex-wrap: wrap;">
                                 <div>
-                                    <span style="font-size: 0.8rem; text-transform: uppercase; color: #888;">Gamemaster</span><br />
-                                    <span style="font-size: 1.5rem; font-weight: bold; color: var(--rust-primary);">
+                                    <span style="font-size: 0.78rem; text-transform: uppercase; color: #999;">Gamemaster</span><br />
+                                    <span style="font-size: 1.5rem; font-weight: bold; color: var(--rust-light);">
                                         4.5
                                     </span>
                                 </div>
                                 <div>
-                                    <span style="font-size: 0.8rem; text-transform: uppercase; color: #888;">Kulisse</span><br />
-                                    <span style="font-size: 1.2rem; font-weight: bold; color: #555;">
+                                    <span style="font-size: 0.78rem; text-transform: uppercase; color: #999;">Kulisse</span><br />
+                                    <span style="font-size: 1.25rem; font-weight: bold; color: #ccc;">
                                         5.0
                                     </span>
                                 </div>
                                 <div>
-                                    <span style="font-size: 0.8rem; text-transform: uppercase; color: #888;">Atmosphäre</span><br />
-                                    <span style="font-size: 1.2rem; font-weight: bold; color: #555;">
+                                    <span style="font-size: 0.78rem; text-transform: uppercase; color: #999;">Atmosphäre</span><br />
+                                    <span style="font-size: 1.25rem; font-weight: bold; color: #ccc;">
                                         5.0
                                     </span>
                                 </div>
@@ -315,54 +302,44 @@
                 
                 
 
-                <a href="/reviews/Moenchengladbach_ZaginisZauberladen/" style="text-decoration: none; color: inherit; display: block; margin-bottom: 2rem;">
-                    <div class="room-card" style="display: flex; flex-direction: row; align-items: stretch; overflow: hidden; position: relative; border: 2px solid #555; transition: transform 0.2s;">
+                <a href="/reviews/Moenchengladbach_ZaginisZauberladen/" style="text-decoration: none; color: inherit; display: block; margin-bottom: 1.75rem;">
+                    <div class="room-card ranking-card" style="border: 2px solid #555;">
                         
-                        <div style="
-                            position: absolute; 
-                            top: 0; 
-                            left: 0; 
-                            background: #333; 
-                            color: #fff; 
-                            padding: 5px 15px; 
-                            font-weight: bold; 
-                            z-index: 10; 
-                            box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
-                            font-family: 'Arial Black', sans-serif;
-                            font-size: 1.2rem;
-                        ">
-                            #4
-                        </div>
-
-                        <div style="flex: 1; min-width: 250px; max-width: 300px; position: relative;">
+                        <div class="ranking-card-media">
+                            <div class="ranking-badge" style="
+                                background: #333; 
+                                color: #fff; 
+                            ">
+                                #4
+                            </div>
                             
-                            <img src="/assets/images/rooms/Moenchengladbach-Zagini.webp" alt="Dunkle Machenschaften in Zaginis Zauberladen" style="width: 100%; height: 100%; object-fit: cover; border: none;" />
+                            <img src="/assets/images/rooms/Moenchengladbach-Zagini.webp" alt="Dunkle Machenschaften in Zaginis Zauberladen" />
                         </div>
 
-                        <div class="card-content" style="flex: 2; padding: 1.5rem; display: flex; flex-direction: column; justify-content: center;">
-                            <h3 style="margin: 0; color: var(--rust-primary); font-size: 1.4rem; padding-left: 40px;">Dunkle Machenschaften in Zaginis Zauberladen</h3>
-                            <span style="color: #666; font-size: 0.9rem; margin-bottom: 10px; padding-left: 40px;">
+                        <div class="ranking-card-body">
+                            <h3 style="margin: 0 0 4px 0; color: var(--rust-light); font-size: 1.35rem;">Dunkle Machenschaften in Zaginis Zauberladen</h3>
+                            <span style="color: #aaa; font-size: 0.88rem; margin-bottom: 10px;">
                                 TIMEBREAK Mönchengladbach | Mönchengladbach
                             </span>
                             
-                            <hr style="border: 0; border-top: 1px dotted #ccc; margin: 10px 0;" />
+                            <hr style="border: 0; border-top: 1px dotted #444; margin: 10px 0;" />
 
                             <div style="display: flex; gap: 20px; flex-wrap: wrap;">
                                 <div>
-                                    <span style="font-size: 0.8rem; text-transform: uppercase; color: #888;">Gamemaster</span><br />
-                                    <span style="font-size: 1.5rem; font-weight: bold; color: var(--rust-primary);">
+                                    <span style="font-size: 0.78rem; text-transform: uppercase; color: #999;">Gamemaster</span><br />
+                                    <span style="font-size: 1.5rem; font-weight: bold; color: var(--rust-light);">
                                         4.5
                                     </span>
                                 </div>
                                 <div>
-                                    <span style="font-size: 0.8rem; text-transform: uppercase; color: #888;">Kulisse</span><br />
-                                    <span style="font-size: 1.2rem; font-weight: bold; color: #555;">
+                                    <span style="font-size: 0.78rem; text-transform: uppercase; color: #999;">Kulisse</span><br />
+                                    <span style="font-size: 1.25rem; font-weight: bold; color: #ccc;">
                                         4.5
                                     </span>
                                 </div>
                                 <div>
-                                    <span style="font-size: 0.8rem; text-transform: uppercase; color: #888;">Atmosphäre</span><br />
-                                    <span style="font-size: 1.2rem; font-weight: bold; color: #555;">
+                                    <span style="font-size: 0.78rem; text-transform: uppercase; color: #999;">Atmosphäre</span><br />
+                                    <span style="font-size: 1.25rem; font-weight: bold; color: #ccc;">
                                         5.0
                                     </span>
                                 </div>
@@ -376,54 +353,44 @@
                 
                 
 
-                <a href="/reviews/Krefeld_DasExperiment/" style="text-decoration: none; color: inherit; display: block; margin-bottom: 2rem;">
-                    <div class="room-card" style="display: flex; flex-direction: row; align-items: stretch; overflow: hidden; position: relative; border: 2px solid #555; transition: transform 0.2s;">
+                <a href="/reviews/Krefeld_DasExperiment/" style="text-decoration: none; color: inherit; display: block; margin-bottom: 1.75rem;">
+                    <div class="room-card ranking-card" style="border: 2px solid #555;">
                         
-                        <div style="
-                            position: absolute; 
-                            top: 0; 
-                            left: 0; 
-                            background: #333; 
-                            color: #fff; 
-                            padding: 5px 15px; 
-                            font-weight: bold; 
-                            z-index: 10; 
-                            box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
-                            font-family: 'Arial Black', sans-serif;
-                            font-size: 1.2rem;
-                        ">
-                            #5
-                        </div>
-
-                        <div style="flex: 1; min-width: 250px; max-width: 300px; position: relative;">
+                        <div class="ranking-card-media">
+                            <div class="ranking-badge" style="
+                                background: #333; 
+                                color: #fff; 
+                            ">
+                                #5
+                            </div>
                             
-                            <img src="/assets/images/rooms/Krefeld-Experiment.webp" alt="Das Experiment" style="width: 100%; height: 100%; object-fit: cover; border: none;" />
+                            <img src="/assets/images/rooms/Krefeld-Experiment.webp" alt="Das Experiment" />
                         </div>
 
-                        <div class="card-content" style="flex: 2; padding: 1.5rem; display: flex; flex-direction: column; justify-content: center;">
-                            <h3 style="margin: 0; color: var(--rust-primary); font-size: 1.4rem; padding-left: 40px;">Das Experiment</h3>
-                            <span style="color: #666; font-size: 0.9rem; margin-bottom: 10px; padding-left: 40px;">
+                        <div class="ranking-card-body">
+                            <h3 style="margin: 0 0 4px 0; color: var(--rust-light); font-size: 1.35rem;">Das Experiment</h3>
+                            <span style="color: #aaa; font-size: 0.88rem; margin-bottom: 10px;">
                                 Limbus Escape Games | Krefeld
                             </span>
                             
-                            <hr style="border: 0; border-top: 1px dotted #ccc; margin: 10px 0;" />
+                            <hr style="border: 0; border-top: 1px dotted #444; margin: 10px 0;" />
 
                             <div style="display: flex; gap: 20px; flex-wrap: wrap;">
                                 <div>
-                                    <span style="font-size: 0.8rem; text-transform: uppercase; color: #888;">Gamemaster</span><br />
-                                    <span style="font-size: 1.5rem; font-weight: bold; color: var(--rust-primary);">
+                                    <span style="font-size: 0.78rem; text-transform: uppercase; color: #999;">Gamemaster</span><br />
+                                    <span style="font-size: 1.5rem; font-weight: bold; color: var(--rust-light);">
                                         4.5
                                     </span>
                                 </div>
                                 <div>
-                                    <span style="font-size: 0.8rem; text-transform: uppercase; color: #888;">Kulisse</span><br />
-                                    <span style="font-size: 1.2rem; font-weight: bold; color: #555;">
+                                    <span style="font-size: 0.78rem; text-transform: uppercase; color: #999;">Kulisse</span><br />
+                                    <span style="font-size: 1.25rem; font-weight: bold; color: #ccc;">
                                         4.5
                                     </span>
                                 </div>
                                 <div>
-                                    <span style="font-size: 0.8rem; text-transform: uppercase; color: #888;">Atmosphäre</span><br />
-                                    <span style="font-size: 1.2rem; font-weight: bold; color: #555;">
+                                    <span style="font-size: 0.78rem; text-transform: uppercase; color: #999;">Atmosphäre</span><br />
+                                    <span style="font-size: 1.25rem; font-weight: bold; color: #ccc;">
                                         4.5
                                     </span>
                                 </div>
@@ -439,205 +406,38 @@
 </div>
 
 <div style="margin-top: 2rem; text-align: center;">
-    <a href="/archiv/" class="btn-back">← Zum gesamten Archiv</a>
+    <a href="/hall-of-fame/" class="btn-back">← Zurück zur Hall of Fame</a>
 </div>
-
-<style>
-    @media (max-width: 700px) {
-        .room-card {
-            flex-direction: column !important;
-        }
-        .room-card img {
-            height: 200px !important;
-        }
-        .card-content h3, .card-content span {
-            padding-left: 0 !important;
-            margin-top: 10px;
-        }
-    }
-</style>
-
-
 
     </main>
 
     <footer id="footer">
-      <p>&copy; The Escape Archive.</p>
-      <p>
-        <a href="/philosophie/" style="color: var(--rust-light);">Unsere Philosophie</a>
-        <span style="color: #666; margin: 0 5px;">•</span>
-
-        <a href="/bewertungssystem/" style="color: var(--rust-light);">Bewertungssystem</a>
-        <span style="color: #666; margin: 0 5px;">•</span>
-
-        <a href="/was-ist-ein-escape-room/" style="color: var(--rust-light);">Was ist ein Escape-Room?</a>
-        <span style="color: #666; margin: 0 5px;">•</span>
-        
-        <a href="/arten-von-raetseln/" style="color: var(--rust-light);">Rätselguide</a>
-        <span style="color: #666; margin: 0 5px;">•</span>
-        
-        <a href="/schloss-typen/" style="color: var(--rust-light);">Schlosstypen</a>
-        <span style="color: #666; margin: 0 5px;">•</span>
-
-        <a href="/hall-of-fame/" style="color: var(--rust-light);">Hall of Fame</a>
-        <span style="color: #666; margin: 0 5px;">•</span>
-
-        <a href="/city/" style="color: var(--rust-light);">Regionale Archive</a>
-        <span style="color: #666; margin: 0 5px;">•</span>
-
-        <a href="/impressum/" style="color: var(--rust-light);">Impressum & Datenschutz</a>
-      </p>
+      <p class="footer-brand">&copy; 2026 The Escape Archive • Die Anrufbeantworter</p>
+      <div class="footer-links">
+        <a href="/philosophie/">Unsere Philosophie</a>
+        <span class="footer-sep">•</span>
+        <a href="/bewertungssystem/">Bewertungssystem</a>
+        <span class="footer-sep">•</span>
+        <a href="/was-ist-ein-escape-room/">Was ist ein Escape-Room?</a>
+        <span class="footer-sep">•</span>
+        <a href="/arten-von-raetseln/">Rätselguide</a>
+        <span class="footer-sep">•</span>
+        <a href="/schloss-typen/">Schlosstypen</a>
+        <span class="footer-sep">•</span>
+        <a href="/hall-of-fame/">Hall of Fame</a>
+        <span class="footer-sep">•</span>
+        <a href="/city/">Regionale Archive</a>
+        <span class="footer-sep">•</span>
+        <a href="/impressum/">Impressum &amp; Datenschutz</a>
+      </div>
     </footer>
 
   </div>
 
   
 
-  <script src="/assets/js/main.js"></script>
+  <script src="/assets/js/main.js?v=20261018"></script>
   <script data-goatcounter="https://nairolf22.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-
-  <style>
-    /* --- HEADER & LOGO STYLES --- */
-    header {
-      text-align: center;
-      padding-top: 1rem;
-    }
-
-    .logo-heading {
-      margin: 0;
-      padding: 0;
-      line-height: 1;
-      font-weight: normal;
-      display: block;
-      border: none;
-    }
-
-    .site-logo-link {
-      display: inline-block;
-      text-decoration: none;
-      border: none !important;
-      outline: none !important;
-      box-shadow: none !important;
-      -webkit-tap-highlight-color: transparent;
-    }
-
-    .site-logo-link:focus,
-    .site-logo-link:active,
-    .site-logo-link:hover {
-      outline: none !important;
-      border: none !important;
-      box-shadow: none !important;
-    }
-
-    .site-logo {
-      max-width: 95%;
-      width: 450px;
-      height: auto;
-      display: block;
-      margin: 0 auto;
-      border: none !important;
-      outline: none !important;
-    }
-
-    /* --- MASTER MOBILE FIX --- */
-
-    html,
-    body {
-      overflow-x: hidden;
-      max-width: 100%;
-      position: relative;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    p,
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6,
-    div,
-    span,
-    a {
-      overflow-wrap: break-word;
-      word-wrap: break-word;
-      hyphens: auto;
-    }
-
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6,
-    header h1,
-    .card-content h3,
-    .dossier-header h1,
-    .dossier-header h2 {
-      hyphens: none !important;
-      -webkit-hyphens: none !important;
-      word-break: normal !important;
-    }
-
-    @media (max-width: 600px) {
-      .site-logo {
-        width: 280px;
-      }
-    }
-
-    .contact-box,
-    div[style*="border"] {
-      max-width: 100%;
-      width: auto;
-    }
-
-    main,
-    .site-wrapper {
-      padding-left: 15px;
-      padding-right: 15px;
-      width: 100%;
-    }
-
-    @media (max-width: 768px) {
-
-      .dossier-header {
-        flex-direction: column !important;
-      }
-
-      .dossier-meta {
-        margin-right: 0 !important;
-        width: 100% !important;
-      }
-
-      .dossier-meta h1,
-      .dossier-meta h2 {
-        padding-right: 0 !important;
-        font-size: 1.8rem;
-      }
-
-      .dossier-meta>div[style*="position: absolute"] {
-        position: static !important;
-        margin-bottom: 1rem;
-        display: block;
-        width: 100%;
-      }
-
-      .btn-provider {
-        display: block;
-        text-align: center;
-        width: 100%;
-        margin-top: 0 !important;
-      }
-
-      .stamp-box {
-        margin-top: 1rem;
-        align-self: flex-start;
-      }
-    }
-  </style>
 </body>
 
 </html>

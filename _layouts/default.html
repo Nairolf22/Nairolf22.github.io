@@ -56,7 +56,7 @@
   <meta name="twitter:image"
     content="{{ site.url }}/assets/images/{% if page.thumbnail %}{{ page.thumbnail }}{% elsif page.images.size > 0 %}{{ page.images[0] }}{% else %}logo-escape-archive_800.webp{% endif %}">
 
-  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="/assets/css/style.css?v=20261018b">
 
   {% if page.url == '/karte/' %}
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
@@ -200,56 +200,65 @@
     <header>
       <div class="logo-heading">
         <a href="/" class="site-logo-link" aria-label="Zur Startseite von The Escape Archive">
-          <img src="/assets/images/logo-escape-archive_800.webp"
-            alt="The Escape Archive - Escape Room Reviews & Analysen" class="site-logo" width="450" height="150" fetchpriority="high">
+          <img
+            src="/assets/images/logo-escape-archive_800.webp"
+            srcset="/assets/images/logo-escape-archive_400.webp 400w, /assets/images/logo-escape-archive_600.webp 600w, /assets/images/logo-escape-archive_800.webp 800w"
+            sizes="(max-width: 600px) 190px, 260px"
+            alt="The Escape Archive - Escape Room Reviews & Analysen"
+            class="site-logo"
+            width="260"
+            height="142"
+            fetchpriority="high">
         </a>
       </div>
-      <p style="color: #ccc; margin-top: 10px;">• EST. 2025 • CLASSIFIED REVIEWS •</p>
+      <div>
+        <span class="header-tagline">• EST. 2025 • CLASSIFIED REVIEWS •</span>
+      </div>
     </header>
 
-    <nav aria-label="Hauptnavigation">
+    <nav class="site-nav" aria-label="Hauptnavigation">
       <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-label="Menü ein- oder ausblenden">
-      <label for="nav-toggle" class="burger-icon" aria-label="Menü">☰ Menü</label>
+      <label for="nav-toggle" class="burger-icon" aria-label="Menü">
+        <span>Navigation</span>
+        <span class="burger-bars" aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+      </label>
       <div class="nav-links">
-        <a href="/karte/">Karte</a>
-        <a href="/archiv/">Alle Akten</a>
-        <a href="/team/">Über uns</a>
-        <a href="/kontakt/">Kontakt</a>
-        <a href="/raetsel/">Trainingslager</a>
+        <a href="/karte/" {% if page.url == '/karte/' %}class="active"{% endif %}>Karte</a>
+        <a href="/archiv/" {% if page.url == '/archiv/' or page.layout == 'review' %}class="active"{% endif %}>Alle Akten</a>
+        <a href="/hall-of-fame/" {% if page.url contains '/hall-of-fame' %}class="active"{% endif %}>Hall of Fame</a>
+        <a href="/team/" {% if page.url contains '/team' %}class="active"{% endif %}>Über uns</a>
+        <a href="/raetsel/" {% if page.url contains '/raetsel' %}class="active"{% endif %}>Trainingslager</a>
+        <a href="/kontakt/" {% if page.url == '/kontakt/' %}class="active"{% endif %}>Kontakt</a>
       </div>
     </nav>
 
     <main>
       {{ content }}
-
     </main>
 
     <footer id="footer">
-      <p>&copy; The Escape Archive.</p>
-      <p>
-        <a href="/philosophie/" style="color: var(--rust-light);">Unsere Philosophie</a>
-        <span style="color: #666; margin: 0 5px;">•</span>
-
-        <a href="/bewertungssystem/" style="color: var(--rust-light);">Bewertungssystem</a>
-        <span style="color: #666; margin: 0 5px;">•</span>
-
-        <a href="/was-ist-ein-escape-room/" style="color: var(--rust-light);">Was ist ein Escape-Room?</a>
-        <span style="color: #666; margin: 0 5px;">•</span>
-        
-        <a href="/arten-von-raetseln/" style="color: var(--rust-light);">Rätselguide</a>
-        <span style="color: #666; margin: 0 5px;">•</span>
-        
-        <a href="/schloss-typen/" style="color: var(--rust-light);">Schlosstypen</a>
-        <span style="color: #666; margin: 0 5px;">•</span>
-
-        <a href="/hall-of-fame/" style="color: var(--rust-light);">Hall of Fame</a>
-        <span style="color: #666; margin: 0 5px;">•</span>
-
-        <a href="/city/" style="color: var(--rust-light);">Regionale Archive</a>
-        <span style="color: #666; margin: 0 5px;">•</span>
-
-        <a href="/impressum/" style="color: var(--rust-light);">Impressum & Datenschutz</a>
-      </p>
+      <p class="footer-brand">&copy; {{ site.time | date: "%Y" }} The Escape Archive • Die Anrufbeantworter</p>
+      <div class="footer-links">
+        <a href="/philosophie/">Unsere Philosophie</a>
+        <span class="footer-sep">•</span>
+        <a href="/bewertungssystem/">Bewertungssystem</a>
+        <span class="footer-sep">•</span>
+        <a href="/was-ist-ein-escape-room/">Was ist ein Escape-Room?</a>
+        <span class="footer-sep">•</span>
+        <a href="/arten-von-raetseln/">Rätselguide</a>
+        <span class="footer-sep">•</span>
+        <a href="/schloss-typen/">Schlosstypen</a>
+        <span class="footer-sep">•</span>
+        <a href="/hall-of-fame/">Hall of Fame</a>
+        <span class="footer-sep">•</span>
+        <a href="/city/">Regionale Archive</a>
+        <span class="footer-sep">•</span>
+        <a href="/impressum/">Impressum &amp; Datenschutz</a>
+      </div>
     </footer>
 
   </div>
@@ -259,151 +268,8 @@
   <script src="https://unpkg.com/leaflet.markercluster/dist/leaflet.markercluster.js"></script>
   {% endif %}
 
-  <script src="/assets/js/main.js"></script>
+  <script src="/assets/js/main.js?v=20261018"></script>
   <script data-goatcounter="https://nairolf22.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-
-  <style>
-    /* --- HEADER & LOGO STYLES --- */
-    header {
-      text-align: center;
-      padding-top: 1rem;
-    }
-
-    .logo-heading {
-      margin: 0;
-      padding: 0;
-      line-height: 1;
-      font-weight: normal;
-      display: block;
-      border: none;
-    }
-
-    .site-logo-link {
-      display: inline-block;
-      text-decoration: none;
-      border: none !important;
-      outline: none !important;
-      box-shadow: none !important;
-      -webkit-tap-highlight-color: transparent;
-    }
-
-    .site-logo-link:focus,
-    .site-logo-link:active,
-    .site-logo-link:hover {
-      outline: none !important;
-      border: none !important;
-      box-shadow: none !important;
-    }
-
-    .site-logo {
-      max-width: 95%;
-      width: 450px;
-      height: auto;
-      display: block;
-      margin: 0 auto;
-      border: none !important;
-      outline: none !important;
-    }
-
-    /* --- MASTER MOBILE FIX --- */
-
-    html,
-    body {
-      overflow-x: hidden;
-      max-width: 100%;
-      position: relative;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    p,
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6,
-    div,
-    span,
-    a {
-      overflow-wrap: break-word;
-      word-wrap: break-word;
-      hyphens: auto;
-    }
-
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6,
-    header h1,
-    .card-content h3,
-    .dossier-header h1,
-    .dossier-header h2 {
-      hyphens: none !important;
-      -webkit-hyphens: none !important;
-      word-break: normal !important;
-    }
-
-    @media (max-width: 600px) {
-      .site-logo {
-        width: 280px;
-      }
-    }
-
-    .contact-box,
-    div[style*="border"] {
-      max-width: 100%;
-      width: auto;
-    }
-
-    main,
-    .site-wrapper {
-      padding-left: 15px;
-      padding-right: 15px;
-      width: 100%;
-    }
-
-    @media (max-width: 768px) {
-
-      .dossier-header {
-        flex-direction: column !important;
-      }
-
-      .dossier-meta {
-        margin-right: 0 !important;
-        width: 100% !important;
-      }
-
-      .dossier-meta h1,
-      .dossier-meta h2 {
-        padding-right: 0 !important;
-        font-size: 1.8rem;
-      }
-
-      .dossier-meta>div[style*="position: absolute"] {
-        position: static !important;
-        margin-bottom: 1rem;
-        display: block;
-        width: 100%;
-      }
-
-      .btn-provider {
-        display: block;
-        text-align: center;
-        width: 100%;
-        margin-top: 0 !important;
-      }
-
-      .stamp-box {
-        margin-top: 1rem;
-        align-self: flex-start;
-      }
-    }
-  </style>
 </body>
 
 </html>

@@ -9,14 +9,14 @@ r.gamemaster.score %}
 <style>
     .closed-alert {
         border: 2px solid #d32f2f;
-        /* Alarm-Rot */
-        background-color: rgba(211, 47, 47, 0.05);
-        color: #d32f2f;
-        padding: 1rem;
+        background-color: rgba(211, 47, 47, 0.08);
+        color: #b71c1c;
+        padding: 1.25rem;
         text-align: center;
         margin-bottom: 2rem;
         font-family: 'Courier New', monospace;
         text-transform: uppercase;
+        border-radius: 6px;
         position: relative;
         overflow: hidden;
     }
@@ -32,12 +32,12 @@ r.gamemaster.score %}
         display: inline-block;
         border: 3px solid #d32f2f;
         color: #d32f2f;
-        padding: 0.2rem 1rem;
+        padding: 0.25rem 1rem;
         font-weight: bold;
-        font-size: 1.5rem;
+        font-size: clamp(1.15rem, 3vw, 1.45rem);
         text-transform: uppercase;
         transform: rotate(-3deg);
-        opacity: 0.8;
+        opacity: 0.9;
         letter-spacing: 2px;
         margin-top: 5px;
         font-family: 'Courier New', monospace;
@@ -47,16 +47,15 @@ r.gamemaster.score %}
     .stamp-planned {
         display: inline-block;
         border: 3px solid #f57f17;
-        /* Dunkles Orange / Gold */
         color: #f57f17;
-        padding: 0.2rem 1rem;
+        background: rgba(255, 255, 255, 0.6);
+        padding: 0.35rem 1rem;
         font-weight: bold;
-        font-size: 1.5rem;
+        font-size: clamp(1.15rem, 3vw, 1.45rem);
         text-transform: uppercase;
         transform: rotate(-3deg);
-        opacity: 0.9;
+        opacity: 0.95;
         letter-spacing: 2px;
-        margin-top: 5px;
         font-family: 'Courier New', monospace;
     }
 
@@ -64,8 +63,8 @@ r.gamemaster.score %}
         margin: 2rem 0;
         padding: 1.5rem;
         background-color: #fff8e1;
-        /* Sehr helles Gelb */
         border: 1px dashed #f57f17;
+        border-radius: 6px;
         text-align: center;
     }
 
@@ -78,52 +77,21 @@ r.gamemaster.score %}
     }
 
     .planned-date-value {
-        font-size: 2.5rem;
+        font-size: clamp(1.75rem, 5vw, 2.5rem);
         font-weight: bold;
         color: #e65100;
         font-family: 'Special Elite', 'Courier New', monospace;
+        word-break: break-word;
     }
 
     .planned-teaser {
-        font-size: 1.2rem;
+        font-size: clamp(1.05rem, 2.5vw, 1.2rem);
         line-height: 1.6;
         margin: 2rem 0;
-        padding: 0 1rem;
+        padding: 0 0.5rem;
         text-align: center;
         font-style: italic;
-        color: #444;
-    }
-
-    /* --- Mobile Responsive --- */
-    @media (max-width: 600px) {
-        .planned-date-value {
-            font-size: 2rem;
-            word-break: break-word;
-        }
-
-        .stamp-planned {
-            font-size: 1.2rem;
-            padding: 0.2rem 0.6rem;
-        }
-
-        .dossier-header h1, .dossier-header h2 {
-            padding-right: 0 !important;
-            margin-top: 2rem;
-        }
-
-        .dossier-meta {
-            margin-right: 0 !important;
-        }
-
-        .dossier-header {
-            flex-direction: column;
-        }
-
-        .stamp-box,
-        .stamp-planned {
-            margin-top: 1rem;
-            align-self: flex-start;
-        }
+        color: #333;
     }
 </style>
 
@@ -132,58 +100,45 @@ r.gamemaster.score %}
     {% if page.closed %}
     <div class="closed-alert">
         <div class="stamp-inactive">AKTE GESCHLOSSEN</div>
-        <p style="margin-top: 10px; font-size: 0.9rem; color: #fff;">
+        <p style="margin-top: 10px; margin-bottom: 0; font-size: 0.9rem; color: #333; font-weight: bold;">
             ⚠ Dieser Raum ist dauerhaft geschlossen und nicht mehr buchbar. <br>
             Der Bericht dient nur noch historischen Archivzwecken.
         </p>
     </div>
     {% endif %}
 
-    <div class="dossier-header" style="display: flex; justify-content: space-between; align-items: flex-start;">
+    <div class="dossier-header">
 
-        <div class="dossier-meta" style="position: relative; flex: 1; margin-right: 30px;">
-
-            <div class="provider-badge-container">
-                {% if page.website and page.closed != true %}
-                <a href="{{ page.website }}" target="_blank" rel="noopener" class="btn-provider" style="margin-top: 0;">
-                    ZUM ANBIETER &raquo;
-                </a>
-                {% endif %}
-
-                {% if page.badge %}
-                <div class="dossier-badge-wrapper-new">
-                    <img src="/assets/images/{{ page.badge }}.png" alt="Badge" class="dossier-badge-img-new">
-                </div>
-                {% endif %}
-            </div>
-
+        <div class="dossier-meta">
             <span class="provider">{{ page.provider }}</span>
 
-            <h1 style="padding-right: 220px; font-size: 2em; margin-top: 0.5rem; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
-                {{ page.title }}
-                {% if page.closed %} <span
-                    style="color: #d32f2f; font-size: 0.6em; vertical-align: middle;">[INAKTIV]</span>{% endif %}
-                {% if page.planned %} <span
-                    style="color: #f57f17; font-size: 0.6em; vertical-align: middle;">[GEPLANT]</span>{% endif %}
+            <h1 class="dossier-title-row">
+                <span>{{ page.title }}</span>
+                {% if page.closed %}
+                <span style="color: #d32f2f; font-size: 0.55em; vertical-align: middle;">[INAKTIV]</span>
+                {% endif %}
+                {% if page.planned %}
+                <span style="color: #f57f17; font-size: 0.55em; vertical-align: middle;">[GEPLANT]</span>
+                {% endif %}
                 
                 {% if page.outdoor %}
-                    <span class="room-type-tag type-outdoor">🌳 Outdoor Game</span>
+                    <span class="room-type-tag type-outdoor">Outdoor Game</span>
                 {% else %}
-                    <span class="room-type-tag type-indoor">🏠 Escape Room</span>
+                    <span class="room-type-tag type-indoor">Escape Room</span>
                 {% endif %}
             </h1>
 
-            <p style="margin:0; font-size: 0.9rem; color: #555;">
+            <p class="dossier-location">
                 <strong>Ort:</strong> {{ page.location.city }} | {{ page.location.address }}
             </p>
 
             {% unless page.planned %}
-            <div style="margin-top: 1rem; padding-top: 0.5rem; border-top: 1px dotted #888;">
-                <p style="margin: 0.2rem 0;">
+            <div class="dossier-investigators">
+                <p>
                     <strong>Einsatzdatum:</strong>
                     {{ page.visit_date | date: "%d.%m.%Y" }}
                 </p>
-                <p style="margin: 0.2rem 0;">
+                <p>
                     <strong>Ermittler:</strong>
                     {% for participant in page.participants %}<a href="/team/#{{ participant | slugify }}"
                         class="investigator-link">{{ participant }}</a>{% unless forloop.last %}, {% endunless %}{%
@@ -193,23 +148,38 @@ r.gamemaster.score %}
             {% endunless %}
         </div>
 
-        {% unless page.planned %}
-        <div class="stamp-box">
-            Overall<br>
-            <span style="font-size: 2rem;">{{ calculated_avg | round: 1 }}</span> / 5
+        <div class="dossier-aside">
+            <div class="dossier-stamps-row">
+                {% unless page.planned %}
+                <div class="stamp-box">
+                    Overall<br>
+                    <span class="stamp-score">{{ calculated_avg | round: 1 }}</span> / 5
+                </div>
+                {% else %}
+                <div class="stamp-planned">
+                    GEPLANT
+                </div>
+                {% endunless %}
+            </div>
+
+            {% if page.website and page.closed != true %}
+            <a href="{{ page.website }}" target="_blank" rel="noopener" class="btn-provider">
+                ZUM ANBIETER &raquo;
+            </a>
+            {% endif %}
         </div>
-        {% else %}
-        <div class="stamp-planned">
-            GEPLANT
-        </div>
-        {% endunless %}
     </div>
 
     {% if page.images.size > 0 %}
-    <div class="evidence-photos">
+    <div class="evidence-photos{% if page.images.size == 1 %} single-photo{% endif %}">
         {% for img in page.images %}
-        <div class="polaroid">
-            <img src="/assets/images/{{ img }}" alt="Beweisfoto aus dem Raum {{ page.title }} bei {{ page.provider }}">
+        <div class="polaroid{% if forloop.first and page.badge %} has-stamped-badge{% endif %}">
+            <img src="/assets/images/{{ img }}" alt="Beweisfoto aus dem Raum {{ page.title }} bei {{ page.provider }}" class="polaroid-photo">
+            {% if forloop.first and page.badge %}
+            <div class="dossier-photo-badge">
+                <img src="/assets/images/{{ page.badge }}.png" alt="Auszeichnung: {{ page.badge }}" class="dossier-photo-badge-img">
+            </div>
+            {% endif %}
         </div>
         {% endfor %}
     </div>

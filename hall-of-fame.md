@@ -25,7 +25,7 @@ permalink: /hall-of-fame/
 
         <hr style="border: 0; border-top: 2px dashed #999; margin: 3rem 0;">
 
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 1.5rem;">
 
             <a href="/hall-of-fame/top-rooms/" style="text-decoration: none; color: inherit;">
                 <div class="category-card" style="
