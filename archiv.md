@@ -106,11 +106,12 @@ permalink: /archiv/
         </div>
     </div>
 
-    <div class="filter-bar">
-        <button class="btn-filter active" id="filter-all" onclick="filterCategory('all')">Alle Akten</button>
-        <button class="btn-filter" id="filter-indoor" onclick="filterCategory('indoor')">Indoor Escape Rooms</button>
-        <button class="btn-filter" id="filter-outdoor" onclick="filterCategory('outdoor')">Outdoor Games</button>
-    </div>
+    <search class="filter-bar" aria-label="Akten nach Kategorie filtern">
+        <button type="button" class="btn-filter active" id="filter-all" data-category="all" aria-pressed="true">Alle Akten</button>
+        <button type="button" class="btn-filter" id="filter-indoor" data-category="indoor" aria-pressed="false">Indoor Escape Room</button>
+        <button type="button" class="btn-filter" id="filter-outdoor" data-category="outdoor" aria-pressed="false">Outdoor Games</button>
+        <button type="button" class="btn-filter" id="filter-online" data-category="online" aria-pressed="false">Online Escape</button>
+    </search>
 
     <div class="card-grid" id="roomGrid">
         {% for review in site.reviews %}
@@ -118,14 +119,24 @@ permalink: /archiv/
         {% assign r = review.ratings %}
         {% assign sum = r.atmosphere.score | plus: r.story.score | plus: r.puzzles.score | plus: r.scenery.score | plus: r.gamemaster.score %}
         {% assign calculated_avg = sum | divided_by: 5.0 %}
+        {% if review.online %}
+            {% assign review_category = "online" %}
+        {% elsif review.outdoor %}
+            {% assign review_category = "outdoor" %}
+        {% else %}
+            {% assign review_category = "indoor" %}
+        {% endif %}
 
         <a href="{{ review.url }}" class="room-card-link"
            data-title="{{ review.title | downcase }}"
            data-provider="{{ review.provider | downcase }}"
+           data-category="{{ review_category }}"
            data-outdoor="{% if review.outdoor %}true{% else %}false{% endif %}"
+           data-online="{% if review.online %}true{% else %}false{% endif %}"
+           data-free-test="{% if review.free_test %}true{% else %}false{% endif %}"
            data-rating="{% if review.pending or review.planned %}-1{% else %}{{ calculated_avg }}{% endif %}">
             
-            <article class="room-card {% if review.outdoor %}outdoor-card{% endif %}">
+            <article class="room-card {% if review.online %}online-card{% elsif review.outdoor %}outdoor-card{% endif %}">
                 <div class="card-image-wrapper">
                     {% if review.thumbnail %}
                         {% assign img_src = review.thumbnail %}
@@ -137,7 +148,7 @@ permalink: /archiv/
 
                     <img 
                         src="/assets/images/{{ img_src }}" 
-                        alt="{{ review.title }} ({{ review.provider }}, {{ review.location.city }}) – Escape Room Test" 
+                        alt="{{ review.title }} ({{ review.provider }}{% if review.online %}, Online{% elsif review.location.city %}, {{ review.location.city }}{% endif %}) – {% if review.online %}Online Escape{% elsif review.outdoor %}Outdoor Game{% else %}Escape Room{% endif %} Test" 
                         loading="lazy" 
                         width="400" 
                         height="200" 
@@ -173,6 +184,18 @@ permalink: /archiv/
                 </div>
 
                 <div class="card-content">
+                    <div class="card-tags">
+                        {% if review.online %}
+                            <span class="room-type-tag type-online tag-compact">Online Escape</span>
+                        {% elsif review.outdoor %}
+                            <span class="room-type-tag type-outdoor tag-compact">Outdoor Game</span>
+                        {% else %}
+                            <span class="room-type-tag type-indoor tag-compact">Indoor Escape Room</span>
+                        {% endif %}
+                        {% if review.free_test %}
+                            <span class="free-test-tag tag-compact">Kostenlos getestet</span>
+                        {% endif %}
+                    </div>
                     <h3>
                         {{ review.title }}
                         {% if review.closed %}
@@ -180,7 +203,7 @@ permalink: /archiv/
                         {% endif %}
                     </h3>
                     <p class="card-meta">
-                        {{ review.provider }} | {{ review.location.city }}
+                        {{ review.provider }} | {% if review.online %}Online{% else %}{{ review.location.city }}{% endif %}
                     </p>
                     
                     {% if review.closed %}
@@ -206,6 +229,11 @@ permalink: /archiv/
             </article>
         </a>
         {% endfor %}
+    </div>
+
+    <div id="archiveEmptyState" class="archive-empty-state" hidden aria-live="polite">
+        <p class="archive-empty-state-title">// Keine Akten in dieser Kategorie</p>
+        <p class="archive-empty-state-text">Für diese Kategorie wurden bisher noch keine Testberichte archiviert. Schau bald wieder vorbei!</p>
     </div>
 
     <div id="paginationControls" class="pagination-container"></div>

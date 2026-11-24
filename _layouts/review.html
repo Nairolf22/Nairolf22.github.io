@@ -121,17 +121,29 @@ r.gamemaster.score %}
                 <span style="color: #f57f17; font-size: 0.55em; vertical-align: middle;">[GEPLANT]</span>
                 {% endif %}
                 
-                {% if page.outdoor %}
+                {% if page.online %}
+                    <span class="room-type-tag type-online">Online Escape</span>
+                {% elsif page.outdoor %}
                     <span class="room-type-tag type-outdoor">Outdoor Game</span>
                 {% else %}
-                    <span class="room-type-tag type-indoor">Escape Room</span>
+                    <span class="room-type-tag type-indoor">Indoor Escape Room</span>
+                {% endif %}
+
+                {% if page.free_test %}
+                    <span class="free-test-tag">Kostenlos getestet</span>
                 {% endif %}
             </h1>
 
+            {% if page.online %}
+            <p class="dossier-location">
+                <strong>Spielort:</strong> Online (ortsunabhängig spielbar){% if page.location.address %} | {{ page.location.address }}{% endif %}
+            </p>
+            {% elsif page.location.city %}
             {% assign city_slug = page.location.city | downcase | replace: 'ä', 'ae' | replace: 'ö', 'oe' | replace: 'ü', 'ue' | replace: 'ß', 'ss' | slugify %}
             <p class="dossier-location">
-                <strong>Ort:</strong> <a href="/city/{{ city_slug }}/" style="color: var(--rust-primary); font-weight: bold; text-decoration: underline;">{{ page.location.city }}</a> | {{ page.location.address }}
+                <strong>Ort:</strong> <a href="/city/{{ city_slug }}/" style="color: var(--rust-primary); font-weight: bold; text-decoration: underline;">{{ page.location.city }}</a>{% if page.location.address %} | {{ page.location.address }}{% endif %}
             </p>
+            {% endif %}
 
             {% unless page.planned %}
             <div class="dossier-investigators">
@@ -175,11 +187,30 @@ r.gamemaster.score %}
         </div>
     </div>
 
+    {% if page.free_test %}
+    <aside class="transparency-notice" aria-label="Transparenzhinweis">
+        <div class="transparency-notice-header">
+            <span class="transparency-notice-icon" aria-hidden="true">⚖️</span>
+            <span>Transparenzhinweis • Kostenlos getestet</span>
+        </div>
+        <p class="transparency-notice-text">
+            {% if page.free_test_note %}
+                {{ page.free_test_note }}
+            {% elsif page.planned %}
+                Dieses {% if page.online %}Online Escape{% elsif page.outdoor %}Outdoor Game{% else %}Escape-Room-Erlebnis{% endif %} wird uns vom Anbieter kostenlos zum Test zur Verfügung gestellt.
+            {% else %}
+                Dieses {% if page.online %}Online Escape{% elsif page.outdoor %}Outdoor Game{% else %}Escape-Room-Erlebnis{% endif %} wurde uns vom Anbieter kostenlos zum Test zur Verfügung gestellt.
+            {% endif %}
+            Dies hat selbstverständlich keinerlei Einfluss auf unser Urteil: Wir bewerten nach exakt denselben <a href="/bewertungssystem/">Kriterien</a> und berichten wie immer unabhängig, ehrlich und fair.
+        </p>
+    </aside>
+    {% endif %}
+
     {% if page.images.size > 0 %}
     <div class="evidence-photos{% if page.images.size == 1 %} single-photo{% endif %}">
         {% for img in page.images %}
         <div class="polaroid{% if forloop.first and page.badge %} has-stamped-badge{% endif %}">
-            <img src="/assets/images/{{ img }}" alt="Beweisfoto: Escape Room {{ page.title }} bei {{ page.provider }} in {{ page.location.city }}" class="polaroid-photo" width="600" height="450" {% if forloop.first %}fetchpriority="high"{% else %}loading="lazy"{% endif %}>
+            <img src="/assets/images/{{ img }}" alt="Beweisfoto: {% if page.online %}Online Escape{% elsif page.outdoor %}Outdoor Game{% else %}Escape Room{% endif %} {{ page.title }} bei {{ page.provider }}{% if page.online != true and page.location.city %} in {{ page.location.city }}{% endif %}" class="polaroid-photo" width="600" height="450" {% if forloop.first %}fetchpriority="high"{% else %}loading="lazy"{% endif %}>
             {% if forloop.first and page.badge %}
             <div class="dossier-photo-badge">
                 <img src="/assets/images/{{ page.badge }}.png" alt="Auszeichnung: {{ page.badge }}" class="dossier-photo-badge-img" width="125" height="115">
@@ -211,7 +242,7 @@ r.gamemaster.score %}
         <div class="planned-date-title">Status der Ermittlungsakte:</div>
         <div class="planned-date-value" style="font-size: clamp(1.3rem, 3.5vw, 1.8rem);">ERMITTLUNG LÄUFT</div>
         <p style="margin-top: 0.75rem; margin-bottom: 0; color: #444;">
-            Unser Team hat <strong>{{ page.title }}</strong> bei {{ page.provider }} in {{ page.location.city }} bereits gespielt. Der ausführliche Testbericht befindet sich aktuell in der Auswertung.
+            Unser Team hat <strong>{{ page.title }}</strong> bei {{ page.provider }}{% if page.online != true and page.location.city %} in {{ page.location.city }}{% endif %} bereits gespielt. Der ausführliche Testbericht befindet sich aktuell in der Auswertung.
         </p>
     </div>
 
@@ -242,7 +273,7 @@ r.gamemaster.score %}
     </div>
 
     <div class="criterion">
-        <h3>{% if page.outdoor %}Routenführung{% else %}Kulisse & Ausstattung{% endif %}</h3>
+        <h3>{% if page.online %}Gestaltung & Technik{% elsif page.outdoor %}Routenführung{% else %}Kulisse & Ausstattung{% endif %}</h3>
         <div class="stars" style="--score: {{ page.ratings.scenery.score }};">★★★★★</div>
         <div class="criterion-text">
             {{ page.ratings.scenery.text }}
@@ -250,7 +281,7 @@ r.gamemaster.score %}
     </div>
 
     <div class="criterion">
-        <h3>{% if page.outdoor %}Support und Feedback{% else %}Gamemaster & Service{% endif %}</h3>
+        <h3>{% if page.online %}Hinweissystem & Support{% elsif page.outdoor %}Support und Feedback{% else %}Gamemaster & Service{% endif %}</h3>
         <div class="stars" style="--score: {{ page.ratings.gamemaster.score }};">★★★★★</div>
         <div class="criterion-text">
             {{ page.ratings.gamemaster.text }}
@@ -269,7 +300,8 @@ r.gamemaster.score %}
     <details id="eaWidgetGenerator" class="provider-widget-details"
       data-title="{{ page.title | escape }}"
       data-provider="{{ page.provider | escape }}"
-      data-city="{{ page.location.city | escape }}"
+      data-city="{% if page.online %}Online{% else %}{{ page.location.city | escape }}{% endif %}"
+      data-category="{% if page.online %}online{% elsif page.outdoor %}outdoor{% else %}indoor{% endif %}"
       data-score="{{ calculated_avg | round: 1 }}"
       data-atm="{{ page.ratings.atmosphere.score }}"
       data-sty="{{ page.ratings.story.score }}"
@@ -359,7 +391,7 @@ r.gamemaster.score %}
             {% for room in siblings %}
             <li style="margin-bottom: 0.5rem; border-bottom: 1px dotted #ccc; padding-bottom: 0.5rem;">
                 <a href="{{ room.url }}" style="font-weight: bold; color: var(--rust-primary); text-decoration: none;">
-                    📂 {{ room.title }} ({{ room.location.city }})
+                    📂 {{ room.title }}{% if room.online %} (Online){% elsif room.location.city %} ({{ room.location.city }}){% endif %}
                 </a>
                 {% unless room.pending or room.planned %}
                 <span style="font-size: 0.8rem; color: #666;">
@@ -377,7 +409,9 @@ r.gamemaster.score %}
     {% endif %}
 
     <div style="margin-top: 2rem; display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; text-align: center;">
+        {% if page.online != true and page.location.city %}
         <a href="/city/{{ city_slug }}/" class="btn-back">📍 Alle Escape Rooms in {{ page.location.city }}</a>
+        {% endif %}
         <a href="/archiv/" class="btn-back">← Zum kompletten Fall-Archiv</a>
     </div>
 

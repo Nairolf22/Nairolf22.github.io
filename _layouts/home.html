@@ -246,9 +246,21 @@ title: "Sondereinheit für Escape Room Analysen & Tests"
             </div>
 
             <div class="hero-content">
+                <div class="card-tags">
+                    {% if next_planned.online %}
+                        <span class="room-type-tag type-online tag-compact">Online Escape</span>
+                    {% elsif next_planned.outdoor %}
+                        <span class="room-type-tag type-outdoor tag-compact">Outdoor Game</span>
+                    {% else %}
+                        <span class="room-type-tag type-indoor tag-compact">Indoor Escape Room</span>
+                    {% endif %}
+                    {% if next_planned.free_test %}
+                        <span class="free-test-tag tag-compact">Kostenlos getestet</span>
+                    {% endif %}
+                </div>
                 <h2 style="margin-top: 0; color: #fff;">{{ next_planned.title }}</h2>
                 <p style="font-family: 'Courier New'; color: #888; margin-bottom: 1rem;">
-                    {{ next_planned.provider }} | {{ next_planned.location.city }}
+                    {{ next_planned.provider }} | {% if next_planned.online %}Online{% else %}{{ next_planned.location.city }}{% endif %}
                 </p>
 
                 <p style="color: #ccc;">{{ next_planned.summary | truncate: 300 }}</p>
@@ -298,9 +310,21 @@ r.gamemaster.score %}
             </div>
 
             <div class="hero-content">
+                <div class="card-tags">
+                    {% if latest_review.online %}
+                        <span class="room-type-tag type-online tag-compact">Online Escape</span>
+                    {% elsif latest_review.outdoor %}
+                        <span class="room-type-tag type-outdoor tag-compact">Outdoor Game</span>
+                    {% else %}
+                        <span class="room-type-tag type-indoor tag-compact">Indoor Escape Room</span>
+                    {% endif %}
+                    {% if latest_review.free_test %}
+                        <span class="free-test-tag tag-compact">Kostenlos getestet</span>
+                    {% endif %}
+                </div>
                 <h2 style="margin-top: 0; color: #fff;">{{ latest_review.title }}</h2>
                 <p style="font-family: 'Courier New'; color: #888; margin-bottom: 1rem;">
-                    {{ latest_review.provider }} | {{ latest_review.location.city }}
+                    {{ latest_review.provider }} | {% if latest_review.online %}Online{% else %}{{ latest_review.location.city }}{% endif %}
                 </p>
 
                 <p style="color: #ccc;">{{ latest_review.summary | truncate: 300 }}</p>

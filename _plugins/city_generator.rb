@@ -24,8 +24,14 @@ module CityPageGenerator
 
     def generate(site)
       if site.layouts.key? 'city_hub'
-        # Alle Städte sammeln
-        cities = site.collections['reviews'].docs.map { |doc| doc.data.dig('location', 'city') }.compact.uniq
+        # Alle Städte physischer (nicht reiner Online-) Escape Rooms sammeln
+        cities = site.collections['reviews'].docs
+          .reject { |doc| doc.data['online'] == true }
+          .map { |doc| doc.data.dig('location', 'city') }
+          .compact
+          .map { |city| city.to_s.strip }
+          .reject { |city| city.empty? || city.downcase == 'online' }
+          .uniq
 
         # Für jede Stadt eine Seite bauen
         cities.each do |city|

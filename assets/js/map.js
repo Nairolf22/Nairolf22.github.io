@@ -37,6 +37,9 @@ if (document.getElementById('escapeMap')) {
         var allLatLngs = [];
 
         roomData.forEach(function(room) {
+            if (room.online === true || room.lat == null || room.lng == null || isNaN(room.lat) || isNaN(room.lng)) {
+                return;
+            }
             
             // --- FARB- & TEXT-BERECHNUNG ---
             var colorString;
@@ -84,8 +87,12 @@ if (document.getElementById('escapeMap')) {
             
             // --- POPUP INHALT ---
             var badgeHtml = room.outdoor === true ? 
-                `<span class="room-type-tag type-outdoor" style="margin-bottom: 6px;">Outdoor Game</span><br>` : 
-                `<span class="room-type-tag type-indoor" style="margin-bottom: 6px;">Escape Room</span><br>`;
+                `<span class="room-type-tag type-outdoor tag-compact" style="margin-bottom: 6px;">Outdoor Game</span>` : 
+                `<span class="room-type-tag type-indoor tag-compact" style="margin-bottom: 6px;">Indoor Escape Room</span>`;
+            if (room.free_test === true) {
+                badgeHtml += ` <span class="free-test-tag tag-compact" style="margin-bottom: 6px;">Kostenlos getestet</span>`;
+            }
+            badgeHtml += '<br>';
 
             var popupContent = `
                 <div style="text-align:center;">

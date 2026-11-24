@@ -643,7 +643,7 @@ footer {
 }
 
 /* Karten in hellen Dossiers (z.B. Regionale Archive / City Hub) */
-.review-dossier .room-card:not(.outdoor-card) {
+.review-dossier .room-card:not(.outdoor-card):not(.online-card) {
   background-color: #242424;
   color: #e0e0e0;
 }
@@ -663,6 +663,17 @@ footer {
 .room-card.outdoor-card:hover {
   border-color: #438759;
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.75), 0 0 12px rgba(46, 125, 50, 0.3);
+}
+
+/* Custom Card background for Online Escape Games */
+.room-card.online-card {
+  background-color: #172330;
+  border-color: #294663;
+}
+
+.room-card.online-card:hover {
+  border-color: #4fa3e0;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.75), 0 0 12px rgba(79, 163, 224, 0.3);
 }
 
 /* Badge overlay on Room Cards (Image container) */
@@ -1219,6 +1230,36 @@ footer {
   box-shadow: 0 0 10px rgba(141, 64, 4, 0.5);
 }
 
+.btn-filter:focus-visible {
+  outline: 3px solid var(--rust-glow);
+  outline-offset: 2px;
+}
+
+.archive-empty-state {
+  text-align: center;
+  padding: 2.5rem 1.5rem;
+  margin: 1rem 0 2rem;
+  background-color: #1d1d1d;
+  border: 1px dashed #555;
+  border-radius: 6px;
+  color: #ccc;
+}
+
+.archive-empty-state-title {
+  margin: 0 0 0.5rem 0;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--rust-light);
+  font-weight: bold;
+}
+
+.archive-empty-state-text {
+  margin: 0;
+  font-size: 0.92rem;
+  color: #bdbdbd;
+}
+
 @media (max-width: 600px) {
   .filter-bar {
     gap: 0.45rem;
@@ -1449,6 +1490,140 @@ footer {
 
 .room-type-tag.type-outdoor::before {
   background-color: #6fa880;
+}
+
+.room-type-tag.type-online {
+  background-color: #162432;
+  color: #d4e8fa;
+  border: 1px solid #2e5070;
+  border-left: 3px solid #4fa3e0;
+}
+
+.room-type-tag.type-online::before {
+  background-color: #6ab7ef;
+}
+
+/* Transparenz-Tag "Kostenlos getestet" */
+.free-test-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 9px;
+  font-size: 0.72rem;
+  font-weight: bold;
+  border-radius: 2px;
+  text-transform: uppercase;
+  font-family: 'Courier New', Courier, monospace;
+  letter-spacing: 1.2px;
+  vertical-align: middle;
+  line-height: 1.25;
+  background-color: #2b2419;
+  color: #f4e1bc;
+  border: 1px solid #6e552d;
+  border-left: 3px solid #d49b38;
+  box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.22);
+}
+
+.free-test-tag::before {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  flex-shrink: 0;
+  background-color: #e6b34e;
+}
+
+/* Kompakte Tag-Zeile auf Raum-Karten */
+.card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: 0.55rem;
+}
+
+.room-type-tag.tag-compact,
+.free-test-tag.tag-compact {
+  padding: 2px 7px;
+  font-size: 0.65rem;
+  letter-spacing: 0.8px;
+  box-shadow: none;
+}
+
+.room-type-tag.tag-compact::before,
+.free-test-tag.tag-compact::before {
+  width: 5px;
+  height: 5px;
+}
+
+/* Transparenzhinweis-Box im Review-Dossier (Kostenlos getestet) */
+.transparency-notice {
+  background-color: #ede7da;
+  color: #24201a;
+  border: 1px solid #b59e72;
+  border-left: 5px solid #9a6b1f;
+  border-radius: 0 6px 6px 0;
+  padding: 1rem 1.25rem;
+  margin: 0 0 1.75rem 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.transparency-notice-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #6b470c;
+  margin-bottom: 0.45rem;
+}
+
+.transparency-notice-icon {
+  font-size: 1rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.transparency-notice-text {
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: #24201a;
+}
+
+.transparency-notice-text a {
+  color: #7a3603;
+  font-weight: bold;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.transparency-notice-text a:hover {
+  color: #4d2202;
+  text-shadow: none;
+}
+
+.transparency-notice-text a:focus-visible {
+  outline: 3px solid #7a3603;
+  outline-offset: 2px;
+}
+
+@media (forced-colors: active) {
+  .btn-filter.active {
+    border: 2px solid Highlight;
+    outline: 2px solid Highlight;
+  }
+  .room-type-tag,
+  .free-test-tag,
+  .transparency-notice {
+    border: 1px solid CanvasText;
+  }
+  .transparency-notice {
+    border-left-width: 5px;
+  }
 }
 
 /* --- RANKING CARDS (Top 5 Hall of Fame Unterseiten) --- */

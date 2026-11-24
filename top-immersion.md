@@ -74,13 +74,25 @@ permalink: /hall-of-fame/top-immersion/
                             {% else %}
                                 {% assign img_src = room.images[0] %}
                             {% endif %}
-                            <img src="/assets/images/{{ img_src }}" alt="Platz {{ rank }} Immersion: {{ room.title }} ({{ room.provider }}, {{ room.location.city }})" loading="lazy" width="400" height="250">
+                            <img src="/assets/images/{{ img_src }}" alt="Platz {{ rank }} Immersion: {{ room.title }} ({{ room.provider }}{% if room.online %}, Online{% elsif room.location.city %}, {{ room.location.city }}{% endif %})" loading="lazy" width="400" height="250">
                         </div>
 
                         <div class="ranking-card-body">
+                            <div class="card-tags">
+                                {% if room.online %}
+                                    <span class="room-type-tag type-online tag-compact">Online Escape</span>
+                                {% elsif room.outdoor %}
+                                    <span class="room-type-tag type-outdoor tag-compact">Outdoor Game</span>
+                                {% else %}
+                                    <span class="room-type-tag type-indoor tag-compact">Indoor Escape Room</span>
+                                {% endif %}
+                                {% if room.free_test %}
+                                    <span class="free-test-tag tag-compact">Kostenlos getestet</span>
+                                {% endif %}
+                            </div>
                             <h3 style="margin: 0 0 4px 0; color: var(--rust-light); font-size: 1.35rem;">{{ room.title }}</h3>
                             <span style="color: #aaa; font-size: 0.88rem; margin-bottom: 10px;">
-                                {{ room.provider }} | {{ room.location.city }}
+                                {{ room.provider }} | {% if room.online %}Online{% else %}{{ room.location.city }}{% endif %}
                             </span>
                             
                             <hr style="border: 0; border-top: 1px dotted #444; margin: 10px 0;">

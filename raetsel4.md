@@ -5,92 +5,628 @@ description: "Trainingsmodul Schloss-Identifikation: Lerne die verschiedenen Sch
 permalink: /raetsel/schloesser/
 ---
 
+<style>
+    .lock-quiz-container {
+        font-family: 'Courier New', Courier, monospace;
+        background: #1a1a1a;
+        color: #e0e0e0;
+        padding: clamp(1.25rem, 3vw, 2rem);
+        border-radius: 8px;
+        border: 1px solid #444;
+    }
+
+    .lock-quiz-container [hidden] {
+        display: none !important;
+    }
+
+    .lock-quiz-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-bottom: 1.25rem;
+        border-bottom: 1px solid #444;
+        padding-bottom: 0.65rem;
+        font-size: 0.95rem;
+        color: #ccc;
+    }
+
+    .lock-question-text {
+        font-size: clamp(1rem, 2.2vw, 1.15rem);
+        line-height: 1.55;
+        margin: 0 0 1.25rem 0;
+        color: #f0f0f0;
+    }
+
+    .lock-visual-stage {
+        position: relative;
+        width: 100%;
+        min-height: 215px;
+        background-color: #14171a;
+        background-image:
+            linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+        background-size: 20px 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1.5rem;
+        padding: 1.75rem 1rem 1rem;
+        border: 1px dashed #5a646e;
+        border-radius: 6px;
+        overflow: hidden;
+    }
+
+    .lock-visual-badge {
+        position: absolute;
+        top: 8px;
+        left: 10px;
+        font-size: 0.72rem;
+        text-transform: uppercase;
+        letter-spacing: 1.2px;
+        color: #9aa7b4;
+        background: rgba(20, 23, 26, 0.85);
+        padding: 2px 7px;
+        border: 1px solid #39424a;
+        border-radius: 2px;
+    }
+
+    .lock-visual-stage svg {
+        width: 100%;
+        max-width: 360px;
+        height: auto;
+        display: block;
+    }
+
+    .lock-options-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr));
+        gap: 0.85rem;
+    }
+
+    .lock-option-btn {
+        background: #232323;
+        color: #f0f0f0;
+        border: 1px solid #4d4d4d;
+        border-radius: 4px;
+        padding: 0.95rem 1rem;
+        min-block-size: 48px;
+        font-family: inherit;
+        font-size: 0.95rem;
+        font-weight: bold;
+        cursor: pointer;
+        transition: border-color 0.2s ease, background-color 0.2s ease, transform 0.15s ease;
+    }
+
+    .lock-option-btn:hover:not(:disabled) {
+        border-color: var(--rust-light);
+        background: #2c2420;
+        transform: translateY(-1px);
+    }
+
+    .lock-option-btn:focus-visible,
+    .lock-action-btn:focus-visible {
+        outline: 3px solid var(--rust-glow);
+        outline-offset: 2px;
+    }
+
+    .lock-option-btn:disabled {
+        cursor: default;
+        opacity: 0.7;
+    }
+
+    .lock-option-btn.is-correct {
+        background: #1b3622;
+        border-color: #4caf50;
+        color: #e8f5e9;
+        opacity: 1;
+    }
+
+    .lock-option-btn.is-wrong {
+        background: #3a1a1a;
+        border-color: #ef5350;
+        color: #ffebee;
+        opacity: 1;
+    }
+
+    .lock-feedback {
+        margin-top: 1.25rem;
+        padding: 1rem 1.15rem;
+        border-radius: 4px;
+        border-left: 4px solid #666;
+        background: #222;
+        line-height: 1.5;
+        font-size: 0.92rem;
+    }
+
+    .lock-feedback.is-correct {
+        border-left-color: #4caf50;
+        background: rgba(46, 125, 50, 0.18);
+        color: #dcedc8;
+    }
+
+    .lock-feedback.is-wrong {
+        border-left-color: #ef5350;
+        background: rgba(211, 47, 47, 0.18);
+        color: #ffcdd2;
+    }
+
+    .lock-feedback-title {
+        display: block;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 0.8px;
+        margin-bottom: 0.35rem;
+    }
+
+    .lock-action-row {
+        margin-top: 1.25rem;
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .lock-action-btn {
+        background: var(--rust-primary);
+        color: #fff;
+        border: 1px solid var(--rust-light);
+        border-radius: 4px;
+        padding: 0.8rem 1.5rem;
+        min-block-size: 44px;
+        cursor: pointer;
+        font-family: inherit;
+        font-size: 0.95rem;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        transition: background-color 0.2s ease;
+    }
+
+    .lock-action-btn:hover {
+        background: var(--rust-light);
+    }
+
+    .lock-action-btn.secondary {
+        background: transparent;
+        color: var(--rust-light);
+        border: 2px solid var(--rust-primary);
+    }
+
+    .lock-action-btn.secondary:hover {
+        background: var(--rust-primary);
+        color: #fff;
+    }
+
+    .lock-result-screen {
+        text-align: center;
+        padding: 1rem 0;
+    }
+
+    .lock-result-screen h2 {
+        margin-top: 0;
+        color: #fff;
+        text-transform: uppercase;
+    }
+
+    .lock-result-text {
+        font-size: 1.1rem;
+        line-height: 1.65;
+        white-space: pre-line;
+        color: #e0e0e0;
+    }
+
+    .lock-result-links {
+        margin-top: 1.75rem;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+        align-items: center;
+    }
+
+    .lock-handbook-link {
+        color: #ccc;
+        text-decoration: underline;
+    }
+
+    @media (forced-colors: active) {
+        .lock-option-btn.is-correct,
+        .lock-option-btn.is-wrong {
+            border: 2px solid Highlight;
+            outline: 2px solid Highlight;
+        }
+    }
+</style>
+
 <div class="review-dossier">
     <div class="dossier-header">
-        <h1 style="border-bottom: none; margin-bottom: 0;">Einsatz-Training: Schlösser</h1>
-        <p style="font-family: 'Courier New'; color: #666; margin-top: 0; font-size: 0.9rem;">
-            // MODUL 04: MECHANISCHE & ELEKTRONISCHE BARRIEREN
-        </p>
+        <div class="dossier-meta">
+            <h1 style="border-bottom: none; margin-bottom: 0;">Einsatz-Training: Schlösser</h1>
+            <p style="font-family: 'Courier New', Courier, monospace; color: #555; margin-top: 0.25rem; font-size: 0.9rem;">
+                // LEVEL 7: MECHANISCHE &amp; ELEKTRONISCHE BARRIEREN
+            </p>
+        </div>
     </div>
 
-    <div id="quiz-container" style="font-family: 'Courier New', monospace; background: #1a1a1a; color: #ddd; padding: 2rem; border-radius: 8px; border: 1px solid #444;">
+    <div id="quiz-container" class="lock-quiz-container">
         <div id="setup-screen">
-            <h3>Bereit für das Training, Agent?</h3>
-            <p>Identifizieren Sie 5 zufällige Schloss-Typen anhand ihrer Merkmale oder Bilder. Fehler kosten Zeit (und Nerven).</p>
-            <button onclick="startQuiz()" style="background: var(--rust-primary); color: white; border: none; padding: 15px 30px; cursor: pointer; font-weight: bold; margin-top: 1rem;">>> TRAINING STARTEN</button>
+            <h2 style="margin-top: 0; color: #fff; font-size: 1.25rem;">Bereit für das Training, Agent?</h2>
+            <p>Identifizieren Sie 5 Schloss-Typen anhand ihrer technischen Skizzen und Merkmale. Fehler kosten Zeit (und Nerven).</p>
+            <button type="button" id="btn-start-quiz" class="lock-action-btn" style="margin-top: 0.75rem;">&raquo; Training starten</button>
         </div>
 
-        <div id="question-screen" style="display: none;">
-            <div style="display: flex; justify-content: space-between; margin-bottom: 1rem; border-bottom: 1px solid #444; padding-bottom: 0.5rem;">
+        <div id="question-screen" hidden>
+            <div class="lock-quiz-header">
                 <span id="progress">Frage 1/5</span>
                 <span id="score">Score: 0</span>
             </div>
             <div id="question-content">
-                <p id="question-text" style="font-size: 1.1rem; margin-bottom: 1.5rem;"></p>
-                <div id="image-placeholder" style="width: 100%; height: 200px; background: #333; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; border: 1px dashed #666;">
-                    <span style="color: #888;">[Bild-Dokument geladen]</span>
+                <p id="question-text" class="lock-question-text"></p>
+                <div class="lock-visual-stage">
+                    <span id="visual-badge" class="lock-visual-badge">Beweis-Skizze // 01</span>
+                    <div id="lock-schematic" style="width: 100%; display: flex; justify-content: center;"></div>
                 </div>
-                <div id="options-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); gap: 1rem;">
-                    </div>
+                <div id="options-grid" class="lock-options-grid"></div>
+                <div id="answer-feedback" class="lock-feedback" hidden aria-live="polite"></div>
+                <div id="next-action-row" class="lock-action-row" hidden>
+                    <button type="button" id="btn-next-question" class="lock-action-btn">Nächste Frage &rarr;</button>
+                </div>
             </div>
         </div>
 
-        <div id="result-screen" style="display: none; text-align: center;">
+        <div id="result-screen" class="lock-result-screen" hidden>
             <h2 id="result-title">Training beendet</h2>
-            <p id="result-text" style="font-size: 1.2rem;"></p>
-            <button onclick="location.reload()" style="background: transparent; color: var(--rust-primary); border: 2px solid var(--rust-primary); padding: 10px 20px; cursor: pointer; margin-top: 2rem;">Wiederholen</button>
-            <br><br>
-            <a href="/raetsel/" style="color: #888; text-decoration: underline;">Zurück zur Übersicht</a>
+            <p id="result-text" class="lock-result-text"></p>
+            <div class="lock-result-links">
+                <button type="button" id="btn-restart-quiz" class="lock-action-btn secondary">Wiederholen</button>
+                <a href="/schloss-typen/" class="lock-handbook-link">Schloss-Handbuch nachlesen</a>
+                <a href="/raetsel/" class="lock-handbook-link">Zurück zur Übersicht</a>
+            </div>
         </div>
     </div>
 </div>
 
 <script>
+const lockSchematics = {
+    directional: `
+        <svg viewBox="0 0 360 190" role="img" aria-label="Technische Skizze des gesuchten Schlosstyps" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <linearGradient id="dirBody" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stop-color="#2c333a"/>
+                    <stop offset="100%" stop-color="#1b2025"/>
+                </linearGradient>
+            </defs>
+            <!-- Bügel (Shackle) -->
+            <path d="M 148 72 L 148 44 A 32 32 0 0 1 212 44 L 212 72" fill="none" stroke="#90a4ae" stroke-width="11" stroke-linecap="round"/>
+            <path d="M 148 72 L 148 44 A 32 32 0 0 1 212 44 L 212 72" fill="none" stroke="#cfd8dc" stroke-width="3" stroke-linecap="round" opacity="0.5"/>
+            <!-- Schlosskörper -->
+            <rect x="124" y="66" width="112" height="106" rx="18" fill="url(#dirBody)" stroke="#78909c" stroke-width="2.5"/>
+            <rect x="131" y="73" width="98" height="92" rx="13" fill="none" stroke="#455a64" stroke-width="1" stroke-dasharray="4 3"/>
+            <!-- Zentrale Richtungsscheibe -->
+            <circle cx="180" cy="119" r="37" fill="#12161a" stroke="#607d8b" stroke-width="2"/>
+            <!-- Kreuz-Führung -->
+            <rect x="173" y="88" width="14" height="62" rx="4" fill="#090b0d" stroke="#37474f" stroke-width="1"/>
+            <rect x="149" y="112" width="62" height="14" rx="4" fill="#090b0d" stroke="#37474f" stroke-width="1"/>
+            <!-- 4 Richtungspfeile -->
+            <polygon points="180,86 174,96 186,96" fill="#ff9800"/>
+            <polygon points="180,152 174,142 186,142" fill="#ff9800"/>
+            <polygon points="147,119 157,113 157,125" fill="#ff9800"/>
+            <polygon points="213,119 203,113 203,125" fill="#ff9800"/>
+            <!-- Schiebeknopf -->
+            <circle cx="180" cy="119" r="10.5" fill="#d75a08" stroke="#ffb74d" stroke-width="2"/>
+            <circle cx="180" cy="119" r="3.5" fill="#2c1606"/>
+            <!-- Dezente Reset-Pfeile am Bügel -->
+            <path d="M 122 36 L 122 52 M 117 47 L 122 53 L 127 47" fill="none" stroke="#607d8b" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M 238 36 L 238 52 M 233 47 L 238 53 L 243 47" fill="none" stroke="#607d8b" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    `,
+    cryptex: `
+        <svg viewBox="0 0 360 190" role="img" aria-label="Technische Skizze des gesuchten Schlosstyps" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <linearGradient id="brassRing" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#3a2c1d"/>
+                    <stop offset="30%" stop-color="#6d5336"/>
+                    <stop offset="50%" stop-color="#8b6b45"/>
+                    <stop offset="70%" stop-color="#5d462d"/>
+                    <stop offset="100%" stop-color="#2c2116"/>
+                </linearGradient>
+                <linearGradient id="brassCap" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#2a2118"/>
+                    <stop offset="50%" stop-color="#5a452e"/>
+                    <stop offset="100%" stop-color="#221a12"/>
+                </linearGradient>
+            </defs>
+            <!-- Linke & Rechte Endkappe -->
+            <rect x="44" y="48" width="38" height="94" rx="6" fill="url(#brassCap)" stroke="#c99a5b" stroke-width="2"/>
+            <line x1="54" y1="54" x2="54" y2="136" stroke="#a67c52" stroke-width="1" opacity="0.5"/>
+            <line x1="62" y1="54" x2="62" y2="136" stroke="#a67c52" stroke-width="1" opacity="0.5"/>
+            <rect x="278" y="48" width="38" height="94" rx="6" fill="url(#brassCap)" stroke="#c99a5b" stroke-width="2"/>
+            <line x1="298" y1="54" x2="298" y2="136" stroke="#a67c52" stroke-width="1" opacity="0.5"/>
+            <line x1="306" y1="54" x2="306" y2="136" stroke="#a67c52" stroke-width="1" opacity="0.5"/>
+            <!-- 5 rotierende Buchstabenringe -->
+            <g stroke="#c99a5b" stroke-width="1.5">
+                <rect x="86" y="54" width="34" height="82" rx="3" fill="url(#brassRing)"/>
+                <rect x="124" y="54" width="34" height="82" rx="3" fill="url(#brassRing)"/>
+                <rect x="162" y="54" width="34" height="82" rx="3" fill="url(#brassRing)"/>
+                <rect x="200" y="54" width="34" height="82" rx="3" fill="url(#brassRing)"/>
+                <rect x="238" y="54" width="34" height="82" rx="3" fill="url(#brassRing)"/>
+            </g>
+            <!-- Markierte Mittelzeile -->
+            <rect x="86" y="83" width="186" height="24" fill="rgba(0,0,0,0.28)" stroke="#ff9800" stroke-width="1" stroke-dasharray="3 2"/>
+            <!-- Buchstaben (zufällige Zeichenfolge ohne Spoiler) -->
+            <g font-family="Courier New, monospace" text-anchor="middle" font-weight="bold">
+                <g fill="#d7c3a5" opacity="0.45" font-size="11">
+                    <text x="103" y="72">B</text><text x="141" y="72">Q</text><text x="179" y="72">N</text><text x="217" y="72">W</text><text x="255" y="72">J</text>
+                    <text x="103" y="126">D</text><text x="141" y="126">S</text><text x="179" y="126">P</text><text x="217" y="126">Y</text><text x="255" y="126">L</text>
+                </g>
+                <g fill="#fff3d6" font-size="16">
+                    <text x="103" y="100">C</text><text x="141" y="100">R</text><text x="179" y="100">O</text><text x="217" y="100">X</text><text x="255" y="100">K</text>
+                </g>
+            </g>
+            <!-- Ausrichtungs-Pfeile auf Endkappen -->
+            <polygon points="82,95 72,89 72,101" fill="#ff9800"/>
+            <polygon points="278,95 288,89 288,101" fill="#ff9800"/>
+            <!-- Rotations-Hinweis oberhalb & unterhalb -->
+            <path d="M 141 36 A 14 14 0 0 1 153 45" fill="none" stroke="#90a4ae" stroke-width="1.6"/>
+            <polygon points="155,47 148,45 154,40" fill="#90a4ae"/>
+            <path d="M 217 154 A 14 14 0 0 1 205 145" fill="none" stroke="#90a4ae" stroke-width="1.6"/>
+            <polygon points="203,143 210,145 204,150" fill="#90a4ae"/>
+        </svg>
+    `,
+    magnetic: `
+        <svg viewBox="0 0 360 190" role="img" aria-label="Technische Skizze des gesuchten Schlosstyps" xmlns="http://www.w3.org/2000/svg">
+            <!-- Geschlossene Wand / Oberfläche ohne Schlüsselloch -->
+            <rect x="164" y="22" width="24" height="146" fill="#262d34" stroke="#78909c" stroke-width="2"/>
+            <line x1="164" y1="22" x2="188" y2="46" stroke="#37474f" stroke-width="1"/>
+            <line x1="164" y1="54" x2="188" y2="78" stroke="#37474f" stroke-width="1"/>
+            <line x1="164" y1="86" x2="188" y2="110" stroke="#37474f" stroke-width="1"/>
+            <line x1="164" y1="118" x2="188" y2="142" stroke="#37474f" stroke-width="1"/>
+            <line x1="164" y1="146" x2="186" y2="168" stroke="#37474f" stroke-width="1"/>
+            <!-- Linke Seite: Objekt mit verborgenem Auslöser (Hufeisenform) -->
+            <g transform="translate(0, 4)">
+                <path d="M 118 68 L 96 68 A 24 24 0 0 0 96 116 L 118 116" fill="none" stroke="#d75a08" stroke-width="14" stroke-linecap="butt"/>
+                <rect x="115" y="61" width="12" height="14" fill="#cfd8dc" stroke="#546e7a" stroke-width="1"/>
+                <rect x="115" y="109" width="12" height="14" fill="#cfd8dc" stroke="#546e7a" stroke-width="1"/>
+            </g>
+            <!-- Feldwellen durch die Wand -->
+            <path d="M 136 74 Q 150 95 136 116" fill="none" stroke="#4fa3e0" stroke-width="2" stroke-dasharray="4 3"/>
+            <path d="M 148 64 Q 166 95 148 126" fill="none" stroke="#4fa3e0" stroke-width="2" stroke-dasharray="4 3"/>
+            <path d="M 196 68 Q 212 95 196 122" fill="none" stroke="#ff9800" stroke-width="2" stroke-dasharray="4 3"/>
+            <!-- Rechte Seite: Verdeckte Innenmechanik -->
+            <rect x="190" y="50" width="102" height="90" rx="6" fill="#181e24" stroke="#546e7a" stroke-width="1.8" stroke-dasharray="5 3"/>
+            <!-- Sensor-Kapsel (Reed-Kontakt) -->
+            <rect x="206" y="84" width="30" height="22" rx="11" fill="#10151a" stroke="#4fa3e0" stroke-width="1.8"/>
+            <line x1="212" y1="95" x2="230" y2="95" stroke="#ff9800" stroke-width="2.5"/>
+            <!-- Riegel / Verriegelung löst sich -->
+            <rect x="246" y="86" width="34" height="18" rx="3" fill="#37474f" stroke="#90a4ae" stroke-width="1.5"/>
+            <!-- Freigabe-Pfeil -->
+            <path d="M 298 95 L 316 95 M 310 89 L 317 95 L 310 101" fill="none" stroke="#4caf50" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <!-- Durchgestrichenes Schlüsselloch-Symbol als Hinweis "kein Schlüsselloch" -->
+            <circle cx="176" cy="95" r="10" fill="#14171a" stroke="#607d8b" stroke-width="1.2"/>
+            <circle cx="176" cy="92.5" r="2.5" fill="#90a4ae"/>
+            <polygon points="174.5,94.5 177.5,94.5 178.5,100 173.5,100" fill="#90a4ae"/>
+            <line x1="169" y1="102" x2="183" y2="88" stroke="#ef5350" stroke-width="2.2" stroke-linecap="round"/>
+        </svg>
+    `,
+    number: `
+        <svg viewBox="0 0 360 190" role="img" aria-label="Technische Skizze des gesuchten Schlosstyps" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <linearGradient id="numBody" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stop-color="#2c333a"/>
+                    <stop offset="100%" stop-color="#1a1f24"/>
+                </linearGradient>
+                <linearGradient id="wheelGrad" x1="0" y1="0" x2="1" y2="0">
+                    <stop offset="0%" stop-color="#262c32"/>
+                    <stop offset="50%" stop-color="#45505a"/>
+                    <stop offset="100%" stop-color="#262c32"/>
+                </linearGradient>
+            </defs>
+            <!-- Bügel -->
+            <path d="M 150 62 L 150 38 A 30 30 0 0 1 210 38 L 210 62" fill="none" stroke="#90a4ae" stroke-width="10" stroke-linecap="round"/>
+            <path d="M 150 62 L 150 38 A 30 30 0 0 1 210 38 L 210 62" fill="none" stroke="#cfd8dc" stroke-width="2.5" stroke-linecap="round" opacity="0.5"/>
+            <!-- Schlosskörper -->
+            <rect x="128" y="58" width="104" height="114" rx="12" fill="url(#numBody)" stroke="#78909c" stroke-width="2.5"/>
+            <!-- 4 horizontale Zahlenrädchen -->
+            <g stroke="#90a4ae" stroke-width="1.2">
+                <rect x="122" y="71" width="116" height="19" rx="3" fill="url(#wheelGrad)"/>
+                <rect x="122" y="95" width="116" height="19" rx="3" fill="url(#wheelGrad)"/>
+                <rect x="122" y="119" width="116" height="19" rx="3" fill="url(#wheelGrad)"/>
+                <rect x="122" y="143" width="116" height="19" rx="3" fill="url(#wheelGrad)"/>
+            </g>
+            <!-- Ausrichtungsrahmen in der Mitte -->
+            <rect x="167" y="68" width="26" height="97" rx="3" fill="rgba(215, 90, 8, 0.14)" stroke="#ff9800" stroke-width="1.6"/>
+            <!-- Ziffern auf den Rädchen -->
+            <g font-family="Courier New, monospace" text-anchor="middle" font-weight="bold">
+                <g fill="#90a4ae" opacity="0.55" font-size="11">
+                    <text x="148" y="84">3</text><text x="212" y="84">5</text>
+                    <text x="148" y="108">6</text><text x="212" y="108">8</text>
+                    <text x="148" y="132">1</text><text x="212" y="132">3</text>
+                    <text x="148" y="156">8</text><text x="212" y="156">0</text>
+                </g>
+                <g fill="#ffffff" font-size="14">
+                    <text x="180" y="85">4</text>
+                    <text x="180" y="109">7</text>
+                    <text x="180" y="133">2</text>
+                    <text x="180" y="157">9</text>
+                </g>
+            </g>
+            <!-- Kerben-Dreiecke oben/unten -->
+            <polygon points="180,67 175,60 185,60" fill="#ff9800"/>
+            <polygon points="180,166 175,173 185,173" fill="#ff9800"/>
+        </svg>
+    `,
+    vault: `
+        <svg viewBox="0 0 360 190" role="img" aria-label="Technische Skizze des gesuchten Schlosstyps" xmlns="http://www.w3.org/2000/svg">
+            <!-- Stahltür-Platte mit Nieten -->
+            <rect x="92" y="18" width="176" height="154" rx="10" fill="#1e2429" stroke="#607d8b" stroke-width="2.2"/>
+            <circle cx="106" cy="32" r="4" fill="#37474f" stroke="#78909c" stroke-width="1"/>
+            <circle cx="254" cy="32" r="4" fill="#37474f" stroke="#78909c" stroke-width="1"/>
+            <circle cx="106" cy="158" r="4" fill="#37474f" stroke="#78909c" stroke-width="1"/>
+            <circle cx="254" cy="158" r="4" fill="#37474f" stroke="#78909c" stroke-width="1"/>
+            <!-- Äußerer Skalenring -->
+            <circle cx="180" cy="95" r="56" fill="#12161a" stroke="#90a4ae" stroke-width="3"/>
+            <circle cx="180" cy="95" r="46" fill="none" stroke="#455a64" stroke-width="1"/>
+            <!-- Skalenstriche rundherum -->
+            <g stroke="#cfd8dc" stroke-width="1.6" stroke-linecap="round">
+                <line x1="180" y1="42" x2="180" y2="50"/>
+                <line x1="180" y1="140" x2="180" y2="148"/>
+                <line x1="127" y1="95" x2="135" y2="95"/>
+                <line x1="225" y1="95" x2="233" y2="95"/>
+                <line x1="143" y1="58" x2="148" y2="63"/>
+                <line x1="217" y1="58" x2="212" y2="63"/>
+                <line x1="143" y1="132" x2="148" y2="127"/>
+                <line x1="217" y1="132" x2="212" y2="127"/>
+            </g>
+            <!-- Skalenzahlen -->
+            <g font-family="Courier New, monospace" font-size="9" fill="#b0bec5" text-anchor="middle" font-weight="bold">
+                <text x="180" y="60">0</text>
+                <text x="218" y="98">25</text>
+                <text x="180" y="137">50</text>
+                <text x="142" y="98">75</text>
+            </g>
+            <!-- Rote/Rost-Markierung auf 12 Uhr -->
+            <polygon points="180,38 175,28 185,28" fill="#ff9800"/>
+            <!-- Zentrales Drehrad -->
+            <circle cx="180" cy="95" r="24" fill="#2c353d" stroke="#b0bec5" stroke-width="2"/>
+            <circle cx="180" cy="95" r="18" fill="none" stroke="#78909c" stroke-width="2" stroke-dasharray="3 3"/>
+            <circle cx="180" cy="95" r="6" fill="#d75a08" stroke="#ffb74d" stroke-width="1.5"/>
+            <!-- Drehrichtungspfeile: links gegen Uhrzeigersinn (3x), rechts im Uhrzeigersinn (2x) -->
+            <path d="M 74 74 A 56 56 0 0 0 74 114" fill="none" stroke="#ff9800" stroke-width="2.2" stroke-linecap="round"/>
+            <polygon points="76,120 68,111 79,110" fill="#ff9800"/>
+            <text x="54" y="98" font-family="Courier New, monospace" font-size="11" font-weight="bold" fill="#ff9800" text-anchor="middle">3×</text>
+            <path d="M 286 74 A 56 56 0 0 1 286 114" fill="none" stroke="#4fa3e0" stroke-width="2.2" stroke-linecap="round"/>
+            <polygon points="284,120 292,111 281,110" fill="#4fa3e0"/>
+            <text x="306" y="98" font-family="Courier New, monospace" font-size="11" font-weight="bold" fill="#4fa3e0" text-anchor="middle">2×</text>
+        </svg>
+    `
+};
+
 const quizData = [
-    { q: "Dieses Schloss hat keine Zahlen, sondern reagiert auf Bewegungen (Oben, Unten, Links, Rechts).", a: "Richtungsschloss", options: ["Zahlenschloss", "Richtungsschloss", "Tresorschloss", "Kryptex"] },
-    { q: "Wie nennt man das röhrenförmige Schloss mit rotierenden Buchstabenringen aus dem Da Vinci Code?", a: "Kryptex", options: ["Kryptex", "Buchstabenschloss", "Magnetschloss", "Drückschloss"] },
-    { q: "Ein Schloss, das sich ohne sichtbares Schlüsselloch durch das Platzieren eines Objekts öffnet.", a: "Magnetschloss", options: ["Fingerabdruck-Schloss", "Magnetschloss", "Schlüsselschloss", "Zeitschloss"] },
-    { q: "Was ist der häufigste Schlosstyp, bei dem Rädchen mit Ziffern gedreht werden müssen?", a: "Zahlenschloss", options: ["Tresorschloss", "Zahlenschloss", "Buchstabenschloss", "Drückschloss"] },
-    { q: "Welches Schloss erfordert eine exakte Drehsequenz in wechselnden Richtungen (z.B. 3x Links, 2x Rechts)?", a: "Tresorschloss", options: ["Tresorschloss", "Richtungsschloss", "Kryptex", "Zeitschloss"] }
+    {
+        id: "directional",
+        q: "Dieses Schloss hat keine Zahlen, sondern reagiert auf Bewegungen (Oben, Unten, Links, Rechts).",
+        a: "Richtungsschloss",
+        options: ["Zahlenschloss", "Richtungsschloss", "Tresorschloss", "Kryptex"],
+        tip: "Praxis-Tipp: Vor jedem neuen Versuch den Bügel zweimal kurz nach unten drücken, um die Mechanik zurückzusetzen."
+    },
+    {
+        id: "cryptex",
+        q: "Wie nennt man das röhrenförmige Schloss mit rotierenden Buchstabenringen aus dem Da Vinci Code?",
+        a: "Kryptex",
+        options: ["Kryptex", "Buchstabenschloss", "Magnetschloss", "Drückschloss"],
+        tip: "Praxis-Tipp: Die Markierungspfeile an den Endkappen zeigen genau an, in welcher Zeile das Lösungswort fluchten muss."
+    },
+    {
+        id: "magnetic",
+        q: "Ein Schloss, das sich ohne sichtbares Schlüsselloch durch das Platzieren eines Objekts öffnet.",
+        a: "Magnetschloss",
+        options: ["Fingerabdruck-Schloss", "Magnetschloss", "Schlüsselschloss", "Zeitschloss"],
+        tip: "Praxis-Tipp: Achte auf unscheinbare Markierungen, Symbole oder Vertiefungen – dort verstecken sich oft Reed-Kontakte."
+    },
+    {
+        id: "number",
+        q: "Was ist der häufigste Schlosstyp, bei dem Rädchen mit Ziffern gedreht werden müssen?",
+        a: "Zahlenschloss",
+        options: ["Tresorschloss", "Zahlenschloss", "Buchstabenschloss", "Drückschloss"],
+        tip: "Praxis-Tipp: Immer genau prüfen, ob die Ziffern mittig oder an einer seitlichen Kerbe abgelesen werden."
+    },
+    {
+        id: "vault",
+        q: "Welches Schloss erfordert eine exakte Drehsequenz in wechselnden Richtungen (z.B. 3x Links, 2x Rechts)?",
+        a: "Tresorschloss",
+        options: ["Tresorschloss", "Richtungsschloss", "Kryptex", "Zeitschloss"],
+        tip: "Praxis-Tipp: Langsam und präzise drehen – wird die Zielzahl überschritten, muss die Sequenz neu begonnen werden."
+    }
 ];
 
 let currentIdx = 0;
 let score = 0;
 let activeQuestions = [];
 
+function shuffle(list) {
+    const arr = [...list];
+    for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    return arr;
+}
+
 function startQuiz() {
-    activeQuestions = [...quizData].sort(() => 0.5 - Math.random()).slice(0, 5);
-    document.getElementById('setup-screen').style.display = 'none';
-    document.getElementById('question-screen').style.display = 'block';
+    currentIdx = 0;
+    score = 0;
+    activeQuestions = shuffle(quizData).slice(0, 5);
+    document.getElementById('score').textContent = 'Score: 0';
+    document.getElementById('setup-screen').hidden = true;
+    document.getElementById('result-screen').hidden = true;
+    document.getElementById('question-screen').hidden = false;
     showQuestion();
 }
 
 function showQuestion() {
     const q = activeQuestions[currentIdx];
-    document.getElementById('progress').innerText = `Frage ${currentIdx + 1}/5`;
-    document.getElementById('question-text').innerText = q.q;
+    const num = String(currentIdx + 1).padStart(2, '0');
+    document.getElementById('progress').textContent = `Frage ${currentIdx + 1}/${activeQuestions.length}`;
+    document.getElementById('visual-badge').textContent = `Beweis-Skizze // ${num}`;
+    document.getElementById('question-text').textContent = q.q;
+    document.getElementById('lock-schematic').innerHTML = lockSchematics[q.id] || '';
+
+    const feedback = document.getElementById('answer-feedback');
+    feedback.hidden = true;
+    feedback.className = 'lock-feedback';
+    feedback.innerHTML = '';
+
+    const nextRow = document.getElementById('next-action-row');
+    nextRow.hidden = true;
+
     const grid = document.getElementById('options-grid');
     grid.innerHTML = '';
-    
-    q.options.sort(() => 0.5 - Math.random()).forEach(opt => {
+
+    shuffle(q.options).forEach(opt => {
         const btn = document.createElement('button');
-        btn.innerText = opt;
-        btn.style.cssText = "background: #222; color: white; border: 1px solid #444; padding: 15px; cursor: pointer; transition: 0.2s;";
-        btn.onclick = () => checkAnswer(opt);
-        btn.onmouseover = () => btn.style.borderColor = "var(--rust-primary)";
-        btn.onmouseout = () => btn.style.borderColor = "#444";
+        btn.type = 'button';
+        btn.className = 'lock-option-btn';
+        btn.textContent = opt;
+        btn.dataset.option = opt;
+        btn.addEventListener('click', () => checkAnswer(opt, btn));
         grid.appendChild(btn);
     });
 }
 
-function checkAnswer(choice) {
-    if (choice === activeQuestions[currentIdx].a) {
+function checkAnswer(choice, clickedBtn) {
+    const q = activeQuestions[currentIdx];
+    const isCorrect = choice === q.a;
+    const buttons = document.querySelectorAll('#options-grid .lock-option-btn');
+
+    buttons.forEach(btn => {
+        btn.disabled = true;
+        if (btn.dataset.option === q.a) {
+            btn.classList.add('is-correct');
+        }
+    });
+
+    if (isCorrect) {
         score++;
-        document.getElementById('score').innerText = `Score: ${score}`;
+        document.getElementById('score').textContent = `Score: ${score}`;
+    } else if (clickedBtn) {
+        clickedBtn.classList.add('is-wrong');
     }
-    
+
+    const feedback = document.getElementById('answer-feedback');
+    feedback.hidden = false;
+    feedback.className = `lock-feedback ${isCorrect ? 'is-correct' : 'is-wrong'}`;
+    feedback.innerHTML = isCorrect
+        ? `<span class="lock-feedback-title">✓ Korrekt identifiziert: ${q.a}</span>${q.tip}`
+        : `<span class="lock-feedback-title">✗ Nicht ganz – gesucht war: ${q.a}</span>${q.tip}`;
+
+    const nextBtn = document.getElementById('btn-next-question');
+    nextBtn.textContent = currentIdx + 1 < activeQuestions.length ? 'Nächste Frage →' : 'Ergebnis anzeigen →';
+    document.getElementById('next-action-row').hidden = false;
+}
+
+function nextQuestion() {
     currentIdx++;
-    if (currentIdx < 5) {
+    if (currentIdx < activeQuestions.length) {
         showQuestion();
     } else {
         showResult();
@@ -98,15 +634,24 @@ function checkAnswer(choice) {
 }
 
 function showResult() {
-    document.getElementById('question-screen').style.display = 'none';
-    const resScreen = document.getElementById('result-screen');
-    resScreen.style.display = 'block';
-    
+    document.getElementById('question-screen').hidden = true;
+    document.getElementById('result-screen').hidden = false;
+
     let msg = "";
-    if (score === 5) msg = "Perfekt, Agent! Sie sind bereit für den Feldeinsatz.";
-    else if (score >= 3) msg = "Gute Arbeit. Ein wenig mehr Studium der Handbücher schadet aber nicht.";
-    else msg = "Training nicht bestanden. Schlösser scheinen nicht Ihre Stärke zu sein.";
-    
-    document.getElementById('result-text').innerText = `Ergebnis: ${score} von 5 korrekt. \n\n ${msg}`;
+    if (score === activeQuestions.length) {
+        msg = "Perfekt, Agent! Sie sind bereit für den Feldeinsatz.";
+    } else if (score >= 3) {
+        msg = "Gute Arbeit. Ein kurzer Blick ins Schloss-Handbuch schadet aber nicht.";
+    } else {
+        msg = "Training nicht bestanden. Schlösser scheinen noch nicht Ihre Stärke zu sein.";
+    }
+
+    document.getElementById('result-text').textContent = `Ergebnis: ${score} von ${activeQuestions.length} korrekt.\n\n${msg}`;
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('btn-start-quiz').addEventListener('click', startQuiz);
+    document.getElementById('btn-next-question').addEventListener('click', nextQuestion);
+    document.getElementById('btn-restart-quiz').addEventListener('click', startQuiz);
+});
 </script>

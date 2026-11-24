@@ -140,10 +140,15 @@ permalink: /karte/
             <button class="btn-sort" onclick="sortRooms('provider', this)">Anbieter</button>
             <button class="btn-sort" onclick="sortRooms('rating', this)">Bewertung</button>
         </div>
+        <span style="color:#aaa; font-size:0.82rem;">
+            Ortsunabhängige <strong>Online Escapes</strong> findest du im <a href="/archiv/" style="text-decoration:underline;">Fall-Archiv</a>.
+        </span>
     </div>
 
+    {% assign map_reviews = site.reviews | where_exp: "item", "item.online != true" | where_exp: "item", "item.location.lat != nil and item.location.lng != nil" %}
+
     <div class="card-grid" id="roomGrid">
-        {% for review in site.reviews %}
+        {% for review in map_reviews %}
         
         {% assign r = review.ratings %}
         {% assign sum = r.atmosphere.score | plus: r.story.score | plus: r.puzzles.score | plus: r.scenery.score | plus: r.gamemaster.score %}
@@ -168,7 +173,7 @@ permalink: /karte/
 
                     <img
                         src="/assets/images/{{ img_src }}"
-                        alt="{{ review.title }} ({{ review.provider }}, {{ review.location.city }}) – Escape Room Test"
+                        alt="{{ review.title }} ({{ review.provider }}, {{ review.location.city }}) – {% if review.outdoor %}Outdoor Game{% else %}Escape Room{% endif %} Test"
                         {% if forloop.first %} loading="eager" fetchpriority="high" {% else %} loading="lazy" {% endif %}
                         width="400"
                         height="200"
@@ -204,6 +209,16 @@ permalink: /karte/
                 </div>
 
                 <div class="card-content">
+                    <div class="card-tags">
+                        {% if review.outdoor %}
+                            <span class="room-type-tag type-outdoor tag-compact">Outdoor Game</span>
+                        {% else %}
+                            <span class="room-type-tag type-indoor tag-compact">Indoor Escape Room</span>
+                        {% endif %}
+                        {% if review.free_test %}
+                            <span class="free-test-tag tag-compact">Kostenlos getestet</span>
+                        {% endif %}
+                    </div>
                     <h3>
                         {{ review.title }}
                         {% if review.closed %}
@@ -242,23 +257,25 @@ permalink: /karte/
 
 <script>
     var roomData = [
-        {% for review in site.reviews %}
+        {% for review in map_reviews %}
         
         {% assign r = review.ratings %}
         {% assign sum = r.atmosphere.score | plus: r.story.score | plus: r.puzzles.score | plus: r.scenery.score | plus: r.gamemaster.score %}
         {% assign calculated_avg = sum | divided_by: 5.0 %}
 
         {
-            "title": "{{ review.title }}",
+            "title": "{{ review.title | escape }}",
             "url": "{{ review.url }}",
             "lat": {{ review.location.lat }},
             "lng": {{ review.location.lng }},
             "rating": {{ calculated_avg }},
-            "provider": "{{ review.provider }}",
+            "provider": "{{ review.provider | escape }}",
             "pending": {{ review.pending | default: false }},
             "planned": {{ review.planned | default: false }},
             "closed": {{ review.closed | default: false }},
-            "outdoor": {{ review.outdoor | default: false }}
+            "outdoor": {{ review.outdoor | default: false }},
+            "online": {{ review.online | default: false }},
+            "free_test": {{ review.free_test | default: false }}
         }{% unless forloop.last %},{% endunless %}
         {% endfor %}
     ];
@@ -277,7 +294,7 @@ document.getElementById('load-map-btn').addEventListener('click', function() {
 
     // 3. Map-Script (Leaflet Logik) dynamisch nachladen
     var script = document.createElement('script');
-    script.src = "/assets/js/map.js";
+    script.src = "/assets/js/map.js?v=20261124";
     script.onload = function() {
         // Falls Leaflet ein Resize-Event braucht, weil der Container vorher unsichtbar war
         if (typeof map !== 'undefined') {

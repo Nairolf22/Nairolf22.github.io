@@ -16,10 +16,13 @@
     {% assign current_member = site.data.members | where: "name", page.member_name | first %}
   {% endif %}
 
+  {% capture review_place %}{% if page.online %}Online{% else %}{{ page.location.city }}{% endif %}{% endcapture %}
   {% capture seo_title %}
     {% if page.layout == 'review' %}
       {% if page.planned %}
-        {{ page.title }} ({{ page.provider }}, {{ page.location.city }}) – Geplanter Einsatz | The Escape Archive
+        {{ page.title }} ({{ page.provider }}{% if review_place != "" %}, {{ review_place }}{% endif %}) – Geplanter Einsatz | The Escape Archive
+      {% elsif page.online %}
+        {{ page.title }} ({{ page.provider }}) – Online Escape Test & Erfahrung
       {% elsif page.outdoor %}
         {{ page.title }} ({{ page.provider }}, {{ page.location.city }}) – Outdoor Escape Test & Erfahrung
       {% else %}
@@ -42,13 +45,13 @@
   {% capture meta_desc %}
     {% if page.layout == 'review' %}
       {% if page.planned %}
-        {{ page.title }} bei {{ page.provider }} in {{ page.location.city }}: Geplanter Einsatz am {{ page.visit_date | date: "%d.%m.%Y" }} – {{ page.summary | strip_html | strip_newlines | truncate: 110 }}
+        {{ page.title }} bei {{ page.provider }}{% if page.online %} (Online){% elsif page.location.city %} in {{ page.location.city }}{% endif %}: Geplanter Einsatz am {{ page.visit_date | date: "%d.%m.%Y" }} – {{ page.summary | strip_html | strip_newlines | truncate: 110 }}
       {% elsif page.pending %}
-        {{ page.title }} ({{ page.provider }}, {{ page.location.city }}) – Escape Room Ermittlungsakte von Die Anrufbeantworter wird aktuell ausgewertet.
+        {{ page.title }} ({{ page.provider }}{% if review_place != "" %}, {{ review_place }}{% endif %}) – {% if page.online %}Online Escape{% elsif page.outdoor %}Outdoor Game{% else %}Escape Room{% endif %} Ermittlungsakte von Die Anrufbeantworter wird aktuell ausgewertet.
       {% elsif sum_len > 0 %}
-        {{ page.title }} ({{ page.provider }}, {{ page.location.city }}) im Test: ★ {{ calculated_avg | round: 1 }}/5. {{ page.summary | strip_html | strip_newlines | truncate: 115 }}
+        {{ page.title }} ({{ page.provider }}{% if review_place != "" %}, {{ review_place }}{% endif %}) im Test: ★ {{ calculated_avg | round: 1 }}/5. {{ page.summary | strip_html | strip_newlines | truncate: 115 }}
       {% else %}
-        {{ page.title }} ({{ page.provider }}, {{ page.location.city }}) – Ausführlicher Escape Room Testbericht, Bewertung und Erfahrungen von Die Anrufbeantworter.
+        {{ page.title }} ({{ page.provider }}{% if review_place != "" %}, {{ review_place }}{% endif %}) – Ausführlicher {% if page.online %}Online Escape{% elsif page.outdoor %}Outdoor Game{% else %}Escape Room{% endif %} Testbericht, Bewertung und Erfahrungen von Die Anrufbeantworter.
       {% endif %}
     {% elsif desc_len > 0 %}
       {{ page.description | strip_html | strip_newlines | truncate: 160 }}
@@ -78,7 +81,7 @@
   {% endif %}
 
   {% capture og_img %}{% if page.thumbnail %}{{ page.thumbnail }}{% elsif page.images.size > 0 %}{{ page.images[0] }}{% elsif page.layout == 'member' and current_member.image %}{{ current_member.image }}{% else %}logo-escape-archive_800.webp{% endif %}{% endcapture %}
-  {% capture og_img_alt %}{% if page.layout == 'review' %}{{ page.title }} bei {{ page.provider }} in {{ page.location.city }} – Escape Room Test{% elsif page.layout == 'member' and current_member %}{{ current_member.name }} – Die Anrufbeantworter{% else %}{{ page.title | default: site.title }} | The Escape Archive{% endif %}{% endcapture %}
+  {% capture og_img_alt %}{% if page.layout == 'review' %}{{ page.title }} bei {{ page.provider }}{% if page.online %} – Online Escape Test{% elsif page.location.city %} in {{ page.location.city }} – {% if page.outdoor %}Outdoor Game{% else %}Escape Room{% endif %} Test{% endif %}{% elsif page.layout == 'member' and current_member %}{{ current_member.name }} – Die Anrufbeantworter{% else %}{{ page.title | default: site.title }} | The Escape Archive{% endif %}{% endcapture %}
 
   <!-- Open Graph -->
   <meta property="og:locale" content="de_DE">
@@ -102,7 +105,7 @@
   <meta name="twitter:image" content="{{ site.url }}/assets/images/{{ og_img | strip }}">
   <meta name="twitter:image:alt" content="{{ og_img_alt | strip | escape }}">
 
-  <link rel="stylesheet" href="/assets/css/style.css?v=20261018c">
+  <link rel="stylesheet" href="/assets/css/style.css?v=20261124">
 
   {% if page.url == '/karte/' %}
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
@@ -132,7 +135,7 @@
       {
         "@type": "ListItem",
         "position": 3,
-        "name": "{{ page.title | escape }} ({{ page.location.city | escape }})",
+        "name": "{{ page.title | escape }}{% if page.online %} (Online){% elsif page.location.city %} ({{ page.location.city | escape }}){% endif %}",
         "item": "{{ site.url }}{{ page.url }}"
       }
       {% elsif page.city %}
@@ -237,35 +240,33 @@
   {% endif %}
 
   {% if page.layout == 'review' and page.pending != true and page.planned != true %}
-  {% capture full_review_body %}{{ page.summary | strip_html | strip_newlines }} Atmosphäre: {{ page.ratings.atmosphere.text | strip_html | strip_newlines }} Story: {{ page.ratings.story.text | strip_html | strip_newlines }} Rätsel: {{ page.ratings.puzzles.text | strip_html | strip_newlines }} Kulisse: {{ page.ratings.scenery.text | strip_html | strip_newlines }} Gamemaster: {{ page.ratings.gamemaster.text | strip_html | strip_newlines }}{% endcapture %}
+  {% capture full_review_body %}{{ page.summary | strip_html | strip_newlines }} Atmosphäre: {{ page.ratings.atmosphere.text | strip_html | strip_newlines }} Story: {{ page.ratings.story.text | strip_html | strip_newlines }} Rätsel: {{ page.ratings.puzzles.text | strip_html | strip_newlines }} {% if page.online %}Gestaltung & Technik{% elsif page.outdoor %}Routenführung{% else %}Kulisse{% endif %}: {{ page.ratings.scenery.text | strip_html | strip_newlines }} {% if page.online %}Hinweissystem & Support{% elsif page.outdoor %}Support{% else %}Gamemaster{% endif %}: {{ page.ratings.gamemaster.text | strip_html | strip_newlines }}{% endcapture %}
   <script type="application/ld+json">
   {
     "@context": "https://schema.org/",
     "@type": "Review",
-    "name": "{{ page.title | escape }} ({{ page.provider | escape }}, {{ page.location.city | escape }}) – Test & Erfahrung",
-    "headline": "{{ page.title | escape }} ({{ page.provider | escape }}) – Escape Room Testbericht",
+    "name": "{{ page.title | escape }} ({{ page.provider | escape }}{% if page.online %}, Online{% elsif page.location.city %}, {{ page.location.city | escape }}{% endif %}) – Test & Erfahrung",
+    "headline": "{{ page.title | escape }} ({{ page.provider | escape }}) – {% if page.online %}Online Escape{% elsif page.outdoor %}Outdoor Game{% else %}Escape Room{% endif %} Testbericht",
     "inLanguage": "de-DE",
     "url": "{{ site.url }}{{ page.url }}",
     "datePublished": "{{ page.visit_date | date_to_xmlschema }}",
     "itemReviewed": {
-      "@type": "LocalBusiness",
+      "@type": "{% if page.online %}Game{% else %}LocalBusiness{% endif %}",
       "name": "{{ page.title | escape }} – {{ page.provider | escape }}",
-      "image": "{{ site.url }}/assets/images/{% if page.thumbnail %}{{ page.thumbnail }}{% elsif page.images.size > 0 %}{{ page.images[0] }}{% else %}logo-escape-archive_800.webp{% endif %}",
-      {% if page.website %}"sameAs": "{{ page.website }}",{% endif %}
+      "image": "{{ site.url }}/assets/images/{% if page.thumbnail %}{{ page.thumbnail }}{% elsif page.images.size > 0 %}{{ page.images[0] }}{% else %}logo-escape-archive_800.webp{% endif %}"{% if page.website %},
+      "sameAs": "{{ page.website }}"{% endif %}{% if page.online != true %}{% if page.location.city or page.location.address %},
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "{{ page.location.address | escape }}",
         "addressLocality": "{{ page.location.city | escape }}",
         "addressCountry": "{% if page.url contains 'CH_' %}CH{% else %}DE{% endif %}"
-      },
-      {% if page.location.lat and page.location.lng %}
+      }{% endif %}{% if page.location.lat and page.location.lng %},
       "geo": {
         "@type": "GeoCoordinates",
         "latitude": {{ page.location.lat }},
         "longitude": {{ page.location.lng }}
-      },
-      {% endif %}
-      "priceRange": "$$"
+      }{% endif %},
+      "priceRange": "$$"{% endif %}
     },
     "reviewRating": {
       "@type": "Rating",
@@ -293,7 +294,7 @@
   {% endif %}
 
   {% if page.city %}
-  {% assign city_schema_reviews = site.reviews | where: "location.city", page.city | where_exp: "item", "item.pending != true" %}
+  {% assign city_schema_reviews = site.reviews | where: "location.city", page.city | where_exp: "item", "item.pending != true" | where_exp: "item", "item.online != true" %}
   {% if city_schema_reviews.size > 0 %}
   <script type="application/ld+json">
   {
@@ -443,7 +444,7 @@
   <script src="https://unpkg.com/leaflet.markercluster/dist/leaflet.markercluster.js"></script>
   {% endif %}
 
-  <script src="/assets/js/main.js?v=20261018"></script>
+  <script src="/assets/js/main.js?v=20261124"></script>
   <script data-goatcounter="https://nairolf22.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>
 

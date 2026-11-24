@@ -333,6 +333,31 @@ permalink: /widget.html
       const params = new URLSearchParams(window.location.search);
       const type = params.get('type') || 'standard'; // 'standard', 'badge' or 'scorecard'
       const theme = params.get('theme') || 'dark'; // 'dark' or 'light'
+      const cat = params.get('cat') || 'indoor'; // 'indoor', 'outdoor', 'online'
+
+      const criteriaLabels = cat === 'online'
+        ? {
+            atm: 'Atmosphäre &amp; Immersion',
+            sty: 'Story &amp; Storytelling',
+            puz: 'Rätseldesign &amp; Logik',
+            scn: 'Gestaltung &amp; Technik',
+            gm:  'Hinweissystem &amp; Support'
+          }
+        : cat === 'outdoor'
+        ? {
+            atm: 'Atmosphäre und Umgebung',
+            sty: 'Story &amp; Storytelling',
+            puz: 'Rätseldesign &amp; Logik',
+            scn: 'Routenführung',
+            gm:  'Support und Feedback'
+          }
+        : {
+            atm: 'Atmosphäre &amp; Immersion',
+            sty: 'Story &amp; Storytelling',
+            puz: 'Rätseldesign &amp; Logik',
+            scn: 'Kulisse &amp; Ausstattung',
+            gm:  'Gamemaster &amp; Service'
+          };
       
       const title = params.get('title') || 'Escape Room';
       const provider = params.get('provider') || 'Escape Room Anbieter';
@@ -411,23 +436,23 @@ permalink: /widget.html
           </div>
           <div class="ea-criteria-list">
             <div class="ea-crit-row">
-              <span class="ea-crit-name">Atmosphäre &amp; Immersion</span>
+              <span class="ea-crit-name">${criteriaLabels.atm}</span>
               ${getBar(atm)}
             </div>
             <div class="ea-crit-row">
-              <span class="ea-crit-name">Story &amp; Storytelling</span>
+              <span class="ea-crit-name">${criteriaLabels.sty}</span>
               ${getBar(sty)}
             </div>
             <div class="ea-crit-row">
-              <span class="ea-crit-name">Rätseldesign &amp; Logik</span>
+              <span class="ea-crit-name">${criteriaLabels.puz}</span>
               ${getBar(puz)}
             </div>
             <div class="ea-crit-row">
-              <span class="ea-crit-name">Kulisse &amp; Ausstattung</span>
+              <span class="ea-crit-name">${criteriaLabels.scn}</span>
               ${getBar(scn)}
             </div>
             <div class="ea-crit-row">
-              <span class="ea-crit-name">Gamemaster &amp; Service</span>
+              <span class="ea-crit-name">${criteriaLabels.gm}</span>
               ${getBar(gm)}
             </div>
           </div>

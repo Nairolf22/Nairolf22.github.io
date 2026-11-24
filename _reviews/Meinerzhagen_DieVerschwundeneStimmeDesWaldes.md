@@ -1,5 +1,6 @@
 ---
 outdoor: true
+free_test: true
 layout: review
 badge: Badge_BesterOutdoor
 title: "Die Verschwundene Stimme des Waldes"
@@ -33,5 +34,5 @@ ratings:
   gamemaster:
     score: 4.0
     text: "Besonders positiv fiel auf, dass man nicht permanent auf ein Smartphone starren muss: Das Spiel kommt ohne ständige App- oder GPS-Pflicht aus und führt primär über ein liebevoll gestaltetes Heft und analoge Karten durch den Wald. Die telefonische Unterstützung bei eventuellen Hängern ist zuverlässig gewährleistet. Als besonders schönes Gimmick blieben die Feen-Tattoos in Erinnerung, die als kleine Belohnung für echten Stolz bei den Kindern sorgten."
-summary: "Ein rundum gelungenes, naturverbundenes Outdoor-Escape-Erlebnis im Sauerland, das sich ideal für Familien mit Kindern und kleine Gruppen eignet. Die idyllische Streckenführung entlang von Bächen und Waldwegen harmoniert perfekt mit der kindgerechten Erzählung. Trotz eines holprigen Einstiegs beim ersten Rätsel überzeugt das Abenteuer durch faire Aufgaben, physisch integrierte Stationen, den wohltuenden Verzicht auf Smartphone-Zwang sowie liebevolle Details wie das Feen-Tattoo. - Hinweis: Dieser Outdoor-Escape-Room wurde uns kostenlos als Vortester zur Verfügung gestellt."
+summary: "Ein rundum gelungenes, naturverbundenes Outdoor-Escape-Erlebnis im Sauerland, das sich ideal für Familien mit Kindern und kleine Gruppen eignet. Die idyllische Streckenführung entlang von Bächen und Waldwegen harmoniert perfekt mit der kindgerechten Erzählung. Trotz eines holprigen Einstiegs beim ersten Rätsel überzeugt das Abenteuer durch faire Aufgaben, physisch integrierte Stationen, den wohltuenden Verzicht auf Smartphone-Zwang sowie liebevolle Details wie das Feen-Tattoo."
 ---

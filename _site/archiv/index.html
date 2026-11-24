@@ -11,6 +11,7 @@
   
 
   
+  
   <title>Alle Escape Room Tests im Überblick: Das große Archiv & Verzeichnis | The Escape Archive</title>
 
   
@@ -52,7 +53,7 @@
   <meta name="twitter:image" content="http://localhost:4000/assets/images/logo-escape-archive_800.webp">
   <meta name="twitter:image:alt" content="Alle Escape Room Tests im Überblick: Das große Archiv &amp; Verzeichnis | The Escape Archive">
 
-  <link rel="stylesheet" href="/assets/css/style.css?v=20261018c">
+  <link rel="stylesheet" href="/assets/css/style.css?v=20261124">
 
   
 
@@ -236,11 +237,12 @@
         </div>
     </div>
 
-    <div class="filter-bar">
-        <button class="btn-filter active" id="filter-all" onclick="filterCategory('all')">Alle Akten</button>
-        <button class="btn-filter" id="filter-indoor" onclick="filterCategory('indoor')">Indoor Escape Rooms</button>
-        <button class="btn-filter" id="filter-outdoor" onclick="filterCategory('outdoor')">Outdoor Games</button>
-    </div>
+    <search class="filter-bar" aria-label="Akten nach Kategorie filtern">
+        <button type="button" class="btn-filter active" id="filter-all" data-category="all" aria-pressed="true">Alle Akten</button>
+        <button type="button" class="btn-filter" id="filter-indoor" data-category="indoor" aria-pressed="false">Indoor Escape Room</button>
+        <button type="button" class="btn-filter" id="filter-outdoor" data-category="outdoor" aria-pressed="false">Outdoor Games</button>
+        <button type="button" class="btn-filter" id="filter-online" data-category="online" aria-pressed="false">Online Escape</button>
+    </search>
 
     <div class="card-grid" id="roomGrid">
         
@@ -248,8 +250,9 @@
         
         
         
+        
 
-        <a href="/reviews/Aachen_HexerVonKehrMorhen/" class="room-card-link" data-title="die hexer von kaer morhen" data-provider="thout - the house of unwritten tales" data-outdoor="false" data-rating="-1">
+        <a href="/reviews/Aachen_HexerVonKehrMorhen/" class="room-card-link" data-title="die hexer von kaer morhen" data-provider="thout - the house of unwritten tales" data-category="indoor" data-outdoor="false" data-online="false" data-free-test="false" data-rating="-1">
             
             <article class="room-card ">
                 <div class="card-image-wrapper">
@@ -270,6 +273,12 @@
                 </div>
 
                 <div class="card-content">
+                    <div class="card-tags">
+                        
+                            <span class="room-type-tag type-indoor tag-compact">Indoor Escape Room</span>
+                        
+                        
+                    </div>
                     <h3>
                         Die Hexer von Kaer Morhen
                         
@@ -295,8 +304,9 @@
         
         
         
+        
 
-        <a href="/reviews/Bochum_DieGasse/" class="room-card-link" data-title="die gasse" data-provider="rätselraum ruhrpott" data-outdoor="false" data-rating="4.5">
+        <a href="/reviews/Bochum_DieGasse/" class="room-card-link" data-title="die gasse" data-provider="rätselraum ruhrpott" data-category="indoor" data-outdoor="false" data-online="false" data-free-test="false" data-rating="4.5">
             
             <article class="room-card ">
                 <div class="card-image-wrapper">
@@ -316,6 +326,12 @@
                 </div>
 
                 <div class="card-content">
+                    <div class="card-tags">
+                        
+                            <span class="room-type-tag type-indoor tag-compact">Indoor Escape Room</span>
+                        
+                        
+                    </div>
                     <h3>
                         Die Gasse
                         
@@ -339,8 +355,9 @@
         
         
         
+        
 
-        <a href="/reviews/Bonn_AncumDerGro%C3%9Fe/" class="room-card-link" data-title="ancum - der große" data-provider="timebreak bonn" data-outdoor="false" data-rating="4.1">
+        <a href="/reviews/Bonn_AncumDerGro%C3%9Fe/" class="room-card-link" data-title="ancum - der große" data-provider="timebreak bonn" data-category="indoor" data-outdoor="false" data-online="false" data-free-test="false" data-rating="4.1">
             
             <article class="room-card ">
                 <div class="card-image-wrapper">
@@ -360,6 +377,12 @@
                 </div>
 
                 <div class="card-content">
+                    <div class="card-tags">
+                        
+                            <span class="room-type-tag type-indoor tag-compact">Indoor Escape Room</span>
+                        
+                        
+                    </div>
                     <h3>
                         Ancum - Der Große
                         
@@ -383,8 +406,9 @@
         
         
         
+        
 
-        <a href="/reviews/Bottrop_DerNachtfalter/" class="room-card-link" data-title="der nachtfalter" data-provider="eloria erlebnisfabrik" data-outdoor="false" data-rating="-1">
+        <a href="/reviews/Bottrop_DerNachtfalter/" class="room-card-link" data-title="der nachtfalter" data-provider="eloria erlebnisfabrik" data-category="indoor" data-outdoor="false" data-online="false" data-free-test="false" data-rating="-1">
             
             <article class="room-card ">
                 <div class="card-image-wrapper">
@@ -405,6 +429,12 @@
                 </div>
 
                 <div class="card-content">
+                    <div class="card-tags">
+                        
+                            <span class="room-type-tag type-indoor tag-compact">Indoor Escape Room</span>
+                        
+                        
+                    </div>
                     <h3>
                         Der Nachtfalter
                         
@@ -430,8 +460,9 @@
         
         
         
+        
 
-        <a href="/reviews/CH_Chur_MissionZeitriss/" class="room-card-link" data-title="mission zeitriss" data-provider="enuit adventures!" data-outdoor="false" data-rating="3.3">
+        <a href="/reviews/CH_Chur_MissionZeitriss/" class="room-card-link" data-title="mission zeitriss" data-provider="enuit adventures!" data-category="indoor" data-outdoor="false" data-online="false" data-free-test="false" data-rating="3.3">
             
             <article class="room-card ">
                 <div class="card-image-wrapper">
@@ -451,6 +482,12 @@
                 </div>
 
                 <div class="card-content">
+                    <div class="card-tags">
+                        
+                            <span class="room-type-tag type-indoor tag-compact">Indoor Escape Room</span>
+                        
+                        
+                    </div>
                     <h3>
                         Mission Zeitriss
                         
@@ -474,8 +511,9 @@
         
         
         
+        
 
-        <a href="/reviews/Dorsten_GefangenImSchacht/" class="room-card-link" data-title="gefangen im schacht" data-provider="mining adventure world" data-outdoor="false" data-rating="3.9">
+        <a href="/reviews/Dorsten_GefangenImSchacht/" class="room-card-link" data-title="gefangen im schacht" data-provider="mining adventure world" data-category="indoor" data-outdoor="false" data-online="false" data-free-test="false" data-rating="3.9">
             
             <article class="room-card ">
                 <div class="card-image-wrapper">
@@ -495,6 +533,12 @@
                 </div>
 
                 <div class="card-content">
+                    <div class="card-tags">
+                        
+                            <span class="room-type-tag type-indoor tag-compact">Indoor Escape Room</span>
+                        
+                        
+                    </div>
                     <h3>
                         Gefangen im Schacht
                         
@@ -518,8 +562,9 @@
         
         
         
+        
 
-        <a href="/reviews/Dorsten_HotelDerGeheimnisvollenUhren/" class="room-card-link" data-title="das hotel der geheimnisvollen uhren" data-provider="mining adventure world" data-outdoor="false" data-rating="3.7">
+        <a href="/reviews/Dorsten_HotelDerGeheimnisvollenUhren/" class="room-card-link" data-title="das hotel der geheimnisvollen uhren" data-provider="mining adventure world" data-category="indoor" data-outdoor="false" data-online="false" data-free-test="false" data-rating="3.7">
             
             <article class="room-card ">
                 <div class="card-image-wrapper">
@@ -539,6 +584,12 @@
                 </div>
 
                 <div class="card-content">
+                    <div class="card-tags">
+                        
+                            <span class="room-type-tag type-indoor tag-compact">Indoor Escape Room</span>
+                        
+                        
+                    </div>
                     <h3>
                         Das Hotel der geheimnisvollen Uhren
                         
@@ -562,8 +613,9 @@
         
         
         
+        
 
-        <a href="/reviews/Dorsten_Kammerflimmern/" class="room-card-link" data-title="kammerflimmern" data-provider="mining adventure world" data-outdoor="false" data-rating="2.8">
+        <a href="/reviews/Dorsten_Kammerflimmern/" class="room-card-link" data-title="kammerflimmern" data-provider="mining adventure world" data-category="indoor" data-outdoor="false" data-online="false" data-free-test="false" data-rating="2.8">
             
             <article class="room-card ">
                 <div class="card-image-wrapper">
@@ -587,6 +639,12 @@
                 </div>
 
                 <div class="card-content">
+                    <div class="card-tags">
+                        
+                            <span class="room-type-tag type-indoor tag-compact">Indoor Escape Room</span>
+                        
+                        
+                    </div>
                     <h3>
                         Kammerflimmern
                         
@@ -616,8 +674,9 @@
         
         
         
+        
 
-        <a href="/reviews/Dorsten_VerbannungDesDunklenLords/" class="room-card-link" data-title="die verbannung des dunklen lords" data-provider="mining adventure world" data-outdoor="false" data-rating="3.0">
+        <a href="/reviews/Dorsten_VerbannungDesDunklenLords/" class="room-card-link" data-title="die verbannung des dunklen lords" data-provider="mining adventure world" data-category="indoor" data-outdoor="false" data-online="false" data-free-test="false" data-rating="3.0">
             
             <article class="room-card ">
                 <div class="card-image-wrapper">
@@ -637,6 +696,12 @@
                 </div>
 
                 <div class="card-content">
+                    <div class="card-tags">
+                        
+                            <span class="room-type-tag type-indoor tag-compact">Indoor Escape Room</span>
+                        
+                        
+                    </div>
                     <h3>
                         Die Verbannung des dunklen Lords
                         
@@ -660,8 +725,9 @@
         
         
         
+        
 
-        <a href="/reviews/Dortmund_DieZeitmaschine/" class="room-card-link" data-title="die zeitmaschine" data-provider="enigmania dortmund" data-outdoor="false" data-rating="3.6">
+        <a href="/reviews/Dortmund_DieZeitmaschine/" class="room-card-link" data-title="die zeitmaschine" data-provider="enigmania dortmund" data-category="indoor" data-outdoor="false" data-online="false" data-free-test="false" data-rating="3.6">
             
             <article class="room-card ">
                 <div class="card-image-wrapper">
@@ -681,6 +747,12 @@
                 </div>
 
                 <div class="card-content">
+                    <div class="card-tags">
+                        
+                            <span class="room-type-tag type-indoor tag-compact">Indoor Escape Room</span>
+                        
+                        
+                    </div>
                     <h3>
                         Die Zeitmaschine
                         
@@ -704,8 +776,9 @@
         
         
         
+        
 
-        <a href="/reviews/Dortmund_KolumbusLetzteReise/" class="room-card-link" data-title="kolumbus letzte reise" data-provider="enigmania dortmund" data-outdoor="false" data-rating="3.4">
+        <a href="/reviews/Dortmund_KolumbusLetzteReise/" class="room-card-link" data-title="kolumbus letzte reise" data-provider="enigmania dortmund" data-category="indoor" data-outdoor="false" data-online="false" data-free-test="false" data-rating="3.4">
             
             <article class="room-card ">
                 <div class="card-image-wrapper">
@@ -725,6 +798,12 @@
                 </div>
 
                 <div class="card-content">
+                    <div class="card-tags">
+                        
+                            <span class="room-type-tag type-indoor tag-compact">Indoor Escape Room</span>
+                        
+                        
+                    </div>
                     <h3>
                         Kolumbus letzte Reise
                         
@@ -748,8 +827,9 @@
         
         
         
+        
 
-        <a href="/reviews/Dortmund_SecretService/" class="room-card-link" data-title="secret service" data-provider="key &amp; free" data-outdoor="false" data-rating="3.8">
+        <a href="/reviews/Dortmund_SecretService/" class="room-card-link" data-title="secret service" data-provider="key &amp; free" data-category="indoor" data-outdoor="false" data-online="false" data-free-test="false" data-rating="3.8">
             
             <article class="room-card ">
                 <div class="card-image-wrapper">
@@ -769,6 +849,12 @@
                 </div>
 
                 <div class="card-content">
+                    <div class="card-tags">
+                        
+                            <span class="room-type-tag type-indoor tag-compact">Indoor Escape Room</span>
+                        
+                        
+                    </div>
                     <h3>
                         Secret Service
                         
@@ -792,8 +878,9 @@
         
         
         
+        
 
-        <a href="/reviews/Duesseldorf_HekatesTraenen/" class="room-card-link" data-title="hekates tränen" data-provider="the code agency" data-outdoor="false" data-rating="3.7">
+        <a href="/reviews/Duesseldorf_HekatesTraenen/" class="room-card-link" data-title="hekates tränen" data-provider="the code agency" data-category="indoor" data-outdoor="false" data-online="false" data-free-test="false" data-rating="3.7">
             
             <article class="room-card ">
                 <div class="card-image-wrapper">
@@ -813,6 +900,12 @@
                 </div>
 
                 <div class="card-content">
+                    <div class="card-tags">
+                        
+                            <span class="room-type-tag type-indoor tag-compact">Indoor Escape Room</span>
+                        
+                        
+                    </div>
                     <h3>
                         Hekates Tränen
                         
@@ -836,8 +929,9 @@
         
         
         
+        
 
-        <a href="/reviews/Gelsenkirchen_ErbeDraculas/" class="room-card-link" data-title="das erbe draculas" data-provider="alma park" data-outdoor="false" data-rating="-1">
+        <a href="/reviews/Gelsenkirchen_ErbeDraculas/" class="room-card-link" data-title="das erbe draculas" data-provider="alma park" data-category="indoor" data-outdoor="false" data-online="false" data-free-test="false" data-rating="-1">
             
             <article class="room-card ">
                 <div class="card-image-wrapper">
@@ -858,6 +952,12 @@
                 </div>
 
                 <div class="card-content">
+                    <div class="card-tags">
+                        
+                            <span class="room-type-tag type-indoor tag-compact">Indoor Escape Room</span>
+                        
+                        
+                    </div>
                     <h3>
                         Das Erbe Draculas
                         
@@ -883,8 +983,9 @@
         
         
         
+        
 
-        <a href="/reviews/Hagen_BiggsTheLegacy/" class="room-card-link" data-title="biggs - the legacy" data-provider="exitnow" data-outdoor="false" data-rating="4.0">
+        <a href="/reviews/Hagen_BiggsTheLegacy/" class="room-card-link" data-title="biggs - the legacy" data-provider="exitnow" data-category="indoor" data-outdoor="false" data-online="false" data-free-test="false" data-rating="4.0">
             
             <article class="room-card ">
                 <div class="card-image-wrapper">
@@ -904,6 +1005,12 @@
                 </div>
 
                 <div class="card-content">
+                    <div class="card-tags">
+                        
+                            <span class="room-type-tag type-indoor tag-compact">Indoor Escape Room</span>
+                        
+                        
+                    </div>
                     <h3>
                         Biggs - The Legacy
                         
@@ -927,8 +1034,9 @@
         
         
         
+        
 
-        <a href="/reviews/Hamburg_Insomnia/" class="room-card-link" data-title="insomnia (christmas edition)" data-provider="big break" data-outdoor="false" data-rating="3.8">
+        <a href="/reviews/Hamburg_Insomnia/" class="room-card-link" data-title="insomnia (christmas edition)" data-provider="big break" data-category="indoor" data-outdoor="false" data-online="false" data-free-test="false" data-rating="3.8">
             
             <article class="room-card ">
                 <div class="card-image-wrapper">
@@ -948,6 +1056,12 @@
                 </div>
 
                 <div class="card-content">
+                    <div class="card-tags">
+                        
+                            <span class="room-type-tag type-indoor tag-compact">Indoor Escape Room</span>
+                        
+                        
+                    </div>
                     <h3>
                         Insomnia (Christmas Edition)
                         
@@ -971,8 +1085,9 @@
         
         
         
+        
 
-        <a href="/reviews/Koeln_DieKunstDesStehlens/" class="room-card-link" data-title="die kunst des stehlens" data-provider="teamescape köln" data-outdoor="false" data-rating="-1">
+        <a href="/reviews/Koeln_DieKunstDesStehlens/" class="room-card-link" data-title="die kunst des stehlens" data-provider="teamescape köln" data-category="indoor" data-outdoor="false" data-online="false" data-free-test="false" data-rating="-1">
             
             <article class="room-card ">
                 <div class="card-image-wrapper">
@@ -993,6 +1108,12 @@
                 </div>
 
                 <div class="card-content">
+                    <div class="card-tags">
+                        
+                            <span class="room-type-tag type-indoor tag-compact">Indoor Escape Room</span>
+                        
+                        
+                    </div>
                     <h3>
                         Die Kunst des Stehlens
                         
@@ -1018,8 +1139,9 @@
         
         
         
+        
 
-        <a href="/reviews/Koeln_DreiFragezeichenErbeDesGeisterpiraten/" class="room-card-link" data-title="die drei ??? und das erbe des geisterpiraten" data-provider="die drei ??? mission rocky beach" data-outdoor="false" data-rating="3.5">
+        <a href="/reviews/Koeln_DreiFragezeichenErbeDesGeisterpiraten/" class="room-card-link" data-title="die drei ??? und das erbe des geisterpiraten" data-provider="die drei ??? mission rocky beach" data-category="indoor" data-outdoor="false" data-online="false" data-free-test="false" data-rating="3.5">
             
             <article class="room-card ">
                 <div class="card-image-wrapper">
@@ -1039,6 +1161,12 @@
                 </div>
 
                 <div class="card-content">
+                    <div class="card-tags">
+                        
+                            <span class="room-type-tag type-indoor tag-compact">Indoor Escape Room</span>
+                        
+                        
+                    </div>
                     <h3>
                         Die drei ??? und das Erbe des Geisterpiraten
                         
@@ -1062,8 +1190,9 @@
         
         
         
+        
 
-        <a href="/reviews/Koeln_DreiFragezeichenNachtDerIllusionen/" class="room-card-link" data-title="die drei ??? und die nacht der illusionen" data-provider="die drei ??? mission rocky beach" data-outdoor="false" data-rating="3.1">
+        <a href="/reviews/Koeln_DreiFragezeichenNachtDerIllusionen/" class="room-card-link" data-title="die drei ??? und die nacht der illusionen" data-provider="die drei ??? mission rocky beach" data-category="indoor" data-outdoor="false" data-online="false" data-free-test="false" data-rating="3.1">
             
             <article class="room-card ">
                 <div class="card-image-wrapper">
@@ -1083,6 +1212,12 @@
                 </div>
 
                 <div class="card-content">
+                    <div class="card-tags">
+                        
+                            <span class="room-type-tag type-indoor tag-compact">Indoor Escape Room</span>
+                        
+                        
+                    </div>
                     <h3>
                         Die drei ??? und die Nacht der Illusionen
                         
@@ -1106,8 +1241,9 @@
         
         
         
+        
 
-        <a href="/reviews/Koeln_DreiFragezeichenTruheDerMeister/" class="room-card-link" data-title="die drei ??? und die truhe der meister" data-provider="die drei ??? mission rocky beach" data-outdoor="false" data-rating="3.9">
+        <a href="/reviews/Koeln_DreiFragezeichenTruheDerMeister/" class="room-card-link" data-title="die drei ??? und die truhe der meister" data-provider="die drei ??? mission rocky beach" data-category="indoor" data-outdoor="false" data-online="false" data-free-test="false" data-rating="3.9">
             
             <article class="room-card ">
                 <div class="card-image-wrapper">
@@ -1127,6 +1263,12 @@
                 </div>
 
                 <div class="card-content">
+                    <div class="card-tags">
+                        
+                            <span class="room-type-tag type-indoor tag-compact">Indoor Escape Room</span>
+                        
+                        
+                    </div>
                     <h3>
                         Die drei ??? und die Truhe der Meister
                         
@@ -1150,8 +1292,9 @@
         
         
         
+        
 
-        <a href="/reviews/Koeln_JohnsSecret/" class="room-card-link" data-title="john's secret'" data-provider="indizio köln" data-outdoor="false" data-rating="-1">
+        <a href="/reviews/Koeln_JohnsSecret/" class="room-card-link" data-title="john's secret'" data-provider="indizio köln" data-category="indoor" data-outdoor="false" data-online="false" data-free-test="false" data-rating="-1">
             
             <article class="room-card ">
                 <div class="card-image-wrapper">
@@ -1172,6 +1315,12 @@
                 </div>
 
                 <div class="card-content">
+                    <div class="card-tags">
+                        
+                            <span class="room-type-tag type-indoor tag-compact">Indoor Escape Room</span>
+                        
+                        
+                    </div>
                     <h3>
                         John's Secret'
                         
@@ -1197,8 +1346,9 @@
         
         
         
+        
 
-        <a href="/reviews/Krefeld_DasExperiment/" class="room-card-link" data-title="das experiment" data-provider="limbus escape games" data-outdoor="false" data-rating="4.4">
+        <a href="/reviews/Krefeld_DasExperiment/" class="room-card-link" data-title="das experiment" data-provider="limbus escape games" data-category="indoor" data-outdoor="false" data-online="false" data-free-test="false" data-rating="4.4">
             
             <article class="room-card ">
                 <div class="card-image-wrapper">
@@ -1218,6 +1368,12 @@
                 </div>
 
                 <div class="card-content">
+                    <div class="card-tags">
+                        
+                            <span class="room-type-tag type-indoor tag-compact">Indoor Escape Room</span>
+                        
+                        
+                    </div>
                     <h3>
                         Das Experiment
                         
@@ -1241,8 +1397,9 @@
         
         
         
+        
 
-        <a href="/reviews/Krefeld_DieMagischeReiseTeil1/" class="room-card-link" data-title="die magische reise, kapitel 1" data-provider="limbus escape games" data-outdoor="false" data-rating="4.4">
+        <a href="/reviews/Krefeld_DieMagischeReiseTeil1/" class="room-card-link" data-title="die magische reise, kapitel 1" data-provider="limbus escape games" data-category="indoor" data-outdoor="false" data-online="false" data-free-test="false" data-rating="4.4">
             
             <article class="room-card ">
                 <div class="card-image-wrapper">
@@ -1262,6 +1419,12 @@
                 </div>
 
                 <div class="card-content">
+                    <div class="card-tags">
+                        
+                            <span class="room-type-tag type-indoor tag-compact">Indoor Escape Room</span>
+                        
+                        
+                    </div>
                     <h3>
                         Die magische Reise, Kapitel 1
                         
@@ -1285,8 +1448,9 @@
         
         
         
+        
 
-        <a href="/reviews/Krefeld_Panzerknacker/" class="room-card-link" data-title="panzerknacker" data-provider="limbus escape games" data-outdoor="false" data-rating="4.6">
+        <a href="/reviews/Krefeld_Panzerknacker/" class="room-card-link" data-title="panzerknacker" data-provider="limbus escape games" data-category="indoor" data-outdoor="false" data-online="false" data-free-test="false" data-rating="4.6">
             
             <article class="room-card ">
                 <div class="card-image-wrapper">
@@ -1310,6 +1474,12 @@
                 </div>
 
                 <div class="card-content">
+                    <div class="card-tags">
+                        
+                            <span class="room-type-tag type-indoor tag-compact">Indoor Escape Room</span>
+                        
+                        
+                    </div>
                     <h3>
                         Panzerknacker
                         
@@ -1333,8 +1503,9 @@
         
         
         
+        
 
-        <a href="/reviews/Luedenscheid_DerJournalist/" class="room-card-link" data-title="der journalist" data-provider="verschlusssache mission rätselspaß" data-outdoor="false" data-rating="3.1">
+        <a href="/reviews/Luedenscheid_DerJournalist/" class="room-card-link" data-title="der journalist" data-provider="verschlusssache mission rätselspaß" data-category="indoor" data-outdoor="false" data-online="false" data-free-test="false" data-rating="3.1">
             
             <article class="room-card ">
                 <div class="card-image-wrapper">
@@ -1354,6 +1525,12 @@
                 </div>
 
                 <div class="card-content">
+                    <div class="card-tags">
+                        
+                            <span class="room-type-tag type-indoor tag-compact">Indoor Escape Room</span>
+                        
+                        
+                    </div>
                     <h3>
                         Der Journalist
                         
@@ -1377,14 +1554,15 @@
         
         
         
+        
 
-        <a href="/reviews/Meinerzhagen_DieVerschwundeneStimmeDesWaldes/" class="room-card-link" data-title="die verschwundene stimme des waldes" data-provider="outdoor escape meinerzhagen" data-outdoor="true" data-rating="4.3">
+        <a href="/reviews/Meinerzhagen_DieVerschwundeneStimmeDesWaldes/" class="room-card-link" data-title="die verschwundene stimme des waldes" data-provider="outdoor escape meinerzhagen" data-category="outdoor" data-outdoor="true" data-online="false" data-free-test="true" data-rating="4.3">
             
             <article class="room-card outdoor-card">
                 <div class="card-image-wrapper">
                     
 
-                    <img src="/assets/images/rooms/Meinerzhagen-DieVerschwundeneStimmeDesWaldes1.webp" alt="Die Verschwundene Stimme des Waldes (Outdoor Escape Meinerzhagen, Meinerzhagen) – Escape Room Test" loading="lazy" width="400" height="200" style="object-fit: cover; " />
+                    <img src="/assets/images/rooms/Meinerzhagen-DieVerschwundeneStimmeDesWaldes1.webp" alt="Die Verschwundene Stimme des Waldes (Outdoor Escape Meinerzhagen, Meinerzhagen) – Outdoor Game Test" loading="lazy" width="400" height="200" style="object-fit: cover; " />
                     
                     
 
@@ -1402,6 +1580,14 @@
                 </div>
 
                 <div class="card-content">
+                    <div class="card-tags">
+                        
+                            <span class="room-type-tag type-outdoor tag-compact">Outdoor Game</span>
+                        
+                        
+                            <span class="free-test-tag tag-compact">Kostenlos getestet</span>
+                        
+                    </div>
                     <h3>
                         Die Verschwundene Stimme des Waldes
                         
@@ -1425,8 +1611,9 @@
         
         
         
+        
 
-        <a href="/reviews/Moenchengladbach_CrystalCamper/" class="room-card-link" data-title="crystal camper" data-provider="timebreak mönchengladbach" data-outdoor="false" data-rating="3.9">
+        <a href="/reviews/Moenchengladbach_CrystalCamper/" class="room-card-link" data-title="crystal camper" data-provider="timebreak mönchengladbach" data-category="indoor" data-outdoor="false" data-online="false" data-free-test="false" data-rating="3.9">
             
             <article class="room-card ">
                 <div class="card-image-wrapper">
@@ -1446,6 +1633,12 @@
                 </div>
 
                 <div class="card-content">
+                    <div class="card-tags">
+                        
+                            <span class="room-type-tag type-indoor tag-compact">Indoor Escape Room</span>
+                        
+                        
+                    </div>
                     <h3>
                         Crystal Camper
                         
@@ -1469,8 +1662,9 @@
         
         
         
+        
 
-        <a href="/reviews/Moenchengladbach_HollywoodBombs/" class="room-card-link" data-title="hollywood bombs" data-provider="timebreak mönchengladbach" data-outdoor="false" data-rating="3.4">
+        <a href="/reviews/Moenchengladbach_HollywoodBombs/" class="room-card-link" data-title="hollywood bombs" data-provider="timebreak mönchengladbach" data-category="indoor" data-outdoor="false" data-online="false" data-free-test="false" data-rating="3.4">
             
             <article class="room-card ">
                 <div class="card-image-wrapper">
@@ -1490,6 +1684,12 @@
                 </div>
 
                 <div class="card-content">
+                    <div class="card-tags">
+                        
+                            <span class="room-type-tag type-indoor tag-compact">Indoor Escape Room</span>
+                        
+                        
+                    </div>
                     <h3>
                         Hollywood Bombs
                         
@@ -1513,8 +1713,9 @@
         
         
         
+        
 
-        <a href="/reviews/Moenchengladbach_Nervenheilanstalt/" class="room-card-link" data-title="dr. brown boyd's nervenheilanstalt" data-provider="timebreak mönchengladbach" data-outdoor="false" data-rating="4.4">
+        <a href="/reviews/Moenchengladbach_Nervenheilanstalt/" class="room-card-link" data-title="dr. brown boyd's nervenheilanstalt" data-provider="timebreak mönchengladbach" data-category="indoor" data-outdoor="false" data-online="false" data-free-test="false" data-rating="4.4">
             
             <article class="room-card ">
                 <div class="card-image-wrapper">
@@ -1534,6 +1735,12 @@
                 </div>
 
                 <div class="card-content">
+                    <div class="card-tags">
+                        
+                            <span class="room-type-tag type-indoor tag-compact">Indoor Escape Room</span>
+                        
+                        
+                    </div>
                     <h3>
                         Dr. Brown Boyd's Nervenheilanstalt
                         
@@ -1557,8 +1764,9 @@
         
         
         
+        
 
-        <a href="/reviews/Moenchengladbach_Spielerkabine/" class="room-card-link" data-title="die spielerkabine" data-provider="timebreak mönchengladbach" data-outdoor="false" data-rating="3.2">
+        <a href="/reviews/Moenchengladbach_Spielerkabine/" class="room-card-link" data-title="die spielerkabine" data-provider="timebreak mönchengladbach" data-category="indoor" data-outdoor="false" data-online="false" data-free-test="false" data-rating="3.2">
             
             <article class="room-card ">
                 <div class="card-image-wrapper">
@@ -1578,6 +1786,12 @@
                 </div>
 
                 <div class="card-content">
+                    <div class="card-tags">
+                        
+                            <span class="room-type-tag type-indoor tag-compact">Indoor Escape Room</span>
+                        
+                        
+                    </div>
                     <h3>
                         Die Spielerkabine
                         
@@ -1601,8 +1815,9 @@
         
         
         
+        
 
-        <a href="/reviews/Moenchengladbach_ZaginisZauberladen/" class="room-card-link" data-title="dunkle machenschaften in zaginis zauberladen" data-provider="timebreak mönchengladbach" data-outdoor="false" data-rating="4.3">
+        <a href="/reviews/Moenchengladbach_ZaginisZauberladen/" class="room-card-link" data-title="dunkle machenschaften in zaginis zauberladen" data-provider="timebreak mönchengladbach" data-category="indoor" data-outdoor="false" data-online="false" data-free-test="false" data-rating="4.3">
             
             <article class="room-card ">
                 <div class="card-image-wrapper">
@@ -1622,6 +1837,12 @@
                 </div>
 
                 <div class="card-content">
+                    <div class="card-tags">
+                        
+                            <span class="room-type-tag type-indoor tag-compact">Indoor Escape Room</span>
+                        
+                        
+                    </div>
                     <h3>
                         Dunkle Machenschaften in Zaginis Zauberladen
                         
@@ -1645,8 +1866,9 @@
         
         
         
+        
 
-        <a href="/reviews/Sonthofen_MissionRedCrystal/" class="room-card-link" data-title="mission red crystal" data-provider="alpen escape" data-outdoor="false" data-rating="4.1">
+        <a href="/reviews/Sonthofen_MissionRedCrystal/" class="room-card-link" data-title="mission red crystal" data-provider="alpen escape" data-category="indoor" data-outdoor="false" data-online="false" data-free-test="false" data-rating="4.1">
             
             <article class="room-card ">
                 <div class="card-image-wrapper">
@@ -1666,6 +1888,12 @@
                 </div>
 
                 <div class="card-content">
+                    <div class="card-tags">
+                        
+                            <span class="room-type-tag type-indoor tag-compact">Indoor Escape Room</span>
+                        
+                        
+                    </div>
                     <h3>
                         Mission Red Crystal
                         
@@ -1689,8 +1917,9 @@
         
         
         
+        
 
-        <a href="/reviews/Wuppertal_Sherlock/" class="room-card-link" data-title="der fall sherlock holmes" data-provider="escape stories" data-outdoor="false" data-rating="3.0">
+        <a href="/reviews/Wuppertal_Sherlock/" class="room-card-link" data-title="der fall sherlock holmes" data-provider="escape stories" data-category="indoor" data-outdoor="false" data-online="false" data-free-test="false" data-rating="3.0">
             
             <article class="room-card ">
                 <div class="card-image-wrapper">
@@ -1710,6 +1939,12 @@
                 </div>
 
                 <div class="card-content">
+                    <div class="card-tags">
+                        
+                            <span class="room-type-tag type-indoor tag-compact">Indoor Escape Room</span>
+                        
+                        
+                    </div>
                     <h3>
                         Der Fall Sherlock Holmes
                         
@@ -1729,6 +1964,11 @@
             </article>
         </a>
         
+    </div>
+
+    <div id="archiveEmptyState" class="archive-empty-state" hidden="" aria-live="polite">
+        <p class="archive-empty-state-title">// Keine Akten in dieser Kategorie</p>
+        <p class="archive-empty-state-text">Für diese Kategorie wurden bisher noch keine Testberichte archiviert. Schau bald wieder vorbei!</p>
     </div>
 
     <div id="paginationControls" class="pagination-container"></div>
@@ -1850,7 +2090,7 @@
 
   
 
-  <script src="/assets/js/main.js?v=20261018"></script>
+  <script src="/assets/js/main.js?v=20261124"></script>
   <script data-goatcounter="https://nairolf22.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>
 

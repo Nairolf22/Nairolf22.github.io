@@ -3,7 +3,7 @@ layout: default
 ---
 
 {% assign current_city = page.city %}
-{% assign city_reviews = site.reviews | where: "location.city", current_city %}
+{% assign city_reviews = site.reviews | where: "location.city", current_city | where_exp: "item", "item.online != true" %}
 
 {% assign room_count = city_reviews.size %}
 
@@ -40,7 +40,7 @@ layout: default
             {% assign calculated_avg = sum | divided_by: 5.0 %}
 
             <a href="{{ review.url }}" class="room-card-link">
-                <article class="room-card {% if review.outdoor %}outdoor-card{% endif %}">
+                <article class="room-card {% if review.online %}online-card{% elsif review.outdoor %}outdoor-card{% endif %}">
                     <div class="card-image-wrapper">
                         {% if review.thumbnail %}
                             {% assign img_src = review.thumbnail %}
@@ -68,6 +68,16 @@ layout: default
                     </div>
 
                     <div class="card-content">
+                        <div class="card-tags">
+                            {% if review.outdoor %}
+                                <span class="room-type-tag type-outdoor tag-compact">Outdoor Game</span>
+                            {% else %}
+                                <span class="room-type-tag type-indoor tag-compact">Indoor Escape Room</span>
+                            {% endif %}
+                            {% if review.free_test %}
+                                <span class="free-test-tag tag-compact">Kostenlos getestet</span>
+                            {% endif %}
+                        </div>
                         <h3>{{ review.title }}</h3>
                         <p class="card-meta">
                             {{ review.provider }}

@@ -25,7 +25,7 @@ permalink: /city/
         {% for page in city_pages %}
             
             {% assign city_name = page.city %}
-            {% assign city_reviews = site.reviews | where: "location.city", city_name %}
+            {% assign city_reviews = site.reviews | where: "location.city", city_name | where_exp: "item", "item.online != true" %}
             {% assign room_count = city_reviews.size %}
             {% assign first_room = city_reviews | first %}
             
